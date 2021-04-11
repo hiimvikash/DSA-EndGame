@@ -23,8 +23,9 @@ public class SinglyLL {
 			System.out.println("7. Update node at position");
 			System.out.println("8. Reverse link list");
 			System.out.println("9. View List");
-			System.out.println("10. Exit");
-			
+			System.out.println("10. Get List Size");
+			System.out.println("11. Exit");
+			System.out.println();
 			System.out.println("Enter Choice");
 			int choice=sc.nextInt();
 			switch(choice) {
@@ -75,7 +76,10 @@ public class SinglyLL {
 			case 9: list.viewList();
 			break;
 			
-			case 10: flag=false;
+			case 10: System.out.println(list.getListSize());
+			break;
+			
+			case 11: flag=false;
 			break;
 			
 			
@@ -147,16 +151,11 @@ class Linkedlist{
 			return;
 		}
 		Node t=start;
-		for(int i=1;i<=size;i++)
-		{
-			if(i==size) {
-				System.out.print(t.getData()+ "|___|"+"--> null");
+		while(t!=null) {
+				System.out.print(t.getData()+ "|___|"+"-->");
+				t=t.getNext();
 			}
-			else {
-			System.out.print(t.getData()+ "|___|"+"-->");
-			t=t.getNext();
-			}
-		}
+			System.out.print("null");
 	}
 	public void insertAtFirst(int val) {
 		Node n=new Node();
@@ -181,20 +180,28 @@ class Linkedlist{
 		size++;
 	}
 	public void insertAtPos(int val,int pos) {
-		if(start==null) {
-			System.out.println("Empty list, Try Again");
+		if(isEmpty()||pos>size||pos<1) {
+			System.out.println("Insertion not possible");
 			return;
 		}
-		Node t=start;
-		Node n=new Node();
-		n.setData(val);
-		for(int i=1;i<pos-1;i++) {
-			t=t.getNext();
+		else if(pos==1) {
+			insertAtFirst(val);
 		}
-		n.setNext(t.getNext());
-		t.setNext(n);
-		size++;
-	}
+		else if(pos==size) {
+			insertAtLast(val);
+		}
+		else {
+    		Node t=start;
+    		Node n=new Node();
+    		n.setData(val);
+    		for(int i=1;i<pos-1;i++) {
+    			t=t.getNext();
+    		}
+    		n.setNext(t.getNext());
+    		t.setNext(n);
+    		size++;
+	     }
+}
 	public void updateData(int val,int pos) {
 		if(isEmpty()||pos>size||pos<1) {
 			System.out.println("Updation not possible");
@@ -227,7 +234,7 @@ class Linkedlist{
 		}
 		else {
 			Node t=start;
-			while(t.getNext()!=null)
+			while(t.getNext().getNext()!=null)
 			{
 				t=t.getNext();
 			}
@@ -240,6 +247,12 @@ class Linkedlist{
 		if(isEmpty()||pos>size||pos<1) {
 			System.out.println("Deletetion not possible");
 			return;
+		}
+		else if(pos==1) {
+			deleteFirst();
+		}
+		else if(pos==size) {
+			deleteLast();
 		}
 		else {
 			Node t=start;
