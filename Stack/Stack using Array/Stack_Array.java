@@ -1,4 +1,4 @@
-package stacksQueues;
+
 import java.util.*;
 public class Stack_Array {
 
