@@ -1,8 +1,10 @@
 ### **Problem Link:**
 
-- #### [Design a Stack With Increment Operation #1381](https://leetcode.com/problems/design-a-stack-with-increment-operation/)
+- #### [Daily Temperatures #739](https://leetcode.com/problems/daily-temperatures/)
 
-### **Solution Links:**
+### **Solution Link:**
 
-- #### [Design a Stack With Increment Operation #1381 solution](https://github.com/heyimvikash/DataStructures-And-Algorithms/blob/01acf668653bd0d92ee06b966505ff14366d3686/02.%20Stack/LeetCode%20Qs/10.%20Design%20a%20Stack%20With%20Increment%20Operation%20%231381/Solution.java)
+- #### [Daily Temperatures #739 solution](https://github.com/heyimvikash/DataStructures-And-Algorithms/blob/342d1b69dab418fc374db9d172acc808f9b33752/02.%20Stack/LeetCode%20Qs/12.%20Daily%20Temperatures%20%23739/Solution.java)
+
+### **Tutorial Link:** [Visualization by Alexander Le](https://youtu.be/WGm4Kj3lhRI)
 
