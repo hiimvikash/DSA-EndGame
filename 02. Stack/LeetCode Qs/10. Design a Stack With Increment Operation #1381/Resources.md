@@ -1,11 +1,8 @@
 ### **Problem Link:**
 
-- #### [Valid Parentheses #20](https://leetcode.com/problems/valid-parentheses/)
+- #### [Design a Stack With Increment Operation #1381](https://leetcode.com/problems/design-a-stack-with-increment-operation/)
 
 ### **Solution Links:**
 
-- #### [Valid Parentheses #20 solution](https://github.com/heyimvikash/DataStructures-And-Algorithms/blob/a57c6111c1f1fa8627ffe07a2e6a6d8895075246/02.%20Stack/LeetCode%20Qs/09.%20Valid%20Parentheses%20%2320/Solution.java)
+- #### [Design a Stack With Increment Operation #1381 solution](https://github.com/heyimvikash/DataStructures-And-Algorithms/blob/01acf668653bd0d92ee06b966505ff14366d3686/02.%20Stack/LeetCode%20Qs/10.%20Design%20a%20Stack%20With%20Increment%20Operation%20%231381/Solution.java)
 
-### **Tutorial Link:**
-
-- #### [Visualization by Prakash Shukhla](https://youtu.be/cnjxnFDNie8)
