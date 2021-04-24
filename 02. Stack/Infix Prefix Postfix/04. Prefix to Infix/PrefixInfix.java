@@ -4,7 +4,7 @@ public class PrefixInfix {
 	public static void main(String[] args) {
 		Scanner sc=new Scanner(System.in);
 		String prefix_exp="";
-		System.out.println("Enter Infix Expression");
+		System.out.println("Enter Prefix Expression");
 		prefix_exp=sc.next();
 		System.out.println("Equivalent infix Expression for "+prefix_exp+" is= "+PrefixToInfix(prefix_exp));
 
