@@ -1,4 +1,4 @@
-**NOTE:** [You should know Step 2 from here.](https://github.com/heyimvikash/DataStructures-And-Algorithms/blob/37059379e36c76ac13d1625f1a54c49e4bd76006/02.%20Stack/Infix%20Prefix%20Postfix/01.%20Infix%20to%20Postfix/Resources.md)
+**NOTE:** [You should know Step 2 from here.](https://github.com/heyimvikash/DataStructures-And-Algorithms/blob/d5fd915d44e0acad864982849613b9f9085ab9a5/02.%20Stack/Infix%20Prefix%20Postfix/01.%20Infix%20to%20Postfix/Resources.md)
 
 ### **Step 1:** [Understand the working of pseudocode](https://youtu.be/OKdMY9oYkTg)
 
