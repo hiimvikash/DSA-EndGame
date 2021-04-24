@@ -4,7 +4,7 @@
 
 ![](./pseudocode.png)
 
-### **Step 2:** [See my code here in java to convert prefix to infix using stack.](https://github.com/heyimvikash/DataStructures-And-Algorithms/blob/406dda948ae6d4e8677d001bb3f168c336c2d2e8/02.%20Stack/Infix%20Prefix%20Postfix/04.%20Prefix%20to%20Infix/PrefixInfix.java)
+### **Step 2:** [See my code here in java to convert prefix to infix using stack.](https://github.com/heyimvikash/DataStructures-And-Algorithms/blob/7d1c18f07e6d2d4f1c9570812a09f27d74de4aa6/02.%20Stack/Infix%20Prefix%20Postfix/04.%20Prefix%20to%20Infix/PrefixInfix.java)
 
 <br>
 <h1 align="Center">Thank You</h1>
