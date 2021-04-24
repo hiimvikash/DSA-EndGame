@@ -13,7 +13,6 @@ public class PostfixPrefix {
 
 	private static String PostfixToInfix(String postfix_exp) {
 		Stack<String> st=new Stack();
-		String prefix="";
 		for(char ch:postfix_exp.toCharArray()) {
 			if((ch >= 'a' && ch <= 'z') ||(ch >= 'A' && ch <= 'Z')) {
 				st.push(Character.toString(ch));
