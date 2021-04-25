@@ -17,9 +17,9 @@ Queue is a linear data structure which operates in a **First IN First OUT or Las
 - count() – Get number of items in the queue.
 - peek() – view front elemenet in a line
 
-### <img src="https://cdn.shortpixel.ai/client/to_avif,q_glossy,ret_img,w_925/https://simplesnippets.tech/wp-content/uploads/2019/04/queue-data-structure-diagram.jpg" align="left" width=700/>
+<h1><img src="https://cdn.shortpixel.ai/client/to_avif,q_glossy,ret_img,w_925/https://simplesnippets.tech/wp-content/uploads/2019/04/queue-data-structure-diagram.jpg" align="left" width=700/></h1>
 
-<br>
+<!-- <br> -->
 
 ### **Step 1:** [Watch this introductory video on apna college](https://youtu.be/fbonDkYsKj0)
 
