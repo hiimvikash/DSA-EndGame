@@ -15,7 +15,7 @@ Queue is a linear data structure which operates in a **First IN First OUT or Las
 - isFull() – Check if queue is full or not.
 - isEmpty() – Check if queue empty or not.
 - count() – Get number of items in the queue.
-- peek() – view front elemenet in a line
+- peek() – return front elemenet in the queue(line).
 
 <h1><img src="https://cdn.shortpixel.ai/client/to_avif,q_glossy,ret_img,w_925/https://simplesnippets.tech/wp-content/uploads/2019/04/queue-data-structure-diagram.jpg"  width=700/></h1>
 
