@@ -12,7 +12,7 @@
 
 ### **Step 6:** [Implementation of pseudo code in C++ to convert Infix to postfix using stack.](https://youtu.be/dJESbyFR1sU)
 
-### **Step 7:** [See my code here in java to convert Infix to postfix using stack.](https://github.com/heyimvikash/DataStructures-And-Algorithms/blob/ff0bce02aa2d563c2e34f7aed8c92524bbd403da/02.%20Stack/Infix%20Prefix%20Postfix/01.%20Infix%20to%20Postfix/InfixPostfix.java)
+### **Step 7:** [See my code here in java to convert Infix to postfix using stack.](./InfixPostfix.java)
 
 <br>
 <h1 align="Center">Thank You</h1>
