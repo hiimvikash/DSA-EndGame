@@ -32,8 +32,8 @@ public class Queue_Stack {
 				case 3: System.out.println(q.count());
 				break;
 				
-//				case 4:System.out.println(q.peek());
-//				break;
+				case 4: System.out.println(q.peek());
+				break;
 				
 				case 5:q.viewQ();
 				break;
@@ -56,11 +56,13 @@ class Queue_St{
 	Stack<Integer> st1;
 	Stack<Integer> st2;
 	int size;
+	int peek;
 	
 	public Queue_St(){
 	st1=new Stack();
 	st2=new Stack();
 	size=0;
+	peek=0;
 	}
 	
 	public int count() {
@@ -71,6 +73,8 @@ class Queue_St{
 	}
 	
 	public void enqueue(int val) {
+		if(size==0)
+			peek=val;
 		st1.push(val);
 		size++;
 	}
@@ -80,16 +84,13 @@ class Queue_St{
 			System.out.println("Queue is empty");
 			return -999;
 		}
-//		else if(!st2.isEmpty()) {
-//			size--;
-//			return st2.pop();
-//		}
 		else {
 			while(!st1.isEmpty()) {
 			st2.push(st1.pop());
 			}
 			size--;
 			int pop= st2.pop();
+			peek=st2.peek();
 			while(!st2.isEmpty()) {
 				st1.push(st2.pop());
 			}
@@ -98,22 +99,10 @@ class Queue_St{
 		}
 	}
 	
-//	public int peek() {
-//		if(isEmpty()) {
-//			System.out.println("Queue is empty");
-//			return -999;
-//		}
-//		else if(!st2.isEmpty()) {
-//			return st2.peek();
-//		}
-//		else {
-//			while(st1.isEmpty()) {
-//				st2.push(st1.peek());
-//				}
-//			return st2.peek();
-//		}
-//		
-//	}
+	public int peek() {
+		return peek;
+	}
+	
 	
 	public void viewQ() {
 		if(isEmpty()) {
