@@ -113,9 +113,12 @@ class CircularQueue{
 			System.out.println("Queue is empty");
 			return;
 		}
-		for(int i=0;i<n;i++) {
+		int i=front;
+		while(i!=rear) {
 			System.out.print(arr[i]+" ");
+			i=(i+1)%n;
 		}
+		System.out.print(arr[i]+" ");
 	}
 	public int peek() {
 		if(isEmpty()) {
