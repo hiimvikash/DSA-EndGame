@@ -41,6 +41,49 @@ A binary tree is a tree data structure in which each node has **at most two chil
 # **BINARY TREE IMPLEMENTATIONS VIEWS**
 
 ![](https://cdn.shortpixel.ai/client/to_avif,q_glossy,ret_img,w_1010/https://simplesnippets.tech/wp-content/uploads/2020/10/binary-tree-logical-diagram.png)
+
+```java
+public class BinaryTree {
+
+
+	public static void main(String args[]) {
+
+		Node root=new Node(1);
+		root.left=new Node(2);
+		root.right=new Node(3);
+		/*        1
+		         / \
+		        2	3
+		*/
+		root.left.left=new Node(4);
+		root.left.right=new Node(5);
+		/*        1
+			     / \
+			    2	3
+			   / \
+			  4   5
+		*/
+		root.right.left=new Node(6);
+		root.right.right=new Node(7);
+		/*        1
+			    /   \
+			   2	 3
+			  / \   / \
+			 4   5 6   7
+		*/
+	}
+}
+class Node{
+	int data;
+	Node left;
+	Node right;
+	public Node(int val) {
+		data=val;
+		left=right=null;
+	}
+}
+```
+
 ![](https://cdn.shortpixel.ai/client/to_avif,q_glossy,ret_img,w_892/https://simplesnippets.tech/wp-content/uploads/2020/10/binary-tree-as-array-implementation-diagram.png)
 
 ### **[Video Reference of Tree DS.](https://youtu.be/URRNruf2yVk)**
