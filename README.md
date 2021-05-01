@@ -1,3 +1,9 @@
-# DataStructures-And-Algorithms
+# **DataStructures-And-Algorithms**
 
-I have started DSAlgos on April 1, 2021, and this repository will be containing my resources, tutorial, codes, and my approach to Qs, for future reference.
+## **Data Structures :-**
+
+### **Data Structures is a way of storing/organising data in the memory, in such a way that access, management and modification become efficient.**
+
+## **Algorithms:-**
+
+### **Algorithms is any approach you use to perform operations(like searching, sorting..Etc.) on data.**
