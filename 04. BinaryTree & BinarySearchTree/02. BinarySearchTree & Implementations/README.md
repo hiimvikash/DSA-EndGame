@@ -46,7 +46,7 @@
 
 ### **18. -| isBalanced().**
 
-### **19. -| Delete node.**
+### **19. -| Delete node of BST.**
 
 <hr>
 
@@ -570,7 +570,7 @@ BST bt=new BST(); //BST is a class containing all the above functions
 
 <hr>
 
-# **19. -| Delete node.**
+# **19. -| Delete node of BST.**
 
 ```java
 // Main function calling
