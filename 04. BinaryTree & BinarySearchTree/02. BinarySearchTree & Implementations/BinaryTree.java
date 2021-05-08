@@ -8,7 +8,7 @@ public class BinaryTree {
 	public static void main(String[] args) {
 		Scanner sc=new Scanner(System.in);
 		BST bt=new BST();
-		boolean flag=true;int val=0;
+		boolean flag=true;int val=0;int inorder[];
 		while(flag){
 			System.out.println();
 			System.out.println("1.--| Insertion in BST(itterative approach)");
@@ -31,7 +31,8 @@ public class BinaryTree {
 			System.out.println("18.-| isBalanced()");
 			System.out.println("19.-| Delete node");
 			System.out.println("20.-| Construct BT from Preorder and Inorder");
-			System.out.println("21.-| exit");
+			System.out.println("21.-| Construct BT from Postorder and Inorder");
+			System.out.println("22.-| exit");
 			int ch=sc.nextInt();
 			switch(ch) {
 			case 1:
@@ -99,7 +100,7 @@ public class BinaryTree {
 				System.out.println("No. of Nodes in your BT ?");
 				val=sc.nextInt();
 				int preorder[]=new int[val];
-				int inorder[]=new int[val];
+				inorder=new int[val];
 				
 				System.out.println("Enter values in preorder sequence");
 				for(int i=0;i<val;i++)
@@ -108,9 +109,23 @@ public class BinaryTree {
 				for(int i=0;i<val;i++)
 					inorder[i]=sc.nextInt();
 				bt.root=bt.buildTreeFromInorderPreorder(preorder,inorder);
-			break;	
+			break;
+			case 21:
+				System.out.println("No. of Nodes in your BT ?");
+				val=sc.nextInt();
+				int postorder[]=new int[val];
+				inorder=new int[val];
+				
+				System.out.println("Enter values in postorder sequence");
+				for(int i=0;i<val;i++)
+					postorder[i]=sc.nextInt();
+				System.out.println("Enter values in inorder sequence");
+				for(int i=0;i<val;i++)
+					inorder[i]=sc.nextInt();
+				bt.root=bt.buildTreeFromInorderPostorder(postorder,inorder);
+			break;
 			
-			case 21: flag=false; break;
+			case 22: flag=false; break;
 			default: System.out.println("Invalid choice"); 
 
 			}
@@ -504,7 +519,7 @@ class BST{
 		
 //20.-| Construct BT from Preorder and Inorder STARTS
 		public  Node buildTreeFromInorderPreorder(int preorder[],int inorder[]){
-			int n=preorder.length;
+			int n=inorder.length;
 			System.out.println("Your BT is ready PRESS 4 AND ENTER to view");
 			return preInTree(preorder,0,n-1,inorder,0,n-1);
 		}
@@ -514,8 +529,7 @@ class BST{
 		public  Node preInTree(int pre[],int psi,int pei,int in[],int isi,int iei) {
 			if(isi>iei) return null;
 			
-			int preVal=pre[psi];
-			Node n=new Node(preVal);
+			Node n=new Node(pre[psi]);
 			int idx=isi;
 			while(in[idx]!=pre[psi])
 				idx++;
@@ -527,5 +541,30 @@ class BST{
 			return n;
 		}
 //20.-| Construct BT from Preorder and Inorder ENDS
+		
+		
+//21.-| Construct BT from Postorder and Inorder STARTS
+		public  Node buildTreeFromInorderPostorder(int postorder[],int inorder[]){
+			int n=postorder.length;
+			System.out.println("Your BT is ready PRESS 4 AND ENTER to view");
+			return postInTree(postorder,0,n-1,inorder,0,n-1);
+		}
+				
+		//psi=postorder starting index, pei=postorder ending index.
+		//isi=inorder starting index, iei=inorder ending inex.
+		public  Node postInTree(int post[],int psi,int pei,int in[],int isi,int iei) {
+			if(isi>iei) return null;
+				Node n=new Node(post[pei]);
+				int idx=isi;
+				while(in[idx]!=post[pei])
+					idx++;
+				int tnel=idx-isi;// total no. of element on left side/right side of root.
+					
+			n.left=postInTree(post, psi, psi+tnel-1, in, isi,idx-1);
+			n.right=postInTree(post, psi+tnel, pei-1, in, idx+1, iei);
+					
+			return n;
+				}
+//21.-| Construct BT from Postorder and Inorder ENDS
 	
 }

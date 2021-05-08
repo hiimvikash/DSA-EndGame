@@ -50,6 +50,8 @@
 
 ### **20. -| Construct BT from Preorder and Inorder.**
 
+### **21. -| Construct BT from Postorder and Inorder.**
+
 <hr>
 
 ## **0. --| Class defination containing all above Functions().**
@@ -84,6 +86,8 @@ class BST{
 
 }
 ```
+
+<hr>
 
 # **1. --| Insertion in BST(itterative approach).**
 
@@ -140,6 +144,8 @@ break;
 	//1.--| Insertion in BST(itterative approach) ENDS
 ```
 
+<hr>
+
 # **2. --| Insertion in BST(recurrsive approach).**
 
 ```java
@@ -175,6 +181,8 @@ break;
 	}
 	//2.--| Insertion in BST(recurrsive approach) ENDS
 ```
+
+<hr>
 
 # **3. --| Insertion in BT(level order insertion).**
 
@@ -226,6 +234,8 @@ break;
 ```
 
 ## **[Video Reference](https://youtu.be/kjmBjhalENI)**
+
+<hr>
 
 # **4. --| Print 2D.**
 
@@ -510,6 +520,8 @@ break;
 	//15.-| Search in BST ENDS
 ```
 
+<hr>
+
 # **16. -| Diameter of BT(nibbi approach).**
 
 # **17. -| Diameter of BT(legend approach).**
@@ -679,6 +691,57 @@ break;
 
 <hr>
 
+# **21. -| Construct BT from Postorder and Inorder.**
+
+```java
+// Main function calling
+BST bt=new BST(); //BST is a class containing all the above functions
+
+
+case 21:
+				System.out.println("No. of Nodes in your BT ?");
+				val=sc.nextInt();
+				int postorder[]=new int[val];
+				inorder=new int[val];
+
+				System.out.println("Enter values in postorder sequence");
+				for(int i=0;i<val;i++)
+					postorder[i]=sc.nextInt();
+				System.out.println("Enter values in inorder sequence");
+				for(int i=0;i<val;i++)
+					inorder[i]=sc.nextInt();
+				bt.root=bt.buildTreeFromInorderPostorder(postorder,inorder);
+break;
+
+
+//21.-| Construct BT from Postorder and Inorder STARTS
+		public  Node buildTreeFromInorderPostorder(int postorder[],int inorder[]){
+			int n=postorder.length;
+			System.out.println("Your BT is ready PRESS 4 AND ENTER to view");
+			return postInTree(postorder,0,n-1,inorder,0,n-1);
+		}
+
+		//psi=postorder starting index, pei=postorder ending index.
+		//isi=inorder starting index, iei=inorder ending inex.
+		public  Node postInTree(int post[],int psi,int pei,int in[],int isi,int iei) {
+			if(isi>iei) return null;
+				Node n=new Node(post[pei]);
+				int idx=isi;
+				while(in[idx]!=post[pei])
+					idx++;
+				int tnel=idx-isi;// total no. of element on left side/right side of root.
+
+			n.left=postInTree(post, psi, psi+tnel-1, in, isi,idx-1);
+			n.right=postInTree(post, psi+tnel, pei-1, in, idx+1, iei);
+
+			return n;
+				}
+//21.-| Construct BT from Postorder and Inorder ENDS
+```
+
+## **[Video Reference](https://youtu.be/Lc3RBGtyn7M)**
+
+<hr>
 <h1 align="center"><b><a href="./BinaryTree.java">SEE MY FULL IMPLEMENTED CODE HERE.</a></b></h1>
 <br>
 <br>
