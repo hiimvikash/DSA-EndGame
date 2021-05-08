@@ -735,7 +735,7 @@ break;
 			n.right=postInTree(post, psi+tnel, pei-1, in, idx+1, iei);
 
 			return n;
-				}
+		}
 //21.-| Construct BT from Postorder and Inorder ENDS
 ```
 
