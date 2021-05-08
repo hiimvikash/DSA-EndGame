@@ -30,7 +30,8 @@ public class BinaryTree {
 			System.out.println("17.-| Diameter of BT(legend approach)");
 			System.out.println("18.-| isBalanced()");
 			System.out.println("19.-| Delete node");
-			System.out.println("20.-| exit");
+			System.out.println("20.-| Construct BT from Preorder and Inorder");
+			System.out.println("21.-| exit");
 			int ch=sc.nextInt();
 			switch(ch) {
 			case 1:
@@ -94,7 +95,22 @@ public class BinaryTree {
 			bt.root=bt.delete(bt.root,val);
 			break;
 			
-			case 20: flag=false; break;
+			case 20:
+				System.out.println("No. of Nodes in your BT ?");
+				val=sc.nextInt();
+				int preorder[]=new int[val];
+				int inorder[]=new int[val];
+				
+				System.out.println("Enter values in preorder sequence");
+				for(int i=0;i<val;i++)
+					preorder[i]=sc.nextInt();
+				System.out.println("Enter values in inorder sequence");
+				for(int i=0;i<val;i++)
+					inorder[i]=sc.nextInt();
+				bt.root=bt.buildTreeFromInorderPreorder(preorder,inorder);
+			break;	
+			
+			case 21: flag=false; break;
 			default: System.out.println("Invalid choice"); 
 
 			}
@@ -193,7 +209,7 @@ class BST{
 	
 	
 	//3.--| Insertion in BT(level order insertion) STARTS
-		public void insert(Node rt,int val) {
+		public  void insert(Node rt,int val) {
 			Node nn=new Node(val);
 			if(rt==null) {
 				rt=nn;
@@ -484,6 +500,32 @@ class BST{
 			}
 		}
 //19.-| Delete node ENDS	
-	
+		
+		
+//20.-| Construct BT from Preorder and Inorder STARTS
+		public  Node buildTreeFromInorderPreorder(int preorder[],int inorder[]){
+			int n=preorder.length;
+			System.out.println("Your BT is ready PRESS 4 AND ENTER to view");
+			return preInTree(preorder,0,n-1,inorder,0,n-1);
+		}
+		
+		//psi=preorder starting index, pei=preorder ending index.
+		//isi=inorder starting index, iei=inorder ending inex.
+		public  Node preInTree(int pre[],int psi,int pei,int in[],int isi,int iei) {
+			if(isi>iei) return null;
+			
+			int preVal=pre[psi];
+			Node n=new Node(preVal);
+			int idx=isi;
+			while(in[idx]!=pre[psi])
+				idx++;
+			int tnel=idx-isi;// total no. of element on left side/right side of root.
+			
+			n.left=preInTree(pre, psi+1, psi+tnel, in, isi,idx-1);
+			n.right=preInTree(pre, psi+tnel+1, pei, in, idx+1, iei);
+			
+			return n;
+		}
+//20.-| Construct BT from Preorder and Inorder ENDS
 	
 }
