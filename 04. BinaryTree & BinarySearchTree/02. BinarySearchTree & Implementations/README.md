@@ -52,6 +52,8 @@
 
 ### **21. -| Construct BT from Postorder and Inorder.**
 
+### **22.-| Construct BST from Inorder**
+
 <hr>
 
 ## **0. --| Class defination containing all above Functions().**
@@ -740,6 +742,48 @@ break;
 ```
 
 ## **[Video Reference](https://youtu.be/Lc3RBGtyn7M)**
+
+<hr>
+
+# **22.-| Construct BST from Inorder**
+
+```java
+// Main function calling
+BST bt=new BST(); //BST is a class containing all the above functions
+
+
+case 22:
+				System.out.println("No. of Nodes in your BT ?");
+				val=sc.nextInt();
+				inorder=new int[val];
+				System.out.println("Enter values in inorder sequence");
+				for(int i=0;i<val;i++)
+					inorder[i]=sc.nextInt();
+				bt.root=bt.buildBSTfromInorder(inorder);
+break;
+
+//22.-| Construct BST from Inorder Sequence STARTS.
+		public Node buildBSTfromInorder(int inorder[]) {
+			int n=inorder.length;
+			System.out.println("Your BST is ready PRESS 4 AND ENTER to view");
+			return buildBSTfromInorder(inorder,0,n-1);
+		}
+
+		private Node buildBSTfromInorder(int[] in, int si, int ei) {
+			if(si>ei)
+				return null;
+			int midRoot=(si+ei)/2;
+			Node n=new Node(in[midRoot]);
+
+			n.left=buildBSTfromInorder(in,si,midRoot-1);
+			n.right=buildBSTfromInorder(in,midRoot+1,ei);
+
+			return n;
+		}
+//22.-| Construct BST from Inorder Sequence ENDS.
+```
+
+## **[Video Reference](https://youtu.be/UAsLKuEMhsQ)**
 
 <hr>
 <h1 align="center"><b><a href="./BinaryTree.java">SEE MY FULL IMPLEMENTED CODE HERE.</a></b></h1>
