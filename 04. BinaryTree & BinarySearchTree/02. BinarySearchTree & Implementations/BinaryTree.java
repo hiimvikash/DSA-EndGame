@@ -8,7 +8,7 @@ public class BinaryTree {
 	public static void main(String[] args) {
 		Scanner sc=new Scanner(System.in);
 		BST bt=new BST();
-		boolean flag=true;int val=0;int inorder[];
+		boolean flag=true;int val=0;int inorder[];int preorder[];int postorder[];
 		while(flag){
 			System.out.println();
 			System.out.println("1.--| Insertion in BST(itterative approach)");
@@ -33,7 +33,8 @@ public class BinaryTree {
 			System.out.println("20.-| Construct BT from Preorder and Inorder");
 			System.out.println("21.-| Construct BT from Postorder and Inorder");
 			System.out.println("22.-| Construct BST from Inorder");
-			System.out.println("23.-| exit");
+			System.out.println("23.-| Construct BST from Preorder");
+			System.out.println("24.-| exit");
 			int ch=sc.nextInt();
 			switch(ch) {
 			case 1:
@@ -100,7 +101,7 @@ public class BinaryTree {
 			case 20:
 				System.out.println("No. of Nodes in your BT ?");
 				val=sc.nextInt();
-				int preorder[]=new int[val];
+				preorder=new int[val];
 				inorder=new int[val];
 				
 				System.out.println("Enter values in preorder sequence");
@@ -114,7 +115,7 @@ public class BinaryTree {
 			case 21:
 				System.out.println("No. of Nodes in your BT ?");
 				val=sc.nextInt();
-				int postorder[]=new int[val];
+				postorder=new int[val];
 				inorder=new int[val];
 				
 				System.out.println("Enter values in postorder sequence");
@@ -127,7 +128,7 @@ public class BinaryTree {
 			break;
 			
 			case 22:
-				System.out.println("No. of Nodes in your BT ?");
+				System.out.println("No. of Nodes in your BST ?");
 				val=sc.nextInt();
 				inorder=new int[val];
 				System.out.println("Enter values in inorder sequence");
@@ -136,7 +137,17 @@ public class BinaryTree {
 				bt.root=bt.buildBSTfromInorder(inorder);
 			break;	
 			
-			case 23: flag=false; break;
+			case 23:
+				System.out.println("No. of Nodes in your BST ?");
+				val=sc.nextInt();
+				preorder=new int[val];
+				System.out.println("Enter values in preorder sequence");
+				for(int i=0;i<val;i++)
+					preorder[i]=sc.nextInt();
+				bt.root=bt.buildBSTfromPreorder(preorder);
+			break;
+			
+			case 24: flag=false; break;
 			default: System.out.println("Invalid choice"); 
 
 			}
@@ -599,6 +610,28 @@ class BST{
 			return n;
 		}
 //22.-| Construct BST from Inorder Sequence ENDS.
+		
+		
+		
+//23.-| Construct BST from Preorder Sequence STARTS.
+		public Node buildBSTfromPreorder(int preorder[]) {
+			int lr=-1000;//left range
+			int rr=1000;// right range
+			System.out.println("Your BST is ready PRESS 4 AND ENTER to view");
+			return buildBSTfromPreorder(preorder, lr, rr);
+		}
+		int idx=0;
+		private Node buildBSTfromPreorder(int[] pre, int lr, int rr) {
+			if(idx>=pre.length || pre[idx]<lr || pre[idx]>rr)
+				return null;
+			
+			Node n=new Node(pre[idx++]);
+			n.left=buildBSTfromPreorder(pre, lr, n.data);
+			n.right=buildBSTfromPreorder(pre, n.data, rr);
+			
+			return n;
+		}
+//23.-| Construct BST from Preorder Sequence ENDS.
 
 	
 }
