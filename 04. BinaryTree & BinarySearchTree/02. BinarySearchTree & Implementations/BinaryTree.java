@@ -34,7 +34,8 @@ public class BinaryTree {
 			System.out.println("21.-| Construct BT from Postorder and Inorder");
 			System.out.println("22.-| Construct BST from Inorder");
 			System.out.println("23.-| Construct BST from Preorder");
-			System.out.println("24.-| exit");
+			System.out.println("24.-| Construct BST from Postorder");
+			System.out.println("25.-| exit");
 			int ch=sc.nextInt();
 			switch(ch) {
 			case 1:
@@ -147,7 +148,17 @@ public class BinaryTree {
 				bt.root=bt.buildBSTfromPreorder(preorder);
 			break;
 			
-			case 24: flag=false; break;
+			case 24:
+				System.out.println("No. of Nodes in your BST ?");
+				val=sc.nextInt();
+				postorder=new int[val];
+				System.out.println("Enter values in postorder sequence");
+				for(int i=0;i<val;i++)
+					postorder[i]=sc.nextInt();
+				bt.root=bt.buildBSTfromPostorder(postorder);
+			break;
+			
+			case 25: flag=false; break;
 			default: System.out.println("Invalid choice"); 
 
 			}
@@ -614,18 +625,21 @@ class BST{
 		
 		
 //23.-| Construct BST from Preorder Sequence STARTS.
+		int idx=0;
 		public Node buildBSTfromPreorder(int preorder[]) {
 			int lr=-1000;//left range
 			int rr=1000;// right range
+			idx=0;
 			System.out.println("Your BST is ready PRESS 4 AND ENTER to view");
 			return buildBSTfromPreorder(preorder, lr, rr);
 		}
-		int idx=0;
+		
 		private Node buildBSTfromPreorder(int[] pre, int lr, int rr) {
 			if(idx>=pre.length || pre[idx]<lr || pre[idx]>rr)
 				return null;
 			
 			Node n=new Node(pre[idx++]);
+			
 			n.left=buildBSTfromPreorder(pre, lr, n.data);
 			n.right=buildBSTfromPreorder(pre, n.data, rr);
 			
@@ -633,5 +647,30 @@ class BST{
 		}
 //23.-| Construct BST from Preorder Sequence ENDS.
 
+		
+		
+//24.-| Construct BST from Postorder Sequence STARTS.
+
+		public Node buildBSTfromPostorder(int postorder[]) {
+			int lr=-1000;//left range
+			int rr=1000;// right range
+			idx=postorder.length-1;
+			System.out.println("Your BST is ready PRESS 4 AND ENTER to view");
+			return buildBSTfromPostorder(postorder, lr, rr);
+		}
+		
+		private Node buildBSTfromPostorder(int[] post, int lr, int rr) {
+			if(idx<0 || post[idx]<lr || post[idx]>rr)
+				return null;
+			
+			Node n=new Node(post[idx--]);
+			
+			n.right=buildBSTfromPostorder(post, n.data, rr);
+			n.left=buildBSTfromPostorder(post, lr, n.data);
+			
+			return n;
+		}
+//24.-| Construct BST from Postorder Sequence ENDS.		
+		
 	
 }
