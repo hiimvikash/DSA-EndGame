@@ -590,7 +590,7 @@ BST bt=new BST(); //BST is a class containing all the above functions
 
 <hr>
 
-# **19. -| Delete node of BST.**
+# **19. -| Delete node in BST.**
 
 ```java
 // Main function calling
