@@ -46,7 +46,7 @@
 
 ### **18. -| isBalanced().**
 
-### **19. -| Delete node of BST.**
+### **19. -| Delete node in BST.**
 
 ### **20. -| Construct BT from Preorder and Inorder.**
 
