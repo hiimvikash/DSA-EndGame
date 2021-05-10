@@ -601,7 +601,7 @@ case 19:System.out.println("Enter value to delete");
 			bt.root=bt.delete(bt.root,val);
 break;
 
-//19.-| Delete node STARTS
+//19.-| Delete node in BST STARTS
 		public static Node delete(Node node,int val) {
 			if(node==null) return null;
 			if(val<node.data) {
