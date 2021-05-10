@@ -637,7 +637,7 @@ break;
 				return node.data;
 			}
 		}
-//19.-| Delete node ENDS
+//19.-| Delete node in BST ENDS
 ```
 
 ## **[Video Reference](https://youtu.be/5_AZcOOc-kM)**
