@@ -511,7 +511,7 @@ class BST{
 	//17.-| Diameter of BT(legend approach) ENDS
 	
 	
-	//19.-| Delete node STARTS
+	//19.-| Delete node in BST STARTS
 		public static Node delete(Node node,int val) {
 			if(node==null) return null;
 			if(val<node.data) {
@@ -547,7 +547,7 @@ class BST{
 				return node.data;
 			}
 		}
-//19.-| Delete node ENDS	
+//19.-| Delete node in BST ENDS	
 		
 		
 //20.-| Construct BT from Preorder and Inorder STARTS
