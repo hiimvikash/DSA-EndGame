@@ -29,7 +29,7 @@ public class BinaryTree {
 			System.out.println("16.-| Diameter of BT(nibbi approach)");
 			System.out.println("17.-| Diameter of BT(legend approach)");
 			System.out.println("18.-| isBalanced()");
-			System.out.println("19.-| Delete node");
+			System.out.println("19.-| Delete node in BST");
 			System.out.println("20.-| Construct BT from Preorder and Inorder");
 			System.out.println("21.-| Construct BT from Postorder and Inorder");
 			System.out.println("22.-| Construct BST from Inorder");
