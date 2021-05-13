@@ -6,4 +6,4 @@
 
 ## **Algorithms:-**
 
-### **Algorithms is any approach you use to perform operations(like searching, sorting..Etc.) on data.**
+### **Algorithms is any approach you use to perform operations on data (like searching, sorting..Etc.).**
