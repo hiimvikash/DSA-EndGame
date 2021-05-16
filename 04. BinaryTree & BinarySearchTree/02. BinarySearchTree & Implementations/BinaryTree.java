@@ -232,27 +232,28 @@ class BST{
 	
 	
 	//2.--| Insertion in BST(recurrsive approach) STARTS
-	public Node insertNodeRECURR(Node root, int key) {
-		
-		// if the root is null, create a new node and return it
-        if (root == null) {
-            return new Node(key);
-        }
- 
-        // if the given key is less than the root node,
-        // recur for the left subtree
-        if (key < root.data) {
-            root.left = insertNodeRECURR(root.left, key);
-        }
- 
-        // otherwise, recur for the right subtree
-        else {
-            // key >= root.data
-            root.right = insertNodeRECURR(root.right, key);
-        }
- 
-        return root;
-	}
+  	     public Node insertNodeRECURR(Node root, int key) {
+  		
+    		// if the root is null, create a new node and return it
+            if (root == null) 
+            	return new Node(key);
+            
+     
+            // if the given key is less than the root node,
+            // recur for the left subtree
+            else if (key < root.data) 
+            	root.left = insertNodeRECURR(root.left, key);
+           
+     
+            // otherwise, recur for the right subtree
+            else if(key > root.data) 
+                root.right = insertNodeRECURR(root.right, key);
+            
+            else // key== root.data
+            	System.out.println("Dublicate value not allowed");
+     
+            return root;
+    	}
 	//2.--| Insertion in BST(recurrsive approach) ENDS
 	
 	
