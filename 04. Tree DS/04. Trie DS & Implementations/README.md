@@ -16,7 +16,7 @@
 
 # **What's in a Single Node of Trie ?**
 
-![](https://i.ibb.co/g3Zb6bj/Trie-DS.png)
+![](https://i.ibb.co/svTf1zt/Trienode.png)
 
 <hr>
 
