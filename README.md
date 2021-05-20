@@ -12,7 +12,7 @@
 
 # **Prerequisites :-**
 
-0. **PROGRAMMING LANGUAGE**
+0. **PROGRAMMING LANGUAGE.**
 1. [**CLASS AND OBJECTS.**](https://youtu.be/a199KZGMNxk?t=244)
 2. [**CONSTRUCTOR.**](https://youtu.be/a199KZGMNxk?t=981)
 3. [**this KEYWORD.**](https://youtu.be/a199KZGMNxk?t=1424)
