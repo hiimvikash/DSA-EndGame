@@ -22,6 +22,6 @@
 - ## **Default-** The access level of default modifier is within package. Methods, variables declared default can be accesed from other classes of same package.
 - ## **Private-** The access level of private modifier is within the class. Methods, variables declared private cannot be accesed from outside the class.
 
-5. [**ENCAPSULATION.**](https://youtu.be/a199KZGMNxk?t=2019)
+5. [**ENCAPSULATION**](https://youtu.be/a199KZGMNxk?t=2019)
 6. [**STATIC KEYWORD IN JAVA.**](https://youtu.be/3LtIk7wFGi0)
 7. [**INNER CLASS IN JAVA.**](https://youtu.be/zg1pijw6AM4)
