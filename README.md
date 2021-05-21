@@ -23,5 +23,5 @@
 - ## **Private-** The access level of private modifier is within the class. Methods, variables declared private cannot be accesed from outside the class.
 
 5. [**ENCAPSULATION**](https://youtu.be/a199KZGMNxk?t=2019)
-6. [**STATIC KEYWORD IN JAVA.**](https://youtu.be/3LtIk7wFGi0)
+6. [**STATIC KEYWORD IN JAVA**](https://youtu.be/3LtIk7wFGi0)
 7. [**INNER CLASS IN JAVA.**](https://youtu.be/zg1pijw6AM4)
