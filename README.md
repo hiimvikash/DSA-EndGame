@@ -27,5 +27,6 @@
 7. [**INNER CLASS IN JAVA.**](https://youtu.be/zg1pijw6AM4)
 8. [**Pass by value.**](https://youtu.be/H71vRa86AGg)
 9. [**Pass by refrence.**](https://youtu.be/H71vRa86AGg)
-8. [**Strings are immutable.**](https://youtu.be/4cEsJtuW4YY)
-9. [**== & .equals in String.**](https://youtu.be/i7vYjvJOIiw)
+10. [**Strings are immutable.**](https://youtu.be/4cEsJtuW4YY)
+11. [**== & .equals in String.**](https://youtu.be/i7vYjvJOIiw)
+12. [**Wrapper class in java.**](https://youtu.be/nYE_P9FG1g0)
