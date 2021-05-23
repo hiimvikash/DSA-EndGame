@@ -30,3 +30,6 @@
 10. [**Strings are immutable.**](https://youtu.be/4cEsJtuW4YY)
 11. [**== & .equals in String.**](https://youtu.be/i7vYjvJOIiw)
 12. [**Wrapper class in java.**](https://youtu.be/nYE_P9FG1g0)
+13. [**Generics in Java.**](https://youtu.be/XMvznsY02Mk)
+14. [**isequals and hashcode in java by codingSimplified.**](https://youtu.be/X2AjBFZfFCY)
+    - [**isequals and hashcode in java by AnujBhaiya.**](https://youtu.be/HRHMkQ9fWsM)
