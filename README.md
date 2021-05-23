@@ -25,5 +25,7 @@
 5. [**ENCAPSULATION.**](https://youtu.be/a199KZGMNxk?t=2019)
 6. [**STATIC KEYWORD IN JAVA.**](https://youtu.be/3LtIk7wFGi0)
 7. [**INNER CLASS IN JAVA.**](https://youtu.be/zg1pijw6AM4)
+8. [**Pass by value.**](https://youtu.be/H71vRa86AGg)
+9. [**Pass by refrence.**](https://youtu.be/H71vRa86AGg)
 8. [**Strings are immutable.**](https://youtu.be/4cEsJtuW4YY)
 9. [**== & .equals in String.**](https://youtu.be/i7vYjvJOIiw)
