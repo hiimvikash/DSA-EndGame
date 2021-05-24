@@ -33,3 +33,7 @@
 13. [**Generics in Java.**](https://youtu.be/XMvznsY02Mk)
 14. [**isequals and hashcode in java by codingSimplified.**](https://youtu.be/X2AjBFZfFCY)
     - [**isequals and hashcode in java by AnujBhaiya.**](https://youtu.be/HRHMkQ9fWsM)
+15. ## **% operator in JAVA :** **dividend % divisor** - Here two statement is needed to be taken care :-
+
+- **When Divedend < Divisor then answer is dividend.**
+- **When Divedend > Divisor then answer lie in [0 to divisor-1].**
