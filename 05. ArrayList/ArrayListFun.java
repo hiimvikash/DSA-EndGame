@@ -82,8 +82,19 @@ public class ArrayListFun {
 			System.out.println(arr3); // After: [444, 555, 2, 7, 3, 1, 7, 5, 666]
 		
 			
+		
+		//11. for loop iteration in ArrayList
+			for(int i=0;i<arr1.size();i++) {
+				System.out.print(arr1.get(i)+" "); // 2 7 3 1 7 5
+			}
+			System.out.println(); // new line
+			//for each loop
+			for(int val: arr1) {
+				System.out.print(val+" "); // 2 7 3 1 7 5
+			}
+			System.out.println(); // new line
 			
-		//11. clear() - remove all elements from AL	
+		//12. clear() - remove all elements from AL	
 				arr1.clear();
 				arr2.clear();
 				arr3.clear();
