@@ -30,6 +30,45 @@
 10. [**Strings are immutable.**](https://youtu.be/4cEsJtuW4YY)
 11. [**== & .equals in String.**](https://youtu.be/i7vYjvJOIiw)
 12. [**Wrapper class in java.**](https://youtu.be/nYE_P9FG1g0)
+    ## - Object creation and memory allocation in Integer class.
+
+```JAVA
+    public static void main(String[] args) {
+		// case 1:
+				Integer i= new Integer(1);
+				Integer j=new Integer(1);
+				System.out.println(i==j); // false,  coz == check reference address of i and j, and here 'i' is pointing to 1 (i---> 1) and 'j' is pointing to different 1 (j---> 1)
+				System.out.println(i.equals(j)); // true
+
+		// case 2:
+				Integer a=new Integer(2);
+				Integer b=2;
+
+				System.out.println(a==b); // false
+				System.out.println(a.equals(b)); // true
+
+		// case 3:
+				Integer x=new Integer(3);
+				Integer y=x;
+
+				System.out.println(x==y); // true
+				System.out.println(x.equals(y)); // true
+
+
+		// case 4
+				Integer p=128;
+				Integer q=128;
+				System.out.println(p==q); // false
+				System.out.println(p.equals(q)); // true
+
+		// case 5 -128 to 127 is in cached memory so they point to same object without creating it instances.
+				Integer s=50;
+				Integer t=50;
+				System.out.println(s==t); // true
+				System.out.println(s.equals(t)); // true
+    }
+```
+
 13. [**Generics in Java.**](https://youtu.be/XMvznsY02Mk)
 14. [**isequals and hashcode in java by codingSimplified.**](https://youtu.be/X2AjBFZfFCY)
     - [**isequals and hashcode in java by AnujBhaiya.**](https://youtu.be/HRHMkQ9fWsM)
