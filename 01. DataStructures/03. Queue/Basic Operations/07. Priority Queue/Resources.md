@@ -2,7 +2,7 @@
 
 # **Implementation Using Heap**
 
-## **NOTE:** Implementing ()s of priority Queue is totally same as heap DS function which is covered in heap DS.
+## **NOTE:** Implementation ()s of priority Queue is totally same as heap DS function which is covered in heap DS.
 
 ## **Priority Queue --------- Heap**
 
