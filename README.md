@@ -27,6 +27,38 @@
 7. [**INNER CLASS IN JAVA.**](https://youtu.be/zg1pijw6AM4)
 8. [**Pass by value.**](https://youtu.be/H71vRa86AGg)
 9. [**Pass by refrence.**](https://youtu.be/H71vRa86AGg)
+
+```java
+import java.util.*;
+
+public class Hi {
+
+	// here value is copied in localVariable 'a'.
+	public static void incrementPrimitiveDT(int a) {
+		a++;
+	}
+
+	// here reference is copied, means 'input' is also pointing to 'arr'.
+	public static void incrementReferenceDT(int input[]) {
+		for(int i=0;i<input.length;i++) {
+			input[i]++;
+		}
+	}
+
+
+	public static void main(String[] args) {
+		int i=10;
+		incrementPrimitiveDT(i); // passByValue
+		System.out.println(i); // 10
+
+
+		int arr[]= {1,2,3,4,5};
+		incrementReferenceDT(arr); // passByReference
+		System.out.println(Arrays.toString(arr)); // [2, 3, 4, 5, 6]
+	}
+}
+```
+
 10. [**Strings are immutable.**](https://youtu.be/4cEsJtuW4YY)
 11. [**== & .equals in String.**](https://youtu.be/i7vYjvJOIiw)
 12. [**Wrapper class in java.**](https://youtu.be/nYE_P9FG1g0)
