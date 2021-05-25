@@ -107,4 +107,4 @@ public class Hi {
 15. **% operator in JAVA :** **dividend % divisor** - Here two statement is needed to be taken care :-
 
 - ## **When Divedend < Divisor then answer is dividend.**
-- ## **When Divedend > Divisor then answer lie in [0 to divisor-1].**
+- ## **When Divedend > Divisor then answer lie in between [0 to divisor-1].**
