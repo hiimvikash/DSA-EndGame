@@ -3,21 +3,28 @@ import java.util.*;
 public class MyPriorityQueue {
 	
 	public static void main(String[] args) {
-		PriorityQueues<Integer> pq=new PriorityQueues<>(7);
+		PriorityQueues<Integer> pq1=new PriorityQueues<>(7);
 		
+		pq1.add(8);
+		pq1.add(5);
+		pq1.add(85);
+		pq1.add(20);
+		pq1.add(15);
+		pq1.add(95);
+		pq1.add(4);
 		
-		pq.add(8);
-		pq.add(5);
-		pq.add(85);
-		pq.add(20);
-		pq.add(15);
-		pq.add(95);
-		pq.add(4);
-		
-		pq.display();
+		pq1.display();
 		System.out.println();
-		System.out.println("removed element="+pq.remove());
-		System.out.println("peek element="+pq.peek());
+		System.out.println("removed element="+pq1.remove());
+		System.out.println("peek element="+pq1.peek());
+		
+		// object addition in PQ
+		PriorityQueues<Student> pq2=new PriorityQueues<>(4);
+		pq2.add(new Student(1,1000));
+		pq2.add(new Student(2,2000));
+		pq2.add(new Student(3,3000));
+		pq2.add(new Student(4,4000));
+		pq2.display();
 		
 	}
 	
@@ -47,7 +54,7 @@ class PriorityQueues<T>{
 	}
 	public void display() {
 		for(int i=0;i<hSize;i++)
-			System.out.print(harr.get(i)+" ");
+			System.out.println(harr.get(i)+" ");
 	}
 	public void swap(int currI,int swI) {// currentIndex, swapIndex
 		T temp=harr.get(currI);
@@ -123,4 +130,21 @@ class PriorityQueues<T>{
 				}
 			}
 	//remove() ENDS	
+}
+
+class Student implements Comparable<Student>{
+	int roll;
+	int rank;
+	public Student(int ro,int rnk) {
+		roll=ro;
+		rank=rnk;
+	}
+	@Override
+	public int compareTo(Student o) {
+		return this.roll-o.roll;
+	}
+	@Override
+	public String toString() {
+		return roll+" "+rank;
+	}
 }
