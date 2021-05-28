@@ -1,6 +1,8 @@
 ### **Step 1:** [Watch priority Queue basic explanation here.](https://youtu.be/FdObb76AmzM)
 
 # **Implementation Using Heap**
+## **VI Prerequisites:** [Comparable in PQ for generic PQ](https://youtu.be/DE835GvxZMQ)
+## [**My Implementation of PQ**](./MyPriorityQueue.java)
 
 ## **NOTE:** Implementation ()s of priority Queue is totally same as heap DS function which is covered in heap DS.
 
