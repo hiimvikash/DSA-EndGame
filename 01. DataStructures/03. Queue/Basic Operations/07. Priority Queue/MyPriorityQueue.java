@@ -41,7 +41,7 @@ public class MyPriorityQueue {
 		
 		System.out.println("------------------------------------");
 		
-		// Now How will you change the order of Wrapper classes the Answer is --> by using comparator
+		// Now How will you change the removingOrder of Wrapper classes the Answer is --> by using comparator
 		PriorityQueues<Integer> pq3=new PriorityQueues<>(7,new IntegerSorting());// when you want descending order(max heap)
 		pq3.add(8);
 		pq3.add(5);
