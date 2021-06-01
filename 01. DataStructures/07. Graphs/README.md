@@ -16,3 +16,4 @@
 - **[16 DisJoint Set Code used in Kruskal's Algorithm](./DisjointSet.java)**
 
 ## **[See my code here.](./MyGraph.java)**
+-   **To get the the proper feel of this graph code, I suggest you to complete the functions in ascending order.**
