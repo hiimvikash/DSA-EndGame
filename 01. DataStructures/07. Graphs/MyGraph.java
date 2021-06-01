@@ -535,7 +535,7 @@ class Graph1{
 			
 			
 			
-	// 18 SCC STARTS
+	// 18 SCC(OWN) STARTS
 		// PrintDfs() STARTS
 			public void SCCprintDfs() {
 				boolean vis[]=new boolean[vertices];
@@ -559,7 +559,7 @@ class Graph1{
 				}
 			}
 		// PrintDfs() ENDS	
-	// 18 SCC ENDS		
+	// 18 SCC(OWN) ENDS		
 
 
 	}
