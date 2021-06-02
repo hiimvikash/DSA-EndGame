@@ -8,6 +8,10 @@
 
 <hr>
 
+# Prerequisites :-
+
+- ## **[Recurrsion by AC](https://youtube.com/playlist?list=PLGeDISzAH2BQyQbj__5hjwd_6T3b9k-sm)**
+
 # **Implementations**
 
 ### **1. --| Insertion in BST(itterative approach).**
