@@ -10,7 +10,7 @@
 
 <hr>
 
-## [This Folder](./) is the continuation of [01. DataStructures](../01.%20DataStructures) to proceed with Algorithm part, so the approach will be that we will follow the [guided path for DsAlgo by CN](https://www.codingninjas.com/codestudio/guided-paths/data-structures-algorithms) and in the process of solving Qs we will also buid up the concept of algorithms in proper sequence and moreover our DataStructures will also get revised because algorithm is something which we apply on data structures.
+## [This Folder](./) is the continuation of [01. DataStructures](../01.%20DataStructures) to proceed with Algorithm part, so the approach will be that we will follow the [DSA sheet by LoveBabbar](https://docs.google.com/spreadsheets/d/1xMmQhRGXovrudJM4gix0P18-PJ7TpKNEjp6I26Ckp9E/edit#gid=1655163686) and in the process of solving Qs we will also buid up the concept of algorithms in proper sequence and moreover our DataStructures will also get revised because algorithm is something which we apply on data structures.
 
 # **TimeComplexity**
 
