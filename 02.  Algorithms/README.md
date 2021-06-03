@@ -10,4 +10,4 @@
 
 <hr>
 
-## [This Folder](./) is the continuation of [01. DataStructures](../)
+## [This Folder](./) is the continuation of [01. DataStructures](../01.%20DataStructures)
