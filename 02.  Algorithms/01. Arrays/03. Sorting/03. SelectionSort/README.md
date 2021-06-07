@@ -1,2 +1,1 @@
-![Isort](https://user-images.githubusercontent.com/71629248/120915812-7ba0f300-c6c3-11eb-9dc2-dfca36333645.jpg)
-# **[Video Reference](https://youtu.be/wWhAhp6PIuQ)**
+![Selection Sort](https://user-images.githubusercontent.com/71629248/121025520-dc632500-c7c2-11eb-875d-919cd0d413d9.jpg)
