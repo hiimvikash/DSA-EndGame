@@ -1,4 +1,4 @@
-![Kth](https://user-images.githubusercontent.com/71629248/121233954-d186be00-c8b0-11eb-99ba-ebd7247ddce5.jpg)
+![Kth](https://user-images.githubusercontent.com/71629248/121235931-00059880-c8b3-11eb-91f4-96fcf6f1c0cc.jpg)
 
 ```java
    	public static int quickSort(int arr[],int l, int h, int k) {
