@@ -1,4 +1,10 @@
-# Given an array which consists of only -ve and +ve numbers, Sort the array without using any sorting algo. **Note:** Order of elements is not important here.
+# Given an array which consists of only -ve and +ve numbers, Sort the array without using any sorting algo.
+
+## **Input:** {-12, 11, -13, -5, 6, -7, 5, -3, -6}
+
+## **Output:** {-12, -13, -5, -7, -3, -6, 11, 6, 5}
+
+**Note:** Order of elements is not important here.
 
 # Approach 1: **Dutch National Flag Algorithm** TC is O(N) and SC is O(1)
 
