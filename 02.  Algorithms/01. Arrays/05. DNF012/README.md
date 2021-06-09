@@ -1,5 +1,9 @@
 # Given an array which consists of only 0, 1 and 2. Sort the array without using any sorting algo.
 
+## **Input:** {0, 1, 1, 0, 1, 2, 1, 2, 0, 0, 0, 1}
+
+## **Output:** {0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2}
+
 # Approach 1: **Counting method** TC is O(2N) & SC is O(1)
 
 - ## Make 3 variable named as count0, count1, count2 and store the count of 0's, 1's and 2's in each variable respectively.
