@@ -5,7 +5,7 @@ public class UnionAndIntersection {
 
 	public static void main(String[] args) {
 		int arr1[] = { 7, 1, 5,5, 2, 3, 6,11,18 };
-        int arr2[] = { 3, 8, 6,5, 20, 7,18 };
+        	int arr2[] = { 3, 8, 6,5, 20, 7,18 };
 		
 		Set<Integer> union=new HashSet<>();
 		for(int val:arr1) {
