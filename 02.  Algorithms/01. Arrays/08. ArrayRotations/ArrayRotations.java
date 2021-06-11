@@ -84,7 +84,10 @@ public class ArrayRotations {
 	}
 /** -----------------------------LEFT ROTATION ENDS--------------------------------------**/
 	
-/** ----------------------------RIGHT ROTATION STARTS--------------------------------------**/
+/** ----------------------------RIGHT ROTATION STARTS--------------------------------------
+                  0  1  2  3  4  5     0  1  2  3  4  5
+	         [1, 2, 3, 4, 5, 6]-->[5, 6, 1, 2, 3, 4]**/
+
 	// Method 1- TC=O(n+d) SC=O(d) STARTS
 	public static int[] rightRotate1(int arr[],int n,int d) {
 		int temp[]=new int[d];
