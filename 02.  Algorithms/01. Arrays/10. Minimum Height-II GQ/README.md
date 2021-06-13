@@ -1,8 +1,8 @@
 # [Minimum Height - II GQ](https://practice.geeksforgeeks.org/problems/minimize-the-heights3351/1#)
 
-## Step 1 : [**Understand the corner cases**](https://youtu.be/o9WG7t6EKZo)
+## Step 1 : [**Understand the corner cases.**](https://youtu.be/o9WG7t6EKZo)
 
-## Step 2 : **See my code and check for different TestCases given below**
+## Step 2 : **See my code and check for different TestCases given below.**
 
 # Test Cases
 **Note : Dry Running this 3 TCs will cover all the corner cases and will make the code more clear.**
