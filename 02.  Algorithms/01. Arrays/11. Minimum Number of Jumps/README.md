@@ -21,7 +21,7 @@ class Solution{
                    jump++;
                    return jump;
                }
-               i=maxIdx(arr,i+1,arr[i]+1);
+               i=maxIdx(arr,i+1,arr[i]+i);
 	       if(i==0) return -1;
                jump++;
            }
