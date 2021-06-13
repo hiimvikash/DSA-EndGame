@@ -10,8 +10,9 @@ class Solution{
         int n=arr.length;
         int jump=0;
         int i=0;
+	if(arr[i]==0) return -1;
         while(i<n){
-	   if(arr[i]==0) return -1;
+	   // if(arr[i]==0) return -1; this is removed coz of this tcs [1 1 2 0 1 0] ans=4, [1 1 1 0]
            if(arr[i]==1 && i!=n-1){
                jump++;i++;
            }
@@ -21,6 +22,7 @@ class Solution{
                    return jump;
                }
                i=maxIdx(arr,i+1,arr[i]+1);
+	       if(i==0) return -1;
                jump++;
            }
 	   else i++; // for Tcs [1 1 1 0]
