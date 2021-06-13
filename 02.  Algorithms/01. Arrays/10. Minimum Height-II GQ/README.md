@@ -5,6 +5,7 @@
 ## Step 2 : **See my code and check for different TestCases given below**
 
 # Test Cases
+**Note : Dry Running this 3 TCs will cover all the corner cases and will make the code more clear.**
 
 - ## TCs 1
   **[1, 2, 3, 4], k=5** **#ANS1**
