@@ -1,1 +1,41 @@
+# **[Minimum number of jumps](https://practice.geeksforgeeks.org/problems/minimum-number-of-jumps-1587115620/1#)**
+
+# **Approach 1- By Finding Maximum Power** TC=O(n<sup>2</sup>)
+
 ![MinimumJumps](https://user-images.githubusercontent.com/71629248/121813971-2e58ee80-cc8c-11eb-82bf-7dc1d39e7f47.jpg)
+
+```java
+class Solution{
+    static int minJumps(int[] arr){
+        int n=arr.length;
+        int jump=0;
+        int i=0;
+        while(i<n){
+           if(arr[i]==1 && i!=n-1){
+               jump++;i++;
+           }
+           else if(i!=n-1){
+               if(arr[i]+i>=n-1){
+                   jump++;
+                   return jump;
+               }
+               i=maxIdx(arr,i+1,arr[i]+1);
+              if(i==0) return -1;
+               jump++;
+           }
+        }
+        return jump;
+    }
+    static int maxIdx(int arr[],int s,int e){
+        int mi=0;
+		int max=-999;
+		for(int i=s;i<=e;i++) {
+			if(arr[i]>=max)
+			{
+				max=arr[i];
+				mi=i;
+			}
+		}
+		return mi;
+    }
+```
