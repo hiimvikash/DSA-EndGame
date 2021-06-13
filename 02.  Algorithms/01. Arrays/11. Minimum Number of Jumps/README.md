@@ -22,7 +22,7 @@ class Solution{
                    return jump;
                }
                i=maxIdx(arr,i+1,arr[i]+i);
-	       if(i==0) return -1;
+	       if(i==-1) return -1;
                jump++;
            }
 	   else i++; // for Tcs [1 1 1 0]
@@ -30,7 +30,7 @@ class Solution{
         return jump;
     }
     static int maxIdx(int arr[],int s,int e){
-        int mi=0;
+        int mi=-1;
 		int max=-999;
 		for(int i=s;i<=e;i++) {
 			if(arr[i]>=max)
