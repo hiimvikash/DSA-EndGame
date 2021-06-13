@@ -11,6 +11,7 @@ class Solution{
         int jump=0;
         int i=0;
         while(i<n){
+	   if(arr[i]==0) return -1;
            if(arr[i]==1 && i!=n-1){
                jump++;i++;
            }
@@ -20,7 +21,6 @@ class Solution{
                    return jump;
                }
                i=maxIdx(arr,i+1,arr[i]+1);
-              if(i==0) return -1;
                jump++;
            }
         }
