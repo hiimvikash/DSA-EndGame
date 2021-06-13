@@ -17,7 +17,7 @@ class Solution{
                jump++;i++;
            }
            else if(i!=n-1){
-               if(arr[i]+i>=n-1){
+	       if(arr[i]+i>=n-1){
                    jump++;
                    return jump;
                }
