@@ -23,6 +23,7 @@ class Solution{
                i=maxIdx(arr,i+1,arr[i]+1);
                jump++;
            }
+	   else i++; // for Tcs [1 1 1 0]
         }
         return jump;
     }
