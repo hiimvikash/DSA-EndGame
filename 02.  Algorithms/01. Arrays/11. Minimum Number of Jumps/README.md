@@ -41,6 +41,7 @@ class Solution{
 		}
 		return mi;
     }
+}    
 ```
 
 # **Approach 2- By Ladder** TC=O(n)
