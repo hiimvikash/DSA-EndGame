@@ -18,7 +18,7 @@ static int jumpingOnClouds(int arr[],int n){
 }
 ```
 
-# **[Jumping on the Clouds: Revisited](https://www.hackerrank.com/challenges/jumping-on-the-clouds-revisited/problem)**
+# **[Jumping on the Clouds : Revisited](https://www.hackerrank.com/challenges/jumping-on-the-clouds-revisited/problem)**
 
 ```java
 public static int jumpingOnClouds(int c[],int k)
