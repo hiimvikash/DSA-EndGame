@@ -22,7 +22,7 @@ class Solution{
                    return jump;
                }
                i=maxIdx(arr,i+1,arr[i]+i);
-	       if(i==-1) return -1; // if 0 lies in btw of array and it is not overpass by some previous superPower then it's impossible to reach end of array in such case 0 will fall here.
+	       if(i==-1) return -1; // if 0 lies in btw of array and it is not overpass by some previous superPower then it's impossible to reach end of array in such case 0 will fall here. [1 2 1 0 1]
                jump++;
            }
 	   else i++; // for Tcs [1 1 1 0]
