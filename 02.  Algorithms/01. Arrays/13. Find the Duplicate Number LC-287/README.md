@@ -1,4 +1,5 @@
 # **[287. Find the Duplicate Number](https://leetcode.com/problems/find-the-duplicate-number/)**
+**Note :** All the elements in array range from 1 to n-1.
 
 # **Approach 1 :** Sorting & Comparing Adjacent - TC= O(N + N Log N) SC = O(1)
 
