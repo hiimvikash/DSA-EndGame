@@ -17,3 +17,22 @@ static int jumpingOnClouds(int arr[],int n){
         return jump;
 }
 ```
+
+# **[Jumping on the Clouds: Revisited](https://www.hackerrank.com/challenges/jumping-on-the-clouds-revisited/problem)**
+
+```java
+public static int jumpingOnClouds(int c[],int k)
+    {
+        int currentC=0;
+        int e=100;
+        int len=c.length;
+        // one jump is necessary for initial push that's why DO While loop.
+        do{
+            currentC=(currentC+k)%len;
+            e--;
+            if(c[currentC]==1)
+                e-=2;
+        }while(currentC!=0);
+        return e;
+    }
+```
