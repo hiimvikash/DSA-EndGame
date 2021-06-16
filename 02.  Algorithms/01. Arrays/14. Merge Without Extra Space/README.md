@@ -271,12 +271,12 @@ public static void merge(int arr1[], int arr2[], int n, int m) {
     }
 
     // Finally update elements by dividing
-    // with maximum element
+    // with maximum element this will give you the injected element.
     for(int in = 0; in < n; in++)
         arr1[in] = arr1[in] / mx;
 
     // Finally update elements by dividing
-    // with maximum element
+    // with maximum element this will give you the injected element.
     for(int in = 0; in < m; in++)
         arr2[in] = arr2[in] / mx;
 }
