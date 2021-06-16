@@ -1,6 +1,6 @@
 # **[Merge Without Extra Space](https://practice.geeksforgeeks.org/problems/merge-two-sorted-arrays5135/1#)**
 
-# **Approach 1 :** Using MergeSort Technique - TC= O(N+M) SC = O(1)
+# **Approach 1 :** Using MergeSort Technique - TC = O(N+M) SC = O(1)
 
 **Note:** This method is efficient AF but usefull only when your goal is to show output, this will be not accepted in gfg because gfg expect from you to modify arr1 and arr2 so that in MAIN() after merging both they give sorted array.
 
@@ -35,7 +35,7 @@ class Solution {
 }
 ```
 
-# **Approach 2 :** Using Extra Space - TC= O(2N+2M) SC = O(N+M)
+# **Approach 2 :** Using Extra Space - TC = O(2N+2M) SC = O(N+M)
 
 **Note:** This method is same as Approach 1 difference is, instead of printing we store in temp[] and then modify arr1 and arr2 by temp[] value.
 
@@ -80,7 +80,7 @@ class Solution {
 }
 ```
 
-# **Approach 3 :** Insertion Sort Intution - TC= O(N X M) SC = O(1)
+# **Approach 3 :** Insertion Sort Intution - TC = O(N X M) SC = O(1)
 
 ## Our Goal here is to modify arr1[] & arr2[] such that arr1[] contains **FIRST** N sorted elements and arr2[] contains next M sorted element i.e., continuation of arr1[] elements then only toh in main() arr1[] and arr2[] will be merged and it will still remain sorted.
 
@@ -119,7 +119,7 @@ class Solution {
 }
 ```
 
-# **Approach 4 :** Gap Method - TC= O( (N+M)log(N+M) ) SC = O(1)
+# **Approach 4 :** Gap Method - TC = O( (N+M)log(N+M) ) SC = O(1)
 
 ```java
 class Solution {
@@ -182,7 +182,7 @@ class Solution {
 
 ## [**Video Reference**](https://youtu.be/hVl2b3bLzBw)
 
-# **Approach 5 :** Injection Method - TC= O(N+M) SC = O(1)
+# **Approach 5 :** Injection Method - TC = O(N+M) SC = O(1)
 
 DRY RUN :- arr1[] = {1, 4, 7, 8, 10} arr2[] = {2, 3, 9}
 
