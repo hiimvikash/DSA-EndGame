@@ -181,3 +181,103 @@ class Solution {
 ```
 
 ## [**Video Reference**](https://youtu.be/hVl2b3bLzBw)
+
+# **Approach 5 :** Injection Method - TC= O(N+M) SC = O(1)
+
+DRY RUN :- arr1[] = {1, 4, 7, 8, 10} arr2[] = {2, 3, 9}
+
+```java
+public static void merge(int arr1[], int arr2[], int n, int m) {
+        // code here
+         int mx = 0;
+
+    // Find maximum element of both array
+    for(int i = 0; i < n; i++)
+    {
+        mx = Math.max(mx, arr1[i]);
+    }
+
+    for(int i = 0; i < m; i++)
+    {
+        mx = Math.max(mx, arr2[i]);
+    }
+
+    // Increment one two avoid collision of
+    // 0 and maximum element of array in
+    // modulo operation
+    mx++;
+    int i = 0, j = 0, k = 0; // crawler
+
+    while (i < n && j < m)
+    {
+
+        // extracting original element
+        int e1 = arr1[i] % mx;
+        int e2 = arr2[j] % mx;
+
+        if (e1 <= e2)
+        {
+
+            //injecting e1
+            if (k < n)
+                arr1[k] += (e1 * mx);
+            else
+                arr2[k - n] += (e1 * mx);
+
+            i++;
+            k++;
+        }
+        else
+        {
+
+            // injecting e2
+            if (k < n)
+                arr1[k] += (e2 * mx);
+            else
+                arr2[k - n] += (e2 * mx);
+
+            j++;
+            k++;
+        }
+    }
+
+    // Process those elements which are
+    // left in arr1[]
+    while (i < n)
+    {
+        int el = arr1[i] % mx;
+        if (k < n)
+            arr1[k] += (el * mx);
+        else
+            arr2[k - n] += (el * mx);
+
+        i++;
+        k++;
+    }
+
+    // Process those elements which are
+    // left in array arr2[]
+    while (j < m)
+    {
+        int el = arr2[j] % mx;
+
+        if (k < n)
+            arr2[k] += (el * mx);
+        else
+            arr2[k - n] += (el * mx);
+
+        j++;
+        k++;
+    }
+
+    // Finally update elements by dividing
+    // with maximum element
+    for(int in = 0; in < n; in++)
+        arr1[in] = arr1[in] / mx;
+
+    // Finally update elements by dividing
+    // with maximum element
+    for(int in = 0; in < m; in++)
+        arr2[in] = arr2[in] / mx;
+}
+```
