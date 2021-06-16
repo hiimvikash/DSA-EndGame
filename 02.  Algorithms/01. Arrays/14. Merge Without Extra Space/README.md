@@ -119,4 +119,65 @@ class Solution {
 }
 ```
 
+# **Approach 4 :** Gap Method - TC= O( (N+M)log(N+M) ) SC = O(1)
+
+```java
+class Solution {
+
+    public void merge(int arr1[], int arr2[], int n, int m) {
+        // code here
+        int gap=nextGap(n+m);
+        while(gap > 0){
+            int i=0; int j=gap; // crawler
+
+            // 1st array comparison
+            while(j < n){
+                if(arr1[j] < arr1[i]){
+                    swapSingle(arr1,i,j);
+                }
+                i++;j++;
+            }
+
+            // reinitializing j to point arr2[] as it has overpass its itteration in arr1[]
+            if(j==n) j=0;
+            else if(j>n) j=j-n;
+
+            // both array comparison
+            while(j < m && i < n){ // both array comparison is possible when i lie in arr1[] and j lie in arr2[]
+                if(arr2[j] < arr1[i]){
+                    swapBoth(arr1,arr2,i,j);
+                }
+                i++;j++;
+            }
+
+            // 2nd array comparison
+            if(i==n && j<m){
+                i=0;// for arr2
+                while(j < m){
+                    if(arr2[j] < arr2[i]){
+                        swapSingle(arr2,i,j);
+                    }
+                    i++;j++;
+                }
+            }
+            gap=nextGap(gap);
+        }
+    }
+    int nextGap(int gap){
+        if(gap<=1) return 0;
+        return (int)Math.ceil(gap/2.0);
+    }
+    void swapSingle(int arr[], int i, int j){
+        int temp=arr[i];
+        arr[i]=arr[j];
+        arr[j]=temp;
+    }
+    void swapBoth(int arr1[], int arr2[], int i, int j){
+        int temp=arr1[i];
+        arr1[i]=arr2[j];
+        arr2[j]=temp;
+    }
+}
+```
+
 ## [**Video Reference**](https://youtu.be/hVl2b3bLzBw)
