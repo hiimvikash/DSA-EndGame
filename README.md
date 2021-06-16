@@ -106,5 +106,18 @@ public class Hi {
     - [**isequals and hashcode in java by AnujBhaiya.**](https://youtu.be/HRHMkQ9fWsM)
 15. **% operator in JAVA :** **dividend % divisor** - Here two statement is needed to be taken care :-
 
-	- ## **When Divedend < Divisor then answer is dividend.**
-	- ## **When Divedend > Divisor then answer lie in between [0 to divisor-1].**
+    - ## **When Divedend < Divisor then answer is dividend.**
+    - ## **When Divedend > Divisor then answer lie in between [0 to divisor-1].**
+
+16. **Store 2 numbers in a number**
+    - To Inject B in A we ADD(+) **B\*INF** in A and store it in A, where INF is any number greater than A and B.
+    - to extract old number i.e., A from modified A we do (A % INF).
+    - to extract new number(Injected number) i.e., B from modified A we do (A / INF).
+    ```java
+    	int a=5;
+    	int b=4;// number to be injected
+    	int INF=9999;
+    	a=a+(b*INF);
+    	System.out.println(a%INF); // 5
+    	System.out.println(a/INF); //4
+    ```
