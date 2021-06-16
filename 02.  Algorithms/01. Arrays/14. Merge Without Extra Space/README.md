@@ -56,7 +56,7 @@ class Solution {
 	       }
 	       else{
 	           temp[k++]=arr1[i];
-               temp[k++]=arr2[j];
+                   temp[k++]=arr2[j];
 	           i++;j++;
 	       }
 	   }
