@@ -281,4 +281,5 @@ public static void merge(int arr1[], int arr2[], int n, int m) {
         arr2[in] = arr2[in] / mx;
 }
 ```
+# Dry Run :-
 ![Injection Method_1](https://user-images.githubusercontent.com/71629248/122254190-80974b00-ceea-11eb-9e92-f8423ea9ccdf.jpg)
