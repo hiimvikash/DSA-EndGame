@@ -32,20 +32,20 @@
 		}
 
 		// add elements left in the first interval
-		if(j>end) {
-			while(i <= mid) {
-				temp[k] = arr[i];
-				k++; i++;
-			}
+		
+		while(i <= mid) {
+			temp[k] = arr[i];
+			k++; i++;
 		}
+		
 
 		// add elements left in the second interval
-		else if(i>mid) {
-			while(j <= end) {
-				temp[k] = arr[j];
-				k ++; j++;
-			}
+		
+		while(j <= end) {
+			temp[k] = arr[j];
+			k ++; j++;
 		}
+		
 
 		// copy temp to original interval
 		k=0;
