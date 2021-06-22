@@ -14,7 +14,7 @@ class Solution
         return mergeSort(arr,0,(int)N-1);
     }
     public static long mergeSort(long arr[], int start, int end) {
-        long invC=0l;
+                long invC=0l;
 		if(start < end) {
 			int mid = (start + end) / 2;
 			invC=mergeSort(arr, start, mid);
