@@ -1,9 +1,9 @@
 # Difference between (Subsequence/Subset) **VS** (Substring/SubArray)
 
 - ## **(Subsequence/Subset) -** Elements should be in one direction. Not neccesary to include adjacent elements i.e., gaps are possible between elements.
-  - **Eg.s arr[]={1, 2, 3, 4, 5, 6, 7}--->{1, 3, 5, 7}, {1, 4, 6, 7}...e.t.c**
+  - **e.g. arr[]={1, 2, 3, 4, 5, 6, 7}--->{1, 3, 5, 7}, {1, 4, 6, 7}...e.t.c**
 - ## **(Substring/SubArray) -** No gaps are possible between elements. Adjacent elements should be there.
-  - **Eg.s arr[]={1, 2, 3, 4, 5, 6, 7}--->{1, 2}, {1, 2, 3}, {4, 5, 6}, {6, 7}...e.t.c**
+  - **e.g. arr[]={1, 2, 3, 4, 5, 6, 7}--->{1, 2}, {1, 2, 3}, {4, 5, 6}, {6, 7}...e.t.c**
 
 # Q1 - Maximum Sum SubArray
 
