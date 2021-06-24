@@ -41,3 +41,8 @@ static void alternatePN(int arr[],int n) {
 ```
 
 ## **[See My Full Code Here](./AlternatePN.java)**
+# Same Q But Here Order Matters TC - O(N) SC - O(N)
+![PN 1](https://user-images.githubusercontent.com/71629248/123248471-98cc2300-d505-11eb-8c05-0a450904fe9e.jpg)
+![PN 2](https://user-images.githubusercontent.com/71629248/123248525-a84b6c00-d505-11eb-883a-900308b5ad26.jpg)
+
+
