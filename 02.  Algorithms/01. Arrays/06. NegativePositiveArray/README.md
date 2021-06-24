@@ -13,7 +13,7 @@
   - **[0...low-1] will contain -ve numbers**
   - **[low...n-1] will contain +ve numbers**
 - ## Seeing the above condition we build following algo to sort
-  - **mid will traverse throughout the array till mid<=high.**
+  - **mid will traverse throughout the array till mid<=high(here n-1).**
   - **case -ve: arr[mid]<0**
     - **swap(mid,low); low++; mid++;**
   - **case +ve: arr[mid]>0**
@@ -27,9 +27,9 @@ public static void main(String[] args) {
 		int low=0; int mid=0;
 		while(mid<=n-1) {
 			if(arr[mid]<0) {
-				if(mid!=low)
-					swap(arr,mid,low);
-				low++; mid++;
+			  if(mid!=low) swap(arr,mid,low);
+			  low++;
+			  mid++;
 			}
 			else
 				mid++;

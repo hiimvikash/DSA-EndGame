@@ -13,6 +13,8 @@
 
 # Approach 2: **Dutch National Flag Algorithm** TC is O(N) and SC is O(1)
 
+DNF is usefull when you want to segregate less than three, fixed types of numbers. For e.g. segregate 0 1, segregate -ve +ve, segregate odd even and etc..
+
 - ## Initialise low=0; mid=0; high=n-1;
 - ## Now DNF algo states that
   - **[0...low-1] will contain 0**
