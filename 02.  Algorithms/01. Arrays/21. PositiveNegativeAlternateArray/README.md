@@ -34,10 +34,10 @@ static void alternatePN(int arr[],int n) {
 		return low; // here we are returning starting index of +ve element.
 	}
 	private static void swap(int a[],int i,int j){
-        int temp=a[i];
-        a[i]=a[j];
-        a[j]=temp;
-    }
+		int temp=a[i];
+		a[i]=a[j];
+		a[j]=temp;
+    	}
 ```
 
 ## **[See My Full Code Here](./AlternatePN.java)**
