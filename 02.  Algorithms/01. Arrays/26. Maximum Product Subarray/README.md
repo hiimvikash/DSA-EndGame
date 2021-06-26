@@ -4,6 +4,7 @@
 
 If comingElement is -VE than max will become moreMINIMUM when multiplied and min will become moreMAXIMUM WHEN multiplied.
 
+## **[Video Reference 1 (watch logic only)](https://youtu.be/lXVy6YWFcRM?t=121)**
 ```java
 class Solution {
     // Function to find maximum product subarray
@@ -29,7 +30,7 @@ class Solution {
 }
 ```
 
-## **[Video Reference 1](https://youtu.be/6EuhbMprB5Y)**
+## **[Video Reference 2](https://youtu.be/6EuhbMprB5Y)**
 
 ```java
 class Solution {
@@ -49,4 +50,3 @@ class Solution {
 }
 ```
 
-## **[Video Reference 2 (watch logic only)](https://youtu.be/lXVy6YWFcRM?t=121)**
