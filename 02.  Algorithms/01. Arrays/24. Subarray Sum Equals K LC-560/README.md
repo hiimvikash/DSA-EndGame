@@ -4,6 +4,7 @@
 # **My Intution :- TC - O(N) SC - O(N)**
 
 ## base of my intution :-
+![subArrayK](https://user-images.githubusercontent.com/71629248/123503152-c2548e00-d66e-11eb-8e9c-c688e8df983b.png)
 
 ```java
 class Solution {
@@ -23,3 +24,4 @@ class Solution {
     }
 }
 ```
+## **[Video Reference](https://youtu.be/20v8zSo2v18)**
