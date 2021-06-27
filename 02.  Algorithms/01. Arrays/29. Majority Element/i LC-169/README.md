@@ -19,7 +19,7 @@ class Solution {
             }
             else hm.put(ele,1);
         }
-        return arr[0];
+        return arr[0]; // if input is [1]
     }
 }
 ```
