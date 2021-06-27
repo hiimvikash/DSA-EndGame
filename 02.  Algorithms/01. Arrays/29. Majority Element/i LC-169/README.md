@@ -43,7 +43,7 @@ class Solution {
 
 ## My Intution 3 : - Boyer-Moore Voting Algorithm TC - O(N) SC - O(1)
 
-If we had some way of counting instances of the majority element as +1 and instances of any other element as -1, summing them would make it obvious that the majority element is indeed the majority element.
+Here we try to make pair of distinct element till last and element whose pair can't be made are the majority.
 
 ### **Note :** only one majority element is possible here because if majority element exist they will take more than n/2 length.
 
