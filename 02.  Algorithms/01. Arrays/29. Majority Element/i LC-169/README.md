@@ -45,6 +45,8 @@ class Solution {
 
 If we had some way of counting instances of the majority element as +1 and instances of any other element as -1, summing them would make it obvious that the majority element is indeed the majority element.
 
+### **Note :** only one majority element is possible here because if majority element exist they will take more than n/2 length.
+
 ```java
 class Solution {
     public int majorityElement(int[] arr) {
@@ -59,4 +61,6 @@ class Solution {
 }
 ```
 
-## **[Video Reference : Watch twice](https://youtu.be/AoX3BPWNnoE)**
+## **[Video Reference : pepcoding](https://youtu.be/3tbjwaGC-ng)**
+
+## **[Video Reference : TUF](https://youtu.be/AoX3BPWNnoE)**
