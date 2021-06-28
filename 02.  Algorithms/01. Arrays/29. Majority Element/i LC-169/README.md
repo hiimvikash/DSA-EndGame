@@ -61,6 +61,6 @@ class Solution {
 }
 ```
 
-## **[Video Reference : pepcoding](https://youtu.be/3tbjwaGC-ng)**
+## **[Video Reference : pepcoding](https://youtu.be/3tbjwaGC-ng)** Intution is of mapping distinct element.
 
-## **[Video Reference : TUF](https://youtu.be/AoX3BPWNnoE)**
+## **[Video Reference : AnujBhaiya](https://youtu.be/X0G5jEcvroo?t=799)** Intution is of crediblity
