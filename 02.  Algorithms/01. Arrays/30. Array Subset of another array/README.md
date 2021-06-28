@@ -1,6 +1,7 @@
 # **[Array Subset of another array](https://leetcode.com/problems/majority-element-ii/)**
 
 ## My Intution : - Set DS TC - O(N+M) SC - O(N+M)
+
 ```java
 class Compute {
     public String isSubset( long a1[], long a2[], long n, long m) {
@@ -16,7 +17,9 @@ class Compute {
     }
 }
 ```
+
 - ## Method 2 Using Set TC - O(N+M) SC - O(N)
+
 ```java
 class Compute {
     public String isSubset( long a1[], long a2[], long n, long m) {
@@ -34,9 +37,10 @@ class Compute {
 ```
 
 - ## Method 3 : - Using Set TC - O(N+M) SC - O(N)
-    - Create a Hash Table for all the elements of arr1[].
-    - Traverse arr2[] and search for each element of arr2[] in the Hash Table. If element is not found then return No.
-    - If all elements are found then return Yes.
+  - Create a Hash Table for all the elements of arr1[].
+  - Traverse arr2[] and search for each element of arr2[] in the Hash Table. If element is not found then return No.
+  - If all elements are found then return Yes.
+
 ```java
 class Compute {
     public String isSubset( long a1[], long a2[], long n, long m) {
@@ -51,3 +55,29 @@ class Compute {
     }
 }
 ```
+
+## My Intution : - Sorting + MergesortType comparison TC - O(N+M) SC - O(N+M)
+
+```java
+class Compute {
+    public String isSubset( long arr1[], long arr2[], long m, long n) {
+        if(n > m) return "No";
+        Arrays.sort(arr1);
+        Arrays.sort(arr2);
+        int i=0,j=0; // crawler
+
+        while(i<m && j<n){
+            if(arr1[i]==arr2[j]){
+                i++; j++;
+            }
+            else if(arr1[i]<arr2[j]) i++;
+            else if(arr2[j]<arr1[i]) return "No";
+        }
+        if(j==n) return "Yes";
+        else return "No";
+
+    }
+}
+```
+
+## **[Video Reference](https://youtu.be/Xe9HjetqUBs)**
