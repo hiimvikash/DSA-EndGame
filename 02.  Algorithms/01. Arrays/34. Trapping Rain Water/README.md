@@ -31,6 +31,8 @@ class Solution{
 ```
 ## **[Video Reference](https://youtu.be/UZG3-vZlFM4)**
 ## My Intution : - 2 Pointer Technique TC - O(N) SC - O(1)
+![rainTrap](https://user-images.githubusercontent.com/71629248/124331299-adb35100-dbac-11eb-85c6-b01123a8efbd.png)
+
 ```java
 class Solution{
     
