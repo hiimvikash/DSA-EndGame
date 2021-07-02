@@ -1,4 +1,4 @@
-# **DataStructures-And-Algorithms.**
+# **DataStructures-And-Algorithms**
 
 ## **Data Structures :-**
 
