@@ -101,6 +101,10 @@ public class ArrayListFun {
 				System.out.println(arr1); // []
 				System.out.println(arr2); // []
 				System.out.println(arr3); // []
+		
+		
+		// 13. Intialization of new ArrayList with defaultValues.
+		ArrayList<Long> arr4=new ArrayList<>(Arrays.asList(3l, 4l, 1l, 9l, 56l, 7l, 9l, 12l));
 	}
 
 }
