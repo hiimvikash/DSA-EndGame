@@ -31,7 +31,7 @@ int smallestSubWithSum(int arr[], int n, int x)
      return min_len;
 }
 ```
-# TC - O(N)
+# TC - O(N) Dry Run : [1, 4, 45, -7, 50, 19] X = 51
 ```java
 class Solution {
 
