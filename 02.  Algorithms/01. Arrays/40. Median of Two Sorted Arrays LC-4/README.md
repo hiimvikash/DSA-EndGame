@@ -10,14 +10,13 @@ class Solution {
 				count++;
                 if(count==((n+m)/2)-1)  a=arr1[i];
                 if(count==((n+m)/2)){ b=arr1[i]; break;}
-				 i++;
+				i++;
 			}
 			else {
                 count++;
                 if(count==((n+m)/2)-1)  a=arr2[j];
                 if(count==((n+m)/2)){ b=arr2[j]; break;}
-				
-				 j ++;
+				j ++;
 			}
 			
 		}
@@ -26,9 +25,9 @@ class Solution {
 		if(count!=(n+m)/2){
             while(i < m) {
                 count++;
-                    if(count==((n+m)/2)-1) a=arr1[i];
-                    if(count==((n+m)/2)){  b=arr1[i]; break;}
-                 i++;
+                if(count==((n+m)/2)-1) a=arr1[i];
+                if(count==((n+m)/2)){  b=arr1[i]; break;}
+                i++;
             }
 
 
@@ -36,14 +35,14 @@ class Solution {
 
             while(j < n) {
                 count++;
-                    if(count==((n+m)/2)-1) a=arr2[j];
-                    if(count==((n+m)/2)){ b=arr2[j]; break;}
-                 j++;
+                if(count==((n+m)/2)-1) a=arr2[j];
+                if(count==((n+m)/2)){ b=arr2[j]; break;}
+                j++;
             }
         }
+        
         if((n+m)%2!=0) return b;
         return (a+b)/2.0;
-        
     }
 }
 ```
