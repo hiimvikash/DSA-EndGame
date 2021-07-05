@@ -6,23 +6,23 @@ class Solution {
         int m=arr1.length, n=arr2.length;
         int i=0,j=0,count=-1,a=0,b=0;
         while(i < m && j < n) {
-			if(arr1[i] <= arr2[j]) {
-				count++;
-                if(count==((n+m)/2)-1)  a=arr1[i];
-                if(count==((n+m)/2)){ b=arr1[i]; break;}
-				i++;
-			}
-			else {
-                count++;
-                if(count==((n+m)/2)-1)  a=arr2[j];
-                if(count==((n+m)/2)){ b=arr2[j]; break;}
-				j ++;
-			}
-			
+		if(arr1[i] <= arr2[j]) {
+			count++;
+			if(count==((n+m)/2)-1)  a=arr1[i];
+			if(count==((n+m)/2)){ b=arr1[i]; break;}
+			i++;
 		}
+		else {
+			count++;
+			if(count==((n+m)/2)-1)  a=arr2[j];
+			if(count==((n+m)/2)){ b=arr2[j]; break;}
+			j ++;
+		}
+			
+	}
 
 		// add elements left in the first interval
-		if(count!=(n+m)/2){
+	if(count!=(n+m)/2){
             while(i < m) {
                 count++;
                 if(count==((n+m)/2)-1) a=arr1[i];
