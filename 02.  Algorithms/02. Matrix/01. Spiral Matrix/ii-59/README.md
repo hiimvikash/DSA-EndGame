@@ -2,7 +2,7 @@
 ![SpiralMatrix](https://user-images.githubusercontent.com/71629248/124712016-674b5280-df1c-11eb-86d7-7d8c1caa3d57.png)
 ## My Intution :-
 -  This is a square matrix because TNE is n<sup>2</sup>.
-- By the concept of [Spiral Matrix I](../i-54) we already know the places to insert, all we have to do is while traversing each place we insert number(1...n<sup>2</sup>) and icrement the number by 1 each time.
+- By the concept of [Spiral Matrix I](../i-54) we already know the places to insert, all we have to do is while traversing each place we insert number(1...n<sup>2</sup>) and increment the number by 1 each time.
 ```java
 class Solution {
     public int[][] generateMatrix(int n) {
