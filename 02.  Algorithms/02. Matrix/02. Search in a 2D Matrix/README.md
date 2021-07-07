@@ -6,7 +6,6 @@
 class Solution {
     public boolean searchMatrix(int[][] arr, int target) {
         int n=arr.length, m=arr[0].length;
-        int start=0, end=0, mid=0;
         for(int i=0;i<n;i++){
             if(binarySearch(arr[i],0,m,target)>=0) return true;
         }
