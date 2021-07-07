@@ -1,5 +1,5 @@
 # **[74. Search a 2D Matrix](https://leetcode.com/problems/search-a-2d-matrix/)**
-## My Intution : - TC -  O(N Log M)
+## My Intution 1 : - TC -  O(N Log M)
 - Doing BS for each outer each N rows
 ```java
 class Solution {
@@ -27,6 +27,31 @@ class Solution {
                 return mid; // key found
         }
         return -(low + 1);  // key not found.
+    }
+}
+```
+## My Intution 2 : O(log MN)
+- Using the fact that elements are rowWise + columnWise Sorted.
+```java
+class Solution {
+    public boolean searchMatrix(int[][] arr, int target) {
+        int n=arr.length, m=arr[0].length;
+        int miR=0,maC=m-1;
+        
+        while(miR < n && maC >= 0){
+            // move left side
+            if(target<arr[miR][maC]){
+                maC--;
+            }
+            // move downward
+            else if(target>arr[miR][maC]){
+                miR++;
+            }
+            else{
+                return true;
+            }
+        }
+        return false;
     }
 }
 ```
