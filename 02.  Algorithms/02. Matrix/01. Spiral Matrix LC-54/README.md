@@ -1,4 +1,6 @@
 # **[54. Spiral Matrix](https://leetcode.com/problems/spiral-matrix/)**
+![SpiralMatrix](https://user-images.githubusercontent.com/71629248/124712016-674b5280-df1c-11eb-86d7-7d8c1caa3d57.png)
+
 ```java
 class Solution {
     public ArrayList<Integer> spiralOrder(int[][] arr) {
