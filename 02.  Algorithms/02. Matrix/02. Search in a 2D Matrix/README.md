@@ -1,4 +1,5 @@
 # **[74. Search a 2D Matrix](https://leetcode.com/problems/search-a-2d-matrix/)**
+# **[Search a 2D Matrix gfg](https://www.geeksforgeeks.org/search-in-row-wise-and-column-wise-sorted-matrix/)** - Intution 1 & 2 applicable only.
 ## My Intution 1 : - TC -  O(N Log M)
 - Doing BS for each outer each N rows
 ```java
