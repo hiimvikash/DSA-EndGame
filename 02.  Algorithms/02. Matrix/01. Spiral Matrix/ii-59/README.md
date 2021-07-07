@@ -1,0 +1,43 @@
+# **[59. Spiral Matrix - II ](https://leetcode.com/problems/spiral-matrix-ii/)**
+![SpiralMatrix](https://user-images.githubusercontent.com/71629248/124712016-674b5280-df1c-11eb-86d7-7d8c1caa3d57.png)
+## My Intution :-
+-  This is a square matrix because TNE is n<sup>2</sup>.
+- By the concept of [Spiral Matrix I](../i-54) we already know the places to insert, all we have to do is while traversing each place we insert number(1...n<sup>2</sup>) and icrement the number by 1 each time.
+```java
+class Solution {
+    public int[][] generateMatrix(int n) {
+        int arr[][]=new int[n][n];
+        int miR=0, miC=0, maR=n-1, maC=n-1; // minimumRow, minimumCol, maximumRow, maximumCol respectively.
+        int tne=n*n;
+        int num=1;
+        while(num<=tne){
+            // topWall miC-->maC, miR-constant
+                for(int i=miC,j=miR; i<=maC && num<=tne; i++){
+                    arr[j][i]=num;
+                    num++;
+                }
+                miR++; 
+            // rightWall miR-->maR, maC-constant
+                for(int i=miR,j=maC; i<=maR && num<=tne; i++){
+                    arr[i][j]=num;
+                    num++;
+                }
+                maC--;
+            // bottomWall maC-->miC, maR-constant
+                for(int i=maC,j=maR; i>=miC && num<=tne; i--){
+                        arr[j][i]=num;
+                        num++;
+                }
+                maR--;
+            // leftWall maR-->miR, miC-constant
+                for(int i=maR,j=miC; i>=miR && num<=tne; i--){
+                        arr[i][j]=num;
+                        num++;
+                }
+                miC++;
+        }
+        return arr;
+    }
+}
+```
+**[Video Reference](https://youtu.be/SVFXEqn3Ceo)**
