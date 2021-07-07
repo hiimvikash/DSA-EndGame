@@ -61,6 +61,8 @@ based on : -
 - The first integer of each row is greater than the last integer of the previous row.
 - we do BS from 0 to n*m
 - Due to 1st two properties we can give contiguous index to each box(0...n*m-1)
+![2Dsearch](https://user-images.githubusercontent.com/71629248/124802453-9cd05a00-df75-11eb-9856-8ecaa86d4e99.png)
+
 ```java
 class Solution {
     public boolean searchMatrix(int[][] arr, int target) {
