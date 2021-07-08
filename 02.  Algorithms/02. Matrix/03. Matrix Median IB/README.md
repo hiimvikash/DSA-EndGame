@@ -1,5 +1,6 @@
 # **[Matrix Median](https://www.interviewbit.com/problems/matrix-median/)**
 ## **My Intution :-**
+![MatrixMedian](https://user-images.githubusercontent.com/71629248/124987510-936ced80-e05a-11eb-9cd2-f55d9aafdf66.png)
 
 ```java
 public class Solution {
