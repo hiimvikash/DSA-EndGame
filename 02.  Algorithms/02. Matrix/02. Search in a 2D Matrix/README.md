@@ -55,7 +55,7 @@ class Solution {
     }
 }
 ```
-## My Intution 3 **only for LC** O(log NM)
+## My Intution 3 : **only for LC** O(log NM)
 based on : -
 - Integers in each row are sorted from left to right.
 - The first integer of each row is greater than the last integer of the previous row.
