@@ -1,7 +1,8 @@
 # **[Matrix Median](https://www.interviewbit.com/problems/matrix-median/)**
 ## **My Intution :-**
 ![MatrixMedian](https://user-images.githubusercontent.com/71629248/124987510-936ced80-e05a-11eb-9cd2-f55d9aafdf66.png)
-
+# What is DesiredCount ?
+Any element X whose count for **lessThan=toX = n/2+1(minimum)** then only they can be median.
 ```java
 public class Solution {
     public int findMedian(int[][] arr) {
