@@ -30,7 +30,7 @@ class Solution {
     }
 }
 ```
-## My Intution 2 : O(log MN)
+## My Intution 2 : 
 - Using the fact that elements are rowWise + columnWise Sorted.
 ```java
 class Solution {
