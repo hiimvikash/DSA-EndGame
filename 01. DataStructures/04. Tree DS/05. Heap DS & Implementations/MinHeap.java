@@ -69,16 +69,16 @@ class Min_Heap{
 		hSize=0;
 		hArr=new int[hCap];
 	}
-	public int parent(int i) {
+	private int parent(int i) {
 		return (i-1)/2;
 	}
-	public int left(int i) {
+	private int left(int i) {
 		return (2*i)+1;
 	}
-	public int right(int i) {
+	private int right(int i) {
 		return (2*i)+2;
 	}
-	public void swap(int currI,int swI) {// currentIndex, swapIndex
+	private void swap(int currI,int swI) {// currentIndex, swapIndex
 		int temp=hArr[currI];
 		hArr[currI]=hArr[swI];
 		hArr[swI]=temp;
@@ -125,7 +125,7 @@ class Min_Heap{
 		return root;
 	}
 	
-	public void minHeapify(int i) {
+	private void minHeapify(int i) {
 		int l=left(i);
 		int r=right(i);
 		int smallest=i;
@@ -149,7 +149,7 @@ class Min_Heap{
 		minExtract();
 	}
 	//this () will set the value in deletingIndex with minimum value than will keep on swaping that deletingIndex value with its parents untill it reaches root.
-	public void decreaseKey(int i, int minVal){
+	private void decreaseKey(int i, int minVal){
 		hArr[i]=minVal;
 		while( i!=0 && hArr[i] < hArr[parent(i)] ) {
 			swap(i, parent(i));
