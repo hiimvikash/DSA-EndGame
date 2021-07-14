@@ -105,7 +105,7 @@ break;
 		return root;
 	}
 
-	public void minHeapify(int i) {
+	private void minHeapify(int i) {
 		int l=left(i);
 		int r=right(i);
 		int smallest=i;
@@ -149,7 +149,7 @@ break;
 	}
 
 	//this () will set the value in deletingIndex with minimum value than will keep on swaping that deletingIndex value with its parents untill it reaches root.
-	public void decreaseKey(int i, int minVal){
+	private void decreaseKey(int i, int minVal){
 		hArr[i]=minVal;
 		while( i!=0 && hArr[i] < hArr[parent(i)] ) {
 			swap(i, parent(i));
