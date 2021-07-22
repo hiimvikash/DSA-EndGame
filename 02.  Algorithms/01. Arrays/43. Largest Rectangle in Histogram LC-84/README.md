@@ -30,5 +30,25 @@ class Solution {
     }
 }
 ```
-
+# My Intution : - Stack DS onePass TC - O(N)
+```java
+class Solution {
+    public int largestRectangleArea(int[] histo) {
+       int n=histo.length;
+        int maxA=0;
+        Stack<Integer> st=new Stack<>(); 
+        for(int i=0;i<=n;i++){
+            while(!st.isEmpty() && (i==n || histo[st.peek()]>=histo[i])){
+                int height=histo[st.pop()];
+                int width;
+                if(st.isEmpty()) width=i;
+                else width=i-st.peek()-1;
+                maxA=Math.max(maxA,height*width);
+            }
+            st.push(i);
+        }
+        return maxA;
+    }
+}
+```
 ## **[Video Reference](https://youtu.be/X0X6G-eWgQ8)**
