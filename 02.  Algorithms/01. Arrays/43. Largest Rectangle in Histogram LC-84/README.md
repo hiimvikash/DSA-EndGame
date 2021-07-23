@@ -51,4 +51,5 @@ class Solution {
     }
 }
 ```
-## **[Video Reference](https://youtu.be/X0X6G-eWgQ8)**
+## **[Video Reference part1](https://youtu.be/X0X6G-eWgQ8)**
+## **[Video Reference part2](https://youtu.be/jC_cWLy7jSI)**
