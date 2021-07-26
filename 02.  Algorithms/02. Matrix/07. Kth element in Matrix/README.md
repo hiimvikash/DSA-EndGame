@@ -56,4 +56,8 @@ class Solution
     }
 }
 ```
+
+## Dry Run :-
+![KthinMatrix](https://user-images.githubusercontent.com/71629248/126989559-01bd40f5-fe84-474e-a329-8fc896ec516e.jpg)
+
 ## **[Video Reference](https://youtu.be/G5wLN4UweAM)**
