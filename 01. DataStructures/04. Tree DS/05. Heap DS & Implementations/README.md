@@ -40,7 +40,7 @@
 
 <hr>
 
-# **1. Insertion in MinHeap**
+# **1. Insertion in MinHeap TC - O(log N)**
 
 ```java
 //Main calling function
@@ -75,7 +75,7 @@ break;
 
 <hr>
 
-# **5. minExtract()**
+# **5. minExtract() TC - log(n)**
 
 ## **Returning and Removing root element of Min Heap Tree** and then restructuring into Min Heap Tree this restructuring is called **Heapify.**
 
