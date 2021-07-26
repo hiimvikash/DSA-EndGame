@@ -26,6 +26,7 @@ public class Solution {
         return low;
     }
 
+    // this will work when Matrix is rowWise sorted only.
     private int countLessThanEqualToMid(int arr[],int key){
         // here we will find number which is exactly first greater than key
         int n=arr.length;
