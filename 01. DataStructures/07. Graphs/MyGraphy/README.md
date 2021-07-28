@@ -122,6 +122,37 @@ for(int i=1; i<v; i++){
 					}// queue while
 				}// outer component if
 			}// // outer component for
+			System.out.println();
 		}// outer ()
 // 2. BFS print() Ends
 ```			
+# Step 4 : DFSprint()
+- Make a visited array of vertices
+- dfs(i)
+	- mark visited and print i
+	- for each adjacent of i
+		- if not visited call dfs(i)
+```java
+// 3. DFS print() Starts
+		public void printDFS() {
+			System.out.println("DFS Traversal :-");
+			boolean vis[]=new boolean[graph.length];
+			for(int i=0; i<graph.length; i++) {
+				if(!vis[i]) {
+					dfs(i,vis);
+				}
+			}
+			System.out.println();
+		}
+		private void dfs(int vert, boolean vis[]) {
+			vis[vert]=true;
+			System.out.print(vert+" ");
+			
+			for(Integer adj: graph[vert]) {
+				if(!vis[adj]) {
+					dfs(adj,vis);
+				}
+			}
+		}
+// 3. DFS print() Ends
+```		
