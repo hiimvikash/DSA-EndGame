@@ -156,3 +156,46 @@ for(int i=1; i<v; i++){
 		}
 // 3. DFS print() Ends
 ```		
+# Step 5 : isCycle() for UG using BFS
+- For being a cycle forward coming adjacent node must be visited.
+- That's why we keep track for parent node for each vertex.
+	- this is because parent node is also adjacent node so to tackle the clash **we will return true if (adj node is visited and adj!=parent)**
+```java
+// 4. isCycleBFSug() Starts
+		class Pair{
+			int current;
+			int parent;
+			public Pair(int curr, int par) {
+				current=curr;
+				parent=par;
+			}
+		}
+		public boolean isCycleBfsUg() {
+			for(int i=0; i<graph.length; i++) {
+				if(cycleBfsUg(i)) return true;
+			}
+			return false;
+		}
+		private boolean cycleBfsUg(int i) {
+			boolean vis[]=new boolean[graph.length];
+			vis[i]=true;
+			
+			Queue<Pair> q=new LinkedList<>();
+			q.add(new Pair(i,-1));
+			
+			while(!q.isEmpty()) {
+				int vert=q.peek().current;
+				int par=q.poll().parent; // assume it as a grandParent for adj nodes of vertex
+				
+				for(Integer adj: graph[vert]) {
+					if(!vis[adj]) {
+						vis[adj]=true;
+						q.add(new Pair(adj,vert));
+					}
+					else if(vis[adj] && adj!=par) return true;
+				}
+			}
+			return false;
+		}
+// 4. isCycleBFSug() Ends
+```
