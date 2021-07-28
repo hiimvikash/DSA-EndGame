@@ -73,11 +73,11 @@ class Graphy1{
 }
 
 ```
-# Step 2 : Connected Components in Graph
+# Step 2 : Components in Graph
 **[Video Reference](https://youtu.be/I6v0itcISSY)**
 ![componentsGraph](https://user-images.githubusercontent.com/71629248/127270730-a4dd8ef2-10fe-4942-82f2-5e5305a73784.png)
 
-
+- This all are the 3 components of a single graph.
 - From now whenever we will do any operations we will do for every components.
 - To do that we will make a boolean visited array.
 ```java
