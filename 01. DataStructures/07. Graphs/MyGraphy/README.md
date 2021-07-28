@@ -89,3 +89,39 @@ for(int i=1; i<v; i++){
 }
 ```
 - To count number of components just add a counter inside if statement
+
+# Step 3 : BFSprint()
+- Make a boolean visited array of size v
+- Run a loop from (0-->n-1)
+	- if(!vis[i]) then call BFSPrint() for every component.
+		1. make vis[i]=true;
+		2. Make Queue and add i
+		3. run a loop till queue is empty.
+			- extract vertex from queue and print it.
+			- add adjacent(if not visited) of this vertex into Queue and mark true in visited array.
+```java
+// 2. BFS print() Starts
+		public void printBfs() {
+			System.out.println("BFS Traversal : -");
+			boolean vis[]=new boolean[graph.length];
+			for(int i=0; i<graph.length; i++) {
+				if(!vis[i]) {
+					vis[i]=true;
+					Queue<Integer> q=new LinkedList<>();
+					q.add(i);
+					
+					while(!q.isEmpty()) {
+						int vert=q.poll();
+						System.out.print(vert+" ");
+						for(Integer adj: graph[vert]) {
+							if(!vis[adj]) {
+								vis[adj]=true;
+								q.add(adj);
+							}
+						}// adjacent for
+					}// queue while
+				}// outer component if
+			}// // outer component for
+		}// outer ()
+// 2. BFS print() Ends
+```			
