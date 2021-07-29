@@ -228,6 +228,8 @@ for(int i=1; i<v; i++){
 ```
 # Step 7 : isBipartite() for UG using BFS
 - Except **oddLengthCycleGraph** every graph is a bipartite graph.
+- ![bipartiteBFS](https://user-images.githubusercontent.com/71629248/127450745-d47a9f4e-15e3-442b-a6bf-d0fad172fc20.png)
+
 ```java
 // 6. isBipartiteBFSug() Starts
 		public boolean isBipartiteBFSug() {
