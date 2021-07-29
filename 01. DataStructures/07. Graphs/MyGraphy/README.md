@@ -226,3 +226,35 @@ for(int i=1; i<v; i++){
 		}
 // 5. isCycleDFSug() Ends
 ```
+# Step 7 : isBipartite() for UG using BFS
+- Except **oddLengthCycleGraph** every graph is a bipartite graph.
+```java
+// 6. isBipartiteBFSug() Starts
+		public boolean isBipartiteBFSug() {
+			int color[]=new int[graph.length];
+			Arrays.fill(color, -1);
+			for(int i=0; i<graph.length; i++){
+				if(color[i]==-1)
+					if(!bipartiteBfsUg(i,color)) return false;
+			}
+			return true;
+		}
+		private boolean bipartiteBfsUg(int i, int color[]) {
+			color[i]=0;
+			Queue<Integer> q=new LinkedList<>();
+			q.add(i);
+			
+			while(!q.isEmpty()) {
+				int vert=q.poll();
+				for(Integer adj: graph[vert]) {
+					if(color[adj]==-1) {
+						color[adj]=1-color[vert];
+						q.add(adj);
+					}
+					else if(color[adj]==color[vert]) return false;
+				}
+			}
+			return true;
+		}
+// 6. isBipartiteBFSug() Ends
+```
