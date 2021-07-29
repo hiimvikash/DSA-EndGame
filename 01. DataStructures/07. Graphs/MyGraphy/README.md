@@ -201,3 +201,28 @@ for(int i=1; i<v; i++){
 		}
 // 4. isCycleBFSug() Ends
 ```
+# Step 6 : isCycle() for UG using DFS
+- Same Concept
+```java
+// 5. isCycleDFSug() Starts
+		public boolean isCycleDfsUg() {
+			boolean vis[]=new boolean[graph.length];
+			for(int i=0; i<graph.length; i++) {
+				if(!vis[i]) {
+					if(cycleDfsUg(i,-1,vis))return true;
+				}
+			}
+			return false;
+		}
+		private boolean cycleDfsUg(int vert,int parent, boolean vis[]) {
+			vis[vert]=true;
+			for(Integer adj:graph[vert]) {
+				if(!vis[adj]) {
+					if(cycleDfsUg(adj, vert, vis)) return true;
+				}
+				else if(adj!=parent) return true;
+			}
+			return false;
+		}
+// 5. isCycleDFSug() Ends
+```
