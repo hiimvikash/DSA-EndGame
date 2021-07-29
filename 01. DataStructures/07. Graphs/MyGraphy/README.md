@@ -295,6 +295,8 @@ for(int i=1; i<v; i++){
 // 7. isBipartiteDFSug() Ends
 ```
 # Step 9 : isCycle() for DG using DFS
+![isCycleDG](https://user-images.githubusercontent.com/71629248/127507105-59916cd3-e520-4055-b074-f39dc5168309.png)
+
 **[Video Reference](https://youtu.be/uzVUw90ZFIg)**
 - Here we will have two boolean array vis[] & dfsvis[] (this will tell current standing position of recurssion ())
 - If there is no adjacent for current vertex we roll back to calling() after making dfsvis[vert]=false
