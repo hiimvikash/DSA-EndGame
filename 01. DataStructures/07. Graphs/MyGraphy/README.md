@@ -91,6 +91,7 @@ for(int i=1; i<v; i++){
 - To count number of components just add a counter inside if statement
 
 # Step 3 : BFSprint()
+**[Video Reference](https://youtu.be/UeE67iCK2lQ)**
 - Make a boolean visited array of size v
 - Run a loop from (0-->n-1)
 	- if(!vis[i]) then call BFSPrint() for every component.
@@ -127,6 +128,7 @@ for(int i=1; i<v; i++){
 // 2. BFS print() Ends
 ```			
 # Step 4 : DFSprint()
+**[Video Reference](https://youtu.be/uDWljP2PGmU)**
 - Make a visited array of vertices
 - dfs(i)
 	- mark visited and print i
@@ -157,11 +159,12 @@ for(int i=1; i<v; i++){
 // 3. DFS print() Ends
 ```		
 # Step 5 : isCycle() for UG using BFS
+**[Video Reference](https://youtu.be/A8ko93TyOns)**
 - For being a cycle forward coming adjacent node must be visited.
 - That's why we keep track for parent node for each vertex.
 	- this is because parent node is also adjacent node so to tackle the clash **we will return true if (adj node is visited and adj!=parent)**
 ```java
-// 4. isCycleBFSug() Starts
+// 4. isCycleBfsUg() Starts
 		class Pair{
 			int current;
 			int parent;
@@ -199,12 +202,13 @@ for(int i=1; i<v; i++){
 			}
 			return false;
 		}
-// 4. isCycleBFSug() Ends
+// 4. isCycleBfsUg() Ends
 ```
 # Step 6 : isCycle() for UG using DFS
+**[Video Reference](https://youtu.be/Y9NFqI6Pzd4)**
 - Same Concept
 ```java
-// 5. isCycleDFSug() Starts
+// 5. isCycleDfsUg() Starts
 		public boolean isCycleDfsUg() {
 			boolean vis[]=new boolean[graph.length];
 			for(int i=0; i<graph.length; i++) {
@@ -224,9 +228,10 @@ for(int i=1; i<v; i++){
 			}
 			return false;
 		}
-// 5. isCycleDFSug() Ends
+// 5. isCycleDfsUg() Ends
 ```
 # Step 7 : isBipartite() for UG using BFS
+**[Video Reference](https://youtu.be/nbgaEu-pvkU)**
 - Except **oddLengthCycleGraph** every graph is a bipartite graph.
 - ![bipartiteBFS](https://user-images.githubusercontent.com/71629248/127450745-d47a9f4e-15e3-442b-a6bf-d0fad172fc20.png)
 
@@ -261,6 +266,7 @@ for(int i=1; i<v; i++){
 // 6. isBipartiteBFSug() Ends
 ```
 # Step 8 : isBipartite() for UG using DFS
+**[Video Reference](https://youtu.be/uC884ske2uQ)**
 - Same concept as step 7.
 ```java
 // 7. isBipartiteDFSug() Starts
@@ -288,3 +294,36 @@ for(int i=1; i<v; i++){
 		}
 // 7. isBipartiteDFSug() Ends
 ```
+# Step 9 : isCycle() for DG using DFS
+**[Video Reference](https://youtu.be/uzVUw90ZFIg)**
+- Here we will have two boolean array vis[] & dfsvis[] (this will tell current standing position of recurssion ())
+- If there is no adjacent for current vertex we roll back to calling() after making dfsvis[vert]=false
+- If adjacent is already visited(i.e., vis[adj]==true) then we will check wheather dfsvis[adj]==true.
+	- If true than we return True
+	- else we make dfsvis[vert]=false and rollback to calling().
+```java
+// 8. isCycleDfsDg() Starts
+			public boolean isCycleDfsDg() {
+				boolean vis[]=new boolean[graph.length];
+				boolean dfsvis[]=new boolean[graph.length];
+				for(int i=0; i<graph.length; i++) {
+					if(!vis[i]) {
+						if(cycleDfsDg(i,vis,dfsvis)) return true;
+					}
+				}
+				return false;
+			}
+			private boolean cycleDfsDg(int vert, boolean vis[], boolean dfsvis[]) {
+				vis[vert]=dfsvis[vert]=true;
+				
+				for(Integer adj: graph[vert]) {
+					if(!vis[adj]) {
+						if(cycleDfsDg(adj,vis,dfsvis)) return true;
+					}
+					else if(dfsvis[adj]) return true;
+				}
+				dfsvis[vert]=false;
+				return false;
+			}
+// 8. isCycleDfsDg() Ends
+```	
