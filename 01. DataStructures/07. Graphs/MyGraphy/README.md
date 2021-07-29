@@ -171,13 +171,15 @@ for(int i=1; i<v; i++){
 			}
 		}
 		public boolean isCycleBfsUg() {
+			boolean vis[]=new boolean[graph.length];
 			for(int i=0; i<graph.length; i++) {
-				if(cycleBfsUg(i)) return true;
+				if(!vis[i])
+					if(cycleBfsUg(i,vis)) return true;
 			}
 			return false;
 		}
-		private boolean cycleBfsUg(int i) {
-			boolean vis[]=new boolean[graph.length];
+		private boolean cycleBfsUg(int i, boolean vis[]) {
+			
 			vis[i]=true;
 			
 			Queue<Pair> q=new LinkedList<>();
