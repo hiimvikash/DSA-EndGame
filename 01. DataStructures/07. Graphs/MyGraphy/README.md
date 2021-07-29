@@ -260,3 +260,31 @@ for(int i=1; i<v; i++){
 		}
 // 6. isBipartiteBFSug() Ends
 ```
+# Step 8 : isBipartite() for UG using DFS
+- Same concept as step 7.
+```java
+// 7. isBipartiteDFSug() Starts
+		public boolean isBipartiteDFSug() {
+			int color[]=new int[graph.length];
+			Arrays.fill(color, -1);
+			
+			for(int i=0; i<graph.length; i++) {
+				if(color[i]==-1) {
+					color[i]=0;
+					if(!bipartiteDfsUg(i,color)) return false;
+				}
+			}
+			return true;
+		}
+		private boolean bipartiteDfsUg(int vert, int color[]) {
+			for(Integer adj: graph[vert]) {
+				if(color[adj]==-1) {
+					color[adj]=1-color[vert];
+					if(!bipartiteDfsUg(adj,color)) return false;
+				}
+				else if(color[adj]==color[vert]) return false;
+			}
+			return true;
+		}
+// 7. isBipartiteDFSug() Ends
+```
