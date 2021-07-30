@@ -359,3 +359,36 @@ for(int i=1; i<v; i++){
 			}
 // 9. topoDfsDAG() for DAG using DFS Ends	
  ```
+# Step 10 : Topological Sort for DAG using BFS - Khan's Algorithm
+**[Video Reference](https://youtu.be/rZv_jHZva34)**
+## Thought Process :-
+Indegree of each vertex defines Independent level of that vertex, vertex with 0 indegree is the most Independent vertex who can go and stand in toposort line without worrying about their parent. When any vertex go in toposort line they remove their burden from their adjacents by decreasing their indegree.
+```java
+// 10. topoBfsDAG() for DAG using BFS Starts
+			public void topoBfsDAG() {
+				System.out.println("Topological Sort using BFS :-");
+				// Step 1 : Make a indegree array
+				int indeg[]=new int[graph.length];
+				for(int i=0; i<graph.length; i++) {
+					for(Integer adj: graph[i]) {
+						indeg[adj]++;
+					}
+				}
+				// Step 2 : Insert vertices with indegree 0 in queue.
+				Queue<Integer> q=new LinkedList<>();
+				for(int i=0; i<graph.length; i++) {
+					if(indeg[i]==0) q.add(i);
+				}
+				// Step 3 : do BFS in Queue till its empty
+				while(!q.isEmpty()) {
+					int vert=q.poll();
+					System.out.print(vert+" ");
+					for(Integer adj: graph[vert]) {
+						indeg[adj]--;
+						if(indeg[adj]==0) q.add(adj);
+					}
+				}
+				System.out.println();
+			}
+// 10. topoBfsDAG() for DAG using BFS Ends
+```
