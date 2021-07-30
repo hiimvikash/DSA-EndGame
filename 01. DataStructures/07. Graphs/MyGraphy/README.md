@@ -359,7 +359,7 @@ for(int i=1; i<v; i++){
 			}
 // 9. topoDfsDAG() for DAG using DFS Ends	
  ```
-# Step 10 : Topological Sort for DAG using BFS - Khan's Algorithm
+# Step 11 : Topological Sort for DAG using BFS - Khan's Algorithm
 **[Video Reference](https://youtu.be/rZv_jHZva34)**
 ## Thought Process :-
 Indegree of each vertex defines Independent level of that vertex, vertex with 0 indegree is the most Independent vertex who can go and stand in toposort line without worrying about their parent. When any vertex go in toposort line they remove their burden from their adjacents by decreasing their indegree.
