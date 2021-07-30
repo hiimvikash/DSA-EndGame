@@ -327,3 +327,32 @@ for(int i=1; i<v; i++){
 			}
 // 8. isCycleDfsDg() Ends
 ```	
+# Step 10 : Topological Sort for DAG using DFS
+ ### **Topological Sort :** Linear ordering of vertices such that if there is an edge between u-->v, u will apper before v.
+ - That's why we do dfs traversal and insert the inner most vertex in stack then above it we insert the parent so on..
+ ```java
+ // 9. topoDfsDAG() for DAG using DFS Starts
+			public void topoDfsDAG() {
+				System.out.println("Topological Sort :-");
+				boolean vis[]=new boolean[graph.length];
+				Stack<Integer> st=new Stack<>();
+				for(int i=0; i<graph.length; i++) {
+					if(!vis[i]) {
+						topoDfs(i,vis,st);
+					}
+				}
+				while(!st.isEmpty())
+					System.out.print(st.pop()+" ");
+				System.out.println();
+			}
+			private void topoDfs(int vert, boolean vis[], Stack<Integer> st) {
+				vis[vert]=true;
+				for(Integer adj: graph[vert]) {
+					if(!vis[adj]) {
+						topoDfs(adj,vis,st);
+					}
+				}
+				st.push(vert);
+			}
+// 9. topoDfsDAG() for DAG using DFS Ends	
+ ```
