@@ -331,7 +331,7 @@ for(int i=1; i<v; i++){
 ```	
 # Step 10 : Topological Sort for DAG using DFS
  ### **Topological Sort :** Linear ordering of vertices such that if there is an edge between u-->v, u will apper before v.
- - That's why we do dfs traversal and insert the inner most vertex in stack then above it we insert the parent so on..
+ - That's why we do dfs traversal and insert the inner most vertex in stack then above it we insert the parent and so on..
  ```java
  // 9. topoDfsDAG() for DAG using DFS Starts
 			public void topoDfsDAG() {
