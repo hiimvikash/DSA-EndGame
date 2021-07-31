@@ -457,6 +457,8 @@ As Topological sort works only for DAG so we will us reverseThought process if t
 # **Graphy2 Starts from here i.e., graphs with weights.**
 
 # Step 14 : Make a Graphy2 class and code the structure of Graph
+![graphy2](https://user-images.githubusercontent.com/71629248/127745038-31822bbe-9575-4573-884c-cf20d1945cf3.png)
+
 ```java
 class Graphy2{
 	
