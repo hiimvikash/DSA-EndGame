@@ -454,3 +454,98 @@ As Topological sort works only for DAG so we will us reverseThought process if t
 			}
 // 12. sPath1wtUg() Ends	
 ```
+# **Graphy2 Starts from here i.e., graphs with weights.**
+
+# Step 14 : Make a Graphy2 class and code the structure of Graph
+```java
+class Graphy2{
+	
+	class Tripy implements Comparable<Tripy>{
+		int curr;
+		int par;
+		int wt;
+		
+		public Tripy(int destination,int source,int weight) {
+			curr=destination;
+			par=source;
+			wt=weight;
+		}
+
+		@Override
+		public int compareTo(Tripy o) {
+			// TODO Auto-generated method stub
+			return this.wt-o.wt;
+		}
+	}
+	
+	private ArrayList<Tripy> graph[];
+	public Graphy2(int v) {
+		graph=new ArrayList[v];
+		for(int i=0;i<v;i++) graph[i]=new ArrayList<>();
+	}
+	
+	public void addEdgeU(int par, int curr, int wt) {
+		graph[par].add(new Tripy(curr,par,wt));
+		graph[curr].add(new Tripy(par,curr,wt));
+	}
+	public void addEdgeD(int par, int curr, int wt) {
+		graph[par].add(new Tripy(curr,par,wt));
+	}
+	public void printAdjaencyList() {
+		for(int i=0; i<graph.length; i++) {
+			System.out.print(i+"--> ");
+			for(Tripy adj: graph[i]) {
+				System.out.print("("+adj.curr+", "+adj.wt+")  ");
+			}
+			System.out.println();
+		}
+	}
+}
+```
+# Step 15 : Shortest path in DAG using TopoSort 
+**[Video Reference](https://youtu.be/CrxG4WJotgg)**
+- Why if(dis[vert]!=Integer.MAX_VALUE) used ?
+	- **ANS :** Because if you have not reached that node from source , how will you move ahead
+- Why Toposort ? Why not BFS technique ?
+	- **ANS :** TC issue. lets say you want to do it using DFS
+yes you can do it using DFS , but consider the case when you already updated a node's distance by a dfs() call and lets say its 7 and as it is DFS then its obvious that you also have updated all the nodes in its segment of DFS call . now you have reached to the same node from different dfs() call and now the distance is 4 , so in order to update all the nodes which were affected by the DFS call previously on the node considering distance as 7 , you now again have to do the same so that its updated with new min distance.
+Same is the scenario for the simple BFS approach.
+This multiple time calling DFS/BFS degrades the Time Complexity, hence Topological Ordering save you from that overhead as you already know which nodes will come after the current node , so you keep on updating it .
+```java
+// 13. Shortest path in DAG using TopoSort STARTS
+		private void topoSortDfs(int vert, boolean vis[], Stack<Integer> st) {
+			vis[vert]=true;
+			for(Tripy adj: graph[vert]) {
+				if(!vis[adj.curr]) topoSortDfs(adj.curr,vis,st);
+			}
+			st.push(vert);
+		}
+		public void sPathDagTopo(int src) {
+			// Step 1 : Arrange all the vertices in toposort order
+			Stack<Integer> st=new Stack<>();
+			boolean vis[]=new boolean[graph.length];
+			for(int i=0; i<graph.length; i++) {
+				if(!vis[i]) {
+					topoSortDfs(i,vis,st);
+				}
+			}
+			
+			// Step 2 : Make dis[] array initialize all of them with INF and dis[src]=0
+			int dis[]=new int[graph.length];
+			Arrays.fill(dis, Integer.MAX_VALUE);
+			dis[src]=0;
+			
+			// Step 3 : pull out elements from stack 1by1
+			while(!st.isEmpty()) {
+				int vert=st.pop();
+				
+				if(dis[vert]!=Integer.MAX_VALUE) {
+					for(Tripy adj: graph[vert]) {
+						dis[adj.curr]=Math.min(dis[adj.curr], dis[vert]+adj.wt);
+					}
+				}
+			}
+			System.out.println("Shortest path in DAG with weights using TopoSort : "+ Arrays.toString(dis));
+		}
+// 13. Shortest path in DAG using TopoSort ENDS
+```
