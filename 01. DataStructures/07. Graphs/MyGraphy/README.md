@@ -425,3 +425,32 @@ As Topological sort works only for DAG so we will us reverseThought process if t
 			}
 // 11. isCycleBfsDg() Ends
 ```
+# Step 13 : Shortes path for UG with unit weight edges (shortest path in terms of no. of edges)
+**[Video Reference](https://youtu.be/hwCWi7-bRfI)**
+```java
+// 12. sPath1wtUg() Starts 
+			public void sPath1wtUg(int src) {
+				// Step 1 : Make dis[] array which stores distance from source to each vertex.
+				int dis[]=new int[graph.length];
+				// Initialize with the max value
+				Arrays.fill(dis, Integer.MAX_VALUE);
+				// distance from source to source is always 0
+				dis[src]=0;
+				// Step 2 : Make Queue and add source
+				Queue<Integer> q=new LinkedList<>();
+				q.add(src);
+				// Step 3 : Traverse queue Adjacents till its empty
+				while(!q.isEmpty()) {
+					int vert=q.poll();
+					int dist=dis[vert];
+					for(Integer adj: graph[vert]) {
+						if(dist+1<dis[adj]) {
+							dis[adj]=dist+1;
+							q.add(adj);
+						}
+					}
+				}
+				System.out.println("Shortest Path for UG with unit weight : "+Arrays.toString(dis));
+			}
+// 12. sPath1wtUg() Ends	
+```
