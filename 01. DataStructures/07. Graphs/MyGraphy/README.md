@@ -551,7 +551,7 @@ This multiple time calling DFS/BFS degrades the Time Complexity, hence Topologic
 		}
 // 13. Shortest path in DAG using TopoSort ENDS
 ```
-# Step 15 : Shortest path in UG using PQ 
+# Step 15 : Shortest path in UG using PQ Dijkstra's Algorithms Starts
 **[Video Reference](https://youtu.be/jbhuqIASjoM)**
 - Same concept as Step 13 as in Step 13 there was same weight all over the edges so we used Queue now edges are of different weight, so we used MINPQ to priotrise the small path.
 ```java
