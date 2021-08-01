@@ -551,3 +551,44 @@ This multiple time calling DFS/BFS degrades the Time Complexity, hence Topologic
 		}
 // 13. Shortest path in DAG using TopoSort ENDS
 ```
+# Step 15 : Shortest path in UG using PQ 
+**[Video Reference](https://youtu.be/jbhuqIASjoM)**
+- Same concept as Step 13 as in Step 13 there was same weight all over the edges so we used Queue now edges are of different weight, so we used MINPQ to priotrise the small path.
+```java
+// 14. Shortest path in UG #Dijkstra's Algorithms Starts
+		class Pair implements Comparable<Pair>{
+			int curr;
+			int disFsrc;
+			public Pair(int curr,int dis) {
+				this.curr=curr;
+				disFsrc=dis;
+			}
+			@Override
+			public int compareTo(Pair o) {
+				// TODO Auto-generated method stub
+				return this.disFsrc-o.disFsrc;
+			}
+		}
+		
+		public void sPathUg(int src) {
+			// Step 1 : Initialize dis[] array with INF value
+			int dis[]=new int[graph.length];
+			Arrays.fill(dis, Integer.MAX_VALUE);
+			dis[src]=0;
+			// Step 2 : Make PQ and add source
+			PriorityQueue<Pair> pq=new PriorityQueue<>();
+			pq.add(new Pair(src,0));
+			// Step 3 : Traverse PQ
+			while(!pq.isEmpty()) {
+				Pair vert=pq.remove();
+				for(Tripy adj: graph[vert.curr]) {
+					if(dis[adj.curr] > vert.disFsrc+adj.wt) {
+						dis[adj.curr]=vert.disFsrc+adj.wt;
+						pq.add(new Pair(adj.curr,dis[adj.curr]));
+					}
+				}
+			}
+			System.out.println("Shortest path in UG with weights using PQ : "+ Arrays.toString(dis));
+		}
+	// 14. Shortest path in UG #Dijkstra's Algorithms Ends
+```
