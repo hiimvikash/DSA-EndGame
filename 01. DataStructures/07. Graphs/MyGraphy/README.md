@@ -592,3 +592,34 @@ This multiple time calling DFS/BFS degrades the Time Complexity, hence Topologic
 		}
 	// 14. Shortest path in UG #Dijkstra's Algorithms Ends
 ```
+# Step 16 : Minimum Spanning Tree - Prim's Algorithm
+**[Video Reference](https://youtu.be/Vw-sktU1zmc)**
+- Same as Dijkstra there we use to calculate Minimum Path from Source here we are taking Minimum Weight Edges to connect all the vertices to each other such that every vertices is accesible from each vertex.
+```java
+// 15. MST - Prim's Algorithm Starts
+		public void mstPrims() {
+			boolean vis[]=new boolean[graph.length];
+			int parent[]=new int[graph.length]; // here we will store parents of each vertex
+			
+			// Step 1 : Make PQ
+			PriorityQueue<Tripy> pq=new PriorityQueue<>();
+			pq.add(new Tripy(0,-1,0));
+			
+			// Step 2 : Traverse in PQ
+			while(!pq.isEmpty()) {
+				Tripy vert=pq.remove(); // remove
+				if(!vis[vert.curr]) {
+					vis[vert.curr]=true; // mark
+					parent[vert.curr]=vert.par; // work
+					// Now add
+					for(Tripy adj: graph[vert.curr]) {
+						if(!vis[adj.curr]) {
+							pq.add(adj);
+						}
+					}
+				}
+			}
+			System.out.println("Minimum Spanning Tree using Prim's Algo : "+ Arrays.toString(parent));
+		}
+	// 15. MST - Prim's Algorithm Ends
+``` 
