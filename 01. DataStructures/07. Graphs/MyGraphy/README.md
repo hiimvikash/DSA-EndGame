@@ -623,3 +623,58 @@ This multiple time calling DFS/BFS degrades the Time Complexity, hence Topologic
 		}
 	// 15. MST - Prim's Algorithm Ends
 ``` 
+# Step 17 : Minimum Spanning Tree - Kruskal's Algorithm
+- **[Video Reference for disjoint set](https://youtu.be/3gbO7FDYNFQ)**
+- **[Video Reference for Kruskal's algo](https://youtu.be/1KRmCzBl_mQ)**
+```java
+// 16. MST - Kruskal's Algorithm Starts
+		// disjointSet() Starts
+			private void make(int parent[]) {
+				for(int i=0; i<parent.length; i++)
+					parent[i]=i;
+			}
+			private int findPar(int node, int parent[]) {
+				if(node==parent[node]) return node;
+				return parent[node]=findPar(parent[node],parent);
+			}
+			private void union(int u, int v, int parent[], int rank[]) {
+				int pu=findPar(u,parent);
+				int pv=findPar(v,parent);
+				
+				if(rank[pu]<rank[pv]) { // hey pu from now your parent is pv.
+					parent[pu]=pv;
+				}
+				else if(rank[pv]<rank[pu]) { // hey pv from now your parent is pu.
+					parent[pv]=pu;
+				}
+				else {
+					parent[pv]=pu;
+					rank[pu]++;
+				}
+			}
+		// disjointSet() Ends
+		ArrayList<Tripy> edges=new ArrayList<>();
+		public void addEdgeK(int par, int curr, int wt) {
+			edges.add(new Tripy(curr,par,wt));
+		}
+		public void mstKruskal() {
+			// Step 1 : sort arrayList of edges weight wise
+			Collections.sort(edges);
+			// Step 2 : set the vertices as selfParents & Initialize rank.
+			int rank[]=new int[graph.length];
+			int parent[]=new int[graph.length];
+			make(parent);
+			// Making outputParent
+			int outParent[]=new int[graph.length];
+			outParent[0]=-1;
+			//Step 3 : Traverse in edges AL
+			for(Tripy edge : edges) {
+				if(findPar(edge.curr,parent)!=findPar(edge.par,parent)) {
+					union(edge.curr,edge.par,parent,rank);
+					outParent[edge.curr]=edge.par;
+				}
+			}
+			System.out.println("Minimum Spanning Tree using Kruskal's Algo : "+ Arrays.toString(outParent));
+		}
+	// 16. MST - Kruskal's Algorithm Ends
+```
