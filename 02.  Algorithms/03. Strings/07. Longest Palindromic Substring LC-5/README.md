@@ -1,5 +1,7 @@
 # **[5. Longest Palindromic Substring](https://leetcode.com/problems/longest-palindromic-substring/)**
 **[Video Reference](https://youtu.be/DK5OKKbF6GI)**
+![palindromicSubstring](https://user-images.githubusercontent.com/71629248/128009484-fa42087b-30bb-47e3-ad80-0905e2a71bc4.png)
+### In a String there can be palindromicSubstring of even/odd length so we do 2expandRange for each character 
 ```java
 class Solution {
     int resultStart;
