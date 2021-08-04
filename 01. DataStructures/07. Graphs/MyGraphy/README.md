@@ -739,3 +739,28 @@ here senior means nodes who took admission before that node.
 			}
 // 17. Bridges in undirectedGraph + Articulation Points Ends
 ```
+# Step 19 : Strongly Connected Components in DG using reverse DFS.
+### **Intutions :**  I run forloop from n to 1 and in each itteration dfs() will be called ( in reverse order..) and in each dfs call, we will print value and as soon as component changes then add new line. **All I mean is I do dfs print in reverse order Bcz as it is a DG so if there is a cycle then all elements in cycle is SCC and if not cycle then each node itself is a SCC.**
+
+```java
+// 18. SCC(Self) Starts
+			// here we are doing reverse DFS
+			public void printSccDgDfs() {
+				boolean vis[]=new boolean[graph.length];
+				System.out.println("Strongly Connected components are :-");
+				for(int i=graph.length-1; i>=0; i--) {
+					if(!vis[i]) scc(i,vis);
+					else continue;
+					System.out.println();
+				}
+				System.out.println();
+			}
+			private void scc(int vert, boolean vis[]) {
+				vis[vert]=true;
+				System.out.print(vert+ " ");
+				for(Integer adj: graph[vert]) {
+					if(!vis[adj]) scc(adj,vis);
+				}
+			}
+// 18. SCC(Self) Ends
+```
