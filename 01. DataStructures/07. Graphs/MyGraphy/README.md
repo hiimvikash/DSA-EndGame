@@ -680,7 +680,7 @@ This multiple time calling DFS/BFS degrades the Time Complexity, hence Topologic
 ```
 # Step 18 : Bridge in graph + articulation points in UG using DFS
 - **[Video Reference for Bridge in Graph](https://youtu.be/2rjZH0-2lhk)**
-## Analogy for bridge
+## Analogy for bridge in Graph
 ```
 Take this analogy:-
 
@@ -763,4 +763,34 @@ here senior means nodes who took admission before that node.
 				}
 			}
 // 18. SCC(Self) Ends
+```
+# Step 20 : Shortest path In DG using -VE weights #BellmanfordALgo
+```java
+// 19 ShortestPath-DG(containing +ve,-ve weights) BellmanFord's Algorithm STARTS
+			ArrayList<Tripy> edgeB=new ArrayList<>();
+			public void addEdgeB(int par, int curr, int wt) {
+				edgeB.add(new Tripy(curr,par,wt));
+			}
+			public void ShortestPathDGBellman(int src) {
+				System.out.println("Shortest Path for DG with -ve weights :-");
+				int dis[]=new int[graph.length];
+					
+				final int INF=999999;
+				Arrays.fill(dis,INF);
+				dis[src]=0;
+				// Step 1 : 1st relaxation
+				for(int i=1;i<graph.length;i++) {
+					for(Tripy ege:edgeB) {
+						if(dis[ege.par]+ege.wt<dis[ege.curr])
+							dis[ege.curr]=dis[ege.par]+ege.wt;
+					}
+				}
+				// Step 2 : 2nd relaxation for checking -Ve cycle
+				for(Tripy ege:edgeB) {
+					if(dis[ege.par]+ege.wt<dis[ege.curr])
+					{	System.out.println("NEGATIVE CYCLE FOUND"); return;}
+				}
+				System.out.println(Arrays.toString(dis)); 
+			}
+	// 19 ShortestPath-DG(containing +ve,-ve weights) BellmanFord's Algorithm ENDS	
 ```
