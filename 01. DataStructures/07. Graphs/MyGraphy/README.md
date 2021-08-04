@@ -678,3 +678,64 @@ This multiple time calling DFS/BFS degrades the Time Complexity, hence Topologic
 		}
 	// 16. MST - Kruskal's Algorithm Ends
 ```
+# Step 18 : Bridge in graph + articulation points in UG using DFS
+- **[Video Reference for Bridge in Graph](https://youtu.be/2rjZH0-2lhk)**
+## Analogy for bridge
+```
+Take this analogy:-
+
+Treat this full graph as a College:-
+Where each Student has it's:-
+admission time & connection.
+
+Now tumhre(you're in 2nd sem) 2 dost hai(one is in 3rdsem, other in 4thsem ) jiske through tum college 
+k information updated rhte hoe.
+
+now 3rdSem friend will blackmail you "ye kaam krdo, wrna link todhdenge tumse aur fir tum alag hojaoge college se "
+you will say "oye jao jake dekho mere connections list meh kon kon h, tumse senior senior friend bana ke rkhe hai"
+
+here senior means nodes who took admission before that node.
+```
+```java
+// 17. Bridges in undirectedGraph + Articulation Points Starts
+			public void bridgeUgDfs() {
+				
+				boolean vis[]=new boolean[graph.length];
+				int tad[]=new int[graph.length]; // timeOfAdmission
+				int connections[]=new int[graph.length];
+				boolean aPoint[]=new boolean[graph.length];
+				int timer=0;
+				System.out.println("Bridges in Graphs are :-");
+				for(int i=0; i<graph.length; i++) {
+					if(!vis[i]) bridgeDfs(i,-1,vis,tad,connections,timer,aPoint);
+				}
+				
+				System.out.println("Articulation Points:-");
+				for(int i=0;i<graph.length;i++) {
+					if(aPoint[i])
+						System.out.print(i+" ");
+				}
+				System.out.println();
+			}
+			private void bridgeDfs(int node, int parent, boolean vis[],int tad[], int connection[],int timer, boolean aPoint[]) {
+				vis[node]=true;
+				tad[node]=connection[node]=timer++;
+				
+				for(Integer adj: graph[node]) {
+					if(adj==parent) continue;
+					
+					if(!vis[adj]) {
+						bridgeDfs(adj,node,vis,tad,connection,timer,aPoint);
+						connection[node]=Math.min(connection[node], connection[adj]);
+						if(tad[node]<connection[adj]) {
+							System.out.println("("+node+", "+adj+") ");
+							aPoint[node]=aPoint[adj]=true;
+						}
+					}
+					else {
+						connection[node]=Math.min(connection[node], connection[adj]);
+					}
+				}
+			}
+// 17. Bridges in undirectedGraph + Articulation Points Ends
+```
