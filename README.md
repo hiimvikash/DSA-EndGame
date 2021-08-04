@@ -127,6 +127,11 @@ public class Hi {
 <hr>
 
 # Filling My Concept Hole's by Kunal Kushwaha Video.
+## 1. Memory Allocation when you initialize a variable.
+![kunalKushwaha1 1](https://user-images.githubusercontent.com/71629248/128210358-dff0df32-a25b-4c84-9bfb-9d9161127aca.png)
+## 2. Objects & Reference Variable.
+![kunalKushwaha1 0](https://user-images.githubusercontent.com/71629248/128210454-7d5523f3-3f0d-4046-9511-b222ffd8f17d.png)
+
 ```java
 public class Demo{ 
 	public static void main(String[] args) {
