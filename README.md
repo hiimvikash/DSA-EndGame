@@ -121,3 +121,26 @@ public class Hi {
     	System.out.println(a%INF); // 5
     	System.out.println(a/INF); //4
     ```
+<hr>
+<hr>
+<hr>
+<hr>
+
+# Filling My Concept Hole's by Kunal Kushwaha Video.
+```java
+public class Demo{ 
+	public static void main(String[] args) {
+			Human obj=new Human();
+			Human son=obj; // this is his mom who call obj as hisSon.
+			Human bro=obj; // this is his sis who call obj as hisBro.
+			son.hairCut="done"; // here his mom made him do haircut.
+			// here his sister is also able to see his haircut.
+			System.out.println(bro.hairCut); // done
+		
+	}
+}
+class Human{
+	String name="Vikash";
+	String hairCut="notDone";
+}
+```  
