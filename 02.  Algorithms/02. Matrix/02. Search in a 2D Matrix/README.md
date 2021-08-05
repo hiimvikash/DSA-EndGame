@@ -91,3 +91,38 @@ class Solution {
 }
 ```
 ## **[Video Reference](https://youtu.be/ZYpYur0znng)**
+
+
+# Simple BS Itterative
+```java
+private static int binarySearch(int[] a, int fromIndex, int toIndex, int key) {
+        int low = fromIndex;
+        int high = toIndex - 1;
+
+        while (low <= high) {
+            int mid = (low + high)/2;
+            int midVal = a[mid];
+
+            if (key > midVal)
+                low = mid + 1;
+            else if (key < midVal)
+                high = mid - 1;
+            else
+                return mid; // key found
+        }
+        return -(low + 1);  // key not found.
+    }
+```
+# Simple BS Reccursive
+```java
+static boolean bs(int arr[],int s,int e, int x) {
+		if(s<=e) {
+			int mid=(s+e)/2;
+			int midV=arr[mid];
+			if(x==midV) return true;
+			else if(x>midV) return bs(arr,mid+1,e,x);
+			else if(x<midV) return bs(arr,s,mid-1,x);
+		}
+		return false;
+}
+```
