@@ -39,3 +39,19 @@ class Solution {
     }
 };
 ```
+# Using Recurssion
+```java
+public static void main(String[] args) {
+		String str="madam";
+		int l=str.length();
+		
+		System.out.println(isPalindrome(str,0,l-1));
+	}
+	static boolean isPalindrome(String str,int s,int e) {
+		if(s>e) return true;
+		if(str.charAt(s)==str.charAt(e)) {
+			return isPalindrome(str,++s,--e);
+		}
+		else return false;
+	}
+```
