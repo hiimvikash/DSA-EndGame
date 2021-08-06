@@ -117,20 +117,20 @@ int fun(int ind, int arr[], int sum){
 }
 ans=fun(0,arr,0)-1; // coz to avoid empty set
 ```
-## [Subset sum problem](https://www.interviewbit.com/problems/subset-sum-problem/)
+## [Subset sum problem](https://practice.geeksforgeeks.org/problems/subset-sum-problem-1611555638/1/#)
 ```java
-public class Solution {
-    
-    public int solve(int[] arr, int target) {
-       return fun(arr,0,0,target,arr.length);
+class Solution{
+	static Boolean isSubsetSum(int N, int arr[], int sum){
+        // code here
+        if(fun(arr,0,0,sum,N)==1) return true;
+        return false;
     }
-    int fun(int arr[],int ind,int sum,int target, int n){
+    static int fun(int arr[],int ind,int sum,int target, int n){
         if(ind==n){
             if(sum==target)
                 return 1;
             else return 0;
         }
-        
         
         // pick
         sum+=arr[ind];
@@ -143,7 +143,24 @@ public class Solution {
         else return 1;
     }
 }
-
+```
+## WAF which counts all the subset with sum=k.
+```java
+static int fun(int arr[],int ind,int sum, int n){
+		System.out.println("hi");
+        if(ind==n){
+            if(sum==0)
+                return 1;
+            else return 0;
+        }
+        // pick
+        	sum-=arr[ind];
+        	int l=fun(arr,ind+1,sum,n);
+        //not pick
+        sum+=arr[ind];
+        int r=fun(arr,ind+1,sum,n);
+        return l+r;
+}
 ```
 ## Print the subsequence whose sum=k repetation allowed.
 - **For Examples:** arr={1,2,3} s=4
