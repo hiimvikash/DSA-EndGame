@@ -195,4 +195,23 @@ static int fun(int arr[],int ind,int target, int n){
         return l+r;
 }
 ```
+## Print all the paths in Matrix to GO from (0,0) to (n-1,n-1).
+```java
+public void findPath(int i, int j, String s){
+	if(i>=n || j>=m) return;
+	if(i==n-1 && j==m-1){
+		System.out.println(s);
+		return;
+	}
 
+
+	// going Down
+		s=s+'D';
+		findPath(i+1,j,s);
+		s=s.substring(0,s.length()-1);
+	// going right
+		s=s+'R';
+		findPath(i,j+1,s);
+		s=s.substring(0,s.length()-1);
+}
+```
