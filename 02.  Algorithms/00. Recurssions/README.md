@@ -216,6 +216,8 @@ public void findPath(int i, int j, String s){
 }
 ```
 ## [Rat in a Maze - I](https://practice.geeksforgeeks.org/problems/rat-in-a-maze-problem/1)
+**Note:** In a path, no cell can be visited more than one time
+- Hint : Q is same as above only difference is 4 directions are allowed.
 ```java
 class Solution {
     public static ArrayList<String> findPath(int[][] arr, int n) {
