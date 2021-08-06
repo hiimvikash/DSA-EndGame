@@ -132,11 +132,14 @@ class Solution{
             else return 0;
         }
         
-        // pick
-        sum+=arr[ind];
-        int l=fun(arr,ind+1,sum,target,n);
-        //not pick
-        sum-=arr[ind];
+        int l=0;
+		//pick
+        if(arr[ind]<=target) {
+			sum+=arr[ind];
+			l=fun(arr,ind+1,sum,target,n);
+			//not pick
+			sum-=arr[ind];
+        }
         int r=fun(arr,ind+1,sum,target,n);
 
         if(l==0 && r==0) return 0;
@@ -146,24 +149,50 @@ class Solution{
 ```
 ## WAF which counts all the subset with sum=k.
 ```java
-static int fun(int arr[],int ind,int sum, int n){
-		System.out.println("hi");
-        if(ind==n){
-            if(sum==0)
+static int fun(int arr[],int ind,int target, int n){
+		if(ind==n){
+            if(target==0)
                 return 1;
             else return 0;
         }
+        int l=0;
+		int r=0;
         // pick
-        	sum-=arr[ind];
-        	int l=fun(arr,ind+1,sum,n);
-        //not pick
-        sum+=arr[ind];
-        int r=fun(arr,ind+1,sum,n);
+        if(arr[ind]<=target) {
+        	target-=arr[ind];
+        	l=fun(arr,ind+1,target,n);
+	        //not pick
+	        target+=arr[ind];
+        }
+        r=fun(arr,ind+1,target,n);
         return l+r;
 }
 ```
+# **[Lecture 3 :](https://youtu.be/uisK9EJQcaY)**
 ## Print the subsequence whose sum=k repetation allowed.
 - **For Examples:** arr={1,2,3} s=4
 	- {1,1,1,1}, {1,3}, {1,1,2}, {2,2}.
 - **Hint:** when you pick we don't go to next Index.	
+
+```java
+static int fun(int arr[],int ind,int target, int n){
+		if(ind==n){
+            if(target==0)
+                return 1;
+            else return 0;
+        }
+        int l=0;
+		int r=0;
+        // pick
+        if(arr[ind]<=target) {
+        	target-=arr[ind];
+        	l=fun(arr,ind,target,n);
+	        //not pick
+	        target+=arr[ind];
+        }
+		// not pick means move to next Index
+        r=fun(arr,ind+1,target,n);
+        return l+r;
+}
+```
 
