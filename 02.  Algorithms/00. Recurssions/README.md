@@ -241,6 +241,10 @@ class Solution {
         fun(arr,i+1,j,vis,s,ans,n);
         s=s.substring(0,s.length()-1);
         
+        // go left
+        s=s+'L';
+        fun(arr,i,j-1,vis,s,ans,n);
+        s=s.substring(0,s.length()-1);
         // go right
         s=s+'R';
         fun(arr,i,j+1,vis,s,ans,n);
@@ -251,12 +255,72 @@ class Solution {
         fun(arr,i-1,j,vis,s,ans,n);
         s=s.substring(0,s.length()-1);
         
-        // go left
-        s=s+'L';
-        fun(arr,i,j-1,vis,s,ans,n);
-        s=s.substring(0,s.length()-1);
         
         vis[i][j]=false;
+    }
+}
+```
+## **Little Optimized**
+```java
+class Solution {
+    public static ArrayList<String> findPath(int[][] arr, int n) {
+        // Your code here
+        ArrayList<String> ans=new ArrayList<>();
+        boolean vis[][]=new boolean[n][n];
+        
+        Character dir[]={'D','L','R','U'};
+        int di[]={1,0,0,-1};
+        int dj[]={0,-1,1,0};
+        fun(arr,0,0,vis,"",ans,n,dir,di,dj);
+        return ans;
+    }
+    static void fun(int arr[][],int i, int j, boolean vis[][], String s, ArrayList<String> ans,int n, Character dir[], int di[], int dj[]){
+        if(i<0 || i>=n || j<0 || j>=n ||arr[i][j]==0||vis[i][j]) return;
+        if(i==n-1 && j==n-1){
+            ans.add(s);
+            return;
+        }
+        
+        vis[i][j]=true;
+        
+        for(int k=0;k<4;k++){
+            s=s+dir[k];
+            fun(arr,i+di[k],j+dj[k],vis,s,ans,n,dir,di,dj);
+            s=s.substring(0,s.length()-1);
+        }
+        
+        
+        vis[i][j]=false;
+    }
+}
+```
+## Count paths
+```java
+class Solution {
+    public static int findPath(int[][] arr, int n) {
+        // Your code here
+        
+        boolean vis[][]=new boolean[n][n];
+        
+        Character dir[]={'D','L','R','U'};
+        int di[]={1,0,0,-1};
+        int dj[]={0,-1,1,0};
+        return fun(arr,0,0,vis,n,dir,di,dj);
+        
+    }
+    int void fun(int arr[][],int i, int j, boolean vis[][], int n, Character dir[], int di[], int dj[]){
+        if(i<0 || i>=n || j<0 || j>=n ||arr[i][j]==0||vis[i][j]) return 0;
+        if(i==n-1 && j==n-1){
+            return 1;
+        }
+        
+        vis[i][j]=true;
+        int cnt=0;
+        for(int k=0;k<4;k++){
+          cnt+=fun(arr,i+di[k],j+dj[k],vis,s,ans,n,dir,di,dj);
+        }
+        vis[i][j]=false;
+        return cnt;
     }
 }
 ```
