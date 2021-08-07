@@ -346,7 +346,7 @@ boolean fun(int ind, int arr[], int sum, ArrayList<Integer> al){
 	if(fun(ind+1,arr,sum,al)) return true;
 }
 ```
-## N Queens **1st basic Approach**
+## N Queens This will print only one valid Nqueen **1st basic Approach**
 ```java
 boolean isSafe(int row, int col, int mat[][]){
     //up digonal i--,j--
