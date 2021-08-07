@@ -105,6 +105,19 @@ public class ArrayListFun {
 		
 		// 13. Intialization of new ArrayList with defaultValues.
 		ArrayList<Long> arr4=new ArrayList<>(Arrays.asList(3l, 4l, 1l, 9l, 56l, 7l, 9l, 12l));
+
+		//14. Making 2d ArrayList
+		ArrayList<ArrayList<Integer>> ans=new ArrayList<>();
+		ans.add(new ArrayList<>());
+		ans.get(0).add(1);
+		ans.get(0).add(2);
+		ans.get(0).add(3);
+		// [[1,2,3]]
+		ans.add(new ArrayList<>()); // [[1,2,3],[]]
+		ans.get(1).add(5);
+		ans.get(1).add(6);
+		ans.get(0).add(4);
+		// [[1,2,3,4][5,6]]
 	}
 
 }

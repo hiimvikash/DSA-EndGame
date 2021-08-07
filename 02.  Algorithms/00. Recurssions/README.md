@@ -324,3 +324,123 @@ class Solution {
     }
 }
 ```
+# **[Lecture 3 :](https://youtu.be/r9af_mSpBLo)**
+## Print only one subsequences whose sum is divisible by K.
+```java
+int k;
+boolean fun(int ind, int arr[], int sum, ArrayList<Integer> al){
+	if(ind==n){
+        if(ans.size()!=0 && sum%k==0){
+            print(al);
+            return true;
+        }
+        else return false;
+	}
+	//pick
+	al.add(arr[ind]);
+	sum+=arr[ind];
+	if(fun(ind+1,arr,sum,al)) return true;
+	// not pick
+	al.remove(al.size()-1);
+	sum-=arr[ind];
+	if(fun(ind+1,arr,sum,al)) return true;
+}
+```
+## N Queens **1st basic Approach**
+```java
+boolean isSafe(int row, int col, int mat[][]){
+    //up digonal i--,j--
+            for(int i=row,j=col; i>=0 && j>=0; i--,j--){
+                if(mat[i][j]==1) return false;
+            }
+
+            // left i,j--
+            for(int i=row,j=col; i>=0 && j>=0; j--){
+                if(mat[i][j]==1) return false;
+            }
+
+            // down digonal i++, j-- 
+            for(int i=row,j=col; i<n && j>=0; i++,j--){
+                if(mat[i][j]==1) return false;
+            }
+
+            return true;
+}
+boolean nQueens(int col, int mat[][]){
+    if(col==n){
+        print(mat);
+        return true;
+    }
+
+    for(int row=0; row<n; row++){
+        if(isSafe(row,col,mat)){
+            mat[row][col]=1;
+            if(nQueens(col+1,mat)) return true;
+            mat[row][col]=0;
+        }
+    }
+    return false;
+}
+```
+## [N Queens - LC](https://leetcode.com/problems/n-queens/) **1st basic Approach**
+```java
+class Solution {
+    public List<List<String>> solveNQueens(int n) {
+        List<List<String>> ans=new ArrayList<>();
+        
+        // Initializing char with '.'
+        char mat[][]=new char[n][n];
+        for(int i=0;i<n;i++)
+            for(int j=0;j<n;j++)
+                mat[i][j]='.';
+        nQueens(0,mat,ans,n);
+        return ans;    
+    }
+    
+    public int ind=-1;
+    void nQueens(int col, char mat[][], List<List<String>> ans,int n){
+        if(col==n){
+            ind=ind+1;
+            ans.add(new ArrayList<String>());
+            
+            for(int i=0;i<n;i++){
+                String s="";
+                for(int j=0;j<n;j++){
+                     s=s+mat[i][j];
+                }
+                ans.get(ind).add(s);
+                
+            }
+            return;
+        }
+
+        for(int row=0; row<n; row++){
+            if(isSafe(row,col,mat,n)){
+                mat[row][col]='Q';
+                nQueens(col+1,mat,ans,n);
+                mat[row][col]='.';
+            }
+        }
+        
+    }
+        boolean isSafe(int row, int col, char mat[][],int n){
+            
+            //up digonal i--,j--
+            for(int i=row,j=col; i>=0 && j>=0; i--,j--){
+                if(mat[i][j]=='Q') return false;
+            }
+
+            // left i,j--
+            for(int i=row,j=col; i>=0 && j>=0; j--){
+                if(mat[i][j]=='Q') return false;
+            }
+
+            // down digonal i++, j-- 
+            for(int i=row,j=col; i<n && j>=0; i++,j--){
+                if(mat[i][j]=='Q') return false;
+            }
+
+            return true;
+    }
+}
+```
