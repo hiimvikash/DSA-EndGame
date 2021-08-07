@@ -444,3 +444,108 @@ class Solution {
     }
 }
 ```
+## [N Queens - LC](https://leetcode.com/problems/n-queens/)  **Approach 2**
+### - Here we have optimised isSafe() method instead of ittirating we made 3 arrays to hash left, upLeftDigonal, downLeftDigonal so TC of isSafe() boils down to O(1).
+```java
+class Solution {
+    public List<List<String>> solveNQueens(int n) {
+        List<List<String>> ans=new ArrayList<>();
+        // create hash for 3 directions.
+            int l[]=new int[n]; // left
+            int uld[]=new int[2*n-1]; // upLeftDigonal
+            int dld[]=new int[2*n-1]; // downLeftDigonal
+        // Initializing char with '.'
+        char mat[][]=new char[n][n];
+        for(int i=0;i<n;i++)
+            for(int j=0;j<n;j++)
+                mat[i][j]='.';
+        nQueens(0,mat,ans,n,l,uld,dld);
+        return ans;    
+    }
+    
+    public int ind=-1;
+    void nQueens(int col, char mat[][], List<List<String>> ans,int n, int l[], int uld[], int dld[]){
+        if(col==n){
+            ind=ind+1;
+            ans.add(new ArrayList<String>());
+            
+            for(int i=0;i<n;i++){
+                String s="";
+                for(int j=0;j<n;j++){
+                     s=s+mat[i][j];
+                }
+                ans.get(ind).add(s);
+                
+            }
+            return;
+        }
+
+        for(int row=0; row<n; row++){
+            if(isSafe1(row,col,mat,n,l,uld,dld)){
+                l[row]=1;
+                dld[row+col]=1;
+                uld[(n-1)+(row-col)]=1;
+                mat[row][col]='Q';
+                nQueens(col+1,mat,ans,n,l,uld,dld);
+                mat[row][col]='.';
+                l[row]=0;
+                dld[row+col]=0;
+                uld[(n-1)+(row-col)]=0;
+            }
+        }
+        
+    }
+        boolean isSafe1(int row, int col, char mat[][],int n,int l[], int uld[], int dld[]){
+            if(l[row]==1 || dld[row+col]==1 || uld[(n-1)+(row-col)]==1) return false;
+            return true;
+    }
+}
+```
+## [N Queens II - LC](https://leetcode.com/problems/n-queens-ii/)
+```java
+class Solution {
+    public int totalNQueens(int n) {
+        // Initializing char with '.'
+        char mat[][]=new char[n][n];
+        for(int i=0;i<n;i++)
+            for(int j=0;j<n;j++)
+                mat[i][j]='.';
+        return nQueens(0,mat,n);
+    }
+    
+    int nQueens(int col, char mat[][],int n){
+        if(col==n){
+            return 1;
+        }
+        int cnt=0;
+        for(int row=0; row<n; row++){
+            if(isSafe(row,col,mat,n)){
+                mat[row][col]='Q';
+                cnt+=nQueens(col+1,mat,n);
+                mat[row][col]='.';
+            }
+        }
+        return cnt;
+    }
+        
+    
+    boolean isSafe(int row, int col, char mat[][],int n){
+            
+            //up digonal i--,j--
+            for(int i=row,j=col; i>=0 && j>=0; i--,j--){
+                if(mat[i][j]=='Q') return false;
+            }
+
+            // left i,j--
+            for(int i=row,j=col; i>=0 && j>=0; j--){
+                if(mat[i][j]=='Q') return false;
+            }
+
+            // down digonal i++, j-- 
+            for(int i=row,j=col; i<n && j>=0; i++,j--){
+                if(mat[i][j]=='Q') return false;
+            }
+            return true;
+    }
+}
+```
