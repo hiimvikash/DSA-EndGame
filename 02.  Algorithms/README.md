@@ -46,9 +46,16 @@
 
 ![](https://i.ibb.co/nPzw2nY/image.png)
 ![](https://i.ibb.co/xCH9sSC/image.png)
-# Difference between (Subsequence/Subset) **VS** (Substring/SubArray)
+# Difference between (Subset/Powerset)**VS** (Subsequence) **VS** (Substring/SubArray)
 
-- ## **(Subsequence/Subset) -** Elements should be in one direction. Not neccesary to include adjacent elements i.e., gaps are possible between elements.
+- ## **(Powerset/Subset) -** Any possible set of elements from parent Set is called subset there is no restriction of same directions. So subsequence of any parentSet is also Subset/powerSet.
+    - **e.g. arr[]={1, 2, 3, 4, 5, 6, 7}--->**
+    - {1, 3, 5, 7} or {1, 5, 3, 7} or {7, 1, 3, 5} etc... **any one can be opt for subset.** 
+    - {1, 4, 6, 7} or {1, 6, 7, 4} or {7, 6, 4, 1} etc... **any one can be opt for subset.**
+    - {1, 2, 3} or {2, 1, 3} or {3, 2, 1} etc.. **any one can be opt for subset.**
+    - etc.......
+- ## **(Subsequence) -** Elements should be in one direction. Not neccesary to include adjacent elements i.e., gaps are possible between elements.
   - **e.g. arr[]={1, 2, 3, 4, 5, 6, 7}--->{1, 3, 5, 7}, {1, 4, 6, 7}...e.t.c**
-- ## **(Substring/SubArray) -** No gaps are possible between elements. Adjacent elements should be there.
+
+- ## **(Substring/SubArray/Power Set) -** No gaps are possible between elements. Continuous elements should be there.
   - **e.g. arr[]={1, 2, 3, 4, 5, 6, 7}--->{1, 2}, {1, 2, 3}, {4, 5, 6}, {6, 7}...e.t.c**

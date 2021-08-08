@@ -1,10 +1,3 @@
-# Difference between (Subsequence/Subset) **VS** (Substring/SubArray)
-
-- ## **(Subsequence/Subset) -** Elements should be in one direction. Not neccesary to include adjacent elements i.e., gaps are possible between elements.
-  - **e.g. arr[]={1, 2, 3, 4, 5, 6, 7}--->{1, 3, 5, 7}, {1, 4, 6, 7}...e.t.c**
-- ## **(Substring/SubArray) -** No gaps are possible between elements. Adjacent elements should be there.
-  - **e.g. arr[]={1, 2, 3, 4, 5, 6, 7}--->{1, 2}, {1, 2, 3}, {4, 5, 6}, {6, 7}...e.t.c**
-
 # Q1 - Maximum Sum SubArray
 
 ![Kadane's Algorithms_1](https://user-images.githubusercontent.com/71629248/121769374-e9946100-cb80-11eb-895d-4e7b73126b0b.jpg)
