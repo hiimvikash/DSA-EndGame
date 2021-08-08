@@ -1,6 +1,6 @@
 **<h1 align="center">Striver SDE Sheet Recursion Qs :-</h1>**
 
-# 1. **[Subset Sums](https://practice.geeksforgeeks.org/problems/subset-sums2234/1)**
+# **[1. Subset Sums](https://practice.geeksforgeeks.org/problems/subset-sums2234/1)**
 ```java
 class Solution{
     ArrayList<Integer> subsetSums(ArrayList<Integer> arr, int n){
