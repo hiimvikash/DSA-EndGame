@@ -151,5 +151,32 @@ class Solution {
     }
 }
 ```
-
+# **[4. Combination Sum I LC-39](https://leetcode.com/problems/combination-sum/)**
+```java
+class Solution {
+    public List<List<Integer>> combinationSum(int[] nums, int target) {
+        List<List<Integer>> ans=new ArrayList<>();
+        fun(0,nums,new ArrayList<>(),ans,target);
+        return ans;
+    }
+    public void fun(int ind, int nums[], List<Integer> ds, List<List<Integer>> ans, int target){
+        if(ind==nums.length){
+            if(target==0)
+                ans.add(new ArrayList<>(ds));
+            return;    
+        }
+        //pick
+        if(nums[ind]<=target){
+            target-=nums[ind];
+            ds.add(nums[ind]);
+            fun(ind,nums,ds,ans,target);
+        
+            // not pick
+            target+=nums[ind];
+            ds.remove(ds.size()-1);
+        }
+        fun(ind+1,nums,ds,ans,target);
+    }
+}
+```
 
