@@ -179,4 +179,31 @@ class Solution {
     }
 }
 ```
-
+# **[4. Combination Sum II LC-40](https://leetcode.com/problems/combination-sum-ii/)**
+```java
+class Solution {
+    public List<List<Integer>> combinationSum2(int[] nums, int target) {
+        List<List<Integer>> ans=new ArrayList<>();
+        Arrays.sort(nums);
+        subset(0,nums,new ArrayList<>(),ans,target);
+        return ans;
+    }
+    public void subset(int ind, int nums[], List<Integer> ds, List<List<Integer>> ans,int target){
+        if(target==0)
+            ans.add(new ArrayList<>(ds));
+        
+        for(int i=ind; i<nums.length; i++){
+            if(i!=ind && nums[i]==nums[i-1]) continue;
+            
+            if(nums[i]<=target)
+            {   
+                target-=nums[i];
+                ds.add(nums[i]);
+                subset(i+1,nums,ds,ans,target);
+                target+=nums[i];
+                ds.remove(ds.size()-1);
+            }
+        }
+    }
+}
+```
