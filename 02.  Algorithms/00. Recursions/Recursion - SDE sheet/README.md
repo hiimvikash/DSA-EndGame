@@ -207,3 +207,36 @@ class Solution {
     }
 }
 ```
+# **[5. Palindrome Partitioning LC-131](https://leetcode.com/problems/palindrome-partitioning/)**
+- **[Video reference](https://youtu.be/WBgsABoClE0)**
+```java
+class Solution {
+    public List<List<String>> partition(String s) {
+        List<List<String>> ans=new ArrayList<>();
+        fun(0,s,new ArrayList<>(),ans);
+        return ans;
+    }
+    public void fun(int ind, String s, List<String> subans, List<List<String>>ans){
+        if(ind==s.length()){
+            ans.add(new ArrayList<>(subans));
+            return;
+        }
+        for(int i=ind;i<s.length();i++){
+            if(isPalindrome(ind,i,s)){
+                subans.add(s.substring(ind,i+1));
+                fun(i+1,s,subans,ans);
+                subans.remove(subans.size()-1);
+            }
+        }
+    }
+    
+    
+    private boolean isPalindrome(int s, int e, String str){
+        while(s<e){
+            if(str.charAt(s++)!=str.charAt(e--))
+                return false;
+        }
+        return true;
+    }
+}
+```
