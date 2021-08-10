@@ -179,7 +179,7 @@ class Solution {
     }
 }
 ```
-# **[4. Combination Sum II LC-40](https://leetcode.com/problems/combination-sum-ii/)**
+# **[5. Combination Sum II LC-40](https://leetcode.com/problems/combination-sum-ii/)**
 ```java
 class Solution {
     public List<List<Integer>> combinationSum2(int[] nums, int target) {
@@ -207,7 +207,7 @@ class Solution {
     }
 }
 ```
-# **[5. Palindrome Partitioning LC-131](https://leetcode.com/problems/palindrome-partitioning/)**
+# **[6. Palindrome Partitioning LC-131](https://leetcode.com/problems/palindrome-partitioning/)**
 - **[Video reference](https://youtu.be/WBgsABoClE0)**
 ```java
 class Solution {
