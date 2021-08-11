@@ -240,3 +240,29 @@ class Solution {
     }
 }
 ```
+# **[6. Kth Permutation Sequence LC-60](https://leetcode.com/problems/permutation-sequence/)**
+```java
+class Solution {
+    public String getPermutation(int n, int k) {
+        int fact=1;
+        ArrayList<Integer> nums=new ArrayList<>();
+        // Step 1 : find factorial of n-1 element and store n elements in nums.
+        for(int i=1;i<n;i++){
+            fact*=i;
+            nums.add(i);
+        }
+        nums.add(n);
+        
+        String ans="";
+        k=k-1;
+        while(true){
+            ans+=nums.get(k/fact);
+            nums.remove(k/fact);
+            if(ans.length()==n) break;
+            k=k%fact;
+            fact=fact/nums.size();
+        }
+        return ans;
+    }
+}
+```
