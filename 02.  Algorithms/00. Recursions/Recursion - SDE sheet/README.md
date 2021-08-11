@@ -297,3 +297,34 @@ class Solution {
     }
 }
 ```
+## Approach 2 : Recursion using swap Technique, W/O using extra space
+- **[Video Reference](https://youtu.be/f2ic2Rsc9pU)**
+```java
+class Solution {
+    public List<List<Integer>> permute(int[] nums) {
+        List<List<Integer>> ans=new ArrayList<>();
+        fun(0,nums,ans);
+        return ans;
+    }
+    public void fun(int ind, int nums[], List<List<Integer>> ans){
+        if(ind==nums.length){
+            List<Integer> ds=new ArrayList<>();
+            for(int i=0;i<nums.length;i++){
+                ds.add(nums[i]);
+            }
+            ans.add(new ArrayList<>(ds));
+            return;
+        }
+        for(int i=ind;i<nums.length;i++){
+            swap(ind,i,nums);
+            fun(ind+1,nums,ans);
+            swap(ind,i,nums);
+        }
+    }
+    private void swap(int i, int j, int arr[]){
+        int temp=arr[i];
+        arr[i]=arr[j];
+        arr[j]=temp;
+    }
+}
+```
