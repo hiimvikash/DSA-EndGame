@@ -267,3 +267,33 @@ class Solution {
     }
 }
 ```
+# **[8. Print all Permutations of String/Array LC-46](https://leetcode.com/problems/permutations/)**
+
+
+## Approach 1 : Recursion using extra space
+- **[Video Reference](https://youtu.be/YK78FU5Ffjw)**
+```java
+class Solution {
+    public List<List<Integer>> permute(int[] nums) {
+        List<List<Integer>> ans=new ArrayList<>();
+        boolean vis[]=new boolean[nums.length];
+        fun(nums,ans,new ArrayList<>(),vis,nums.length);
+        return ans;
+    }
+    void fun(int nums[],List<List<Integer>> ans, List<Integer>ds, boolean vis[], int n ){
+        if(ds.size()==n){
+            ans.add(new ArrayList<>(ds));
+            return;
+        }
+        for(int i=0;i<n;i++){
+            if(!vis[i]){
+                vis[i]=true;
+                ds.add(nums[i]);
+                fun(nums,ans,ds,vis,n);
+                vis[i]=false;
+                ds.remove(ds.size()-1);
+            }
+        }
+    }
+}
+```
