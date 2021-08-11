@@ -240,7 +240,8 @@ class Solution {
     }
 }
 ```
-# **[6. Kth Permutation Sequence LC-60](https://leetcode.com/problems/permutation-sequence/)**
+# **[7. Kth Permutation Sequence LC-60](https://leetcode.com/problems/permutation-sequence/)**
+- **[Video Reference](https://youtu.be/wT7gcXLYoao)**
 ```java
 class Solution {
     public String getPermutation(int n, int k) {
