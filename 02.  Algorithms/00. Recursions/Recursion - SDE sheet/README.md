@@ -363,3 +363,33 @@ class Solution {
     }
 }
 ```
+# **[10. M-Coloring Problem](https://practice.geeksforgeeks.org/problems/m-coloring-problem-1587115620/1#)**
+- **[Video Reference](https://youtu.be/wuVwUK25Rfc)**
+```java
+class solve 
+{
+    //Function to determine if graph can be coloured with at most M colours such
+    //that no two adjacent vertices of graph are coloured with same colour.
+    public static boolean graphColoring(List<Integer>[] graph, int[] color, int vert, int m) 
+    {
+        // Your code here
+        int n=graph.length;
+        if(vert==n) return true;
+        for(int col=1; col<=m; col++){
+            if(isSafe(graph,vert,color,col)){
+                color[vert]=col;
+                if(graphColoring(graph,color,vert+1,m)) return true;
+                color[vert]=0;
+            }
+        }
+        return false;
+    }
+    
+    private static boolean isSafe(List<Integer>[] graph, int vert, int color[], int col){
+        for(Integer adj: graph[vert]){
+            if(color[adj]==col) return false;
+        }
+        return true;
+    }
+}
+```
