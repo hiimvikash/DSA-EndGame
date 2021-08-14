@@ -6,4 +6,32 @@
 ![Dp2](https://user-images.githubusercontent.com/71629248/129445456-61d9b8dd-22b3-4470-93af-636b9abfe41b.png)
 # **[3. Knapsacks 0-1 Recursive.](https://youtu.be/kvyShbFVaY8)**
 ![Dp3](https://user-images.githubusercontent.com/71629248/129447231-d8bd3e39-1465-449b-84a6-32181d2fe983.png)
-
+# **[4. Knapsacks 0-1 Memoization.](https://youtu.be/fJbIuhs24zQ)**
+## **[Problem Link](https://practice.geeksforgeeks.org/problems/0-1-knapsack-problem0945/1#)**
+### **Note : We made 2d array of [n][w] coz they are only changing in every recurssion**
+```java
+class Solution 
+{ 
+    //Function to return max value that can be put in knapsack of capacity W.
+    static int knapSack(int w, int wt[], int val[], int n) 
+    { 
+         // your code here 
+         int dp[][]=new int [n+1][w+1];
+         for(int row[] : dp){
+             Arrays.fill(row,-1);
+         }
+         return knapsack(w,wt,val,n,dp);
+    }
+    static int knapsack(int w, int wt[], int val[], int n, int dp[][]) 
+    { 
+         // your code here 
+         if(w==0 || n==0) return 0;
+         else if(dp[n][w]!=-1) return dp[n][w];
+         else if(wt[n-1]<=w){
+             return dp[n][w] = Math.max(val[n-1]+knapsack(w-wt[n-1], wt, val, n-1,dp),knapsack(w, wt, val, n-1,dp));
+         }
+         else
+            return dp[n][w] = knapsack(w, wt, val, n-1,dp);
+    }
+}
+```
