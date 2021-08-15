@@ -91,6 +91,7 @@ class Solution{
 }
 ```
 ## DP Memonization :-
+## **[Problem Link](https://practice.geeksforgeeks.org/problems/subset-sum-problem-1611555638/1/#)**
 ```java
 class Solution{
     static Boolean isSubsetSum(int n, int arr[], int sum){
