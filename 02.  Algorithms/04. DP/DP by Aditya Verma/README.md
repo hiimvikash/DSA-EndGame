@@ -67,3 +67,26 @@ class Solution
     } 
 }
 ```
+# **[6. Identification of subproblems  based on Knapsacks 0-1 .](https://youtu.be/iBnWHZmlIyY)**
+## Any Problem  with an Array and Knapsack like Target. Treat that array as **wt[]** and target as **W.**
+# **[7. Subset Sum Problem.](https://youtu.be/_gPcYovP7wc)**
+## Recursive Solution :-
+```java
+class Solution{
+    static Boolean isSubsetSum(int n, int arr[], int sum){
+        // code here
+        if(n==0){
+            if(sum==0)
+                return true;
+            return false;    
+        }
+        if(arr[n-1]<=sum){
+            if(isSubsetSum(n-1,arr,sum-arr[n-1])) return true; // pick
+            if(isSubsetSum(n-1,arr,sum)) return true; // notPick
+        }
+        else
+            if(isSubsetSum(n-1,arr,sum)) return true; // notPick
+        return false;    
+    }
+}
+```
