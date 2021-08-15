@@ -35,3 +35,33 @@ class Solution
     }
 }
 ```
+# **[5. Knapsacks 0-1 Top-Down.](https://youtu.be/ntCGbPMeqgg)**
+## **[Problem Link](https://practice.geeksforgeeks.org/problems/0-1-knapsack-problem0945/1#)**
+### **Note : We made 2d array of [n][w] coz they are only changing in every recurssion**
+```java
+class Solution 
+{ 
+    //Function to return max value that can be put in knapsack of capacity W.
+    static int knapSack(int w, int wt[], int val[], int n) 
+    { 
+         // your code here
+         // Step 1 : Declare
+         int dp[][]=new int[n+1][w+1];
+         // Step 2 : Initialization
+         for(int c=0; c < w+1; c++)
+            dp[0][c] = 0;
+         for(int r=0; r < n+1; r++)
+            dp[r][0] = 0;
+        // Step 3 : coding choice diagram
+        
+        for(int i=1;i<n+1;i++)
+            for(int j=1;j<w+1;j++){
+                if(wt[i-1]<=j)
+                    dp[i][j]=Math.max(val[i-1]+dp[i-1][j-wt[i-1]],dp[i-1][j]);
+                else if(wt[i-1]>j)
+                    dp[i][j]=dp[i-1][j];
+            }
+        return dp[n][w];
+    } 
+}
+```
