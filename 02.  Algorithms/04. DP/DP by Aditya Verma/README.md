@@ -38,6 +38,8 @@ class Solution
 # **[5. Knapsacks 0-1 Top-Down.](https://youtu.be/ntCGbPMeqgg)**
 ## **[Problem Link](https://practice.geeksforgeeks.org/problems/0-1-knapsack-problem0945/1#)**
 ### **Note : We made 2d array of [n][w] coz they are only changing in every recurssion**
+![Dp4-01TopD](https://user-images.githubusercontent.com/71629248/129471551-6e36b031-8fea-488a-9cd6-4689e5928956.png)
+## **Implemented Code :-**
 ```java
 class Solution 
 { 
