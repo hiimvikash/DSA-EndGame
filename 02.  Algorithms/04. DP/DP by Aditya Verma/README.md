@@ -126,3 +126,23 @@ class Solution{
     }
 }
 ```
+## DP Top-Down :-
+```java
+class Solution{
+    static Boolean isSubsetSum(int n, int arr[], int sum){
+        // code here
+        // Step 1 : Declaration & Initialization
+        boolean dp[][]=new boolean[n+1][sum+1];
+        for(int r=0;r<n+1;r++)
+            dp[r][0]=true;
+        // Step 2 : code your choice diagram
+        for(int i=1;i<n+1;i++)
+            for(int j=1;j<sum+1;j++){
+                if(arr[i-1]<=j)
+                    dp[i][j]=dp[i-1][j-arr[i-1]]||dp[i-1][j];
+                else dp[i][j]=dp[i-1][j];
+            }
+        return dp[n][sum];    
+    }
+}
+```
