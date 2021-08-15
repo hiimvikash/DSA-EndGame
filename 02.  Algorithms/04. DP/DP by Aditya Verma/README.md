@@ -90,3 +90,38 @@ class Solution{
     }
 }
 ```
+## DP Memonization :-
+```java
+class Solution{
+    static Boolean isSubsetSum(int n, int arr[], int sum){
+        // code here
+        int dp[][]=new int[n+1][sum+1];
+        for(int row[] : dp){
+             Arrays.fill(row,-1);
+         }
+         if(isSubsetSums(n,arr,sum, dp)==1)
+            return true;
+        else return false;    
+    }
+    static int isSubsetSums(int n, int arr[], int sum,int dp[][]){
+        // code here
+        if(n==0){
+            if(sum==0)
+                return 1;
+            return 0;    
+        }
+        if(dp[n][sum]!=-1) return dp[n][sum];
+        if(arr[n-1]<=sum){
+            dp[n][sum]=isSubsetSums(n-1,arr,sum-arr[n-1],dp); // pick
+            if(dp[n][sum]==1) return 1;
+            dp[n][sum]=isSubsetSums(n-1,arr,sum,dp); // notPick 
+            if(dp[n][sum]==1) return 1; 
+        }
+        else{
+            dp[n][sum]=isSubsetSums(n-1,arr,sum,dp); // notPick 
+            if(dp[n][sum]==1) return 1; 
+        }
+        return 0;    
+    }
+}
+```
