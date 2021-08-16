@@ -146,3 +146,104 @@ class Solution{
     }
 }
 ```
+# **[8. Partition Equal Subset Sum.](https://youtu.be/UmMh7xp07kY?t=670)**
+# **Intution :**
+- When sum(arr[]) is odd then equal sum partition is not possible.
+- When sum(arr[]) is even then we search for subset with sum=sum/2 **because if subset with sum=sum(arr[])/2 is available then obviously other elements will add up to give sum=sum(arr[])/2.**
+- If found return true; else return false;
+## Recursive Solution :-
+```java
+class Solution {
+    public boolean canPartition(int[] nums) {
+        int sum=0;
+        for(int ele:nums){
+            sum+=ele;
+        }
+        if(sum%2!=0) return false;
+        return isSubsetSum(nums.length,nums,sum/2);
+    }
+    static Boolean isSubsetSum(int n, int arr[], int sum){
+        // code here
+        if(n==0){
+            if(sum==0)
+                return true;
+            return false;    
+        }
+        if(arr[n-1]<=sum){
+            if(isSubsetSum(n-1,arr,sum-arr[n-1])) return true; // pick
+            if(isSubsetSum(n-1,arr,sum)) return true; // notPick
+        }
+        else
+            if(isSubsetSum(n-1,arr,sum)) return true; // notPick
+        return false;    
+    }
+}
+```
+## DP Memonization :-
+## **[Problem Link](https://leetcode.com/problems/partition-equal-subset-sum/)**
+```java
+class Solution {
+    public boolean canPartition(int[] arr) {
+        int sum=0;
+        for(int ele:arr){
+            sum+=ele;
+        }
+        if(sum%2!=0) return false;
+        int dp[][]=new int[arr.length+1][sum+1];
+        for(int row[] : dp){
+             Arrays.fill(row,-1);
+         }
+         if(isSubsetSums(arr.length,arr,sum/2, dp)==1)
+            return true;
+        else return false;    
+    }
+    static int isSubsetSums(int n, int arr[], int sum,int dp[][]){
+        // code here
+        if(n==0){
+            if(sum==0)
+                return 1;
+            return 0;    
+        }
+        if(dp[n][sum]!=-1) return dp[n][sum];
+        if(arr[n-1]<=sum){
+            dp[n][sum]=isSubsetSums(n-1,arr,sum-arr[n-1],dp); // pick
+            if(dp[n][sum]==1) return 1;
+            dp[n][sum]=isSubsetSums(n-1,arr,sum,dp); // notPick 
+            if(dp[n][sum]==1) return 1; 
+        }
+        else{
+            dp[n][sum]=isSubsetSums(n-1,arr,sum,dp); // notPick 
+            if(dp[n][sum]==1) return 1; 
+        }
+        return 0;    
+    }
+}
+```
+## DP Top-Down :-
+```java
+class Solution {
+    public boolean canPartition(int[] nums) {
+        int sum=0;
+        for(int ele:nums){
+            sum+=ele;
+        }
+        if(sum%2!=0) return false;
+        return isSubsetSum(nums.length,nums,sum/2);
+    }
+    static Boolean isSubsetSum(int n, int arr[], int sum){
+        // code here
+        // Step 1 : Declaration & Initialization
+        boolean dp[][]=new boolean[n+1][sum+1];
+        for(int r=0;r<n+1;r++)
+            dp[r][0]=true;
+        // Step 2 : code your choice diagram
+        for(int i=1;i<n+1;i++)
+            for(int j=1;j<sum+1;j++){
+                if(arr[i-1]<=j)
+                    dp[i][j]=dp[i-1][j-arr[i-1]]||dp[i-1][j];
+                else dp[i][j]=dp[i-1][j];
+            }
+        return dp[n][sum];    
+    }
+}
+```
