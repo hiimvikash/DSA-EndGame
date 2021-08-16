@@ -308,3 +308,123 @@ static int countSubsetSum(int n, int arr[], int sum){
         return dp[n][sum];
     }
 ```
+# **[10. Minimum Subset Sum Difference](https://youtu.be/-GtpxG6l_Mc)**
+- ## [**Problem Link**](https://practice.geeksforgeeks.org/problems/minimum-sum-partition3317/1)
+## **Problem Statement :** Partition a set into two subsets such that the difference of subset sums is minimum.
+## **Intution :**
+- We will find s1 only.
+- s1 will lie between 0 to Arraysum/2 and here we will consider maximum s1.
+- s2=Arraysum-s1.
+- s1 is sum of subset1 and s2 is a sum of subset2.
+## Recursive Solution:-
+```java
+class Solution
+{
+
+	public int minDifference(int arr[], int n) 
+	{ 
+	    // Your code goes here
+	    int sum=0;
+	    for(int ele:arr) sum+=ele;
+	    int s1=-1;
+	    for(int i=0;i<=sum/2;i++){
+	        if(isSubsetSum(n,arr,i))
+	            s1=i;
+	    }
+	    return Math.abs(s1-(sum-s1));
+	}
+	static Boolean isSubsetSum(int n, int arr[], int sum){
+        // code here
+        if(n==0){
+            if(sum==0)
+                return true;
+            return false;    
+        }
+        if(arr[n-1]<=sum){
+            if(isSubsetSum(n-1,arr,sum-arr[n-1])) return true; // pick
+            if(isSubsetSum(n-1,arr,sum)) return true; // notPick
+        }
+        else
+            if(isSubsetSum(n-1,arr,sum)) return true; // notPick
+        return false;    
+    }
+}
+```
+## DP Memonization :-
+```java
+class Solution
+{
+
+	public int minDifference(int arr[], int n) 
+	{ // Your code goes here
+	    int sum=0;
+	    for(int ele:arr) sum+=ele;
+	    // dp initialization
+	    int dp[][]=new int[n+1][(sum/2)+1];
+        for(int row[] : dp){
+             Arrays.fill(row,-1);
+         }
+        // dp initialization
+	    int s1=-1;
+	    for(int i=0;i<=sum/2;i++){
+	        if(isSubsetSums(n,arr,i,dp)==1)
+	            s1=i;
+	    }
+	    return Math.abs(s1-(sum-s1));
+	}
+	static int isSubsetSums(int n, int arr[], int sum,int dp[][]){
+        // code here
+        if(n==0){
+            if(sum==0)
+                return 1;
+            return 0;    
+        }
+        if(dp[n][sum]!=-1) return dp[n][sum];
+        if(arr[n-1]<=sum){
+            dp[n][sum]=isSubsetSums(n-1,arr,sum-arr[n-1],dp); // pick
+            if(dp[n][sum]==1) return 1;
+            dp[n][sum]=isSubsetSums(n-1,arr,sum,dp); // notPick 
+            if(dp[n][sum]==1) return 1; 
+        }
+        else{
+            dp[n][sum]=isSubsetSums(n-1,arr,sum,dp); // notPick 
+            if(dp[n][sum]==1) return 1; 
+        }
+        return 0;    
+    }
+}
+```
+## DP Top-Down :-
+```java
+class Solution
+{
+
+	public int minDifference(int arr[], int n) 
+	{ // Your code goes here
+	    int sum=0;
+	    for(int ele:arr) sum+=ele;
+	    int s1=-1;
+	    boolean range[]=isSubsetSum(n,arr,sum/2);
+	    for(int i=0;i<range.length;i++){
+	        if(range[i])s1=i;
+	    }        
+	    return (sum-s1)-s1;
+	}
+	// this () will make a 2d array and return last row.
+	static boolean[] isSubsetSum(int n, int arr[], int sum){
+        // code here
+        // Step 1 : Declaration & Initialization
+        boolean dp[][]=new boolean[n+1][sum+1];
+        for(int r=0;r<n+1;r++)
+            dp[r][0]=true;
+        // Step 2 : code your choice diagram
+        for(int i=1;i<n+1;i++)
+            for(int j=1;j<sum+1;j++){
+                if(arr[i-1]<=j)
+                    dp[i][j]=dp[i-1][j-arr[i-1]]||dp[i-1][j];
+                else dp[i][j]=dp[i-1][j];
+            }
+        return dp[n];    
+    }
+}
+```
