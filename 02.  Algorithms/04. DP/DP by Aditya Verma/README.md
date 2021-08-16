@@ -247,7 +247,7 @@ class Solution {
     }
 }
 ```
-# **[9. Count Subset Sums.](https://youtu.be/UmMh7xp07kY?t=670)**
+# **[9. Count Subset Sums.](https://youtu.be/F7wqWbqYn9g)**
 ## Recursive Solution:-
 ```java
 static int countSubsetSum(int n, int arr[], int sum){
@@ -263,4 +263,31 @@ static int countSubsetSum(int n, int arr[], int sum){
         else
             return countSubsetSum(n-1,arr,sum); // notPick
     }
+```
+## DP Memonization :-
+```java
+public static void main(String[] args) {
+		int arr[]={1,1,1,1,1};
+		int sum=2;
+		int n=arr.length;
+		int dp[][]=new int[n+1][sum+1];
+		for(int row[]:dp) {
+			Arrays.fill(row, -1);
+		}
+		System.out.println(countSubsetSum(n,arr,sum,dp));
+	}
+static int countSubsetSum(int n, int arr[], int sum,int dp[][]){
+        // code here
+        if(n==0){
+            if(sum==0)
+                return 1;
+            return 0;    
+        }
+        if(dp[n][sum]!=-1) return dp[n][sum];
+        if(arr[n-1]<=sum){
+            return dp[n][sum]= countSubsetSum(n-1,arr,sum-arr[n-1],dp)+ countSubsetSum(n-1,arr,sum,dp);
+        }
+        else
+            return dp[n][sum]= countSubsetSum(n-1,arr,sum,dp); // notPick
+}
 ```
