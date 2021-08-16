@@ -247,3 +247,20 @@ class Solution {
     }
 }
 ```
+# **[9. Count Subset Sums.](https://youtu.be/UmMh7xp07kY?t=670)**
+## Recursive Solution:-
+```java
+static int countSubsetSum(int n, int arr[], int sum){
+        // code here
+        if(n==0){
+            if(sum==0)
+                return 1;
+            return 0;    
+        }
+        if(arr[n-1]<=sum){
+            return countSubsetSum(n-1,arr,sum-arr[n-1])+countSubsetSum(n-1,arr,sum);
+        }
+        else
+            return countSubsetSum(n-1,arr,sum); // notPick
+    }
+```
