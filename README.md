@@ -24,9 +24,10 @@
 
 5. [**ENCAPSULATION.**](https://youtu.be/a199KZGMNxk?t=2019)
 6. [**STATIC KEYWORD IN JAVA.**](https://youtu.be/3LtIk7wFGi0)
-7. [**INNER CLASS IN JAVA.**](https://youtu.be/zg1pijw6AM4)
-8. [**Pass by value.**](https://youtu.be/H71vRa86AGg)
-9. [**Pass by refrence.**](https://youtu.be/H71vRa86AGg)
+7. - **You can call static methods from non static method but reverse is not true.**
+8. [**INNER CLASS IN JAVA.**](https://youtu.be/zg1pijw6AM4)
+9. [**Pass by value.**](https://youtu.be/H71vRa86AGg)
+10. [**Pass by refrence.**](https://youtu.be/H71vRa86AGg)
 
 ```java
 import java.util.*;
