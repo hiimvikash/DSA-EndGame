@@ -474,7 +474,7 @@ class Solution {
 <hr>
 <hr>
 
-# **[12. Unbounded Knapsack](https://youtu.be/aycn9KO8_Ls)**
+# **[13. Unbounded Knapsack](https://youtu.be/aycn9KO8_Ls)**
 ## [**Problem Link**](https://practice.geeksforgeeks.org/problems/knapsack-with-duplicate-items4201/1)
 Examples:
 
@@ -539,6 +539,62 @@ class Solution{
                     dp[i][j]=dp[i-1][j];
             }
         return dp[n][w];
+    }
+}
+```
+# **[14. Rod Cutting](https://youtu.be/aycn9KO8_Ls)**
+## [**Problem Link**](https://practice.geeksforgeeks.org/problems/rod-cutting0840/1#)
+## This Problem is same as Unbounded Knapsack.
+### Here's are the Matchings :-
+- W ---> N
+- val[] ---> price[]
+- wt[] ---> length[] is 1 to N arranged here termed as lt variable which decreaseBy1 always when recursion decrease.
+- N ---> N
+## DP Memonization :-
+```java
+class Solution{
+    public int cutRod(int price[], int n) {
+        //code here
+        int dp[][]=new int [n+1][n+1];
+         for(int i=0;i<=n;i++){
+             for(int j=0;j<=n;j++){
+                 dp[i][j]=-1;
+             }
+         }
+        return unknapsack(n,price,n,dp,n);
+    }
+    static int unknapsack(int l, int val[], int n, int dp[][],int lt) 
+    { 
+         // your code here 
+         if(l==0 || n==0) return 0;
+         else if(dp[n][l]!=-1) return dp[n][l];
+         else if(lt<=l){
+             return dp[n][l] = Math.max(val[n-1]+unknapsack(l-lt,val, n,dp,lt),unknapsack(l,val, n-1,dp,lt-1));
+         }
+         else
+            return dp[n][l] = unknapsack(l,val, n-1,dp,lt-1);
+    }
+}
+```
+## DP Top-Down :-
+```java
+class Solution{
+    public int cutRod(int price[], int n) {
+        //code here
+        int dp[][]=new int[n+1][n+1];
+        int l=n;
+        int lt=1;
+        // main code
+        for(int i=1;i<n+1;i++){
+            for(int j=1;j<l+1;j++){
+                if(lt<=j){
+                    dp[i][j]=Math.max(price[i-1]+dp[i][j-lt],dp[i-1][j]);
+                }
+                else dp[i][j]=dp[i-1][j];
+            }
+            lt++;
+        }
+        return dp[n][l];   
     }
 }
 ```
