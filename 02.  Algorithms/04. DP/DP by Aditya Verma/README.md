@@ -476,6 +476,19 @@ class Solution {
 
 # **[12. Unbounded Knapsack](https://youtu.be/aycn9KO8_Ls)**
 ## [**Problem Link**](https://practice.geeksforgeeks.org/problems/knapsack-with-duplicate-items4201/1)
+Examples:
+
+- Input : 
+    - W = 100
+    - val[]  = {1, 30}
+    - wt[] = {1, 50}
+- Output : 100
+### There are many ways to fill knapsack:-
+1. 2 instances of 50 unit weight item.
+2. 100 instances of 1 unit weight item.
+3. 1 instance of 50 unit weight item and 50
+   instances of 1 unit weight items.
+- **We get maximum value with option 2.**
 ## DP Memonization :-
 ```java
 class Solution{
