@@ -471,3 +471,61 @@ class Solution {
     }
 }
 ```
+<hr>
+<hr>
+
+# **[12. Unbounded Knapsack](https://youtu.be/aycn9KO8_Ls)**
+## [**Problem Link**](https://practice.geeksforgeeks.org/problems/knapsack-with-duplicate-items4201/1)
+## DP Memonization :-
+```java
+class Solution{
+    static int knapSack(int n, int w, int val[], int wt[])
+    {
+        // code here
+         // your code here 
+         int dp[][]=new int [n+1][w+1];
+         for(int row[] : dp){
+             Arrays.fill(row,-1);
+         }
+         return knapsack(w,wt,val,n,dp);
+    }
+    static int knapsack(int w, int wt[], int val[], int n, int dp[][]) 
+    { 
+         // your code here 
+         if(w==0 || n==0) return 0;
+         else if(dp[n][w]!=-1) return dp[n][w];
+         else if(wt[n-1]<=w){
+             return dp[n][w] = Math.max(val[n-1]+knapsack(w-wt[n-1], wt, val, n,dp),knapsack(w, wt, val, n-1,dp));
+         }
+         else
+            return dp[n][w] = knapsack(w, wt, val, n-1,dp);
+    }
+    
+}
+```
+## DP Top-Down :-
+```java
+class Solution{
+    static int knapSack(int n, int w, int val[], int wt[])
+    {
+        // your code here
+         // Step 1 : Declare
+         int dp[][]=new int[n+1][w+1];
+         // Step 2 : Initialization
+         for(int c=0; c < w+1; c++)
+            dp[0][c] = 0;
+         for(int r=0; r < n+1; r++)
+            dp[r][0] = 0;
+        // Step 3 : coding choice diagram
+        
+        for(int i=1;i<n+1;i++)
+            for(int j=1;j<w+1;j++){
+                if(wt[i-1]<=j)
+                    dp[i][j]=Math.max(val[i-1]+dp[i][j-wt[i-1]],dp[i-1][j]);
+                else if(wt[i-1]>j)
+                    dp[i][j]=dp[i-1][j];
+            }
+        return dp[n][w];
+    }
+}
+```
