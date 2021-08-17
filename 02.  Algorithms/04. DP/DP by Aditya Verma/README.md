@@ -438,3 +438,36 @@ class Solution
 - s1= (diff + sum of array)/2;
 - Problem reduces to find no of subsets with given sum.
 - so return countSubsetSum(n,arr,s1); **from 10**
+# **[12. Target Sum](https://youtu.be/Hw6Ygp3JBYw)**
+### **Q is ditto same as Number 11, way of asking is different.**
+## [**Problem Link**](https://leetcode.com/problems/target-sum/)
+## DP Memonization :-
+```java
+class Solution {
+    public int findTargetSumWays(int[] nums, int target) {
+        int sum=0;
+        for(int ele:nums) sum+=ele;
+        if((sum+target)%2!=0) return 0; // case 2 [5,2,2,7,3,7,9,0,2,3] 9, ANS is 0
+        int reqSum=(sum+target)/2;
+        int dp[][]=new int[nums.length+1][reqSum+1];
+		for(int row[]:dp) {
+			Arrays.fill(row, -1);
+		}
+        return countSubsetSum(nums.length,nums,reqSum,dp);
+    }
+    static int countSubsetSum(int n, int arr[], int sum,int dp[][]){
+        // code here
+        if(n==0){
+            if(sum==0)
+                return 1;
+            return 0;    
+        }
+        if(dp[n][sum]!=-1) return dp[n][sum];
+        if(arr[n-1]<=sum){
+            return dp[n][sum]= countSubsetSum(n-1,arr,sum-arr[n-1],dp)+ countSubsetSum(n-1,arr,sum,dp);
+        }
+        else
+            return dp[n][sum]= countSubsetSum(n-1,arr,sum,dp); // notPick
+    }
+}
+```
