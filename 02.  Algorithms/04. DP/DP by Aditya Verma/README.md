@@ -598,3 +598,53 @@ class Solution{
     }
 }
 ```
+# **[15. Coin Change II](https://youtu.be/I4UR2T6Ro3w)**
+## [**Problem Link**](https://leetcode.com/problems/coin-change-2)
+**Note :** Same as Number 9 **Count Subset Sums.**
+## DP Memonization :-
+```java
+class Solution {
+    public int change(int sum, int[] arr) {
+        int n=arr.length;
+        int dp[][]=new int[n+1][sum+1];
+		for(int row[]:dp) {
+			Arrays.fill(row, -1);
+		}
+		return countSubsetSum(n,arr,sum,dp);
+    }
+    static int countSubsetSum(int n, int arr[], int sum,int dp[][]){
+        // code here
+        if(n==0){
+            if(sum==0)
+                return 1;
+            return 0;    
+        }
+        if(dp[n][sum]!=-1) return dp[n][sum];
+        if(arr[n-1]<=sum){
+            return dp[n][sum]= countSubsetSum(n,arr,sum-arr[n-1],dp)+countSubsetSum(n-1,arr,sum,dp);
+        }
+        else
+            return dp[n][sum]= countSubsetSum(n-1,arr,sum,dp); // notPick
+    }
+}
+```
+## DP Top-Down :-
+```java
+class Solution {
+    public int change(int sum, int[] arr) {
+        int n=arr.length;
+        int dp[][]=new int[n+1][sum+1];
+        for(int row=0;row<n+1;row++) {
+        	dp[row][0]=1;
+        }
+        for(int i=1;i<n+1;i++)
+        	for(int j=1;j<sum+1;j++) {
+        		if(arr[i-1]<=j) {
+        			dp[i][j]=dp[i][j-arr[i-1]]+dp[i-1][j];
+        		}
+        		else dp[i][j]=dp[i-1][j];
+        	}
+        return dp[n][sum];
+    }
+}
+```
