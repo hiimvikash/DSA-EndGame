@@ -1,4 +1,6 @@
 **<h1 align="center">DP - Aditya Verma</h1>**
+
+**<h1 align="center">Knapsack pattern</h1>**
 # **[1. Introduction To DP .](https://youtu.be/nqowUJzG-iM)**
 ![Dp1](https://user-images.githubusercontent.com/71629248/129444754-20341388-4964-432c-99bb-eac2c8095208.png)
 # **[2. Types of Knapsacks.](https://youtu.be/l02UxPYRmCQ)**
@@ -697,3 +699,8 @@ class Solution {
     }
 }
 ```
+<hr>
+<hr>
+<hr>
+
+**<h1 align="center">LCS pattern</h1>**
