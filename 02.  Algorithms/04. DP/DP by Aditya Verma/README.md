@@ -704,9 +704,9 @@ class Solution {
 <hr>
 
 **<h1 align="center">LCS pattern</h1>**
-# **[17. LCS Recursive](https://youtu.be/4Urd0a0BNng)**
+# **[17. LCS](https://youtu.be/4dMlCZTONj8)**
 ## [**Problem Link**](https://practice.geeksforgeeks.org/problems/longest-common-subsequence-1587115620/1#)
-
+## [**Recursive Solution :-**](https://youtu.be/4Urd0a0BNng)
 ```java
 class Solution
 {
@@ -716,6 +716,28 @@ class Solution
         if(n1==0||n2==0) return 0;
         if(s1.charAt(n1-1)==s2.charAt(n2-1)) return 1+lcs(n1-1,n2-1,s1,s2);
         else return Math.max(lcs(n1,n2-1,s1,s2),lcs(n1-1,n2,s1,s2));
+    }
+}
+```
+## [**DP Memonization :-**](https://youtu.be/g_hIx4yn9zg)
+**Note :** Size of 2D array depends on the changing variables in recursive calls.
+```java
+class Solution
+{
+    //Function to find the length of longest common subsequence in two strings.
+    static int lcs(int n1, int n2, String s1, String s2)
+    {   int dp[][]=new int[n1+1][n2+1];
+        for(int row[]:dp) {
+    		Arrays.fill(row, -1);
+    	}
+		return LCS(n1,n2,s1,s2,dp);
+    }
+    static int LCS(int n1, int n2, String s1, String s2, int dp[][])
+    {   // your code here
+        if(n1==0||n2==0) return 0;
+        if(dp[n1][n2]!=-1) return dp[n1][n2];
+        if(s1.charAt(n1-1)==s2.charAt(n2-1))  return dp[n1][n2] = 1+LCS(n1-1,n2-1,s1,s2,dp);
+        else return dp[n1][n2] = Math.max(LCS(n1,n2-1,s1,s2,dp),LCS(n1-1,n2,s1,s2,dp));
     }
 }
 ```
