@@ -704,3 +704,18 @@ class Solution {
 <hr>
 
 **<h1 align="center">LCS pattern</h1>**
+# **[17. LCS Recursive](https://youtu.be/4Urd0a0BNng)**
+## [**Problem Link**](https://practice.geeksforgeeks.org/problems/longest-common-subsequence-1587115620/1#)
+
+```java
+class Solution
+{
+    //Function to find the length of longest common subsequence in two strings.
+    static int lcs(int n1, int n2, String s1, String s2)
+    {   // your code here
+        if(n1==0||n2==0) return 0;
+        if(s1.charAt(n1-1)==s2.charAt(n2-1)) return 1+lcs(n1-1,n2-1,s1,s2);
+        else return Math.max(lcs(n1,n2-1,s1,s2),lcs(n1-1,n2,s1,s2));
+    }
+}
+```
