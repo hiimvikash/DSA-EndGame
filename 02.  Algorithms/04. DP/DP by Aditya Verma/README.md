@@ -704,6 +704,7 @@ class Solution {
 <hr>
 
 **<h1 align="center">LCS pattern</h1>**
+
 # **[17. LCS](https://youtu.be/4dMlCZTONj8)**
 ## [**Problem Link**](https://practice.geeksforgeeks.org/problems/longest-common-subsequence-1587115620/1#)
 ## [**Recursive Solution :-**](https://youtu.be/4Urd0a0BNng)
