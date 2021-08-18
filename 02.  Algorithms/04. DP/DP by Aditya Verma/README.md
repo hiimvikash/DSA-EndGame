@@ -648,3 +648,52 @@ class Solution {
     }
 }
 ```
+# **[15. Coin Change I](https://youtu.be/I-l6PBeERuc)**
+## [**Problem Link**](https://leetcode.com/problems/coin-change/)
+## DP Memonization :-
+```java
+class Solution {
+    public int coinChange(int[] arr, int sum) {
+        int n=arr.length;
+        int dp[][]=new int[n+1][sum+1];
+		for(int row[]:dp) {
+			Arrays.fill(row, -1);
+		}
+        return countSubsetSum(n,arr,sum,dp)==Integer.MAX_VALUE-1 ? -1 : countSubsetSum(n,arr,sum,dp) ;
+   }
+    static int countSubsetSum(int n, int arr[], int sum,int dp[][]){
+        // code here
+        if(sum==0)
+            return 0; 
+        if(n==0){
+           return Integer.MAX_VALUE-1;  
+        }
+        if(dp[n][sum]!=-1) return dp[n][sum];
+        if(arr[n-1]<=sum){
+            return dp[n][sum]= Math.min(1+countSubsetSum(n,arr,sum-arr[n-1],dp),countSubsetSum(n-1,arr,sum,dp));
+        }
+        else
+            return dp[n][sum]= countSubsetSum(n-1,arr,sum,dp); // notPick
+    }
+}
+```
+## DP Top-Down :-
+```java
+class Solution {
+    public int coinChange(int[] arr, int sum) {
+        int n=arr.length;
+        int dp[][]=new int[n+1][sum+1];
+        for(int col=1;col<sum+1;col++) {
+        	dp[0][col]=Integer.MAX_VALUE-1;
+        }
+        for(int i=1;i<n+1;i++)
+        	for(int j=1;j<sum+1;j++) {
+        		if(arr[i-1]<=j) {
+        			dp[i][j]=Math.min(dp[i][j-arr[i-1]]+1,dp[i-1][j]);
+        		}
+        		else dp[i][j]=dp[i-1][j];
+        	}
+        return dp[n][sum]==Integer.MAX_VALUE-1 ? -1 : dp[n][sum];
+    }
+}
+```
