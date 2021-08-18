@@ -35,7 +35,7 @@ class Solution
     }
 }
 ```
-# **[5. Knapsacks 0-1 Top-Down.](https://youtu.be/ntCGbPMeqgg)**
+# **[5. Knapsacks 0-1 DP Tabulation.](https://youtu.be/ntCGbPMeqgg)**
 ## **[Problem Link](https://practice.geeksforgeeks.org/problems/0-1-knapsack-problem0945/1#)**
 ### **Note : We made 2d array of [n][w] coz they are only changing in every recurssion**
 ![Dp4-01TopD](https://user-images.githubusercontent.com/71629248/129471551-6e36b031-8fea-488a-9cd6-4689e5928956.png)
@@ -126,7 +126,7 @@ class Solution{
     }
 }
 ```
-## DP Top-Down :-
+## DP Tabulation :-
 ```java
 class Solution{
     static Boolean isSubsetSum(int n, int arr[], int sum){
@@ -219,7 +219,7 @@ class Solution {
     }
 }
 ```
-## DP Top-Down :-
+## DP Tabulation :-
 ```java
 class Solution {
     public boolean canPartition(int[] nums) {
@@ -291,7 +291,7 @@ static int countSubsetSum(int n, int arr[], int sum,int dp[][]){
             return dp[n][sum]= countSubsetSum(n-1,arr,sum,dp); // notPick
 }
 ```
-## DP Top-Down :-
+## DP Tabulation :-
 ```java
 static int countSubsetSum(int n, int arr[], int sum){
         int dp[][]=new int[n+1][sum+1];
@@ -394,7 +394,7 @@ class Solution
     }
 }
 ```
-## DP Top-Down :-
+## DP Tabulation :-
 ```java
 class Solution
 {
@@ -516,7 +516,7 @@ class Solution{
     
 }
 ```
-## DP Top-Down :-
+## DP Tabulation :-
 ```java
 class Solution{
     static int knapSack(int n, int w, int val[], int wt[])
@@ -576,7 +576,7 @@ class Solution{
     }
 }
 ```
-## DP Top-Down :-
+## DP Tabulation :-
 ```java
 class Solution{
     public int cutRod(int price[], int n) {
@@ -628,7 +628,7 @@ class Solution {
     }
 }
 ```
-## DP Top-Down :-
+## DP Tabulation :-
 ```java
 class Solution {
     public int change(int sum, int[] arr) {
@@ -677,7 +677,7 @@ class Solution {
     }
 }
 ```
-## DP Top-Down :-
+## DP Tabulation :-
 ```java
 class Solution {
     public int coinChange(int[] arr, int sum) {
