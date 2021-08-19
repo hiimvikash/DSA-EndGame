@@ -762,15 +762,19 @@ class Solution
 }
 ```
 #  [**18. LCsubstring**](https://youtu.be/Lj90FqNCIJE)
+TCs to consider :-
+- s1="BBMQH" s2="QBBQ"
+- s1="ABCD" s2="ABC"
+- s1="WSS" S2="WS" **VVI**
 ## Recursive solution :-
 ```java
 static int LCS(int n1, int n2, String s1, String s2,int count)
 {   // your code here
-        if(n1==0||n2==0) return count;
-        if(s1.charAt(n1-1)==s2.charAt(n2-1)) 
-        	return LCS(n1-1,n2-1,s1,s2,count+1);
-        else         	
-        	return Math.max(count,Math.max(LCS(n1,n2-1,s1,s2,0),LCS(n1-1,n2,s1,s2,0)));
+	        if(n1==0||n2==0) return count;
+	        if(s1.charAt(n1-1)==s2.charAt(n2-1)) 
+	        	count= LCS(n1-1,n2-1,s1,s2,count+1);
+	        count= Math.max(count,Math.max(LCS(n1,n2-1,s1,s2,0),LCS(n1-1,n2,s1,s2,0)));
+	        return count;
 }
 ```
 ## DP Tabulation :-
