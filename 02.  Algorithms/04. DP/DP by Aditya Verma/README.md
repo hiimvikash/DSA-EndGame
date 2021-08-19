@@ -848,3 +848,28 @@ class Solution
     }
 }
 ```
+#  [**21. Minimum Number of Insertion and Deletion to convert String a to String b**](https://youtu.be/-fx6aDxcWyg)
+## [**Problem Link**](https://practice.geeksforgeeks.org/problems/minimum-number-of-deletions-and-insertions0209/1)
+```java
+class Solution
+{
+	public int minOperations(String str1, String str2) 
+	{ 
+	    // Your code goes here
+	    int lcs=lcs(str1.length(),str2.length(),str1,str2);
+	    return (str2.length()-lcs)+(str1.length()-lcs); // insertion + deletion
+	}
+	static int lcs(int n1, int n2, String s1, String s2)
+    {   int dp[][]=new int[n1+1][n2+1];
+        for(int i=1;i<=n1;i++){
+            for(int j=1;j<=n2;j++){
+                if(s1.charAt(i-1)==s2.charAt(j-1)) dp[i][j]=1+dp[i-1][j-1];
+                else{
+                    dp[i][j]=Math.max(dp[i][j-1],dp[i-1][j]);
+                }
+            }
+        }
+		return dp[n1][n2];
+    }
+}
+```
