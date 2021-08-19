@@ -761,3 +761,35 @@ class Solution
     }
 }
 ```
+#  [**18. LCsubstring**](https://youtu.be/Lj90FqNCIJE)
+## Recursive solution :-
+```java
+static int LCS(int n1, int n2, String s1, String s2,int count)
+{   // your code here
+        if(n1==0||n2==0) return count;
+        if(s1.charAt(n1-1)==s2.charAt(n2-1)) 
+        	return LCS(n1-1,n2-1,s1,s2,count+1);
+        else         	
+        	return Math.max(count,Math.max(LCS(n1,n2-1,s1,s2,0),LCS(n1-1,n2,s1,s2,0)));
+}
+```
+## DP Tabulation :-
+```java
+class Solution{
+    int longestCommonSubstr(String s1, String s2, int n1, int n2){
+        // code here
+        int dp[][]=new int[n1+1][n2+1];
+        int ans=0;
+        for(int i=1;i<=n1;i++){
+            for(int j=1;j<=n2;j++){
+                if(s1.charAt(i-1)==s2.charAt(j-1)){
+                    dp[i][j]=dp[i-1][j-1]+1;
+                    ans=Math.max(ans,dp[i][j]);
+                }
+                else dp[i][j]=0;
+            }
+        }
+        return ans;
+    }
+}
+```
