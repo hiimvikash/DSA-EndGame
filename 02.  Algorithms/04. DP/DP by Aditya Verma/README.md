@@ -873,3 +873,42 @@ class Solution
     }
 }
 ```
+#  [**22. Longest Palindromic Subsequence**](https://youtu.be/wuOOOATz_IA)
+## [**Problem Link**](https://leetcode.com/problems/longest-palindromic-subsequence/)
+```java
+class Solution {
+    public int longestPalindromeSubseq(String s1) {
+        int n=s1.length();
+        return lcs(n,n,s1,reverseWord(s1));
+    }
+    static int lcs(int n1, int n2, String s1, String s2)
+    {   int dp[][]=new int[n1+1][n2+1];
+        for(int i=1;i<=n1;i++){
+            for(int j=1;j<=n2;j++){
+                if(s1.charAt(i-1)==s2.charAt(j-1)) dp[i][j]=1+dp[i-1][j-1];
+                else{
+                    dp[i][j]=Math.max(dp[i][j-1],dp[i-1][j]);
+                }
+            }
+        }
+		return dp[n1][n2];
+    }
+    private static String reverseWord(String str)
+    {
+        // Reverse the string str
+        //Your code here
+      char arr[]=str.toCharArray();
+      int s=0;
+      int e=arr.length-1;
+  
+      while(s<e){
+          char temp=arr[s];
+          arr[s]=arr[e];
+          arr[e]=temp;
+          s++;
+          e--;
+      }
+      return String.valueOf(arr);
+  }
+}
+```
