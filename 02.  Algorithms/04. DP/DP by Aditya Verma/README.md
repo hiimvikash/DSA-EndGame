@@ -827,7 +827,7 @@ static String printlcs(int n1, int n2, String s1, String s2)
 }
 ```
 #  [**20. Shortest Common Supersequence**](https://youtu.be/823Grn4_dCQ)
-##[**Problem Link**](https://practice.geeksforgeeks.org/problems/shortest-common-supersequence0322/1)
+## [**Problem Link**](https://practice.geeksforgeeks.org/problems/shortest-common-supersequence0322/1)
 ```java
 class Solution
 {
