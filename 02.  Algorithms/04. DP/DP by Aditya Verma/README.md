@@ -851,7 +851,49 @@ class Solution
     }
 }
 ```
-#  [**21. Minimum Number of Insertion and Deletion to convert String a to String b**](https://youtu.be/-fx6aDxcWyg)
+#  [**21. Print SCS**](https://youtu.be/VDhRg-ZJTuc)
+```java
+static String printscs(int n1, int n2, String s1, String s2)
+    {   int dp[][]=new int[n1+1][n2+1];
+        for(int i=1;i<=n1;i++){
+            for(int j=1;j<=n2;j++){
+                if(s1.charAt(i-1)==s2.charAt(j-1)) dp[i][j]=1+dp[i-1][j-1];
+                else{
+                    dp[i][j]=Math.max(dp[i][j-1],dp[i-1][j]);
+                }
+            }
+        }
+        int i=n1,j=n2;
+        String ans="";
+		while(i>0 && j>0) {
+			if(s1.charAt(i-1)==s2.charAt(j-1)) {
+				ans=s1.charAt(i-1)+ans;
+				i--;
+				j--;
+			}
+			else {
+				if(dp[i][j-1]>dp[i-1][j]) {
+					ans=s2.charAt(j-1)+ans;
+					j--;
+				}
+				else {
+					ans=s1.charAt(i-1)+ans;
+					i--;
+				}
+			}
+		}
+		while(i>0) {
+			ans=s1.charAt(i-1)+ans;
+			i--;
+		}
+		while(j>0) {
+			ans=s1.charAt(j-1)+ans;
+			j--;
+		}
+		return ans;
+    }
+```
+#  [**22. Minimum Number of Insertion and Deletion to convert String a to String b**](https://youtu.be/-fx6aDxcWyg)
 ## [**Problem Link**](https://practice.geeksforgeeks.org/problems/minimum-number-of-deletions-and-insertions0209/1)
 ## Intution :-
 - Find LCS
@@ -880,7 +922,7 @@ class Solution
     }
 }
 ```
-#  [**22. Longest Palindromic Subsequence**](https://youtu.be/wuOOOATz_IA)
+#  [**23. Longest Palindromic Subsequence**](https://youtu.be/wuOOOATz_IA)
 ## [**Problem Link**](https://leetcode.com/problems/longest-palindromic-subsequence/)
 ## Intution :-
 - return LCS(s1,reverse(s1))
@@ -921,7 +963,7 @@ class Solution {
   }
 }
 ```
-#  [**22. Minimum number of deletions to make a string palindrome**](https://youtu.be/CFwCCNbRuLY)
+#  [**24. Minimum number of deletions to make a string palindrome**](https://youtu.be/CFwCCNbRuLY)
 ## **NOTE : Minimum # of deletion=Minimum # of Insertion. this is bcz in deletion we remove single occuring element and in Insertion we try to make that single element into couple by introducing new element.**
 ## [**Problem Link**](https://practice.geeksforgeeks.org/problems/minimum-deletitions1648/1)
 ## Intution
