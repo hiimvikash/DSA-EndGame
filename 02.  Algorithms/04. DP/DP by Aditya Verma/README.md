@@ -828,6 +828,9 @@ static String printlcs(int n1, int n2, String s1, String s2)
 ```
 #  [**20. Shortest Common Supersequence**](https://youtu.be/823Grn4_dCQ)
 ## [**Problem Link**](https://practice.geeksforgeeks.org/problems/shortest-common-supersequence0322/1)
+## Intution :-
+- Find LCS
+- Minus it with totalStringLength. If you do so you are making sure that common elements occur one's.
 ```java
 class Solution
 {
@@ -850,6 +853,10 @@ class Solution
 ```
 #  [**21. Minimum Number of Insertion and Deletion to convert String a to String b**](https://youtu.be/-fx6aDxcWyg)
 ## [**Problem Link**](https://practice.geeksforgeeks.org/problems/minimum-number-of-deletions-and-insertions0209/1)
+## Intution :-
+- Find LCS
+- Insertion : str2.length()-lcs
+- Deletion :  str1.length()-lcs
 ```java
 class Solution
 {
@@ -875,6 +882,8 @@ class Solution
 ```
 #  [**22. Longest Palindromic Subsequence**](https://youtu.be/wuOOOATz_IA)
 ## [**Problem Link**](https://leetcode.com/problems/longest-palindromic-subsequence/)
+## Intution :-
+- return LCS(s1,reverse(s1))
 ```java
 class Solution {
     public int longestPalindromeSubseq(String s1) {
@@ -913,7 +922,12 @@ class Solution {
 }
 ```
 #  [**22. Minimum number of deletions to make a string palindrome**](https://youtu.be/CFwCCNbRuLY)
+## **NOTE : Minimum # of deletion=Minimum # of Insertion. this is bcz in deletion we remove single occuring element and in Insertion we try to make that single element into couple by introducing new element.**
 ## [**Problem Link**](https://practice.geeksforgeeks.org/problems/minimum-deletitions1648/1)
+## Intution
+- Find LPS
+- return n-LPS
+- because no. of deletion is inversely propotional to lengthOfPS.
 ```java
 class Solution{
     static int minimumNumberOfDeletions(String s1) {
