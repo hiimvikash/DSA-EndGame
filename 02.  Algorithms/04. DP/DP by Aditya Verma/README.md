@@ -1036,6 +1036,11 @@ class Solution
 ```
 #  [**26.  find if A is a subsequence of B**](https://youtu.be/QVntmksK2es)
 ## [**Problem Link**](https://practice.geeksforgeeks.org/problems/check-for-subsequence4930/1#)
+## Intution 1
+if lcs(a,b)==min(a.length(),b.length());
+ return true;
+else
+return false;
 ```java
 class Solution{
     boolean isSubSequence(String A, String B){
@@ -1052,6 +1057,22 @@ class Solution{
             }
         }
 		return dp[n1][n2];
+    }
+}
+```
+## Intution 2
+just traverse the bigger string and check for smaller string
+```java
+class Solution{
+    boolean isSubSequence(String A, String B){
+        int j=0;// crawler for smaller String
+        int i=0;// crawler for bigger String
+        while(i<B.length() && j<A.length()){
+            if(B.charAt(i)==A.charAt(j))
+                j++;
+            i++;    
+        }
+        return j==A.length();
     }
 }
 ```
