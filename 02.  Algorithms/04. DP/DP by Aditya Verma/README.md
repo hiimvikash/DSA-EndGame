@@ -1076,3 +1076,10 @@ class Solution{
     }
 }
 ```
+<hr>
+<hr>
+<hr>
+
+**<h1 align="center">MCM pattern</h1>**
+
+#  [**27. MCM Identification + Format**](https://youtu.be/D7AFvtnDeMU)
