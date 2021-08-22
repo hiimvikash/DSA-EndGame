@@ -1083,3 +1083,4 @@ class Solution{
 **<h1 align="center">MCM pattern</h1>**
 
 #  [**27. MCM Identification + Format**](https://youtu.be/D7AFvtnDeMU)
+![MCM](https://user-images.githubusercontent.com/71629248/130344310-06937db0-1d7f-404b-bdad-fc0e83af3d2e.png)
