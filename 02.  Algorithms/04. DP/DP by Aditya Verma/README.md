@@ -1126,3 +1126,109 @@ class Solution{
     }
 }
 ```
+#  [**28. Palindrome Partition Recursive**](https://youtu.be/kMK148J9qEE)
+## [**Problem Link**](https://practice.geeksforgeeks.org/problems/palindromic-patitioning4845/1)
+## **DP Memonization :-**
+```java
+class Solution{
+    static int palindromicPartition(String str){ // code here
+        int n=str.length();
+        int dp[][]=new int[n][n];
+        for(int row[]: dp){
+            Arrays.fill(row,-1);
+        }
+        return solve(str,0,str.length()-1,dp);
+    }
+    static int solve(String s, int i, int j,int dp[][]){
+        if(i>=j) return 0;
+        if(dp[i][j]!=-1) return dp[i][j];
+        if(isPalindrome(s,i,j)) return dp[i][j]=0;
+        int ans=Integer.MAX_VALUE;
+        for(int k=i;k<j;k++){
+            int tempAns=solve(s,i,k,dp)+solve(s,k+1,j,dp)+1;
+            ans=Math.min(ans,tempAns);
+        }
+        return dp[i][j]=ans;
+    }
+    static boolean isPalindrome(String str, int s, int e){
+        while(s<e){
+            if(str.charAt(s)!=str.charAt(e)) return false;
+            s++;
+            e--;
+        }
+        return true;
+    }
+}
+```
+## [**DP Memonization optimised :-**](https://youtu.be/9h10fqkI7Nk)
+```java
+class Solution{
+    static int palindromicPartition(String str){ // code here
+        int n=str.length();
+        int dp[][]=new int[n][n];
+        for(int row[]: dp){
+            Arrays.fill(row,-1);
+        }
+        return solve(str,0,str.length()-1,dp);
+    }
+    static int solve(String s, int i, int j,int dp[][]){
+        if(i>=j) return 0;
+        if(dp[i][j]!=-1) return dp[i][j];
+        if(isPalindrome(s,i,j)) return dp[i][j]= 0;
+        int ans=Integer.MAX_VALUE;
+        for(int k=i;k<j;k++){
+            int left; int right;
+            if(dp[i][k]!=-1) left=dp[i][k]; else dp[i][k]=left=solve(s,i,k,dp);
+            if(dp[k+1][j]!=-1) right=dp[k+1][j]; else dp[k+1][j]=right=solve(s,k+1,j,dp);
+            int tempAns=left+right+1;
+            ans=Math.min(ans,tempAns);
+        }
+        return dp[i][j]=ans;
+    }
+    static boolean isPalindrome(String str, int s, int e){
+        while(s<e){
+            if(str.charAt(s)!=str.charAt(e)) return false;
+            s++;
+            e--;
+        }
+        return true;
+    }
+}
+```
+## **DP Memonization further more optimised :-**
+## [**Problem Link LC**](https://leetcode.com/problems/palindrome-partitioning-ii/)
+```java
+class Solution {
+    public int minCut(String str) {
+        int n=str.length();
+        int dp[][]=new int[n][n];
+        for(int row[]: dp){
+            Arrays.fill(row,-1);
+        }
+        return solve(str,0,str.length()-1,dp);
+    }
+    static int solve(String s, int i, int j,int dp[][]){
+        if(i>=j) return 0;
+        if(dp[i][j]!=-1) return dp[i][j];
+        if(isPalindrome(s,i,j)) return dp[i][j]= 0;
+        int ans=Integer.MAX_VALUE;
+        for(int k=i;k<j;k++){ //Instead of writing below standard line We will recurse for only right part Only when left part turns out to be palindrome
+            int right;
+            if(isPalindrome(s,i,k)){
+                if(dp[k+1][j]!=-1) right=dp[k+1][j]; else dp[k+1][j]=right=solve(s,k+1,j,dp);
+                int tempAns=right+1;
+                ans=Math.min(ans,tempAns);
+            }
+        }
+        return dp[i][j]=ans;
+    }
+    static boolean isPalindrome(String str, int s, int e){
+        while(s<e){
+            if(str.charAt(s)!=str.charAt(e)) return false;
+            s++;
+            e--;
+        }
+        return true;
+    }
+}
+```
