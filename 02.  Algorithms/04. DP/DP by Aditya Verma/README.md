@@ -1084,3 +1084,45 @@ class Solution{
 
 #  [**27. MCM Identification + Format**](https://youtu.be/D7AFvtnDeMU)
 ![MCM](https://user-images.githubusercontent.com/71629248/130344310-06937db0-1d7f-404b-bdad-fc0e83af3d2e.png)
+#  [**28. MCM Recursive**](https://youtu.be/kMK148J9qEE)
+## [**Problem Link**](https://practice.geeksforgeeks.org/problems/matrix-chain-multiplication0303/1#)
+```java
+class Solution{
+    static int matrixMultiplication(int n, int arr[]){
+        return solve(1,n-1,arr);
+    }
+    
+    static int solve(int i, int j, int arr[]){ // find i & J
+        if(i>=j) return 0; // find BC
+        int ans=Integer.MAX_VALUE;
+        for(int k=i; k<j; k++){ // find K loop
+            int tempAns=solve(i,k,arr)+solve(k+1,j,arr)+(arr[i-1]*arr[k]*arr[j]); // find breakPoint
+            ans=Math.min(ans,tempAns); // find function of tempAns
+        }
+        return ans;
+    }
+}
+```
+## [**DP Memonization :-**](https://youtu.be/9uUVFNOT3_Y)
+```java
+class Solution{
+    static int matrixMultiplication(int n, int arr[]){
+        int dp[][]=new int[n][n];
+        for(int row[]: dp){
+            Arrays.fill(row,-1);
+        }
+        return solve(1,n-1,arr,dp);
+    }
+    
+    static int solve(int i, int j, int arr[], int dp[][]){ // find i & J
+        if(i>=j) return 0; // find BC
+        if(dp[i][j]!=-1) return dp[i][j];
+        int ans=Integer.MAX_VALUE;
+        for(int k=i; k<j; k++){ // find K loop
+            int tempAns=solve(i,k,arr,dp)+solve(k+1,j,arr,dp)+(arr[i-1]*arr[k]*arr[j]); // find breakPoint
+            ans=Math.min(ans,tempAns); // find function of tempAns
+        }
+        return dp[i][j]=ans;
+    }
+}
+```
