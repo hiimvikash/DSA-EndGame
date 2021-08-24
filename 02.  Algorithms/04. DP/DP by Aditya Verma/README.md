@@ -1232,3 +1232,47 @@ class Solution {
     }
 }
 ```
+#  [**29. Boolean Parenthesization GQ**](https://youtu.be/pGVguAcWX4g)
+## [**Problem Link**](https://practice.geeksforgeeks.org/problems/boolean-parenthesization5610/1#)
+## Recursive Solution :-
+```java
+class Solution{
+    static int countWays(int n, String S){
+        // code here
+        return solve(S,0,S.length()-1,true);
+    }
+    static int solve(String s, int i, int j, boolean isTrue){
+        // 1. Find i,j & BC
+        if(i>j) return 0;
+        if(i==j){
+            if(isTrue){
+                return (s.charAt(i) == 'T') ? 1 : 0;
+            }
+            else return (s.charAt(i) == 'F') ? 1 : 0;
+        }
+        
+        // 2. Find k loop
+        int ans=0;
+        for(int k=i+1;k<j;k+=2){
+            int lt=solve(s,i,k-1,true);
+            int lf=solve(s,i,k-1,false);
+            int rt=solve(s,k+1,j,true);
+            int rf=solve(s,k+1,j,false);
+            
+            if(s.charAt(k)=='^'){
+                if(isTrue) ans+=(lt*rf) + (lf*rt);
+                else ans+= (lt*rt) + (lf*rf);
+            }
+            else if(s.charAt(k)=='|'){
+                if(isTrue) ans+=(lt*rf) + (lf*rt) + (lt*rt);
+                else ans+= (lf*rf);
+            }
+            else{
+                if(isTrue) ans+=(lt*rt);
+                else ans+=(lt*rf) + (lf*rt) + (lf*rf);
+            }
+        }
+        return ans;
+    }
+}
+```
