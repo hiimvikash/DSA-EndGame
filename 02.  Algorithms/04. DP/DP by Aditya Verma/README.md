@@ -1291,3 +1291,62 @@ class Solution{
     }
 }
 ```
+## **DP Memonization :-**
+```java
+class Solution{
+    static int countWays(int n, String S){
+        // code here
+        int dp[][][]=new int[n][n][2];
+        for(int d[][] : dp){
+            for(int row[]:d){
+                Arrays.fill(row,-1);
+            }
+        }
+        return solve(S,0,n-1,1,dp);
+    }
+    static int solve(String s, int i, int j, int isTrue, int dp[][][]){
+        // 1. Find i,j & BC
+        if(i>j) return 0;
+        if(i==j){
+            if(isTrue==1){
+                return (s.charAt(i) == 'T') ? 1 : 0;
+            }
+            else return (s.charAt(i) == 'F') ? 1 : 0;
+        }
+        
+        if(dp[i][j][isTrue]!=-1) return dp[i][j][isTrue];
+        
+        // 2. Find k loop
+        int ans=0;
+        int lt,lf,rt,rf;
+        for(int k=i+1;k<j;k=k+2){
+            if(dp[i][k-1][1]!=-1) lt=dp[i][k-1][1];
+            else dp[i][k-1][1]=lt=solve(s,i,k-1,1,dp);
+            
+            if(dp[i][k-1][0]!=-1) lf=dp[i][k-1][0];
+            else dp[i][k-1][0]=lf=solve(s,i,k-1,0,dp);
+            
+            if(dp[k+1][j][1]!=-1) rt=dp[k+1][j][1];
+            else dp[k+1][j][1]=rt=solve(s,k+1,j,1,dp);
+            
+            if(dp[k+1][j][0]!=-1) rf=dp[k+1][j][0];
+            else dp[k+1][j][0]=rf=solve(s,k+1,j,0,dp);
+            
+            if(s.charAt(k)=='^'){
+                if(isTrue==1) ans+=(lt*rf) + (lf*rt);
+                else ans+= (lt*rt) + (lf*rf);
+            }
+            else if(s.charAt(k)=='|'){
+                if(isTrue==1) ans+=(lt*rf) + (lf*rt) + (lt*rt);
+                else ans+= (lf*rf);
+            }
+            else{
+                if(isTrue==1) ans+=(lt*rt);
+                else ans+=(lt*rf) + (lf*rt) + (lf*rf);
+            }
+        }
+        
+        return dp[i][j][isTrue]=ans%1003;
+    }
+}
+```
