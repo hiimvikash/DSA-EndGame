@@ -1234,6 +1234,21 @@ class Solution {
 ```
 #  [**29. Boolean Parenthesization GQ**](https://youtu.be/pGVguAcWX4g)
 ## [**Problem Link**](https://practice.geeksforgeeks.org/problems/boolean-parenthesization5610/1#)
+# **^**
+- T ^ F - T
+- F ^ T - T
+- T ^ T - F
+- F ^ F - F
+# **|**
+- T | F - T
+- F | T - T
+- T | T - T
+- F | F - F
+# **&**
+- T & F - F
+- F & T - F
+- T & T - T
+- F & F - F
 ## Recursive Solution :-
 ```java
 class Solution{
