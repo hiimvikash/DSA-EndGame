@@ -1401,3 +1401,56 @@ class Solution {
     }
 }
 ```
+#  [**31. Egg Droping GQ**](https://youtu.be/UvksR0hR9nA)
+## [**Problem Link**](https://leetcode.com/problems/super-egg-drop/)
+## Recursive Solution :-
+```java
+class Solution {
+    public int superEggDrop(int e, int f) {
+        if(f==0 || f==1 || e==1) return f;
+        if(e==0) return 0;
+        
+        int myChoice=Integer.MAX_VALUE;
+        for(int k=1;k<=f;k++){
+            int luck=Math.max(superEggDrop(e-1,k-1),superEggDrop(e,f-k)); // worst case leke chalo
+            myChoice=Math.min(luck,myChoice);
+        }
+        return myChoice+1;
+    }
+}
+```
+## **DP Memonization for GFG :-**
+## [**Problem Link GFG**](https://practice.geeksforgeeks.org/problems/egg-dropping-puzzle-1587115620/1#)
+```java
+class Solution 
+{
+    //Function to find minimum number of attempts needed in 
+    //order to find the critical floor.
+    static int eggDrop(int e, int f) 
+	{
+	    // Your code here
+	    int dp[][]=new int[e+1][f+1];
+        for(int row[]:dp){
+            Arrays.fill(row,-1);
+        }
+        return superEggDrops(e,f,dp);
+	}
+	public static int superEggDrops(int e, int f,int dp[][]) {
+        if(f==0 || f==1 || e==1) return f;
+        if(e==0) return 0;
+        if(dp[e][f]!=-1) return dp[e][f];
+        int myChoice=Integer.MAX_VALUE;
+        int c1; int c2;
+        for(int k=1;k<=f;k++){
+            if(dp[e-1][k-1]!=-1)c1=dp[e-1][k-1];
+            else dp[e-1][k-1]=c1=superEggDrops(e-1,k-1,dp);
+            
+            if(dp[e][f-k]!=-1)c2=dp[e][f-k];
+            else dp[e][f-k]=c2=superEggDrops(e,f-k,dp);
+            int luck=Math.max(c1,c2); // worst case leke chalo
+            myChoice=Math.min(luck,myChoice);
+        }
+        return dp[e][f]=myChoice+1;
+    }
+}
+```
