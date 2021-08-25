@@ -6,7 +6,7 @@
 
 ## **Algorithms :-**
 
-### **Algorithms is any approach you use to perform operations on data (like searching, sorting, traversing, ..Etc.).**
+### **Algorithms is any approach you use to perform operations on data (like searching, sorting, traversing, etc.)**
 
 <hr>
 
@@ -17,17 +17,16 @@
 2. [**CONSTRUCTOR.**](https://youtu.be/a199KZGMNxk?t=981)
 3. [**this KEYWORD.**](https://youtu.be/a199KZGMNxk?t=1424)
 4. **ACCESS MODIFIERS IN JAVA.**
-
-- ## **Public-** The access level of public modifier is everywhere. Methods, variables declared public can be accesed from anywhere after importing that class.
-- ## **Default-** The access level of default modifier is within package. Methods, variables declared default can be accesed from other classes of same package.
-- ## **Private-** The access level of private modifier is within the class. Methods, variables declared private cannot be accesed from outside the class.
+   - #### **Public-** The access level of public modifier is everywhere. Methods, variables declared public can be accesed from anywhere after importing that class.
+   - #### **Default-** The access level of default modifier is within package. Methods, variables declared default can be accesed from other classes of same package.
+   - #### **Private-** The access level of private modifier is within the class. Methods, variables declared private cannot be accesed from outside the class.
 
 5. [**ENCAPSULATION.**](https://youtu.be/a199KZGMNxk?t=2019)
 6. [**STATIC KEYWORD IN JAVA.**](https://youtu.be/3LtIk7wFGi0)
-7. - **You can call static methods from non static method but reverse is not true.**
-8. [**INNER CLASS IN JAVA.**](https://youtu.be/zg1pijw6AM4)
-9. [**Pass by value.**](https://youtu.be/H71vRa86AGg)
-10. [**Pass by refrence.**](https://youtu.be/H71vRa86AGg)
+    - **You can call static methods from non static method but reverse is not true.**
+7. [**INNER CLASS IN JAVA.**](https://youtu.be/zg1pijw6AM4)
+8. [**Pass by value.**](https://youtu.be/H71vRa86AGg)
+9. [**Pass by refrence.**](https://youtu.be/H71vRa86AGg)
 
 ```java
 import java.util.*;
@@ -127,7 +126,7 @@ public class Hi {
 
 ## 1. Memory Allocation when you initialize a variable.
 ![kunalKushwaha1 1](https://user-images.githubusercontent.com/71629248/128210358-dff0df32-a25b-4c84-9bfb-9d9161127aca.png)
-- **Note :** When there is no reference variable pointing to actual object then it is deleted automatically when garbage collection hits.
+- **NOTE:** When there is no reference variable pointing to actual object then it is deleted automatically when garbage collection hits.
 ## 2. Objects & Reference Variable.
 ![kunalKushwaha1 0](https://user-images.githubusercontent.com/71629248/128210454-7d5523f3-3f0d-4046-9511-b222ffd8f17d.png)
 
