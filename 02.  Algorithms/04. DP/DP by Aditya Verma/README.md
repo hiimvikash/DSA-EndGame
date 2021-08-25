@@ -1350,3 +1350,54 @@ class Solution{
     }
 }
 ```
+#  [**30. Scramble String LC-87**](https://youtu.be/SqA0o-DGmEw)
+## [**Problem Link**](https://leetcode.com/problems/scramble-string/)
+## Recursive Solution :-
+```java
+class Solution {
+    public boolean isScramble(String a, String b) {
+        int n=a.length();
+        if(a.equals(b)) return true;
+        if(n<=1) return false;
+        
+        for(int i=1;i<n;i++){
+            //when swaped
+            boolean cond1=isScramble(a.substring(0,i),b.substring(n-i,(n-i)+i)) && isScramble(a.substring(i,i+(n-i)),b.substring(0,n-i));
+            // when not swaped
+            boolean cond2=isScramble(a.substring(0,i),b.substring(0,i)) && isScramble(a.substring(i,i+(n-i)),b.substring(i,i+(n-i)));
+            if(cond1 || cond2) return true;
+        }
+        return false;
+    }
+}
+```
+## **DP Memonization :-**
+```java
+class Solution {
+    public HashMap<String, Boolean> hm=new HashMap<>();
+    public boolean isScramble(String a, String b) {
+        int n=a.length();
+        if(a.equals(b)) return true;
+        if(n<=1) return false;
+        String key=a+" "+b;
+        if(hm.containsKey(key)) return hm.get(key);
+        // copied snippet :- This will return false if uncommon character identified.
+            int[] letters = new int[26];
+            for (int i=0; i<n; i++) {
+                letters[a.charAt(i)-'a']++;
+                letters[b.charAt(i)-'a']--;
+            }
+            for (int i=0; i<26; i++) if (letters[i]!=0) return false;
+        // copied snippet :- This will return false if uncommon character identified.
+        for(int i=1;i<n;i++){
+            //when swaped
+            boolean cond1=isScramble(a.substring(0,i),b.substring(n-i,(n-i)+i)) && isScramble(a.substring(i,i+(n-i)),b.substring(0,n-i));
+            // when not swaped
+            boolean cond2=isScramble(a.substring(0,i),b.substring(0,i)) && isScramble(a.substring(i,i+(n-i)),b.substring(i,i+(n-i)));
+            if(cond1 || cond2){hm.put(key,true); return true;}
+        }
+        hm.put(key,false);
+        return false;
+    }
+}
+```
