@@ -1419,7 +1419,7 @@ class Solution {
     }
 }
 ```
-## **DP Memonization for GFG :-**
+## **DP Memonization for GFG :- TLE in LC**
 ## [**Problem Link GFG**](https://practice.geeksforgeeks.org/problems/egg-dropping-puzzle-1587115620/1#)
 ```java
 class Solution 
@@ -1485,6 +1485,33 @@ class Solution {
             myChoice=Math.min(luck,myChoice);
         }
         return dp[e][f]=myChoice+1;
+    }
+}
+```
+## [**DP Tabulation for LC :-**](https://leetcode.com/problems/super-egg-drop/)
+```java
+class Solution {
+    public int superEggDrop(int e, int f) {
+        int dp[][]=new int[e+1][f+1];
+        for(int i=0;i<=e;i++)
+            {dp[i][0]=0;dp[i][1]=1;}   //Filling from base case as if f==0 ans=0 , f==1 ans=1
+        for(int i=0;i<=f;i++)
+            {dp[0][i]=0;dp[1][i]=i;}   //Filling from base case as if e==0 ans=0 , e==1 ans=N
+        
+        
+        for(int i=2;i<=e;i++){
+            for(int j=2;j<=f;j++){
+                int l=1; int h=j; int myChoice=Integer.MAX_VALUE;
+                while(l<=h){
+                    int k=(l+h)/2;
+                    int luck=Math.max(dp[i-1][k-1],dp[i][j-k]);
+                    myChoice=Math.min(luck,myChoice);
+                    if(dp[i-1][k-1]>dp[i][j-k]) h=k-1; else l=k+1;
+                }
+                dp[i][j]=myChoice+1;
+            }
+        }
+        return dp[e][f];
     }
 }
 ```
