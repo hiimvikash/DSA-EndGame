@@ -157,6 +157,7 @@ class Solution {
 ```
 # **[5. Sliding Window Maximum LC-239 .](https://leetcode.com/problems/sliding-window-maximum/)**
 ## **[Video Reference](https://youtu.be/xFJXtB5vSmM)**
+TCs - [13, 7, 12, 6, 5, 3, 6, 7]
 ```java
 class Solution {
     public int[] maxSlidingWindow(int[] arr, int k) {
