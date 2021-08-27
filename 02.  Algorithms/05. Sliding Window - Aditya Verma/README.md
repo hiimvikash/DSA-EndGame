@@ -155,3 +155,48 @@ class Solution {
     
 }
 ```
+# **[5. Sliding Window Maximum LC-239 .](https://leetcode.com/problems/sliding-window-maximum/)**
+## **[Video Reference](https://youtu.be/xFJXtB5vSmM)**
+```java
+class Solution {
+    public int[] maxSlidingWindow(int[] arr, int k) {
+        int n=arr.length;
+        Deque<Integer> dq=new LinkedList<>();
+        int s=0,e=k-1;
+        int ans[]=new int[n-k+1]; int j=0;
+        
+        // making Initial answer
+            for(int i=s;i<=e;i++){
+                if(dq.isEmpty())
+                    dq.add(arr[i]);
+                else{    
+                    while(!dq.isEmpty() && arr[i]>dq.peekLast()){
+                        dq.removeLast();
+                    }
+                    dq.add(arr[i]);
+                }
+            }
+            ans[j++]=dq.peek();
+        // restoring
+            if(!dq.isEmpty() && dq.peek()==arr[s]) dq.pop();
+        
+        // sliding window start
+            s++;e++;
+        while(e<n){
+            if(dq.isEmpty())
+                dq.add(arr[e]);
+            else{    
+                while(!dq.isEmpty() &&arr[e]>dq.peekLast()){
+                    dq.removeLast();
+                }
+                dq.add(arr[e]);
+            }
+            ans[j++]=dq.peek();
+            // restoring
+            if(!dq.isEmpty() && dq.peek()==arr[s]) dq.pop();
+            s++; e++;
+        }
+        return ans;
+    }
+}
+```
