@@ -27,3 +27,69 @@ class Solution{
 }
 ```
 ## Note : Total Number of possible windows of size K in an Array os size N is **N-K+1**
+# **[3. First negative integer in every window of size k .](https://practice.geeksforgeeks.org/problems/first-negative-integer-in-every-window-of-size-k3345/1#)**
+
+## Approach 1 - Nested Loop
+```java
+class Compute {
+    
+    public long[] printFirstNegativeInteger(long arr[], int n, int k)
+    {
+        long ans[]=new long[n-k+1]; // size of ans[] = number of possible windows
+        int s=0,e=k-1;
+        int j=0;
+        boolean flag=false;
+        while(e<n){
+            for(int i=s;i<=e;i++){
+                flag=false;
+                if(arr[i]<0){
+                    ans[j++]=arr[i]; flag=true;
+                    break;
+                }
+            }
+            if(!flag) j++; // this will automaticaly add 0
+            s++;
+            e++;
+        }
+        return ans;
+    }
+}
+```
+## Approach 2 - Using Q
+- Step 1 : Create a Initial Answer means for 1st Window
+- Step 2 : Make everything ready for next coming window
+- Step 3 : Inside loop calculate ans for that window than s++; e++.
+```java
+class Compute {
+    
+    public long[] printFirstNegativeInteger(long arr[], int n, int k)
+    {
+        long ans[]=new long[n-k+1]; // size of ans[] = number of possible windows
+        Queue<Long> q=new LinkedList<>();
+        
+        int s=0,e=k-1;
+        int j=0;
+        for(int i=s;i<=e;i++){
+            if(arr[i]<0) q.add(arr[i]);
+        }
+        if(!q.isEmpty()){
+            ans[j++]=q.peek();
+            if(arr[s]==q.peek()) q.poll();
+        }
+        else ans[j++]=0;
+        
+        s++; e++;
+        while(e<n){
+            if(arr[e]<0) q.add(arr[e]);
+            if(!q.isEmpty()){
+                ans[j++]=q.peek();
+                if(arr[s]==q.peek()) q.poll();
+            }
+            else ans[j++]=0;
+            s++; e++;
+        }
+        q.clear();
+        return ans;
+    }
+}
+```
