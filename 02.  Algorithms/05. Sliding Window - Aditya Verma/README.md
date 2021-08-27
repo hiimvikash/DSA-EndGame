@@ -5,6 +5,8 @@
 [**GFG Article**](https://www.geeksforgeeks.org/window-sliding-technique/)
 ![sw1](https://user-images.githubusercontent.com/71629248/131081293-996a541a-c339-4545-b2f2-101187e3f9e1.png)
 # **[2. Max Sum Subarray of size K .](https://practice.geeksforgeeks.org/problems/max-sum-subarray-of-size-k5313/1)**
+
+## **[Video Reference](https://youtu.be/KtpqeN0Goro)**
 ```java
 class Solution{
     static int maximumSumSubarray(int k, ArrayList<Integer> arr,int n){
@@ -28,7 +30,7 @@ class Solution{
 ```
 ## Note : Total Number of possible windows of size K in an Array os size N is **N-K+1**
 # **[3. First negative integer in every window of size k .](https://practice.geeksforgeeks.org/problems/first-negative-integer-in-every-window-of-size-k3345/1#)**
-
+## **[Video Reference](https://youtu.be/uUXXEgK2Jh8)**
 ## Approach 1 - Nested Loop
 ```java
 class Compute {
