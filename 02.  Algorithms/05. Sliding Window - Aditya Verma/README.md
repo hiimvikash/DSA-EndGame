@@ -26,3 +26,4 @@ class Solution{
     }
 }
 ```
+## Note : Total Number of possible windows of size K in an Array os size N is **N-K+1**
