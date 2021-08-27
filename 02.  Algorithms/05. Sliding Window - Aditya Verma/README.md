@@ -95,3 +95,63 @@ class Compute {
     }
 }
 ```
+# **[4. Count Occurences of Anagrams GQ .](https://practice.geeksforgeeks.org/problems/count-occurences-of-anagrams5839/1)**
+## **[Video Reference](https://youtu.be/MW4lJ8Y0xXk)**
+```java
+class Solution {
+
+    int search(String pat, String str) {
+        // code here
+        int k=pat.length(); // window size
+        int s=0,e=k-1;
+        int ans=0;
+        // making HM for pat
+            HashMap<Character,Integer> hm=new HashMap<>();
+            for(int i=0;i<k;i++){
+                char ch=pat.charAt(i);
+                if(hm.containsKey(ch)){
+                    hm.put(ch,hm.get(ch)+1);
+                }
+                else hm.put(ch,1);
+            }
+            int count = hm.size();
+        // making HM for pat ENDS
+        
+        // Initial ANS Making Starts
+            for(int i=s;i<=e;i++){
+                char ch=str.charAt(i);
+                if(hm.containsKey(ch)){
+                    hm.put(ch,hm.get(ch)-1);
+                    if(hm.get(ch)==0)count--;
+                }
+            }
+            if(count==0) ans++;
+        // restoring Starts
+            char ch=str.charAt(s);
+            if(hm.containsKey(ch)){
+                if(hm.get(ch)==0)count++;
+                hm.put(ch,hm.get(ch)+1);
+            }
+            
+            // sliding window start
+            s++;e++;
+            while(e<str.length()){
+                ch=str.charAt(e);
+                if(hm.containsKey(ch)){
+                    hm.put(ch,hm.get(ch)-1);
+                    if(hm.get(ch)==0)count--;
+                }
+                if(count==0) ans++;
+                // restoring Starts
+                ch=str.charAt(s);
+                if(hm.containsKey(ch)){
+                    if(hm.get(ch)==0)count++;
+                    hm.put(ch,hm.get(ch)+1);
+                }
+                s++; e++;
+            }
+             return ans;   
+    }
+    
+}
+```
