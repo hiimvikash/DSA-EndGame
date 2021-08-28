@@ -201,4 +201,49 @@ class Solution {
     }
 }
 ```
-**<h1 align="center">Variable Size Windows</h1>**
+[**<h1 align="center">Variable Size Window Feel</h1>**](https://youtu.be/cyu_nuW5utA)
+# [**6. Largest Subarray of sum K**](https://youtu.be/TfQPoaRDeMQ)
+**Note : This will work only for +VE Integer in array**
+### Q. Will the discussed approach work with negative numbers in the array?
+A. **No.** 
+Because let's say in the given array [4,1,1,1,2,3,5] when we found the sum within the window to be greater than the desired value 5 (i=0, j=2 -> [4,1,1]), we started reducing the size of the window by doing i++. Here we assumed that once the sum of elements within the window becomes greater than 5 then increasing the window size will just add to the sum and hence we will not attain the sum 5 again. This is true when all the element are positive and hence reducing the window size by doing i++ makes sense. But this might not be true if array also contains negative numbers. Consider the array [4,1,1,-2,1,5], here we would have found the sum to be greater than 5 for i=0, j=2 and if we would have now started reducing the window size by doing i++, we would have missed the potential subarray (i=0, j=4).
+In short, the discussed approach will not work with array having negative numbers.
+```java
+private static int lsa(int arr[],int n, int k) {
+		int max=0,sum=0;
+		int s=0,e=0;
+		while(e<n) {
+			sum+=arr[e];
+			while(sum>k) {
+				sum-=arr[s];
+				s++;
+			}
+			if(sum==k) {
+				max=Math.max(max,e-s+1);
+			}
+			e++;
+		}
+		return max;
+}
+```
+## **[Problem Link](https://practice.geeksforgeeks.org/problems/longest-sub-array-with-sum-k0809/1)**
+## Hash Map Approach
+```java
+class Solution{
+    // Function for finding maximum and value pair
+    public static int lenOfLongSubarr (int arr[], int n, int k) {
+        //Complete the function
+        HashMap<Integer,Integer> hm=new HashMap<>();
+        int sum=0,max=0;
+        hm.put(0,0);
+        for(int i=0;i<n;i++){
+            sum+=arr[i];
+            if(!hm.containsKey(sum)) hm.put(sum,i+1); // we may get the sum which is already present in HM so to always get the longest subarray we are not modifying 
+            if(hm.containsKey(sum-k)){
+                max=Math.max(max,i-hm.get(sum-k)+1);
+            }
+        }
+        return max;
+    }
+}
+``` 
