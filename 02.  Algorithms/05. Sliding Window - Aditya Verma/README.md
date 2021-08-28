@@ -248,3 +248,4 @@ class Solution{
     }
 }
 ``` 
+# **[7. General Format Of Fixed Size windows & Variable Size windows](https://youtu.be/LV-BgyeH8yo)**
