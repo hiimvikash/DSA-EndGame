@@ -340,3 +340,46 @@ public int lengthOfLongestSubstringTwoDistinct(String str) {
         return ans;
 }
 ```
+# **[11. Minimum Window Substring](https://leetcode.com/problems/minimum-window-substring/)**
+
+## **[Video Reference](https://youtu.be/iwv1llyN6mo)**
+```java
+class Solution {
+    public String minWindow(String str, String t) {
+        // Step 1 Make HM for String t
+        HashMap<Character,Integer> hm=new HashMap<>();
+        for(int i=0;i<t.length();i++){
+            char ch=t.charAt(i);
+            hm.put(ch,hm.getOrDefault(ch,0)+1);
+        }
+        int count=hm.size();
+        // Step 2 Variable Sliding window Starts
+        int s=0,e=0;
+        int ans=Integer.MAX_VALUE,as=0,ae=0;
+        int n=str.length();
+        while(e<n){
+            char ch=str.charAt(e);
+            if(hm.containsKey(ch)){
+                hm.put(ch,hm.get(ch)-1);
+                if(hm.get(ch)==0) count--;
+            }
+            while(count==0){
+                if((e-s+1)<ans){
+                    ans=e-s+1;
+                    as=s;
+                    ae=e;
+                }
+                ch=str.charAt(s);
+                if(hm.containsKey(ch)){
+                    hm.put(ch,hm.get(ch)+1);
+                    if(hm.get(ch)>0) count++;
+                }
+                s++;
+            }
+            e++;
+        }
+        if(as==ae && s==0) return "";
+        return str.substring(as,ae+1);
+    }
+}
+```
