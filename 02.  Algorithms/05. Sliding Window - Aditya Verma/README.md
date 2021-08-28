@@ -250,3 +250,34 @@ class Solution{
 ``` 
 # **[7. General Format Of Fixed Size windows & Variable Size windows](https://youtu.be/LV-BgyeH8yo)**
 ![FsVS](https://user-images.githubusercontent.com/71629248/131221449-95aaea06-39bc-49df-9e2a-53a189c0d817.png)
+
+# **[8. Longest K unique characters substring](https://practice.geeksforgeeks.org/problems/longest-k-unique-characters-substring0853/1)**
+## **[Video Reference](https://youtu.be/Lav6St0W_pQ)**
+```java
+class Solution {
+    public int longestkSubstr(String str, int k) {
+        // code here
+        int n=str.length();
+        int s=0,e=0;
+        int uc=0,ans=-1;
+        HashMap<Character,Integer> hm=new HashMap<>();
+        while(e<n){
+            char ch=str.charAt(e);
+            hm.put(ch,hm.getOrDefault(ch,0)+1);
+            uc=hm.size();
+            while(uc>k){
+                ch=str.charAt(s);
+                hm.put(ch,hm.get(ch)-1);
+                if(hm.get(ch)==0) hm.remove(ch);
+                uc=hm.size();
+                s++;
+            }
+            if(uc==k){
+                ans=Math.max(ans,e-s+1);
+            }
+            e++;
+        }
+        return ans;
+    }
+}
+```
