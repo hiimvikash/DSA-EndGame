@@ -249,3 +249,4 @@ class Solution{
 }
 ``` 
 # **[7. General Format Of Fixed Size windows & Variable Size windows](https://youtu.be/LV-BgyeH8yo)**
+![FsVS](https://user-images.githubusercontent.com/71629248/131221449-95aaea06-39bc-49df-9e2a-53a189c0d817.png)
