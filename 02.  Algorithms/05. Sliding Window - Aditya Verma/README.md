@@ -227,7 +227,8 @@ private static int lsa(int arr[],int n, int k) {
 }
 ```
 ## **[Problem Link](https://practice.geeksforgeeks.org/problems/longest-sub-array-with-sum-k0809/1)**
-## Hash Map Approach
+### **TCs- [8, -1, -1, -1, 9, -3, -1, 0, 10, -5] k=5**
+## Hashmap Approach
 ```java
 class Solution{
     // Function for finding maximum and value pair
