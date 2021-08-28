@@ -311,3 +311,32 @@ class Solution {
     }
 }
 ```
+# **[10. Pick Toys](https://www.lintcode.com/problem/longest-substring-with-at-most-two-distinct-characters/description)**
+
+## **[Video Reference](https://youtu.be/seOKHXB_w74)**
+```java
+public int lengthOfLongestSubstringTwoDistinct(String str) {
+        // Write your code here
+        int n=str.length();
+        int s=0,e=0;
+        int uc=0,ans=0;
+        HashMap<Character,Integer> hm=new HashMap<>();
+        while(e<n){
+            char ch=str.charAt(e);
+            hm.put(ch,hm.getOrDefault(ch,0)+1);
+            uc=hm.size();
+            while(uc>2){
+                ch=str.charAt(s);
+                hm.put(ch,hm.get(ch)-1);
+                if(hm.get(ch)==0) hm.remove(ch);
+                uc=hm.size();
+                s++;
+            }
+            if(uc==2 || uc<2){
+                ans=Math.max(ans,e-s+1);
+            }
+            e++;
+        }
+        return ans;
+}
+```
