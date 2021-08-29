@@ -154,3 +154,27 @@ class Solution {
 
 }
 ```
+# [**6. Number of Times a Sorted array is Rotated**](https://practice.geeksforgeeks.org/problems/rotation4723/1#)
+```java
+class Solution {
+    int findKRotation(int arr[], int n) {
+        // code here
+        return findPivot(arr,0,n)+1;
+    }
+    // this will return pivot
+    int findPivot(int arr[],int fromIndex,int toIndex){
+        int start=fromIndex;
+        int end=toIndex-1;
+        if(arr[start]<=arr[end]) return -1;
+        while(start<=end){
+            int mid= start + (end-start)/2;
+            if(mid < end && arr[mid]>arr[mid+1]) return mid;
+            if(mid > start && arr[mid]<arr[mid-1]) return mid-1;
+            // as we are looking for pivot that's why we r getting attracted toward unsorted part.
+            else if(arr[start]>arr[mid]) end=mid-1;
+            else if(arr[mid]>arr[end]) start=mid+1;
+        }
+        return 6778;
+    }
+}
+```
