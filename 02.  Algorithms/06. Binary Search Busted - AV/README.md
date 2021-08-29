@@ -44,10 +44,10 @@ private static int binarySearch(int[] a, int fromIndex, int toIndex, int key) {
 ```
 ## **3. Order Agnostic Binary Search (when you don't know in which order the array is sorted):**
 ```java
-boolean isAsc=a[start] < a[end]
 private static int AgnosticbinarySearch(int[] a, int fromIndex, int toIndex, int key) {
         int start = fromIndex;
         int end = toIndex - 1;
+        boolean isAsc= a[start] < a[end]
         while (start <= end) {
             int mid = start + (end-start)/2;
             int midVal = a[mid];
