@@ -309,3 +309,4 @@ class Solution{
     
 }
 ```
+# [**10.Ceil in a sorted array**](https://youtu.be/uiz0IxPCUeU)
