@@ -226,3 +226,18 @@ class Solution {
     }
 }
 ```
+# [**8. Search in an almost sorted array**](https://youtu.be/W3-KgsCVH1U)
+```java
+int BinarySearchModi(int arr[], int fromIndex, int toIndex, int key){
+    int start=fromIndex,end=toIndex-1;
+    while(start<=end){
+        int mid = start + (end-start)/2;
+        if(key==arr[mid]) return mid;
+        if(mid > start && key==arr[mid-1]) return mid-1;
+        if(mid < end && key==arr[mid+1]) return mid+1;
+        else if(key>mid) start = mid+2;
+        else if(key<mid) end = mid-2;
+    }
+    return -1;
+}
+```
