@@ -59,3 +59,8 @@
 
 - ## **(Substring/SubArray/Power Set) -** No gaps are possible between elements. Continuous elements should be there.
   - **e.g. arr[]={1, 2, 3, 4, 5, 6, 7}--->{1, 2}, {1, 2, 3}, {4, 5, 6}, {6, 7}...e.t.c**
+
+# Cycle in Array can be achieved :-
+## Array is of size N
+- ## case 1 : Your i pointer is standing on N-1 then to go to 0 we do (i+1 % N)
+- ## case 2 : Your i pointer is standing on 0 then to go back to N-1 we do (i+N-1 % N)
