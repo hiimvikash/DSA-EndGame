@@ -184,7 +184,7 @@ class Solution {
 ## Intution :-
 - Find Pivot.
 - Now **0 to pivot** & **pivot+1 to n-1** is sorted.
-- then check the range where your target lies and perform BS. 
+- then check the range where your target lies and perform BS in that range. 
 ```java
 class Solution {
     public int search(int[] arr, int target) {
