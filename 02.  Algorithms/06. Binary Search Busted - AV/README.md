@@ -155,6 +155,8 @@ class Solution {
 }
 ```
 # [**6. Number of Times a Sorted array is Rotated**](https://practice.geeksforgeeks.org/problems/rotation4723/1#)
+![BSRC](https://user-images.githubusercontent.com/71629248/131263220-94ca2379-b795-4450-be19-d35af48e42c2.png)
+
 ```java
 class Solution {
     int findKRotation(int arr[], int n) {
