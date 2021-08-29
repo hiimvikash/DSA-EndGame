@@ -110,3 +110,47 @@ class GFG
     
 }
 ```
+# [**5. COUNT NUMBER OF OCURRENCES(or frequency) of X IN A SORTED ARRAY:**](https://practice.geeksforgeeks.org/problems/number-of-occurrence2259/1)
+## [**Video Reference**](https://youtu.be/Ru_HhBFV3Xo)
+```java
+class Solution {
+    int count(int[] arr, int n, int x) {
+        // code here
+        int fo=binarySearchFL(arr,0,n,x,true);
+        int lo=binarySearchFL(arr,0,n,x,false);
+        if(fo==-1 || lo==-1) return 0;
+        if(fo==lo) return 1;
+        return lo-fo+1;
+    }
+    private static int binarySearchFL(int[] a, int fromIndex, int toIndex, int key, boolean isF) {
+        int start = fromIndex;
+        int end = toIndex - 1;
+        int ansF=-1; // this will store 1stOcurrence
+        int ansL=-1; // this will store LastOcurrence
+        
+        while (start <= end) {
+            int mid = start + (end-start)/2;
+            long midVal = a[mid];
+
+            if ((long)key > midVal)
+                start = mid + 1;
+            else if ((long)key < midVal)
+                end = mid - 1;
+            else{
+                if(isF){
+                ansF=mid;
+                end = mid - 1;// key found
+                }
+                else{
+                    ansL=mid;
+                    start = mid + 1;// key found
+                }
+            }
+        }
+        if(ansF!=-1 && isF) return ansF;
+        if(ansL!=-1 && !isF) return ansL;
+        return -1;  // if key not found 
+    }
+
+}
+```
