@@ -63,3 +63,49 @@ private static int AgnosticbinarySearch(int[] a, int fromIndex, int toIndex, int
         return -(start + 1);  // if key not found then -(thisVal+1) will give insertion point.
 }
 ```
+# [**4. First and last occurrences of x**](https://practice.geeksforgeeks.org/problems/first-and-last-occurrences-of-x3116/1)
+## [**Video Reference**](https://youtu.be/zr_AoTxzn0Y)
+```java
+class GFG
+{
+    ArrayList<Long> find(long arr[], int n, int x)
+    {
+        // code here
+        ArrayList<Long> ans=new ArrayList<>();
+        ans.add(binarySearchFL(arr,0,n,x,true));
+        ans.add(binarySearchFL(arr,0,n,x,false));
+        return ans;
+        
+    }
+    private static long binarySearchFL(long[] a, int fromIndex, int toIndex, int key, boolean isF) {
+        int start = fromIndex;
+        int end = toIndex - 1;
+        int ansF=-1; // this will store 1stOcurrence
+        int ansL=-1; // this will store LastOcurrence
+        
+        while (start <= end) {
+            int mid = start + (end-start)/2;
+            long midVal = a[mid];
+
+            if ((long)key > midVal)
+                start = mid + 1;
+            else if ((long)key < midVal)
+                end = mid - 1;
+            else{
+                if(isF){
+                ansF=mid;
+                end = mid - 1;// key found
+                }
+                else{
+                    ansL=mid;
+                    start = mid + 1;// key found
+                }
+            }
+        }
+        if(ansF!=-1 && isF) return (long)ansF;
+        if(ansL!=-1 && !isF) return (long)ansL;
+        return -1;  // if key not found 
+    }
+    
+}
+```
