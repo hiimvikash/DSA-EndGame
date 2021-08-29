@@ -1,7 +1,7 @@
 [**<h1 align="center">Binary Search - Aditya Verma</h1>**](https://youtube.com/playlist?list=PL_z_8CaSLPWeYfhtuKHj-9MpYb6XQJ_f2)
 
 # [**Binary Search Basic**](https://youtu.be/QNGL_t_o_QA)
-![BS1](https://user-images.githubusercontent.com/71629248/131240821-46e7eb36-bc6c-475e-8e15-ba475d40a3c7.png)
+![BS1](https://user-images.githubusercontent.com/71629248/131240871-ce657d2c-4880-4504-93ed-e577916ae295.png)
 ```java
 private static int binarySearch(int[] a, int fromIndex, int toIndex, int key) {
         int start = fromIndex;
