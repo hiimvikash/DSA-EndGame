@@ -328,3 +328,16 @@ class Solution {
     }
 }
 ```
+# [**12. Find position of an element in a Infinite sorted array**](https://youtu.be/FzvK5uuaki8)
+## We are Increasing our search space by 2 in each itteration.
+```java
+static int findPos(int arr[],int key){
+		int s = 0, e = 1;
+		while (key > arr[e]){
+		    int currSize = e-s+1;
+          	s=e+1;
+          	e= e + currSize*2;
+		}
+		return binarySearch(arr, s, e+1, key);
+}
+```
