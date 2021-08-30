@@ -400,3 +400,96 @@ static int minimumDiff(long arr[], int n, long x){
     }
 }
 ```
+# [**15. Peak Index in a Mountain Array**](https://leetcode.com/problems/peak-index-in-a-mountain-array/)
+## Approach 1 : 
+```java
+class Solution {
+    public int peakIndexInMountainArray(int[] arr) {
+        return peakIndexMountain(arr,0,arr.length);
+    }
+    int peakIndexMountain(int arr[], int fromIndex, int toIndex){
+        int start =0,end=toIndex-1;
+        while(start<=end){
+            int mid=start+(end-start)/2;
+            if(arr[mid]>arr[mid+1] && arr[mid]>arr[mid-1]) return mid;
+            else if(arr[mid]<arr[mid+1]) start=mid+1; // you are in increasing part
+            else if(arr[mid]<arr[mid-1]) end=mid-1; // you are in decreasing part
+        }
+        return -1;
+    }
+}
+```
+## Approach 2 : [Video Reference](https://youtu.be/W9QJ8HaRvJQ?t=7080)
+```java
+class Solution {
+    public int peakIndexInMountainArray(int[] arr) {
+        return peakIndexMountain(arr,0,arr.length);
+    }
+    int peakIndexMountain(int arr[], int fromIndex, int toIndex){
+        int start = 0;
+        int end = toIndex-1;
+        while(start < end) {
+            int mid = start + (end - start)/2;
+            if(arr[mid+1]>arr[mid]){
+                // we are in ascending part so there may be more bigE further
+                start=start+1;
+            }
+            else if(arr[mid]>arr[mid+1]){
+                // we are in descending part so our ans can be where we r standing only when there is no bigE further from behind
+                end=mid;
+            }
+        }
+        // in the end start == end point to the peak of the mountain
+        return start; // return start or end since both are same
+    
+    }
+}
+```
+# [**16. Find in Mountain Array**](https://leetcode.com/problems/find-in-mountain-array/)
+- First find the peak index in the mountain array.
+- Search in the first half (asc order) and if not found then second half.
+- Use Order Agnostic Binary Search to search the target.
+```java
+class Solution {
+    public int findInMountainArray(int target, MountainArray arr) {
+        int pki=peakOfMountainArray(arr);
+        int ans1=AgnosticbinarySearch(arr,0,pki+1,target);
+        if(ans1>-1) return ans1;
+        else return AgnosticbinarySearch(arr,pki+1,arr.length(),target);
+    }
+    
+    
+    private static int AgnosticbinarySearch(MountainArray a, int fromIndex, int toIndex, int key) {
+        int start = fromIndex;
+        int end = toIndex - 1;
+        boolean isAsc= a.get(start) < a.get(end);
+        while (start <= end) {
+            int mid = start + (end-start)/2;
+            int midVal = a.get(mid);
+
+            if (key > midVal)
+                if(isAsc) start = mid + 1; else end = mid - 1;
+            else if (key < midVal)
+                if(isAsc) end = mid - 1; else start = mid + 1;
+            else
+                return mid; // key found
+        }
+        return -1;  // if key not found then -(thisVal+1) will give insertion point.
+    }
+    
+    int peakOfMountainArray(MountainArray A) {
+		int start = 0;
+		int end = A.length() - 1;
+		while (start < end) {
+			int mid = start + (end - start) / 2;
+
+			if (A.get(mid) > A.get(mid + 1)) {
+				end = mid;
+			} else {
+				start = mid + 1;
+			}
+		}
+		return start;
+	}
+}
+```
