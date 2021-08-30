@@ -241,41 +241,9 @@ int BinarySearchModi(int arr[], int fromIndex, int toIndex, int key){
     return -1;
 }
 ```
-# [**9. Floor in a sorted array**](https://practice.geeksforgeeks.org/problems/floor-in-a-sorted-array-1587115620/1)
+# [**9. Floor in a sorted array**](https://practice.geeksforgeeks.org/problems/floor-in-a-sorted-array-1587115620/1#)
 ## [**Video Reference**](https://youtu.be/5cx0xerA8XY)
-## Approach 1 : Insertion Point modification
-```java
-class Solution{
-    
-    // Function to find floor of x
-    // arr: input array
-    // n is the size of array
-    static int findFloor(long arr[], int n, long x)
-    {
-        int ip=binarySearch(arr,0,n,x);
-        if(ip>=-1) return ip; // if found thats why >-1, =because no floor element found
-        return -(ip+2);
-    }
-    private static int binarySearch(long[] a, int fromIndex, int toIndex, long key) {
-        int start = fromIndex;
-        int end = toIndex - 1;
-
-        while (start <= end) {
-            int mid = start + (end-start)/2;
-            long midVal = a[mid];
-
-            if (key > midVal)
-                start = mid + 1;
-            else if (key < midVal)
-                end = mid - 1;
-            else
-                return mid; // key found
-        }
-        return -(start + 1);  // if key not found then -(thisVal+1) will give insertion point.
-    }
-}
-```
-## Approach 2 :-
+## Approach 1 :-
 ```java
 static int findFloor(long arr[], int n, long x)
     {
@@ -303,7 +271,59 @@ static int findFloor(long arr[], int n, long x)
     }
 }
 ```
+## Approach 2 :- **When Key is not found Start will point to Ceil and End will point floor in general** and start is also known as insertion point.
+```java
+static int findFloor(long arr[], int n, long x)
+    {
+        return binarySearch(arr,0,n,x);
+    }
+    private static int binarySearch(long[] a, int fromIndex, int toIndex, long key) {
+        int start = fromIndex;
+        int end = toIndex - 1;
+        while (start <= end) {
+            int mid = start + (end-start)/2;
+            long midVal = a[mid];
+
+            if (midVal<key){
+                start = mid + 1;
+            }
+                
+            else if (midVal>key)
+                end = mid - 1;
+            else
+                return mid; // key found
+        }
+        return end;  
+    }
+    
+}
+```
 # [**10.Ceil in a sorted array**](https://youtu.be/uiz0IxPCUeU)
+```java
+static int findCeil(long arr[], int n, long x)
+    {
+        return binarySearch(arr,0,n,x);
+    }
+    private static int binarySearch(long[] a, int fromIndex, int toIndex, long key) {
+        int start = fromIndex;
+        int end = toIndex - 1;
+        while (start <= end) {
+            int mid = start + (end-start)/2;
+            long midVal = a[mid];
+
+            if (midVal<key){
+                start = mid + 1;
+            }
+                
+            else if (midVal>key)
+                end = mid - 1;
+            else
+                return mid; // key found
+        }
+        return start;  
+    }
+}
+```
 # [**11. Next Alphabetical Element**](https://leetcode.com/problems/find-smallest-letter-greater-than-target/)
 ## [**Video Reference**](https://youtu.be/X45c37QMdX0)
 ```java
