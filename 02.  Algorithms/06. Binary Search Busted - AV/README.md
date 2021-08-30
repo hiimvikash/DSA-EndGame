@@ -277,12 +277,7 @@ class Solution{
 ```
 ## Approach 2 :-
 ```java
-class Solution{
-    
-    // Function to find floor of x
-    // arr: input array
-    // n is the size of array
-    static int findFloor(long arr[], int n, long x)
+static int findFloor(long arr[], int n, long x)
     {
         return binarySearch(arr,0,n,x);
     }
@@ -294,19 +289,18 @@ class Solution{
             int mid = start + (end-start)/2;
             long midVal = a[mid];
 
-            if (key > midVal){
-                ans=Math.max(ans,mid);
+            if (midVal<key){
+                ans=mid;
                 start = mid + 1;
             }
                 
-            else if (key < midVal)
+            else if (midVal>key)
                 end = mid - 1;
             else
                 return mid; // key found
         }
         return ans;  // if key not found then -(thisVal+1) will give insertion point.
     }
-    
 }
 ```
 # [**10.Ceil in a sorted array**](https://youtu.be/uiz0IxPCUeU)
