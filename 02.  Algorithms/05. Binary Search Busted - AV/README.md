@@ -372,3 +372,31 @@ static int findPos(int arr[],int key){
 		}
 		return binarySearchFL(arr,s,e+1,1,true);
 }
+```
+# [**14. Minimum Difference Element in a Sorted Array**](https://youtu.be/3RhGdmoF_ac)
+```java
+static int minimumDiff(long arr[], int n, long x){
+     return binarySearch(arr,0,n,x);
+}
+    private static int binarySearch(long[] a, int fromIndex, int toIndex, long key) {
+        int start = fromIndex;
+        int end = toIndex - 1;
+        while (start <= end) {
+            int mid = start + (end-start)/2;
+            long midVal = a[mid];
+
+            if (midVal<key){
+                start = mid + 1;
+            }
+                
+            else if (midVal>key)
+                end = mid - 1;
+            else
+                return 0; // key found
+        }
+        if(end<0) return Math.abs(arr[start]-key); // [2,4,6,8] key = 1 S-->0 E-->-1
+        if(start>toIndex-1) return Math.abs(arr[end]-key); // [2,4,6,8] key = 10 S-->N E-->N-1
+        return Math.min(Math.abs(arr[start]-key),Math.abs(arr[end]-key)); 
+    }
+}
+```
