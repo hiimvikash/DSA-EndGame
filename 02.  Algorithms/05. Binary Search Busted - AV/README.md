@@ -341,3 +341,14 @@ static int findPos(int arr[],int key){
 		return binarySearch(arr, s, e+1, key);
 }
 ```
+# [**13. Index of First 1 in a Binary Sorted Infinite Array**](https://youtu.be/FzvK5uuaki8)
+```java
+static int findPos(int arr[],int key){
+		int s = 0, e = 1;
+		while (key > arr[e]){
+		    int currSize = e-s+1;
+          	s=e+1;
+          	e= e + currSize*2;
+		}
+		return binarySearchFL(arr,s,e+1,1,true);
+}
