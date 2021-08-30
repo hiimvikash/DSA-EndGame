@@ -304,3 +304,27 @@ static int findFloor(long arr[], int n, long x)
 }
 ```
 # [**10.Ceil in a sorted array**](https://youtu.be/uiz0IxPCUeU)
+# [**11. Next Alphabetical Element**](https://leetcode.com/problems/find-smallest-letter-greater-than-target/)
+## [**Video Reference**](https://youtu.be/X45c37QMdX0)
+```java
+class Solution {
+    public char nextGreatestLetter(char[] arr, char target) {
+        return bs(arr,0,arr.length,target);
+    }
+    public char bs(char arr[], int fromIndex, int toIndex, char key){
+        int start=fromIndex; int end= toIndex-1;
+        char ans='.';
+        if(key>=arr[end]) return arr[start];
+        while(start<=end){
+            int mid= start + (end-start)/2;
+            if(arr[mid]>key){
+                ans=arr[mid];
+                end=mid-1;
+            }
+            else if(arr[mid]<=key)
+                start=(mid+1) % toIndex;             
+        }
+        return ans;
+    }
+}
+```
