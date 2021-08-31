@@ -531,3 +531,37 @@ class Solution
     
 };
 ```
+# [**18. Split Array Largest Sum**](https://leetcode.com/problems/split-array-largest-sum/)
+```java
+class Solution {
+    public int splitArray(int[] arr, int s) {
+        int n=arr.length;
+        if(s>n) return -1;
+        int low=0;int high=0; int ans=0;
+        for(int i=0;i<n;i++){ low=Math.max(arr[i],low); high+=arr[i]; }
+        
+        while(low<=high){
+            int mid=(low+high)/2;
+            if(isansValid(arr,mid,s)){
+                ans=mid;
+                high=mid-1;
+            }
+            else low=mid+1;
+        }
+        return ans;
+    }
+    boolean isansValid(int arr[], int barrier, int s){
+        int studentAlc=1,pages=0;
+        for(int i=0;i<arr.length;i++){
+            if(arr[i]>barrier) return false;
+            if(arr[i]+pages>barrier){
+               studentAlc+=1;
+                pages=0;
+                pages+=arr[i];
+            }
+            else pages+=arr[i];
+        }
+        if(studentAlc>s) return false; return true;
+    }
+}
+```
