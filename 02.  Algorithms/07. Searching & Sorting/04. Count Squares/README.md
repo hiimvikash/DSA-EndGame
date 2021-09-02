@@ -49,9 +49,51 @@ class Solution {
 
 - ## [1, 4, 9, 16, 25, 36, 49, 64, 81, 100....]
 - This is a Infinite sorted array of Squares.
-- Now I say sqrt(X) in above array = floor(X)+1
-![sqrtxBS](https://user-images.githubusercontent.com/71629248/131822907-f0a31980-50d1-4db3-9f34-e485a1c894e2.png)
+- Now I say sqrt(X) by using above array = floor(X)+1
 ![sqrtxBS](https://user-images.githubusercontent.com/71629248/131823358-9a68f47e-65e5-4cb0-858d-9fd614655be5.png)
+### **So By seeing thought1 we can say we will find out the sqrt(N-1) by this concept of floor(N-1)+1.** 
+- ## Now we see Array is Not Given How we will find floor from array ?
+    1. value in any Index i = Math.pow(i+1,2) agree ?
+    2. we will use the concept of infinite array to find range index of start and end.
+```java
+class Solution {
+    static int countSquares(int N) {
+        // code here
+        // return (int)Math.sqrt(N-1);
+        // where does this N-1 lies find this out using Infinite array concept
+        int key=N-1;
+        int start = 0, end = 1;
+        while(key>Math.pow(end+1,2)){
+            int size=end-start+1;
+            size=size*2;
+            start=end+1;
+            end=end+size;
+        }
+        // Now my start and end is ready and my key lies between them
+        return findFloor(start,end+1,key)+1;
+    }
+    private static int findFloor(int fromIndex, int toIndex, int key) {
+        int start = fromIndex;
+        int end = toIndex - 1;
+        while (start <= end) {
+            int mid = start + (end-start)/2;
+            int midVal = (int)Math.pow(mid+1,2);
+
+            if (midVal<key){
+                start = mid + 1;
+            }
+                
+            else if (midVal>key)
+                end = mid - 1;
+            else
+                return mid; // key found
+        }
+        return end;  
+    }
+    
+}
+```    
+
 
 
 
