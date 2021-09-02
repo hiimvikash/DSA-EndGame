@@ -95,6 +95,19 @@ class Solution {
 ```    
 # [**Similar Q in Leetcode : Sqrt(X)**](https://leetcode.com/problems/sqrtx/)
 ![bssqrt](https://user-images.githubusercontent.com/71629248/131841933-66a63127-c80d-4e6e-be89-be3f062f5745.png)
-
+```java
+class Solution {
+    public int mySqrt(int N) {
+        if(N==1) return 1;
+        int low = 1, high = N/2; int ans = 0;
+        while(low<=high){
+            int mid = low + (high-low)/2;
+            if(mid <= N/mid) {ans = mid; low = mid+1;} // same as mid*mid <= N
+            else high = mid-1;
+        }
+        return ans;
+    }
+}
+```
 
 
