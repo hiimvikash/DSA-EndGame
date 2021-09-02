@@ -32,7 +32,7 @@ Explanation:
 1, 4, 9, 16 this all are the perfect square less than 17
 ```
 # Thought process :-
-## 1. After seeing all the 3 example I say output is : Math.sqrt(N-1)
+## 1. After seeing all the 3 example I say output is : ```Math.sqrt(N-1)```
 ```java
 class Solution {
     static int countSquares(int N) {
@@ -49,7 +49,7 @@ class Solution {
 
 - ## [1, 4, 9, 16, 25, 36, 49, 64, 81, 100....]
 - This is a Infinite sorted array of Squares.
-- Now I say sqrt(X) by using above array = floor(X)+1
+- Now I say ```sqrt(X)``` by using above array = ```floor(X)+1```
 ![sqrtxBS](https://user-images.githubusercontent.com/71629248/131823358-9a68f47e-65e5-4cb0-858d-9fd614655be5.png)
 ### **So By seeing thought1 we can say we will find out the sqrt(N-1) by this concept of floor(N-1)+1.** 
 - ## Now we see Array is Not Given How we will find floor from array ?
