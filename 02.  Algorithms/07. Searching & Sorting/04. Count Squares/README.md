@@ -94,6 +94,7 @@ class Solution {
 }
 ```    
 # [**Similar Q in Leetcode : Sqrt(X)**](https://leetcode.com/problems/sqrtx/)
+![bssqrt](https://user-images.githubusercontent.com/71629248/131841933-66a63127-c80d-4e6e-be89-be3f062f5745.png)
 
 
 
