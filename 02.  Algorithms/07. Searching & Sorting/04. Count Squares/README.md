@@ -51,6 +51,7 @@ class Solution {
 - This is a Infinite sorted array of Squares.
 - Now I say sqrt(X) in above array = floor(X)+1
 ![sqrtxBS](https://user-images.githubusercontent.com/71629248/131822907-f0a31980-50d1-4db3-9f34-e485a1c894e2.png)
+![sqrtxBS](https://user-images.githubusercontent.com/71629248/131823358-9a68f47e-65e5-4cb0-858d-9fd614655be5.png)
 
 
 
