@@ -51,9 +51,9 @@ class Solution {
 - This is a Infinite sorted array of Squares.
 - Now I say ```sqrt(X)``` by using above array = ```floor(X)+1```
 ![sqrtxBS](https://user-images.githubusercontent.com/71629248/131823358-9a68f47e-65e5-4cb0-858d-9fd614655be5.png)
-### **So By seeing thought1 we can say we will find out the sqrt(N-1) by this concept of floor(N-1)+1.** 
+### **So By seeing thought1 we can say we will find out the ```sqrt(N-1)``` by this concept of ```floor(N-1)+1```.** 
 - ## Now we see Array is Not Given How we will find floor from array ?
-    1. value in any Index i = Math.pow(i+1,2) agree ?
+    1. value in any Index ```i = Math.pow(i+1,2)``` agree ?
     2. we will use the concept of infinite sorted array to find rangeIndex of our key between start and end.
 ```java
 class Solution {
