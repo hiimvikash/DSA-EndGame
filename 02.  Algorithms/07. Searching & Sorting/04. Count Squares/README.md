@@ -93,7 +93,7 @@ class Solution {
     
 }
 ```    
-
+# [**Similar Q in Leetcode : Sqrt(X)**](https://leetcode.com/problems/sqrtx/)
 
 
 
