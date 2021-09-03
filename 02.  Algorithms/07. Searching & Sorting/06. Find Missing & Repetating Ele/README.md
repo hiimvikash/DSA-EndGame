@@ -17,7 +17,7 @@
 2. Traverse the input array arr[], and do following for each arr[i] 
 3. if(temp[arr[i]] == 0) temp[arr[i]] = 1;
 4. if(temp[arr[i]] == 1) output "arr[i]" //repeating
-5. Traverse temp[] and output the array element having value as 0 (This is the missing element)
+5. Traverse temp[] 1 to N and output the array element having value as 0 (This is the missing element)
 
 - **Time Complexity: O(n) Auxiliary Space: O(n)**
 
