@@ -9,8 +9,7 @@
 2. if present then it is a repetating element
 3. Now again traverse from 1 to N in array if element is not present then that is a missing element.
 - **Time Complexity: O(n) SC - O(n)**
-## **Method 3 (Use count array)**
-## **Approach:**
+## **Method 3 (Use count array) Approach:**
 
 
 1. Create a temp array temp[] of size n+1 with all initial values as 0.
