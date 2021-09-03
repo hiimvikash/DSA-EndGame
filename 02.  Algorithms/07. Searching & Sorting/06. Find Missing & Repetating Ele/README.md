@@ -22,6 +22,9 @@
 - **Time Complexity: O(n) Auxiliary Space: O(n)**
 
 # **MAIN THOUGHT PROCESS :-**
+## Things to Notice :-
+- element inside array will range from 1 to N.
+- every element can be used as index after doing minus 1.
 ## **Method Best - (Use elements as Index and mark the visited places)**
 
 1. Traverse the Input array and consider ```index = (int)Math.abs(arr[i]) ```
