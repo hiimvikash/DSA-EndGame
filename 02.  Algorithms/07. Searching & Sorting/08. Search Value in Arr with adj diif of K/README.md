@@ -25,4 +25,8 @@ static int search(int arr[], int n,
             i = i + Math.max(1, Math.abs(arr[i]
                                       - x) / k);
         }
+        System.out.println("number is " +
+                                "not present!");
+        return -1;
+    }
 ```
