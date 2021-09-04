@@ -3,7 +3,8 @@
 
 # Method 1 : **Use Brute-force i.e., 2 for loops TC - O(N<sup>2</sup>)**
 
-```java
+```javat
+count=0
 for i=0 to i=n-1
     for j=0 to j=n-1
         if(arr[i]==arr[j]) count++;
