@@ -49,3 +49,40 @@ class Solution {
 }
 ```
 ## **[Video Reference](https://youtu.be/4ggF3tXIAp0)**
+```java
+class Solution {
+    public List<List<Integer>> fourSum(int[] arr, int target) {
+        int n=arr.length;
+        List<List<Integer>> ans=new ArrayList<>();
+        if(n<4) return ans; // when quadraples is imposible
+        Arrays.sort(arr);
+        for(int i=0;i<n-3;i++){
+            if(i==0 || arr[i]!=arr[i-1]){
+                for(int j=i+1;j<n-2;j++){
+                    int s=j+1,e=n-1,x=target-arr[j]-arr[i];
+                    if(j==i+1 || arr[j]!=arr[j-1]){
+                        while(s<e){
+                            int innersum=arr[s]+arr[e];
+                            if(innersum==x){
+                                ans.add(Arrays.asList(arr[i],arr[j],arr[s],arr[e]));
+                                while(s<e && arr[s]==arr[s+1]) s++;
+                                while(s<e && arr[e]==arr[e-1]) e--;
+                                s++; e--;
+                            }
+                            else if(innersum > x){
+                                while(s<e && arr[e]==arr[e-1]) e--;
+                                e--;
+                            }
+                            else if(innersum < x){
+                                while(s<e && arr[s]==arr[s+1]) s++;
+                                s++;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return ans;
+    }
+}
+```
