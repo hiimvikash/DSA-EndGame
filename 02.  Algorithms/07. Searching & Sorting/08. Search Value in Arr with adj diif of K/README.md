@@ -1,5 +1,5 @@
-# [**Majority Element**](https://practice.geeksforgeeks.org/problems/majority-element-1587115620/1#)
-## Given an array A of N elements. Find the majority element in the array. A majority element in an array A of size N is an element that appears more than N/2 times in the array.
+# [**Searching in an array where adjacent differ by at most k**](https://www.geeksforgeeks.org/searching-array-adjacent-differ-k/)
+## A step array is an array of integers where each element has a difference of at most k with its neighbor. Given a key x, we need to find the index value of x if multiple-element exist to return the first occurrence of the key.
 ![atmostKadjDiff](https://user-images.githubusercontent.com/71629248/132084415-ac81cffd-23e9-416c-8d9f-a10181d4574d.png)
 
 ```java
