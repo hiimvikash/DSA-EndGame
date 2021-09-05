@@ -56,32 +56,27 @@ class Solution {
         if(n2<n1) return findMedianSortedArrays(arr2,arr1); // [1,2,3,5,6] [4]
         
         boolean isEven=(n1+n2)%2==0;
-        int mid=(n1+n2+1)/2;
+        int mid=(n1+n2+1)/2; // no. of element should be divided into
         int low=0;
         int high=n1;
         int partition1=-1, partition2=-1, l1=0,l2=0,r1=0,r2=0; 
         while(low<=high){
             partition1=(low+high)/2;
             partition2=mid-partition1;
-                        
-            if(partition1==0) l1=Integer.MIN_VALUE;
-            else l1=arr1[partition1-1];
+           
+            l1 = (partition1==0) ? Integer.MIN_VALUE : arr1[partition1-1];
+            l2 = (partition2==0) ? Integer.MIN_VALUE : arr2[partition2-1];
             
-            if(partition2==0) l2=Integer.MIN_VALUE;
-            else l2=arr2[partition2-1];
-                        
-            if(partition1==n1) r1=Integer.MAX_VALUE;
-            else r1=arr1[partition1];
-            
-            if(partition2==n2) r2=Integer.MAX_VALUE;
-            else r2=arr2[partition2];
+            r1 = (partition1==n1) ? Integer.MAX_VALUE : arr1[partition1];
+            r2 = (partition2==n2) ? Integer.MAX_VALUE : arr2[partition2];
             
             if(l1<=r2 && l2<=r1) break;
-            else if(l1>r2) high=partition1-1; // left half
-            else if(l2>r1) low=partition1+1; // right half
+            else if(l1>r2) high=partition1-1; //floor
+            else if(l2>r1) low=partition1+1; //ceil
         }
         if(isEven) return (Math.max(l1,l2)+Math.min(r1,r2))/2.0;
         return Math.max(l2,l1);
+        
     }
 }
 ```
