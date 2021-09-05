@@ -13,19 +13,16 @@ You don't need to read input or print anything. Complete the function findSubarr
 ```java
 class Solution{
     //Function to count subarrays with sum equal to 0.
-    public static int findSubarray(long[] arr ,int n)
+    public static long findSubarray(long[] arr ,int n) 
     {
-        int count =0;
-        long sum=0;
-        HashMap<Long,Integer> sf=new HashMap<>(); // <sum,frequency>
-        for(int i=0;i<n;i++){
-            sum+=arr[i];
-            if(sf.containsKey(sum)){
-                count+=sf.get(sum);
-                sf.put(sum,sf.get(sum)+1);
-            }
-            else sf.put(sum,1);
-            if(sum==0) count++;
+        //Your code here
+        HashMap<Long,Integer> hm=new HashMap<>();
+        long sum=0,count=0;
+        hm.put(sum,1);
+        for(long ele: arr){
+            sum+=ele;
+            if(hm.containsKey(sum)) count+=hm.get(sum);
+            hm.put(sum,hm.getOrDefault(sum,0)+1);
         }
         return count;
     }
