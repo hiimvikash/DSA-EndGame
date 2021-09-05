@@ -13,3 +13,62 @@ class Solution {
     }
 }
 ```
+# [**Merge Without Extra Space GFG**](https://practice.geeksforgeeks.org/problems/merge-two-sorted-arrays5135/1#)
+## Given two sorted arrays arr1[] of size N and arr2[] of size M. Each array is sorted in non-decreasing order. Merge the two arrays into one sorted array in non-decreasing order without using any extra space. Modify aar1 & arr2 such that when arr2 is kept behind arr1 then its merged.
+## Injection Method.
+```java
+class Solution {
+
+    public void merge(int arr1[], int arr2[], int n1, int n2) {
+        // code here
+        // Made the largest element possible from both array
+            int inf=-1;
+            for(int ele : arr1) inf=Math.max(ele,inf);
+            for(int ele : arr2) inf=Math.max(ele,inf);
+            inf=inf+1;
+        int i=0,j=0,k=0;
+        while(i<n1 && j<n2){
+            // extract original element to compare
+            int e1=arr1[i]%inf;
+            int e2=arr2[j]%inf;
+            if(e1<=e2){
+                if(k<n1)
+                    arr1[k]+=(e1*inf);
+                else
+                    arr2[k-n1]+=(e1*inf);
+                    i++;
+            }
+            else{
+                if(k<n1)
+                    arr1[k]+=(e2*inf);
+                else
+                    arr2[k-n1]+=(e2*inf);
+                j++;  
+            }
+            k++;
+        }
+        // when elements left in arr1 [3,4,5] [1,2]
+        while(i<n1){
+            int e1=arr1[i]%inf;
+            if(k<n1)
+                arr1[k]+=(e1*inf);
+            else
+                arr2[k-n1]+=(e1*inf);
+            k++;i++;
+        }
+        // when elements left in arr2, this means all elements arr1 is placed correctly
+        while(j<n2){ // [1,2,4,5] [3,9,10]
+            int e2=arr2[j]%inf;
+            arr2[k-n1]+=(e2*inf);
+            k++;j++;
+        }
+        // till here my injection are over. now only need to modify arr1 & arr2 with injected element
+        for(i=0;i<n1;i++){
+            arr1[i]/=inf;
+        }
+        for(i=0;i<n2;i++){
+            arr2[i]/=inf;
+        }
+    }
+}
+```
