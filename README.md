@@ -61,24 +61,24 @@
 	
 # **Some Common FAQs <img src="https://media.giphy.com/media/l4FGwKLqbXxRtBzMc/giphy.gif?cid=ecf05e47zd17l7kzf15vqwyd0buahv05nz098szt4rh4tc75&rid=giphy.gif&ct=s" width="50">**
 ## 1. **How to make maximum Output from DSA-EndGame🔥 ?**
-	Follow the Walk strictly and fill up the holes with "Prerequisites" below, then you will feel the smooth knowledge geeting into and expanding your 🧠.
+### Follow the Walk strictly and fill up the holes with "Prerequisites" below, then you will feel the smooth knowledge geeting into and expanding your 🧠.
 ## 2. **Why Have you not Started Data Structures with Arrays ?**
-	Array is a topic which has unlimited questions and I believe as a beginner if you start with array then geeting out of it is tough so I don't want you all to get stuck in array only till end and leave other data structures.
-	I also believe that many of you are very well familiar with concept of array traversing, modifying and etc..so here we will solve only questions of arrays after completing full data structures.
-	If you have no idea of Arrays then just understand few concept like :- Traversing in array, modifying array, reversing array and some basic questions of array from Hackerrank
+### Array is a topic which has unlimited questions and I believe as a beginner if you start with array then geeting out of it is tough so I don't want you all to get stuck in array only till end and leave other data structures.
+### I also believe that many of you are very well familiar with concept of array traversing, modifying and etc..so here we will solve only questions of arrays after completing full data structures.
+### If you have no idea of Arrays then just understand few concept like :- Traversing in array, modifying array, reversing array and some basic questions of array from Hackerrank
 ## 3. **How to be consistent while completing DSA-EndGame ?**
-	Make a group of not more than 3 friends who are equally passionate like you to master DSA and start peer programming by making a single google sheet shared between your friends and update your daily work in sheet due to which you all will be able to see each others progress daily.
+### Make a group of not more than 3 friends who are equally passionate like you to master DSA and start peer programming by making a single google sheet shared between your friends and update your daily work in sheet due to which you all will be able to see each others progress daily.
 ## 4. **Why to prefer this repository over some paid courses which claim to be complete DSA course ?**
-	Except pepcoding resources I haven't found any course which would satisfy my heart, In every courses either there will be some topic missing or topic done with few questions only.
+### Except pepcoding resources I haven't found any course which would satisfy my heart, In every courses either there will be some topic missing or topic done with few questions only.
 
-	So I tell you the best platform is Youtube.
-	Now the problem arises with Youtube is best videos in each topics are scattered in all over different channels like DP is best explained by AdityaVerma, Stack & Queues are best explained by SimpleSnipets, Question solutions are best explained by Striver Bhaiya simillarly many topic have their own best channels.
+### So I tell you the best platform is Youtube.
+### Now the problem arises with Youtube is best videos in each topics are scattered in all over different channels like DP is best explained by AdityaVerma, Stack & Queues are best explained by SimpleSnipets, Question solutions are best explained by Striver Bhaiya simillarly many topic have their own best channels.
 
-	So all you need is Guided path and Youtube videos link attached with each Questions and topics.
+### **So all you need is Guided path and Youtube videos link attached with each Questions and topics.**
 
-	and your above need is fulfilled has been tried to be fulfilled with DSA-EndGame🔥.
+### and your above need is fulfilled, has been tried to be fulfilled with DSA-EndGame🔥.
 
-	Thankyou.
+### **Thankyou.**
 
 		 
 	 
