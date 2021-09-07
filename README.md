@@ -8,7 +8,7 @@
 
 ### **Algorithms is any approach you use to perform operations on data (like searching, sorting, traversing, ..Etc.).**
 
-# **Let's Walk through this repo :- <img src="https://media.giphy.com/media/rtRflhLVzbNWU/giphy.gif?cid=ecf05e47uqet6kjnigwlsuvq4io78fwgc3pqx6ir5h51gu5a&rid=giphy.gif&ct=s" width="50">**
+# **Let's Walk through this repository :- <img src="https://media.giphy.com/media/rtRflhLVzbNWU/giphy.gif?cid=ecf05e47uqet6kjnigwlsuvq4io78fwgc3pqx6ir5h51gu5a&rid=giphy.gif&ct=s" width="50">**
 1. ## [**Data Structures🧐**](./01.%20DataStructures)
 	 1. ### [**LinkedList**](./01.%20DataStructures/01.%20LinkList)
 	 	1. #### [**Singly LinkedList**](./01.%20DataStructures/01.%20LinkList/1.%20Singly-LinkList)
