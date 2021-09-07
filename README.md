@@ -74,7 +74,7 @@
 	So I tell you the best platform is Youtube.
 	Now the problem arises with Youtube is best videos in each topics are scattered in all over different channels like DP is best explained by AdityaVerma, Stack & Queues are best explained by SimpleSnipets, Question solutions are best explained by Striver Bhaiya simillarly many topic have their own best channels.
 
-	So all you need is Guided path and Youtube videos link with each Questions and topics.
+	So all you need is Guided path and Youtube videos link attached with each Questions and topics.
 
 	and your above need is fulfilled has been tried to be fulfilled with DSA-EndGame🔥.
 
