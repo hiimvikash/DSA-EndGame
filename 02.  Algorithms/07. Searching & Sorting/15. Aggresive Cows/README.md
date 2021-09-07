@@ -1,7 +1,7 @@
 # [**Agrresive Cows**](https://www.spoj.com/problems/AGGRCOW/)
 
 ## BS 
-![AggresiveCows](https://user-images.githubusercontent.com/71629248/132365572-5c7b7594-6255-45df-b3f9-7dea7c5d8dfb.png)
+![AggresiveCows](https://user-images.githubusercontent.com/71629248/132367841-1dd42999-7e69-4381-a634-265c3ebfec83.png)
 
 ## [**Video Reference🔥**](https://youtu.be/wSOfYesTBRk)
 ```java
