@@ -1,7 +1,8 @@
 # [**1235. Maximum Profit in Job Scheduling**](https://leetcode.com/problems/maximum-profit-in-job-scheduling/)
 
 ## Linear Search + DP 
-## [**Video Reference**](https://youtu.be/Iw8XtK1HCCw)
+## [**Video Reference Part 1**](https://youtu.be/CgLpOeRA6Co)
+## [**Video Reference Part 2**](https://youtu.be/Iw8XtK1HCCw)
 ```java
 class Solution {
     public int jobScheduling(int[] start, int[] end, int[] profit) {
