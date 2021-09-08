@@ -1,6 +1,6 @@
 # [**1235. Maximum Profit in Job Scheduling**](https://leetcode.com/problems/maximum-profit-in-job-scheduling/)
 
-## Linear Search + DP 
+## Linear Search + DP O(N<sup>2</sup>)
 ## [**Video Reference Part 1**](https://youtu.be/CgLpOeRA6Co)
 ## [**Video Reference Part 2**](https://youtu.be/Iw8XtK1HCCw)
 ```java
@@ -35,7 +35,7 @@ class Solution {
     }
 }
 ```
-## Binary Search + DP 
+## Binary Search + DP O(N logN)
 ```java
 class Solution {
     public int jobScheduling(int[] start, int[] end, int[] profit) {
