@@ -1,6 +1,6 @@
 # [**Allocate minimum number of pages**](https://practice.geeksforgeeks.org/problems/allocate-minimum-number-of-pages0937/1#)
 
-## BS 
+## BS :- Math.min(max1,max2,max3...)
 ## [**Video Reference🔥**](https://youtu.be/gYmWHvRHu-s)
 ```java
 class Solution 
@@ -30,12 +30,11 @@ class Solution
             if(arr[i]>barrier) return false;
             if(arr[i]+pages > barrier){
                studentAlc+=1;
-               pages=0;
-               pages+=arr[i];
+               pages=arr[i];
             }
             else pages+=arr[i];
         }
-        if(studentAlc>s) return false; else return true;
+        return studentAlc<=s
     }
     
 };
