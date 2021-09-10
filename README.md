@@ -183,7 +183,7 @@ public class Hi {
     - ## **When Divedend < Divisor then answer is dividend.**
     - ## **When Divedend > Divisor then answer lie in between [0 to divisor-1].**
 
-16. **Store 2 numbers in a number. true in +ve scenerio**
+16. **Store 2 numbers in a number. (true only in +ve scenerio)**
     - To Inject B in A we ADD(+) **B\*INF** in A and store it in A, where INF is any number greater than A and B.
     - to extract old number i.e., A from modified A we do (A % INF).
     - to extract new number(Injected number) i.e., B from modified A we do (A / INF).
