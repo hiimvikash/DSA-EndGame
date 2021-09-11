@@ -182,7 +182,7 @@ class Solution {
 
 ## [**Video Reference**](https://youtu.be/hVl2b3bLzBw)
 
-# **Approach 5 :** Injection Method - TC = O(N+M) SC = O(1)
+# **Approach 5 :** Injection Method - TC = O(N+M) SC = O(1) only works with +ve elements
 
 DRY RUN :- arr1[] = {1, 4, 7, 8, 10} arr2[] = {2, 3, 9}
 
