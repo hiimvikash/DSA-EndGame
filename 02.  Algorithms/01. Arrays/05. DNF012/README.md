@@ -15,35 +15,25 @@
 
 DNF is usefull when you want to segregate less than three, fixed types of numbers. For e.g. segregate 0 1, segregate -ve +ve, segregate odd even and etc..
 
-- ## Initialise low=0; mid=0; high=n-1;
-- ## Now DNF algo states that
-  - **[0...low-1] will contain 0**
-  - **[high+1...n] will contain 2**
-- ## Seeing the above condition we build following algo to sort
-  - **mid will traverse throughout the array till mid<=high.**
-  - **case 0: arr[mid]=0**
-    - **swap(mid,low); low++; mid++;**
-  - **case 1: arr[mid]=1**
-    - **mid++;**
-  - **case 2: arr[mid]=2**
-    - **swap(mid,high); high--;**
+![dnf](https://user-images.githubusercontent.com/71629248/132944226-0bb87831-1de9-4936-9a04-ac13bc8e4bad.png)
+
 
 ```java
 public static void main(String[] args) {
 		int arr[]={0, 2, 1, 2, 0,1,2,0,2};
 		int n=arr.length;
 
-		 int low=0; int mid=0; int high=n-1;
-	      while(mid<=high){
-	          switch(arr[mid]){
-	              case 0: swap(arr,low,mid);
-	              		  mid++;
-	              		  low++;
+		 int i=0; int curr=0; int k=n-1;
+	      while(curr<=k){
+	          switch(arr[curr]){
+	              case 0: swap(arr,i,curr);
+	              		  curr++;
+	              		  i++;
 	              break;
-	              case 1: mid++;
+	              case 1: curr++;
 	              break;
-	              case 2: swap(arr,high,mid);
-	              		  high--;
+	              case 2: swap(arr,k,curr);
+	              		  k--;
 	              break;
 	          }
 	      }
