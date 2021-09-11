@@ -15,7 +15,7 @@
 
 DNF is usefull when you want to segregate less than three, fixed types of numbers. For e.g. segregate 0 1, segregate -ve +ve, segregate odd even and etc..
 
-![dnf](https://user-images.githubusercontent.com/71629248/132944226-0bb87831-1de9-4936-9a04-ac13bc8e4bad.png)
+![dnf](https://user-images.githubusercontent.com/71629248/132945345-10b6a765-e043-4255-a997-e472ac1223bb.png)
 
 
 ```java
