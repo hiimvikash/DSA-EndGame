@@ -8,7 +8,7 @@ class Solution{
     public void threeWayPartition(int arr[], int a, int b)
     {   int n=arr.length;
         /*    0 to i-1  <a
-              i to curr atob
+              i to curr-1 atob
               curr to k unk
               k+1 to e  >b
         */
