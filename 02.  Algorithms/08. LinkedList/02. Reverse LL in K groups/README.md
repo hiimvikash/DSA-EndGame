@@ -1,4 +1,10 @@
 # [**Step 1 : Reverse LinkedList in K group IB**](https://leetcode.com/problems/reverse-linked-list/)
+# Thought Process :-
+- Reverse each group
+- Then think of joining previous reversed group with current reversed group.
+    - Maintain FirstCurr* to point firstCurr of each group and after reversing it become lastCurr*
+    - firstCurr* will point to new group 1st element(before reversing)
+    - lastCurr will point to prev of next reversed group.
 ## Itterative
 ```java
 /**
