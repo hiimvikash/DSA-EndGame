@@ -50,8 +50,8 @@
 	1. ### [**Recursions 25+ Questions Banged👅(Very Important before starting with Strings)**](./02.%20%20Algorithms/00.%20Recursions)
 	1. ### [**Dynamic Programming Busted😈(Very Important before starting with Strings)**](./02.%20%20Algorithms/06.%20DP/DP%20by%20Aditya%20Verma)
 	1. ### [**Now Strings (40+ Questions)**](./02.%20%20Algorithms/03.%20Strings)
+	1. ### [**LinkedList(40+ Questions)**](02.%20%20Algorithms/08.%20LinkedList)
 	1. ### **Bit Manipulations(10+ Questions)**
-	1. ### **LinkedList(40+ Questions)**
 	1. ### **Stack & Queue(40+ Questions)**
 	1. ### **Heap(20 Questions)**
 	1. ### **Trees(50+ Questions)**
