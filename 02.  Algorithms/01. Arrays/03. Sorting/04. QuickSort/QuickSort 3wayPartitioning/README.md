@@ -3,6 +3,8 @@
 Let’s say we have an array A = [4, 4, 4, 4, 4, 4, 4] that has all equal elements.
 
 On partitioning this array with the single-pivot partitioning scheme, we'll get two partitions. The first partition will be empty, while the second partition will have N-1 elements. Further, each subsequent invocation of the partition procedure will reduce the input size by only one. Let's see how it works:
+![quicksortworstcase](https://user-images.githubusercontent.com/71629248/132946497-f5eefcb5-b7e2-479d-a77e-9343ad19a872.png)
+
 ```java
 public static void main (String[] args) {
 		int arr[]= {8,3,1,3,4,767,678,-910};
