@@ -1,4 +1,4 @@
-# [**Merge Sort**](https://practice.geeksforgeeks.org/problems/sort-a-linked-list/1#)
+# [**Merge Sort for LL**](https://practice.geeksforgeeks.org/problems/sort-a-linked-list/1#)
 
 
 ```java
@@ -30,27 +30,28 @@ class Solution
         return mergeTwoLists(left,right);
     }
     public static Node mergeTwoLists(Node l1, Node l2) {
-        if(l1==null) return l2;
-        if(l2==null) return l1;
-        if(l2.data<l1.data){
-            Node temp=l1;
-            l1=l2;
-            l2=temp;
-        }
-        Node res=l1;
-        Node prev=null;
+        Node dummy=new Node(-1);
+        Node temp=dummy;
         while(l1!=null && l2!=null){
-            while(l1!=null && l1.data<=l2.data){
-                prev=l1;
+            int val1=l1.data;
+            int val2=l2.data;
+            if(val1<=val2){
+                temp.next=l1;
                 l1=l1.next;
             }
-            prev.next=l2;
-            //swap
-            Node temp=l1;
-            l1=l2;
-            l2=temp;
+            else if(val2<val1){
+                temp.next=l2;
+                l2=l2.next;
+            }
+            temp=temp.next;
         }
-        return res;
+        if(l1!=null){
+            temp.next=l1;
+        }
+        if(l2!=null){
+            temp.next=l2;
+        }
+        return dummy.next;
     }
     static Node getMiddle(Node head){
         if(head==null || head.next==null) return head;

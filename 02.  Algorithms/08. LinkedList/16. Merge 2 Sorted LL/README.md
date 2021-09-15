@@ -19,42 +19,21 @@ class Solution {
         while(l1!=null && l2!=null){
             int val1=l1.val;
             int val2=l2.val;
-            if(val1<val2){
-                ListNode nn=new ListNode(val1);
-                temp.next=nn;
-                temp=temp.next;
+            if(val1<=val2){
+                temp.next=l1;
                 l1=l1.next;
             }
             else if(val2<val1){
-                ListNode nn=new ListNode(val2);
-                temp.next=nn;
-                temp=temp.next;
+                temp.next=l2;
                 l2=l2.next;
             }
-            else{
-                ListNode nn=new ListNode(val1);
-                temp.next=nn;
-                temp=temp.next;
-                ListNode nn1=new ListNode(val1);
-                temp.next=nn1;
-                temp=temp.next;
-                l1=l1.next;
-                l2=l2.next;
-            }
-        }
-        while(l1!=null){
-            int val1=l1.val;
-            ListNode nn=new ListNode(val1);
-            temp.next=nn;
             temp=temp.next;
-            l1=l1.next;
         }
-        while(l2!=null){
-            int val2=l2.val;
-            ListNode nn=new ListNode(val2);
-            temp.next=nn;
-            temp=temp.next;
-            l2=l2.next;
+        if(l1!=null){
+            temp.next=l1;
+        }
+        if(l2!=null){
+            temp.next=l2;
         }
         return dummy.next;
     }
