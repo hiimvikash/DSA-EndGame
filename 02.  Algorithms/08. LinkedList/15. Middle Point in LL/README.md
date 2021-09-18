@@ -1,5 +1,5 @@
 # [**Middle Point in LL**](https://leetcode.com/problems/middle-of-the-linked-list/)
-# When you want 2nd node as middle in 2 middle's.
+# When you want 2nd node as middle in 2 middle's(in even case).
 ```java
 /**
  * Definition for singly-linked list.
@@ -25,7 +25,7 @@ class Solution {
     }
 }
 ```
-# When you want 1st node as middle in 2 middle's then f.next.next==null.
+# When you want 1st node as middle in 2 middle's(in even case) then f.next.next==null.
 ```java
 /**
  * Definition for singly-linked list.
