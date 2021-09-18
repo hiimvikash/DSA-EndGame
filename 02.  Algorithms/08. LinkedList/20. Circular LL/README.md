@@ -28,4 +28,4 @@ class GfG
     }
 }
 ```
-
+# [**Deletion from circular LL**](https://www.geeksforgeeks.org/deletion-circular-linked-list/)
