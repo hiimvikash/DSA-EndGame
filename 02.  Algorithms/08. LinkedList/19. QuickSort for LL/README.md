@@ -88,3 +88,8 @@ class GfG
     }
 }
 ```
+
+# [**1. Tail Recursion**](https://youtu.be/lxHrJbU4jEQ)
+# [**2. Why QuickSortForArray ?**](https://youtu.be/xPw35bOAtME)
+# [**3. Why MergeSort for LL gfg article**](https://www.geeksforgeeks.org/why-quick-sort-preferred-for-arrays-and-merge-sort-for-linked-lists/)
+
