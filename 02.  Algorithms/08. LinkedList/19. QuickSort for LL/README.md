@@ -1,4 +1,5 @@
 # [**Quick Sort for LL**](https://practice.geeksforgeeks.org/problems/quick-sort-on-linked-list/1#)
+- [Video Reference](https://youtu.be/DZXb4UGl-v4)
 ```java
 /*node class of the linked list
 class Node
