@@ -86,7 +86,7 @@
 # **Prerequisites :-**
 
 0. **PROGRAMMING LANGUAGE.**
-	- ![](https://user-images.githubusercontent.com/64855541/133890198-fed21f87-434b-45e1-b991-c015de1a849a.mp4)
+	- https://user-images.githubusercontent.com/64855541/133890198-fed21f87-434b-45e1-b991-c015de1a849a.mp4
 2. [**CLASS AND OBJECTS.**](https://youtu.be/a199KZGMNxk?t=244)
 3. [**CONSTRUCTOR.**](https://youtu.be/a199KZGMNxk?t=981)
 4. [**this KEYWORD.**](https://youtu.be/a199KZGMNxk?t=1424)
