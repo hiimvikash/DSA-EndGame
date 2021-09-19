@@ -33,3 +33,5 @@ public static Node reverseDLL(Node  head)
     return pre;
 }
 ```
+
+# [**Find Pairs with given sum in sorted doubly LL**](https://www.geeksforgeeks.org/find-pairs-given-sum-doubly-linked-list/)
