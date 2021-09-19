@@ -34,4 +34,5 @@ public static Node reverseDLL(Node  head)
 }
 ```
 
-# [**Find Pairs with given sum in sorted doubly LL**](https://www.geeksforgeeks.org/find-pairs-given-sum-doubly-linked-list/)
+# [**Find Pairs with given sum in sorted doubly LL .**](https://www.geeksforgeeks.org/find-pairs-given-sum-doubly-linked-list/)
+# [**Find Triplets with given sum in sorted doubly LL .**](https://www.geeksforgeeks.org/count-triplets-sorted-doubly-linked-list-whose-sum-equal-given-value-x/)
