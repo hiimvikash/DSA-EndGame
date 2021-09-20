@@ -33,4 +33,28 @@ class Solution {
     }
 }
 ```
+# **Right Rotate Doubly LL by k place**
+## Thought Process is same :
+- all base cases will be same.
+- Place your currLast, newLast, newHead pointers in same place as above.
+- Do the following :-
+    - newHead.prev=null;
+    - newLast.next=null;
+    - currLast.next=head;
+    - head.prev=currLast;
+    - return newHead;
+<hr>
+<hr>
 
+# **Left Rotate Doubly LL by k place**
+- all base cases will be same.
+- Place your currLast in lastNode.
+- Now move your newLast pointer K-1 times from head
+- newHead=newLast.next
+- Now all your currLast, newLast, newHead pointers are in right place.
+- Do same following as above :
+    - newHead.prev=null;
+    - newLast.next=null;
+    - currLast.next=head;
+    - head.prev=currLast;
+    - return newHead; 
