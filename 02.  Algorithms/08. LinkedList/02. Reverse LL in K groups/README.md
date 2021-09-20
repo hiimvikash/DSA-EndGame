@@ -1,4 +1,4 @@
-# [**Step 1 : Reverse LinkedList in K group IB**](https://leetcode.com/problems/reverse-linked-list/)
+# [**Step 1 : Reverse LinkedList in K group IB**](https://www.interviewbit.com/problems/k-reverse-linked-list/)
 # Thought Process :-
 - Reverse each group
 - Then think of joining previous reversed group with current reversed group.
@@ -38,7 +38,7 @@ public class Solution {
     }
 }
 ```
-# [**Step 2 : Reverse LinkedList in K group LC**](hattps://leetcode.com/problems/reverse-nodes-in-k-group/)
+# [**Step 2 : Reverse LinkedList in K group LC**](https://leetcode.com/problems/reverse-nodes-in-k-group/)
 ```java
 /**
  * Definition for singly-linked list.
