@@ -42,15 +42,15 @@
 	1. ### [**HashMap (Comments are too good to understand the  working)**](./01.%20DataStructures/06.%20HashMap)
 	1. ### [**Graphs (Raw Notes®️)**](./01.%20DataStructures/07.%20Graphs/MyGraphy)
 1. ## [**Algorithms🤯**](./02.%20%20Algorithms)
-	1. ### [**Arrays (45+ Questions)**](./02.%20%20Algorithms/01.%20Arrays)
+	1. ### [**Arrays (45+ Questions including LoveBabar DSA sheet + Striver SDE sheet Qs)**](./02.%20%20Algorithms/01.%20Arrays)
 	1. ### [**Matrix (8 Questions)**](./02.%20%20Algorithms/02.%20Matrix)
 	1. ### [**Binary Search Busted (15+ Questions)**](./02.%20%20Algorithms/05.%20Binary%20Search%20Busted%20-%20AV)
 	1. ### [**Sliding Window Bombed💣 (15+ Questions)**](./02.%20%20Algorithms/04.%20Sliding%20Window%20-%20AV)
-	1. ### [**Searching & Sorting (40+ Questions)**](./02.%20%20Algorithms/07.%20Searching%20%26%20Sorting)
+	1. ### [**Searching & Sorting (30+ Questions)**](./02.%20%20Algorithms/07.%20Searching%20%26%20Sorting)
 	1. ### [**Recursions 25+ Questions Banged👅(Very Important before starting with Strings)**](./02.%20%20Algorithms/00.%20Recursions)
 	1. ### [**Dynamic Programming Busted😈(Very Important before starting with Strings)**](./02.%20%20Algorithms/06.%20DP/DP%20by%20Aditya%20Verma)
 	1. ### [**Now Strings (40+ Questions)**](./02.%20%20Algorithms/03.%20Strings)
-	1. ### [**LinkedList(40+ Questions)**](02.%20%20Algorithms/08.%20LinkedList)
+	1. ### [**LinkedList(30+ Questions including LoveBabar DSA sheet + Striver SDE sheet Qs)**](02.%20%20Algorithms/08.%20LinkedList)
 	1. ### **Bit Manipulations(10+ Questions)**
 	1. ### **Stack & Queue(40+ Questions)**
 	1. ### **Heap(20 Questions)**
