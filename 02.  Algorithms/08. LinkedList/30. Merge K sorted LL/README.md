@@ -1,5 +1,5 @@
 # [**Merge K sorted LL**](https://leetcode.com/problems/merge-k-sorted-lists/)
-# Recursion :- Same as Flattening of LL
+# Recursion :- Same as Flattening of LL TC- O(NK<sup>2</sup>)
 ```java
 /**
  * Definition for singly-linked list.
@@ -48,4 +48,57 @@ class Solution {
     }
 }
 ```
-
+# [2 : Divide and concure](https://youtu.be/wugaUVZ8PVw) TC- O(nk logK)
+```java
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode mergeKLists(ListNode[] lists) {
+        int n=lists.length;
+        if(n==0) return null;
+        return mergeKlist(lists,0,n-1);
+    }
+    ListNode mergeKlist(ListNode[]arr,int s, int e){
+        if(s>e) return null;
+        if(s==e) return arr[s];
+        int mid=(s+e)/2;
+        
+        ListNode l1=mergeKlist(arr,s,mid);
+        ListNode l2=mergeKlist(arr,mid+1,e);
+        
+        return mergeTwoLists(l1,l2);
+    }
+    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+        ListNode dummy=new ListNode(-1);
+        ListNode temp=dummy;
+        while(l1!=null && l2!=null){
+            int val1=l1.val;
+            int val2=l2.val;
+            if(val1<=val2){
+                temp.next=l1;
+                l1=l1.next;
+            }
+            else if(val2<val1){
+                temp.next=l2;
+                l2=l2.next;
+            }
+            temp=temp.next;
+        }
+        if(l1!=null){
+            temp.next=l1;
+        }
+        if(l2!=null){
+            temp.next=l2;
+        }
+        return dummy.next;
+    }
+}
+```
