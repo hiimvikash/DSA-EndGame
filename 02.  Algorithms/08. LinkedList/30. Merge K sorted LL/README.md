@@ -102,3 +102,41 @@ class Solution {
     }
 }
 ```
+# [3 : Using PQ](https://youtu.be/jhWT8qal1SI) TC- O(nk logK) SC-O(k)
+```java
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode mergeKLists(ListNode[] lists) {
+        int n=lists.length;
+        if(n==0) return null;
+        PriorityQueue<ListNode> pq=new PriorityQueue<>((a,b)->{return a.val-b.val;});
+        // Insert first element of each LL
+        for(ListNode l:lists){
+            if(l!=null) pq.add(l);
+        }
+        // make a dummy node 
+        ListNode dummy=new ListNode(-1);
+        ListNode temp=dummy;
+        
+        while(!pq.isEmpty()){
+            ListNode node=pq.remove();
+            // modify in resultant
+            temp.next=node;
+            temp=temp.next;
+            // modify in original
+            node=node.next;
+            if(node!=null) pq.add(node);
+        }
+        return dummy.next;
+    }
+}
+```
