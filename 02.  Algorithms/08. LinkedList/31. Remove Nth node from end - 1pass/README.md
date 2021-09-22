@@ -107,8 +107,7 @@ class GfG
     	    s=s.next;
     	    f=f.next;
     	}
-    	 s=s.next;
-    	 return s.data;
+    	 return s.next.data;
     }
 }
 ```
