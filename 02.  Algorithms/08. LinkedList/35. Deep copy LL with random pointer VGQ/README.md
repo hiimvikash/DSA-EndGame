@@ -44,3 +44,56 @@ class Solution {
     }
 }
 ```
+# Optimal Solution :-
+```java
+/*
+// Definition for a Node.
+class Node {
+    int val;
+    Node next;
+    Node random;
+
+    public Node(int val) {
+        this.val = val;
+        this.next = null;
+        this.random = null;
+    }
+}
+*/
+
+class Solution {
+    public Node copyRandomList(Node head) {
+        if(head==null) return null;
+        // Step 1 Insert DeepCopy node between original LL, Here we not touched random Pointers
+        Node itr=head;
+        while(itr!=null){
+            Node nn=new Node(itr.val);
+            nn.next=itr.next;
+            itr.next=nn;
+            itr=itr.next.next;
+        }
+        // Step 2 : Deal with random pointers
+        itr=head;
+        while(itr!=null){
+            if(itr.random!=null) itr.next.random=itr.random.next;
+            else itr.next.random=null;
+            itr=itr.next.next;
+        }
+        // Step 3 : seperate DC list and original
+        itr=head;
+        Node deepCopy=new Node(-1);
+        Node last=deepCopy;
+        
+        while(itr!=null){
+            Node front=itr.next.next;
+            
+            last.next=itr.next;
+            last=last.next;
+            
+            itr.next=front;
+            itr=front;
+        }
+        return deepCopy.next;
+    }
+}
+```
