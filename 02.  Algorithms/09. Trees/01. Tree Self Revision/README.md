@@ -44,3 +44,26 @@
         return root;
       }
 ```
+# 3. Level Order Insertion in BT
+```java
+    public Node insertLevelorder(Node root, Node val){
+      if(root==null) return root=new Node(val);
+      Queue<Node> q=new LinkedList<>();
+      q.add(root);
+      while(!q.isEmpty()){
+        Node n=q.remove();
+        if(n.left==null){
+          n.left=new Node(val);
+          return root;
+        }
+        else if(n.right==null){
+          n.right=new Node(val);
+          return root;
+        }
+        else{
+          q.add(n.left);
+          q.add(n.right);
+        }
+      }
+    }
+```
