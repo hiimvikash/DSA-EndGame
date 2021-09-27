@@ -67,3 +67,11 @@
       }
     }
 ```
+# 4. Height of BT
+```java
+public int getHeight(Node root){
+  if(root==null) return -1;
+  if(root.left==null && root.right==null) return 0;
+  return Math.max(getHeight(root.left),getHeight(root.right))+1;
+}
+```
