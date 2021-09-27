@@ -75,3 +75,39 @@ public int getHeight(Node root){
   return Math.max(getHeight(root.left),getHeight(root.right))+1;
 }
 ```
+# isBalanced ?
+```java
+boolean isBalanced=true;
+public int getHeight(Node root){
+  if(root==null) return -1;
+  if(root.left==null && root.right==null) return 0;
+  int lh=getHeight(root.left);
+  int rh=getHeight(root.right);
+  if(Math.abs(lh-rh)>1) isBalanced=false;
+  return Math.max(lh,rh)+1;
+}
+```
+# 5. Sum of BT
+```java
+public int sumOfBt(Node root){
+  if(root==null) return 0;
+  if(root.left==null && root.right==null) return root.data;
+  return sumOfBt(root.left)+sumOfBt(root.right)+root.data;
+}
+```
+# 6. Number of Nodes in BT
+```java
+public int countNodes(Node root){
+  if(root==null) return 0;
+  if(root.left==null && root.right==null) return 1;
+  return countNodes(root.left)+countNodes(root.right)+1;
+}
+```
+# 7. Maximum value in BT
+```java
+public int maxValueBt(Node root){
+  if(root==null) return -999999;
+  if(root.left==null && root.right==null) return root.data;
+  return Math.max(root.data,Math.max(maxValueBt(root.left),maxValueBt(root.right)));
+}
+```
