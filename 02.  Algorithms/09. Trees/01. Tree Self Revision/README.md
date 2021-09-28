@@ -139,3 +139,35 @@ public int sumAtGivenLevel(Node root, int level){
 }
 ```
 **Note :** if(root.left==null && root.right==null) return root.data; is not a valid base case because this can become true for any level.
+# 10. Inorder PreOrder PostOrder Traversal
+## Inorder Traversal L+R
+```java
+// L+R
+public void inorder(Node root){
+  if(root==null) return;
+  inorder(root.left);
+  System.out.print(root.data+ " ");
+  inorder(root.right);
+}
+```
+## Preorder Traversal +LR
+```java
+// +LR
+public void preorder(Node root){
+  if(root==null) return;
+  System.out.print(root.data+ " ");
+  preorder(root.left);
+  preorder(root.right);
+}
+```
+## Postorder Traversal LR+
+```java
+// LR+
+public void postorder(Node root){
+  if(root==null) return;
+  postorder(root.left);
+  postorder(root.right);
+  System.out.print(root.data+ " ");
+}
+```
+# 11. All Path from root to leaf Node
