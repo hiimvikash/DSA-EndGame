@@ -111,3 +111,31 @@ public int maxValueBt(Node root){
   return Math.max(root.data,Math.max(maxValueBt(root.left),maxValueBt(root.right)));
 }
 ```
+# 8. Level Order Traversal in BT
+```java
+public void printLevelOrderBFS(Node root){
+			  if(root==null){ System.out.println("Empty BT"); return; }
+			  if(root.left==null && root.right==null){ System.out.println(root.data); return;}
+
+			  Queue<Node> q=new LinkedList<>();
+			  q.add(root);
+
+			  while(!q.isEmpty()){
+			    Node n=q.remove();
+			    System.out.print(n.data+ " ");
+			    if(n.left !=null) q.add(n.left);
+			    if(n.right !=null) q.add(n.right);
+			  }
+}
+```
+# 9. Sum at Given Level
+```java
+// considering level<=height always.
+public int sumAtGivenLevel(Node root, int level){
+  //  think of the smallest possible input's answer
+  if(root==null) return 0;
+  if(level==0) return root.data;
+  return sumAtGivenLevel(root.left,level-1)+sumAtGivenLevel(root.right,level-1);
+}
+```
+**Note :** if(root.left==null && root.right==null) return root.data; is not a valid base case because this can become true for any level.
