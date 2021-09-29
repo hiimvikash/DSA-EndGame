@@ -171,3 +171,75 @@ public void postorder(Node root){
 }
 ```
 # 11. All Path from root to leaf Node
+```java
+static Stack<Integer> st=new Stack();
+public static void rootToleaf(Node root) {
+			if(root==null) return;
+			if(root.left==null && root.right==null) {
+				st.push(root.data);
+				System.out.println(String.valueOf(st)); return;
+			}
+			st.push(root.data);
+			rootToleaf(root.left); // option 1
+			st.pop(); // removing value of option 1
+			rootToleaf(root.right); // option 2
+			st.pop(); // removing value of option 2 and moving my euler back to root
+	}
+```
+# 12. Search in BST
+## recursive
+```java
+public static boolean search(Node root, int val){
+  if(root==null) return false;
+  if(root.data==val) return true;
+  else if(val<root.data) return search(root.left,val);
+  else return search(root.right,val);
+}
+```
+## Itterative
+```java
+public static boolean search(Node root, int val){
+  if(root==null) return false;
+  Node temp=root;
+  while(temp!=null){
+    if(temp.data==val) return true;
+    else if(val<temp.data)temp=temp.left;
+    else temp=temp.right;
+  }
+  return false;
+}
+```
+# 13. Diameter of BT
+```java
+public int diameter(Node root){
+  if(root==null || (root.left==null && root.right==null)) return 0;
+  int ld = diameter(root.left);
+  int rd = diameter(root.right);
+  option1 = getHeight(root.left)+getHeight(root.right)+2; 
+  return Math.max(option1, Math.max(ld,rd));
+}
+```
+## Make a class diapair
+```java
+class DiaPair{
+  int ht; int dia;
+  public DiaPair(int h,int d){
+    ht=h;
+    dia=d;
+  }
+}
+public static DiaPair diameter(Node root){
+  if(root==null){
+    return new DiaPair(-1,0);
+  }
+  DiaPair lp=diameter(root.left);
+  DiaPair rp=diameter(root.right);
+
+  DiaPair mp=new DiaPair();
+  mp.ht=Math.max(lp.ht,rp.ht)+1;
+
+  int option1=lp.ht+rp.ht+2;
+  mp.dia=Math.max(option1,Math.max(lp.dia,rp.dia));
+  return mp;
+}
+```
