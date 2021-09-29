@@ -243,3 +243,27 @@ public static DiaPair diameter(Node root){
   return mp;
 }
 ```
+# 14. Delete Node in BST
+```java
+public Node delete(Node root, int val){
+  if(root==null) return null;
+  if(val < root.data) root.left=delete(root.left,val);
+  else if(val > root.data) root.right=delete(root.right,val);
+  else{
+    // case 1 : Node has left and right tree
+    if(root.left!=null && root.right!=null){
+      int lmax=leftmax(root.left);
+      root.data=lmax;
+      root.left=delete(root.left,lmax);
+    }
+    else if(root.left!=null) return root.left;
+    else if(root.right!=null) return root.right;
+    else return null;
+  }
+  return root;
+}
+private int leftmax(Node root){
+  if(root.right==null) return root.data;
+  return leftmax(root.right);
+}
+```
