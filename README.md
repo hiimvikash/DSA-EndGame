@@ -51,10 +51,10 @@
 	1. ### [**Dynamic Programming Busted😈(Very Important before starting with Strings)**](./02.%20%20Algorithms/06.%20DP/DP%20by%20Aditya%20Verma)
 	1. ### [**Now Strings (40+ Questions)**](./02.%20%20Algorithms/03.%20Strings)
 	1. ### [**LinkedList(30+ Questions including LoveBabar DSA sheet + Striver SDE sheet Qs)**](02.%20%20Algorithms/08.%20LinkedList)
+	1. ### [**Trees(50+ Questions)**](02.%20%20Algorithms/09.%20Trees)
 	1. ### **Bit Manipulations(10+ Questions)**
 	1. ### **Stack & Queue(40+ Questions)**
 	1. ### **Heap(20 Questions)**
-	1. ### **Trees(50+ Questions)**
 	1. ### **Trie(6 Questions)**
 	1. ### **Graphs(40+ Questions)**
 	1. ### **Dyanamic Programming(60+ Questions)**
