@@ -268,3 +268,48 @@ private int leftmax(Node root){
 }
 ```
 # 15. Construct a BT using Inorder[] and postorder[]
+```java
+public Node postIn(int inorder[], int isi, int iei, int postorder[], int psi, int pei){
+  if(isi > iei) return null;
+  Node root=new Node(postorder[pei]);
+  int idx=0;
+  while(inorder[idx]!=postorder[pei]) idx++;
+  int tne=idx-isi; // on lhs
+
+  root.left=postIn(inorder,isi,idx-1,postorder,psi,psi+tne-1);
+  root.right=postIn(inorder,idx+1,iei,postorder,psi+tne,pei-1);
+
+  return root;
+}
+```
+# 15. Construct a BT using Inorder[] and preorder[]
+```java
+public Node preIn(int inorder[], int isi, int iei, int preorder[], int psi, int pei){
+  if(isi > iei) return null;
+  Node root=new Node(preorder[psi]);
+  int idx=0;
+  while(inorder[idx]!=preorder[psi]) idx++;
+  int tne=idx-isi; // on lhs
+
+  root.left=postIn(inorder,isi,idx-1,preorder,psi+1,psi+tne);
+  root.right=postIn(inorder,idx+1,iei,preorder,psi+tne+1,pei);
+
+  return root;
+}
+```
+# 16. Construct a BST using inorder[]
+- **fact : inorder[] of BST is sorted by birth.**
+- we will make balanced BST
+```java
+private Node buildBSTfromInorder(int[] in, int si, int ei) {
+			if(si>ei)
+				return null;
+			int midRoot=(si+ei)/2;
+			Node n=new Node(in[midRoot]);
+
+			n.left=buildBSTfromInorder(in,si,midRoot-1);
+			n.right=buildBSTfromInorder(in,midRoot+1,ei);
+
+			return n;
+		}
+```
