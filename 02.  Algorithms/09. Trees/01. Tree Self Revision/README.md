@@ -267,3 +267,4 @@ private int leftmax(Node root){
   return leftmax(root.right);
 }
 ```
+# 15. Construct a BT using Inorder[] and postorder[]
