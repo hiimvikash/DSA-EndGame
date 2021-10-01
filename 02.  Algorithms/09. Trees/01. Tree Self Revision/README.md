@@ -1,8 +1,7 @@
 # [**I'm Revising from this folder**](../../../01.%20DataStructures/04.%20Tree%20DS)
-- Note : Here may be some minor code difference from revising code because this file is made when :-
-  1. I recalled the approaches.
-  2. code it down.
-  3. and then modified(if mistake found) from the previous code.
+- **Note : Here may be some extra modified code from [revising Folder](../../../01.%20DataStructures/04.%20Tree%20DS/02.%20BinarySearchTree%20%26%20Implementations) because this ```README.md``` is made by :-**
+  -  recalling approaches of each operations and coding it down.
+  - comparing it with revising folder and then doing corrections(if needed).
 
 # 1. Insertion In BST Itterative
 ```java
