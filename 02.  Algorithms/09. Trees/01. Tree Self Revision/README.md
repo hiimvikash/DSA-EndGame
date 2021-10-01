@@ -1,4 +1,8 @@
 # [**I'm Revising from this folder**](../../../01.%20DataStructures/04.%20Tree%20DS)
+- Note : Here may be some minor code difference from revising code because this file is made when :-
+  1. I recalled the approaches.
+  2. code it down.
+  3. and then modified(if mistake found) from the previous code.
 
 # 1. Insertion In BST Itterative
 ```java
@@ -312,4 +316,36 @@ private Node buildBSTfromInorder(int[] in, int si, int ei) {
 
 			return n;
 		}
+```
+# 17. Construct a BST using preorder[] *IMP
+```java
+int idx=0;
+// here lr is left range and rr is right range. intiallised with -ve & +ve Infinity respectively.
+public Node buildBSTfromPreorder(int pre[],int lr, int rr){
+  if(idx>=pre.length || pre[idx] < lr || pre[idx] > rr) return null;
+
+  Node nn=new Node(pre[idx++]);
+
+  nn.left=buildBSTfromPreorder(pre,lr,nn.data);
+  nn.right=buildBSTfromPreorder(pre,nn.data,rr);
+
+  return nn;
+}
+```
+# 18. Construct a BST using postorder[] *IMP
+- Think this as : +RL
+```java
+int idx=pre.length-1;
+// here lr is left range and rr is right range. intiallised with -ve & +ve Infinity respectively.
+public Node buildBSTfromPostorder(int pos[],int lr, int rr){
+  if(idx<0 || pos[idx] < lr || pos[idx] > rr) return null;
+
+  Node nn=new Node(pos[idx--]);
+
+  nn.right=buildBSTfromPostorder(pos,nn.data,rr);
+  nn.left=buildBSTfromPostorder(pos,lr,nn.data);
+
+  return nn;
+}
+
 ```
