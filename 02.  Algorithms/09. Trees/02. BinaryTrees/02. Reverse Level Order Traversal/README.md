@@ -42,7 +42,7 @@ class Tree
     }
 } 
 ```
-## Stack & Queue Approach :-
+## Stack & Queue Approach(IMP) :-
 See the above image and dectate 3 times :-
 - put 1 in stack
 - put 3 in stack
@@ -138,5 +138,45 @@ class Solution {
         return Math.max(getHeight(root.left),getHeight(root.right))+1;
     }
 }
-
+```
+# Same as Normal Level order approach
+- Just insert your subans at first in ans always.
+```java
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public List<List<Integer>> levelOrderBottom(TreeNode root) {
+        List<List<Integer>> ans=new LinkedList<>(); // in LL inserting at first is O(1)
+        if(root==null) return ans;
+        Queue<TreeNode> q=new LinkedList<>();
+        q.add(root);
+        while(!q.isEmpty()){
+            int levelNodesCount=q.size();// no. of nodes in each level
+            
+            List<Integer> subans=new ArrayList<>();
+            for(int i=0;i<levelNodesCount;i++){
+                TreeNode n=q.remove();
+                subans.add(n.val);
+                
+                if(n.left!=null) q.add(n.left);
+                if(n.right!=null) q.add(n.right);
+            }
+            ans.add(0,subans);
+        }
+        return ans;
+    }
+}
 ```
