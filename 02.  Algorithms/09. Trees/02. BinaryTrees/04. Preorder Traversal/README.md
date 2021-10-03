@@ -1,4 +1,4 @@
-# [**PreOrder Traversal in BT**](https://leetcode.com/problems/diameter-of-binary-tree/)
+# [**Preorder Traversal in BT**](https://leetcode.com/problems/binary-tree-preorder-traversal/)
 ## Recursive
 ```java
 /**
