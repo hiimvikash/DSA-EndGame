@@ -30,7 +30,7 @@ class Solution {
     }
 }
 ``` 
-## **Itterative use 2 stack** DO LR+ from back(store answer from back i.e., inorder from back)
+## **Itterative use 2 stack** DO LR+ from back(store answer from back i.e., preorder from back)
 ```java
 /**
  * Definition for a binary tree node.
