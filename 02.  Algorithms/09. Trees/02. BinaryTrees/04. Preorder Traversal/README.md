@@ -30,7 +30,7 @@ class Solution {
     }
 }
 ``` 
-## [Itterative use stack]()
+## [Itterative use stack](https://youtu.be/Bfqd8BsPVuw)
 ```java
 /**
  * Definition for a binary tree node.
