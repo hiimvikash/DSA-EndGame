@@ -1,5 +1,5 @@
 # [**Boundry of BT**](https://www.lintcode.com/problem/878/)
-## thought Process : 
+## [thought Process :](https://youtu.be/0ca1nvR0be4) 
 1. Add root
 2. Add left boundry excluding leaf node
 3. Add leaf nodes(use preorder)
