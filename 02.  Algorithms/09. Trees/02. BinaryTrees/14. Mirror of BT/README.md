@@ -1,4 +1,4 @@
-# [**Mirror of BT**](https://leetcode.com/problems/balanced-binary-tree/)
+# [**Mirror of BT**](https://www.geeksforgeeks.org/write-an-efficient-c-function-to-convert-a-tree-into-its-mirror-tree/)
 ```java
 Node mirror(Node root)
 {
