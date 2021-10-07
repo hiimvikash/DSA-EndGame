@@ -1,4 +1,4 @@
-# [**Digonal Traversal in BT**](#)
+# [**Digonal Traversal in BT**](https://www.interviewbit.com/problems/diagonal-traversal/)
 - Same logic as Vertical order traversal, **if two nodes lie in same digonal distance then they will appear in ans in level order.**
 ```java
 /**
@@ -102,5 +102,39 @@ class Pair{
         d=di;
     }
 }
+```
 
+## Best Approach
+- [**Video reference**](https://youtu.be/e9ZGxH1y_PE)
+```java
+/**
+ * Definition for binary tree
+ * class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) {
+ *      val = x;
+ *      left=null;
+ *      right=null;
+ *     }
+ * }
+ */
+public class Solution {
+    public ArrayList<Integer> solve(TreeNode root) {
+        ArrayList<Integer> ans=new ArrayList<>();
+        if(root==null) return ans;
+        Queue<TreeNode> q=new LinkedList<>();
+        q.add(root);
+        while(!q.isEmpty()){
+            TreeNode n=q.remove();
+            while(n!=null){
+                ans.add(n.val);
+                if(n.left!=null) q.add(n.left);
+                n=n.right;
+            }
+        }
+        return ans;
+    }
+}
 ```
