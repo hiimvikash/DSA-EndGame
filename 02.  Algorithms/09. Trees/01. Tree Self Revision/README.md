@@ -175,19 +175,21 @@ public void postorder(Node root){
 ```
 # 11. All Path from root to leaf Node
 ```java
-static Stack<Integer> st=new Stack();
-public static void rootToleaf(Node root) {
-			if(root==null) return;
-			if(root.left==null && root.right==null) {
-				st.push(root.data);
-				System.out.println(String.valueOf(st)); return;
-			}
-			st.push(root.data);
-			rootToleaf(root.left); // option 1
-			st.pop(); // removing value of option 1
-			rootToleaf(root.right); // option 2
-			st.pop(); // removing value of option 2 and moving my euler back to root
-	}
+
+//14.-| All paths from root to leaf nodes STARTS
+//print path from root to leafnodes just modifying Inorder and using stacks.
+	static Stack<Integer> st=new Stack();
+	public static void rootToleaf(Node r) {
+	if(r==null)return;
+			
+	st.push(r.data);
+	rootToleaf(r.left);
+	if(r.left==null && r.right==null)
+	   System.out.println(st);
+	rootToleaf(r.right);
+	st.pop();
+		}
+	//14.-| All paths from root to leaf nodes ENDS
 ```
 # 12. Search in BST
 ## recursive
