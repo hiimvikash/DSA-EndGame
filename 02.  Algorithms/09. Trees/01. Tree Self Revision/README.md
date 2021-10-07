@@ -180,16 +180,16 @@ public void postorder(Node root){
 //print path from root to leafnodes just modifying Inorder and using stacks.
 	static Stack<Integer> st=new Stack();
 	public static void rootToleaf(Node r) {
-	if(r==null)return;
-			
-	st.push(r.data);
-	rootToleaf(r.left);
-	if(r.left==null && r.right==null)
-	   System.out.println(st);
-	rootToleaf(r.right);
-	st.pop();
-		}
-	//14.-| All paths from root to leaf nodes ENDS
+		if(r==null)return;
+
+		st.push(r.data);
+		rootToleaf(r.left);
+		if(r.left==null && r.right==null)
+		   System.out.println(st);
+		rootToleaf(r.right);
+		st.pop();
+       }
+//14.-| All paths from root to leaf nodes ENDS
 ```
 # 12. Search in BST
 ## recursive
