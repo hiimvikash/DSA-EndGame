@@ -324,7 +324,7 @@ class Solution {
     }
 }
 ```
-# **[Lecture 3 :](https://youtu.be/r9af_mSpBLo)**
+# **[Lecture 4 :](https://youtu.be/r9af_mSpBLo)**
 ## Print only one subsequences whose sum is divisible by K.
 ```java
 int k;
