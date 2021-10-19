@@ -1,4 +1,4 @@
-# [**Print Duplicate subtree in BT**](https://leetcode.com/problems/find-duplicate-subtrees/)
+# [**Print Duplicate subtree in BT.**](https://leetcode.com/problems/find-duplicate-subtrees/)
 
 ```java
 /**
