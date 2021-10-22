@@ -1,4 +1,4 @@
-# [**Same Tree**](https://leetcode.com/problems/same-tree/)
+# [**Same Tree.**](https://leetcode.com/problems/same-tree/)
 
 ```java
 /**
