@@ -9,10 +9,7 @@ static Node kthAncestorDFS(Node root, int x )
 	
 	if (root.data == x|| (kthAncestorDFS(root.left,x)) != null || (kthAncestorDFS(root.right,x)) != null)
 	{
-		if (k > 0)	
-			k--;
-		
-		else if (k == 0)
+		if (k == 0)
 		{
 			// print the kth ancestor
 			System.out.print("Kth ancestor is: "+root.data);
@@ -22,8 +19,12 @@ static Node kthAncestorDFS(Node root, int x )
 		}
 		
 		// return current node to previous call
+		k--;
 		return root;
 	}
-	return null;
+	else{
+		if(k==0) System.out.println("Kth ancestor is : -1");
+		return null;
+	}
 }
 ```
