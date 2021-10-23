@@ -105,7 +105,7 @@ https://user-images.githubusercontent.com/71629248/133892647-02fe4098-58fb-4e00-
 7. - **You can call static methods from non static method but reverse is not true.**
 8. [**INNER CLASS IN JAVA.**](https://youtu.be/zg1pijw6AM4)
 9. [**Pass by value.**](https://youtu.be/H71vRa86AGg)
-10. [**Pass by refrence.**](https://youtu.be/H71vRa86AGg)
+10. [**Pass by refrence.**](https://youtu.be/q_q-6KuP91c)
 
 ```java
 import java.util.*;
