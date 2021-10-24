@@ -29,6 +29,24 @@ class Solution {
         height(root);
         return isBal;
     }
-    
+}
+```
+
+## New Approach O(N)
+```java
+public boolean balancedBT(TreeNode root){
+    return helperHeight(root)!=-1;
+}
+private int helperHeight(TreeNode root){
+    if(root==null) return 0;
+
+    int lh=helperHeight(root.left);
+    if(lh==-1) return -1;
+
+    int rh=helperHeight(root.right);
+    if(rh==-1) return -1;
+
+    if(Math.abs(lh-rh) > 1) return -1;
+    return Math.max(lh,rh)+1;
 }
 ```
