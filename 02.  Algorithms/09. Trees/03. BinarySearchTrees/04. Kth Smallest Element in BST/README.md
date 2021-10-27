@@ -17,20 +17,21 @@
  * }
  */
 class Solution {
-    ArrayList<Integer> in=new ArrayList<>();
-    int inele=0; // count of element inside AL
+    int ans=-1;
+    int inele=0; // element inside AL
     public int kthSmallest(TreeNode root, int k) {
         inorder(root,k);
-        return in.get(k-1);
+        return ans;
     }
     private void inorder(TreeNode root,int k){
         if(root==null) return;
         
         inorder(root.left,k);
         
-        if(inele==k) return;
-        in.add(root.val); inele++;
+        inele++;
+        if(inele==k) ans = root.val;
         
+        if(ans!=-1) return;
         inorder(root.right,k);
     }
 }
