@@ -49,3 +49,27 @@ public class Solution {
     }
 }
 ```
+
+# Predecessor Start
+```java
+// Case 1 : if ki has left, then ANS will be the maximum element in leftSUBTREE
+        if(p.left!=null){
+            TreeNode temp = p.left;
+            while(temp.right!=null){
+                temp=temp.right;
+            }
+            return temp;
+        }
+       // Case 2 : if ki has no left, then ur ANS will lie on the path from root to "ki", ANS will be the node from where u took last right.
+        if(p.right==null){
+            TreeNode temp = root;
+            int x = p.val;
+            TreeNode ans = null;
+            while(temp.val != x){
+                if(x < temp.val) temp = temp.left;
+                else { ans=temp; temp = temp.right; }
+            }
+            return ans;
+        }
+        return null;
+```
