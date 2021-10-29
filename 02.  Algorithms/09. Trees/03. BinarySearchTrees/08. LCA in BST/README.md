@@ -1,5 +1,5 @@
 # [**LCA in BST**](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/)
-
+[**Video Reference**](https://youtu.be/5E3MeajU9XQ)
 ```java
 /**
  * Definition for a binary tree node.
