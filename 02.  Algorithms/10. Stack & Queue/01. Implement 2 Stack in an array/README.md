@@ -1,4 +1,5 @@
 # [**Implement two stacks in an array**](https://practice.geeksforgeeks.org/problems/implement-two-stacks-in-an-array/1#)
+- [**Video Reference**](https://youtu.be/cJgVdvWz4iU)
 ```java
 /* Structure of the class is
 class TwoStack
