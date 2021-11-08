@@ -52,7 +52,7 @@
 	1. ### [**Now Strings (40+ Questions)**](./02.%20%20Algorithms/03.%20Strings)
 	1. ### [**LinkedList(30+ Questions including LoveBabar DSA sheet + Striver SDE sheet Qs)**](02.%20%20Algorithms/08.%20LinkedList)
 	1. ### [**Trees(50+ Questions)**](02.%20%20Algorithms/09.%20Trees)
-	1. ### [**Stack & Queue(40+ Questions)**]()
+	1. ### [**Stack & Queue(40+ Questions)**](02.%20%20Algorithms/10.%20Stack%20%26%20Queue)
 	1. ### **Bit Manipulations(10+ Questions)**
 	1. ### **Heap(20 Questions)**
 	1. ### **Trie(6 Questions)**
