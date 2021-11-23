@@ -5,7 +5,7 @@ class Solution {
         for(char c: S.toCharArray()){
             
             if(c=='('){ 
-                st.push(score);
+                st.push(score); // save
                 score=0;
             }
             else{
