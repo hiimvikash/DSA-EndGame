@@ -1,7 +1,6 @@
 
 # [**Sort a stack**](https://practice.geeksforgeeks.org/problems/sort-a-stack/1#)
 
-
 ```java
 /*Complete the function below*/
 class GfG{
