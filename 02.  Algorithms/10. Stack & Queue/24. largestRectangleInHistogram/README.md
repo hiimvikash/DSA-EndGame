@@ -74,12 +74,15 @@ class Solution {
 /**
 if stack empty hoe toh push
 if(h[i]>h[peek]) push
+
 while(h[peek]>h[i]){
     pop wala scene
     joh pop hua woh height
     jiske waja se pop hua wo rs
-    peek() hoega ls else -1 if stack empty
+    ls=peek() else -1 if stack empty
 }
+push(i)
+
 if(i==n) then pop wala scene
 **/
 ```
