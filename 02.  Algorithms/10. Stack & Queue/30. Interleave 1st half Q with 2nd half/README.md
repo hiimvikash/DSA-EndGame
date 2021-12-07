@@ -39,8 +39,9 @@ static void interLeaveQueue(Queue<Integer>q)
 	// queue: 11 16 12 17 13 18 14 19 15 20
 	while (!s.empty())
 	{
-      q.add(s.pop());
-      q.add(q.poll());
+        q.add(s.pop());
+        q.add(q.poll());
 	}
 }
 ```
+[**Video reference**](https://youtu.be/h9Oi5IumE88)
