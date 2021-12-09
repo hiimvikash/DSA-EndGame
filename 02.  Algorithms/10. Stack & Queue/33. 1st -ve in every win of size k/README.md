@@ -25,6 +25,8 @@ class Compute {
         }
         return ans;
     }
+    q.clear();
 }
 ```
+
 [**Video reference**](https://youtu.be/uUXXEgK2Jh8)
