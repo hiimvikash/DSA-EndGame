@@ -4,7 +4,7 @@
 int[] nse(int arr[]){
 	    int n=arr.length;
 	    Stack<Integer> st=new Stack<>();
-	    HashMap<Integer> hm=new HashMap<>();
+	    HashMap<Integer,Integer> hm=new HashMap<>();
 	    
 	    for(int i=0; i<n; i++){
 	        if(st.isEmpty()){
