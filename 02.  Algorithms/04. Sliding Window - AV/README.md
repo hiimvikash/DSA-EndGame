@@ -162,40 +162,24 @@ TCs - [13, 7, 12, 6, 5, 3, 6, 7]
 class Solution {
     public int[] maxSlidingWindow(int[] arr, int k) {
         int n=arr.length;
+        int ans[]=new int[n-k+1]; int i=0;
         Deque<Integer> dq=new LinkedList<>();
-        int s=0,e=k-1;
-        int ans[]=new int[n-k+1]; int j=0;
+        int s=0,e=0;
         
-        // making Initial answer
-            for(int i=s;i<=e;i++){
-                if(dq.isEmpty())
-                    dq.add(arr[i]);
-                else{    
-                    while(!dq.isEmpty() && arr[i]>dq.peekLast()){
-                        dq.removeLast();
-                    }
-                    dq.add(arr[i]);
-                }
-            }
-            ans[j++]=dq.peek();
-        // restoring
-            if(!dq.isEmpty() && dq.peek()==arr[s]) dq.pop();
-        
-        // sliding window start
-            s++;e++;
         while(e<n){
-            if(dq.isEmpty())
-                dq.add(arr[e]);
-            else{    
-                while(!dq.isEmpty() &&arr[e]>dq.peekLast()){
-                    dq.removeLast();
-                }
+            if(dq.isEmpty()) dq.add(arr[e]);
+            else{
+                while(!dq.isEmpty() && arr[e]>dq.peekLast()) dq.removeLast();
                 dq.add(arr[e]);
             }
-            ans[j++]=dq.peek();
-            // restoring
-            if(!dq.isEmpty() && dq.peek()==arr[s]) dq.pop();
-            s++; e++;
+            
+            if(e-s+1 < k) e++;
+            else if(e-s+1 == k){
+                ans[i++]=dq.peek();
+                s++; e++;
+                // restoring
+                if(!dq.isEmpty() && dq.peek()==arr[s-1]) dq.poll();
+            }
         }
         return ans;
     }
