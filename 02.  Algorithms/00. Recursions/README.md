@@ -173,6 +173,33 @@ class Solution{
     }
 }
 ```
+## approach 2
+```java
+class Solution{
+    static Boolean isSubsetSum(int N, int arr[], int sum){
+        // code here
+        return is(arr,sum,0, N);
+    }
+    static boolean is(int arr[], int sum, int ind, int n){
+        if(ind==n){
+            if(sum==0){
+                return true;
+            }
+            return false;
+        }
+        // pick
+        if(sum>=arr[ind]){
+            sum-=arr[ind];
+           boolean l = is(arr,sum,ind+1,n);
+           if(l) return true;
+           sum+=arr[ind]; //not pick
+        }
+        // not pick
+        
+        return is(arr,sum,ind+1,n);
+    }
+}
+```
 ## WAF which counts all the subset with sum=k.
 ```java
 static int fun(int arr[],int ind,int target, int n){
