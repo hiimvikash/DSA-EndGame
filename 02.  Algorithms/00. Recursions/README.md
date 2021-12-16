@@ -78,6 +78,32 @@ public class Main {
 
 }
 ```
+```
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) throws Exception {
+        Scanner sc=new Scanner(System.in);
+        String str=sc.next();
+        int n=str.length();
+        printSS(str,"",n);
+    }
+
+    public static void printSS(String str, String ans, int n) {
+        if(n==0){
+            System.out.println(ans);
+            return;
+        }
+        ans = str.charAt(n-1)+ans; // pick
+        printSS(str,ans,n-1);
+        
+        ans = ans.substring(1); // not pick
+        printSS(str,ans,n-1);
+    }
+}
+```
 ## Print all the subsequences whose sum are divisible by K.
 ```java
 int k;
