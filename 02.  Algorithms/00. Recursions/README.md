@@ -225,8 +225,28 @@ static int fun(int arr[],int ind,int target, int n){
 ## Print the subsequence whose sum=k repetation allowed.
 - **For Examples:** arr={1,2,3} s=4
 	- {1,1,1,1}, {1,3}, {1,1,2}, {2,2}.
-- **Hint:** when you pick we don't go to next Index.	
+- **Hint:** when you pick we don't go to next Index.
 
+```java
+// Print the subsequence whose sum=k repetation allowed.
+	    void fun(int arr[], int ind, int sum, ArrayList<Integer> ans){
+	        if(ind==n){
+	            if(sum==0){
+	                print(ans); return;
+	            }
+	        }
+	        
+	        // pick
+	        if(arr[ind]>=sum){
+	           sum-=arr[ind];
+	           ans.add(arr[ind]);
+	           fun(arr,ind,sum,ans); // here we don't move to next Index instead "we pick it, till we make it."
+	           sum+=arr[ind]; // not pick
+	        }
+	        fun(arr,ind+1,sum,ans); // we move to next index without picking ind.
+	    }
+```
+ ## Count :-
 ```java
 static int fun(int arr[],int ind,int target, int n){
 		if(ind==n){
