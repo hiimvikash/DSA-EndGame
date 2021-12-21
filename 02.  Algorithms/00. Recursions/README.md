@@ -108,8 +108,9 @@ public class Main {
 ```java
 int k;
 void fun(int ind, int arr[], int sum, ArrayList<Integer> al){
-	if(ind==n && ans.size()!=0 && sum%k==0){
-		print(al);
+	if(ind==n){
+        if(ans.size()!=0 && sum%k==0)
+		    print(al);
 		return;
 	}
 	//pick
