@@ -4,6 +4,8 @@
 ## Step 1. [**Introduction to Programming 40min**](https://youtu.be/wn49bJOYAZM)
 ## Step 2. [**Flow of programm 30min**](https://youtu.be/lhELGQAV4gg)
 ## Step 3. [**Java Working 10min**](https://youtu.be/4EP8YzcN0hQ)
+![Java Intro](https://user-images.githubusercontent.com/71629248/147495743-1bdda45b-07f6-4fbd-ba2e-9b403035e0ff.png)
+
 - **Note :** Watch till 9:34 only
 ## Step 4. [**Setup your coding platform 3min**](https://youtu.be/4EP8YzcN0hQ?t=1486)
 - **Note :** Watch from where video starts time stamp is added.
