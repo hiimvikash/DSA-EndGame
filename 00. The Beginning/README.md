@@ -1,4 +1,4 @@
-**<h1 align="center">The Beginning</h1>**
+**<h1 align="center">Just 7 Days</h1>**
 
 
 ## Step 1. [**Introduction to Programming 40min**](https://youtu.be/wn49bJOYAZM)
@@ -46,12 +46,12 @@
 <hr>
 
 ## Step 11. [**Patterns Problems in java 1hr**](https://youtu.be/lsOOs5J8ycw)
+- **Note :** This Step 11 will brush up your Loops concept.
 <hr>
 
 **<h2 align="center">Complete Step 11 in Day6 & Day7</h2>**
 <hr>
 
-- **Note :** This Step 10 will brush up your Loops concept.
 **<h1 align="center">Java Done(You're Comfortable Now)</h1>**
 
 
