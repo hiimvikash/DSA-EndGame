@@ -53,5 +53,8 @@
 <hr>
 
 **<h1 align="center">Java Done(You're Comfortable Now)</h1>**
-
+```
+No courses/videos can make you "zero" to "expert" they can only make you "zero" to "comfortable".
+The rest journey to expert is totally yours alone.
+```
 
