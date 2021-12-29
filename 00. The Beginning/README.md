@@ -58,3 +58,48 @@ No courses/videos can make you "zero" to "expert" they can only make you "zero" 
 The rest journey to expert is totally yours alone.
 ```
 
+# Why Coding and How Coding ?
+```
+See coding is nothing but problem solving.
+
+Now for solving problem you need language by which u can solve problems.
+
+Languages are : C++/java/python
+
+Choose anyone out of c++ or java not python coz python is not allowed in many companies coz python has many one line code for few task and where logics are implemented by python from backend and student just mug up the one line code for such task without understanding backend implementations and due to this python is also not good for beginners.
+
+My recommendation : *Best is java, doing java will also help u in many fields like Android, open source and many other fields which idk currently as i m also a student, in java u have logic for every line so doing java is very very logical*
+
+So when u will choose java
+
+Then u need to be comfortable in basic java like if else, loops, oops, string, arrays, arrays list, pattern problems and in this journey u will solve 20-30 Qs.
+
+Yeah remember you can't become good in language by just completing any course or watching videos, you can become comfortable with language eventually when u will solve enough let say 80-90Qs(may varies).
+
+Now how to check yourself wheather u have become good in language ?
+
+Whenever u r able to convert your logic into code then u have become good in language.
+
+
+Building problem solving skills is a different thing.
+
+Which is done by doing DSA(data structures and algorithms)
+
+
+Now what is data structures ?
+
+Data structures is a way of storing/organising data in the memory, in such a way that access, management and modifications become efficient.
+
+Like just think about Facebook how they store data of billions of person such that you can filter the mutual friends, Mutual college friends...so in such case Facebook use Graphs Data structure.
+
+How your contact works you have phone number corresponding to names here HashMap(a type of DS) is used.
+
+
+
+
+Now What is this Algorithm ?
+
+Algorithms is any approach you use to perform operations on data(like searching, sorting, traversing, modifying..)
+
+How are you able to search a name in facebook among billions of people ? Algorithms are used in backend.
+```
