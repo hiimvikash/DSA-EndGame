@@ -27,3 +27,4 @@ public static void main(String[] args) throws Exception {
 }
 ```
 # [**Count Brackets**](https://pepcoding.com/resources/data-structures-and-algorithms-in-java-levelup/dynamic-programming/count-brackets-official/ojquestion)
+# [**Count chords**](https://pepcoding.com/resources/data-structures-and-algorithms-in-java-levelup/dynamic-programming/circle-and-chords-official/ojquestion)
