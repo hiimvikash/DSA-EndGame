@@ -309,38 +309,29 @@ class Solution {
 ```java
 class Solution {
     public boolean canPartition(int[] arr) {
+        int n=arr.length;
         int sum=0;
-        for(int ele:arr){
-            sum+=ele;
-        }
+        for(int ele : arr) sum+=ele;
         if(sum%2!=0) return false;
-        int dp[][]=new int[arr.length+1][sum+1];
-        for(int row[] : dp){
-             Arrays.fill(row,-1);
-         }
-         if(isSubsetSums(arr.length,arr,sum/2, dp)==1)
-            return true;
-        else return false;    
+        
+        int dp[][]=new int[n+1][(sum/2)+1];
+        for(int d[]:dp) Arrays.fill(d,-1);
+        
+        int ans = isSS(arr,sum/2,n,dp);
+        return ans==1? true: false;
     }
-    static int isSubsetSums(int n, int arr[], int sum,int dp[][]){
-        // code here
+    int isSS(int arr[],int sum, int n, int dp[][]){
         if(n==0){
-            if(sum==0)
-                return 1;
-            return 0;    
+            if(sum==0) return 1;
+            return 0;
         }
         if(dp[n][sum]!=-1) return dp[n][sum];
         if(arr[n-1]<=sum){
-            dp[n][sum]=isSubsetSums(n-1,arr,sum-arr[n-1],dp); // pick
-            if(dp[n][sum]==1) return 1;
-            dp[n][sum]=isSubsetSums(n-1,arr,sum,dp); // notPick 
-            if(dp[n][sum]==1) return 1; 
+            if(isSS(arr,sum-arr[n-1],n-1,dp)==1) return dp[n][sum]=1;
+            if(isSS(arr,sum,n-1,dp)==1) return dp[n][sum]=1;
         }
-        else{
-            dp[n][sum]=isSubsetSums(n-1,arr,sum,dp); // notPick 
-            if(dp[n][sum]==1) return 1; 
-        }
-        return 0;    
+        if(isSS(arr,sum,n-1,dp)==1) return dp[n][sum]=1;
+        return dp[n][sum]=0;
     }
 }
 ```
