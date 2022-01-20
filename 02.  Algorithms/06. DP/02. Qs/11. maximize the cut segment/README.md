@@ -25,4 +25,27 @@ class Solution
     }
 }
 ```
+## Tabulation
+```java
+class Solution
+{
+    //Function to find the maximum number of cuts.
+    public int maximizeCuts(int n, int x, int y, int z)
+    {
+       int dp[]=new int[n+1];
+       dp[0]=0;
+       
+       for(int i=1;i<=n;i++){
+           int op1=Integer.MIN_VALUE, op2=Integer.MIN_VALUE, op3=Integer.MIN_VALUE;
+           
+            if(i>=x) op1=dp[i-x];
+            if(i>=y) op2=dp[i-y];
+            if(i>=z) op3=dp[i-z];
+            
+            dp[i]=1+Math.max(op1, Math.max(op2,op3));
+       }
+       return dp[n]<0? 0 : dp[n];
+    }
+}
+```
 ## [**Video reference**](https://youtu.be/O0N4xn38Ncg)
