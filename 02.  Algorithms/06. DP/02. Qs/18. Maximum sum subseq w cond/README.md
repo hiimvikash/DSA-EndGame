@@ -1,5 +1,7 @@
 # [**Maximum subsequence sum such that no three are consecutive**](https://www.geeksforgeeks.org/maximum-subsequence-sum-such-that-no-three-are-consecutive/)
 
+![dpq1](https://user-images.githubusercontent.com/71629248/150648558-d6e17b2a-9ca8-4228-a4a4-087c71dca8c0.png)
+
 ## Recurssive 
 ```java
 class GFG {
