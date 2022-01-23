@@ -1,6 +1,6 @@
 # [**Largest square formed in a matrix**](https://practice.geeksforgeeks.org/problems/largest-square-formed-in-a-matrix0806/1#)
 
- 
+ Note : each cell in matrix denotes **"largest square possible if that position is considered as top-left 1"**
 ```java
 class Solution{
     static int maxSquare(int n, int m, int arr[][]){
