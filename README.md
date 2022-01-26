@@ -65,7 +65,7 @@
 # 2. **Why Have you not Started Data Structures with Arrays?**
 ### Array is a topic which has unlimited questions and I believe as a beginner if you start with array then geeting out of it is tough so I don't want you all to get stuck in array only till end and leave other data structures.
 ### I also believe that many of you are very well familiar with concept of array traversing, modifying and etc..so here we will solve only questions of arrays after completing full data structures.
-### If you have no idea of Arrays then just understand few concept like :- Traversing in array, modifying array, reversing array and some basic questions of array from Hackerrank
+### If you have no idea of Arrays then just understand few concept like :- Traversing in array, modifying array, reversing array and some basic questions of array from Hackerrank.
 # 3. **How to be consistent while completing DSA-EndGame?**
 ### Make a group of not more than 3 friends who are equally passionate like you to master DSA and start peer programming by making a single google sheet shared between your friends and update your daily work in sheet due to which you all will be able to see each others progress daily.
 # 4. **Why to prefer this repository over some paid courses which claim to be complete DSA course?**
