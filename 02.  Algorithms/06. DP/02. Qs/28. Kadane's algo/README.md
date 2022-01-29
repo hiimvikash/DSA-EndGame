@@ -18,9 +18,7 @@ class Solution{
             bs=Math.max(bs,s);
         }
         return bs;
-        
     }
-    
 }
 ```
 ## [**Video Reference**](https://youtu.be/VMtyGnNcdPw)
