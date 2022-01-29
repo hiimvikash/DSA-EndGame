@@ -1,4 +1,4 @@
-# [**Reach a given score **](https://practice.geeksforgeeks.org/problems/reach-a-given-score-1587115621/1#)
+# [**Reach a given score**](https://practice.geeksforgeeks.org/problems/reach-a-given-score-1587115621/1#)
 
 ## Using DP
  ```java
