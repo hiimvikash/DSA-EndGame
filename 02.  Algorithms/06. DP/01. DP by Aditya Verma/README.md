@@ -1,4 +1,4 @@
-# 1. Fibonnaci Number
+# 1. Fibonnaci Number.
 ```java
 // Top Down Approach:-
 	static int fibn(int n, int dp[]){
