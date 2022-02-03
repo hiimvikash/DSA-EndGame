@@ -1,4 +1,4 @@
-# [**Count Palindromic Subsequences **](https://practice.geeksforgeeks.org/problems/count-palindromic-subsequences/1#)
+# [**Count Palindromic Subsequences**](https://practice.geeksforgeeks.org/problems/count-palindromic-subsequences/1#)
 
 ![](https://media.geeksforgeeks.org/wp-content/uploads/20190804162927/00011.jpg)
 
