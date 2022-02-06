@@ -17,7 +17,7 @@ public static void main(String[] args) {
 		reverseArr(arr,++s,--e);
 	}
 ```
-## isPalindrome String using recurssion
+## isPalindrome String using recurssion.
 ```java
 public static void main(String[] args) {
 		String str="madam";
