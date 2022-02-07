@@ -1,4 +1,4 @@
-**<h1 align="center">Just 7 Days</h1>**
+**<h1 align="center">Just 7 Days.</h1>**
 
 
 ## Step 1. [**Introduction to Programming 40min**](https://youtu.be/wn49bJOYAZM)
