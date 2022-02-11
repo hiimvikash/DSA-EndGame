@@ -1,7 +1,7 @@
 # [**Longest Palindromic Substring**](https://nados.io/question/longest-palindromic-substring?zen=true)
 
 
-## Using memonization
+## Using tabu
  ```java
 import java.io.*;
 import java.util.*;
@@ -47,5 +47,35 @@ public class Main {
       return String.valueOf(arr);
   }
 
+}
+```
+## PepCo Sol.
+```java
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) throws Exception {
+        Scanner sc=new Scanner(System.in);
+        String s=sc.next();
+        int n=s.length();
+        
+        int ans=-1;
+        boolean dp[][]=new boolean[n][n];
+        for(int g=0; g<n; g++){
+            int f=0;
+            for(int i=0,j=g; i<n-g; i++,j++){
+                if(g==0) dp[i][j]=true;
+                else if(g==1) dp[i][j]=s.charAt(i)==s.charAt(j)?true:false;
+                else{ 
+                    if(s.charAt(i)==s.charAt(j) && dp[i+1][j-1]) dp[i][j]=true;
+                }
+                if(dp[i][j]) f=1;
+            }
+            if(f==1)ans=Math.max(ans,g);
+        }
+        System.out.println(ans+1);
+    }
 }
 ```
