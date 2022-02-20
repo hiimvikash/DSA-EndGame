@@ -59,7 +59,7 @@
 	1. ### **Graphs(40+ Questions)**
 	1. ### **Dyanamic Programming(60+ Questions)**
 	
-# **Some Common FAQs <img src="https://media.giphy.com/media/l4FGwKLqbXxRtBzMc/giphy.gif?cid=ecf05e47zd17l7kzf15vqwyd0buahv05nz098szt4rh4tc75&rid=giphy.gif&ct=s" width="50">**
+# **Some Common FAQs : <img src="https://media.giphy.com/media/l4FGwKLqbXxRtBzMc/giphy.gif?cid=ecf05e47zd17l7kzf15vqwyd0buahv05nz098szt4rh4tc75&rid=giphy.gif&ct=s" width="50">**
 # 1. **How to make maximum Output from DSA-EndGame🔥?**
 ### Follow the Walk strictly and fill up the holes with "Prerequisites" below, then you will feel the smooth knowledge geeting into and expanding your 🧠.
 # 2. **Why Have you not Started Data Structures with Arrays?**
