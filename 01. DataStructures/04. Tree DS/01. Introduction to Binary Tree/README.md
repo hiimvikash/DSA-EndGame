@@ -36,7 +36,7 @@ A binary tree is a tree data structure in which each node has **at most two chil
    **Travesal in balanced BT is more efficient than unbalanced BT.**
    ![](https://i.ibb.co/nPNZn9W/BT-DS-2.png)
 5. Max number of nodes at a given level **‘x’ = 2^x**
-6. For a binary tree, **maximum number of nodes** with height ‘h’ = **2^(h+1) – 1**
+6. For a binary tree, **maximum number of nodes** with height ‘h’ = **2<sup>(h+1)</sup> – 1**
 
 # **BINARY TREE IMPLEMENTATIONS VIEWS**
 
