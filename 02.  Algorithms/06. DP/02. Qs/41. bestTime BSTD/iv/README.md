@@ -1,4 +1,4 @@
-# [**123. Best Time to Buy and Sell Stock IV(k transaction)**](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/)
+# [**188. Best Time to Buy and Sell Stock IV(k transaction)**](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/)
 [**Video reference**](https://youtu.be/3YILP-PdEJA)
 
 ```java
