@@ -38,3 +38,30 @@ class Solution {
     }
 }
 ```
+
+## Approach 2 : use treeMap when u want key in sorted order
+
+```java
+class Solution {
+    public List<List<Integer>> findWinners(int[][] matches) {
+        // use one HM to keep count of losses
+        
+        Map<Integer,Integer> hm=new TreeMap<>();
+        
+        for(int m[]: matches){
+            hm.put(m[0], hm.getOrDefault(m[0],0));
+            hm.put(m[1], hm.getOrDefault(m[1],0) + 1);
+        }
+        
+        // so basically player with 0 or 1 losses are the only one's who will be in ur ANS.
+        List<List<Integer>> answer=new ArrayList<>(); answer.add(new ArrayList<>()); answer.add(new ArrayList<>());
+                
+        for(Integer player : hm.keySet()){
+            if(hm.get(player) <= 1)
+                answer.get(hm.get(player)).add(player);
+        }
+        
+        return answer;
+    }
+}
+```
