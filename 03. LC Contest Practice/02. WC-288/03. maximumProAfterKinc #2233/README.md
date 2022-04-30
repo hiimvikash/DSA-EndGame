@@ -1,7 +1,8 @@
 # [**2233. Maximum Product After K Increments**](https://leetcode.com/problems/maximum-product-after-k-increments/)
 
 ## Approach : 
-```We can increment minimum number in all k operations and take their product in end.
+```
+We can increment minimum number in all k operations and take their product in end.
 
 But why it works ?
 
