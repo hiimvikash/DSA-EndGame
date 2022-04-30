@@ -1,6 +1,8 @@
 # [**2234. Maximum Total Beauty of the Gardens**](https://leetcode.com/problems/maximum-total-beauty-of-the-gardens/)
 
+[**Video reference for understanding only**](https://youtu.be/6QunjBjrJ_Y)
 ## Approach : 
+
 ```
 the idea is to sort the array first (why?...it'll be clear as you go through the below explanation)
 
