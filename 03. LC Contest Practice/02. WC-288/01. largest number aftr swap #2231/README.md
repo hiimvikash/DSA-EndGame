@@ -2,7 +2,7 @@
 
 ## Approach 1 : 
 - Look for a digit on the right that is bigger than the current digit and has the same parity, and swap them.
-(a[j] - a[i]) % 2 == 0 parity check (true if both a[j] and a[i] are even or both are odd)
+```(a[j] - a[i]) % 2 == 0``` parity check (true if both a[j] and a[i] are even or both are odd)
 
 ```java
 class Solution {
