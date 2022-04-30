@@ -38,7 +38,6 @@ class Solution {
             res = (res*pq.poll()) % 1000000007;
         }
         
-        
         return (int)res;
     }
 }
