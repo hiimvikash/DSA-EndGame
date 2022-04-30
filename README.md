@@ -57,7 +57,7 @@
 	1. ### **Heap(20 Questions)**
 	1. ### **Trie(6 Questions)**
 	1. ### **Graphs(40+ Questions)**
-	1. ### **Dyanamic Programming(60+ Questions)**
+	1. ### **Dyanamic Programming(60+ Questions)(02.%20%20Algorithms/06.%20DP/02.%20Qs)**
 	
 # **Some Common FAQs : <img src="https://media.giphy.com/media/l4FGwKLqbXxRtBzMc/giphy.gif?cid=ecf05e47zd17l7kzf15vqwyd0buahv05nz098szt4rh4tc75&rid=giphy.gif&ct=s" width="50">**
 # 1. **How to make maximum Output from DSA-EndGame🔥?**
