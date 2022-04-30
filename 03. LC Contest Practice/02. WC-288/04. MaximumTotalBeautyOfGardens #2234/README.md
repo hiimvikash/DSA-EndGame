@@ -1,6 +1,6 @@
 # [**2234. Maximum Total Beauty of the Gardens**](https://leetcode.com/problems/maximum-total-beauty-of-the-gardens/)
 
-[**Video reference for understanding only**](https://youtu.be/6QunjBjrJ_Y)
+## [**Video reference for understanding only**](https://youtu.be/6QunjBjrJ_Y)
 ## Approach : 
 
 ```
