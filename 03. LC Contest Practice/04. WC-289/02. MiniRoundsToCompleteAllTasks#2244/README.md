@@ -1,6 +1,6 @@
 # [**2244. Minimum Rounds to Complete All Tasks**](https://leetcode.com/problems/minimum-rounds-to-complete-all-tasks/)
 
-Hint : Whenever you divide anything by 3 we get remainder as 0,1 or 2 only.
+### **Hint : Whenever you divide anything by 3 we get remainder as 0,1 or 2 only.**
 
 ## My Approach : 
 ```java
