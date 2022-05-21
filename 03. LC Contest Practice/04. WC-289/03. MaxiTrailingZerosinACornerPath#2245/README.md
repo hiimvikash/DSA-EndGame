@@ -3,9 +3,7 @@
 **Hint - "Trailing 0's will not be affected(in -ve way) by including more element"**
 - **maintain the prefix sum for the counts of 2's and 5's**
 
-- maintain the prefix sum for the counts of 2's and 5's
 ![image](https://user-images.githubusercontent.com/71629248/169661168-b300b8d0-c9b6-4995-9355-e08885d83c26.png)
-
 ![image](https://user-images.githubusercontent.com/71629248/169661156-20f03cc4-7894-42de-802a-02ae6aa0c9ce.png)
 
 ## My Approach : 
