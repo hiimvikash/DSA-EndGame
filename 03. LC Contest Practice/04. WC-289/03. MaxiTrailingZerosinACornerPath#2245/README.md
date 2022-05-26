@@ -1,4 +1,4 @@
-# [**2244. Minimum Rounds to Complete All Tasks**](https://leetcode.com/problems/maximum-trailing-zeros-in-a-cornered-path/)
+# [**2245. Maximum Trailing Zeros in a Cornered Path**](https://leetcode.com/problems/maximum-trailing-zeros-in-a-cornered-path/)
 
 **Hint - "Trailing 0's will not be affected(in -ve way) by including more element"**
 - **maintain the prefix sum for the counts of 2's and 5's**
