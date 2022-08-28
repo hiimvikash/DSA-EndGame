@@ -2,7 +2,7 @@
 
 ### Here I will be Brushing Up some important topics of DSA from [Striver🙇‍♂️ A2Z DSA sheet.](https://takeuforward.org/strivers-a2z-dsa-course/strivers-a2z-dsa-course-sheet-2/)
 
-## **Topics to be conquer**
+## **Topics to be conquer** <img src="https://media.giphy.com/media/M9poH2SrmSz2E/giphy.gif" width="90">
 1. Recurssion & Dynamic Programming
 2. Binary Search
 3. Tree
@@ -11,4 +11,4 @@
 6. Strings
 7. Tries
 
-## Thank you.
+<img src="https://media.giphy.com/media/3o7btODWzGtsdI1LDW/giphy.gif" width="90">
