@@ -17,14 +17,17 @@
 # Solution
 
 ### As every number is equal to the sum of the previous two terms, the recurrence relation can be written as:
-![](https://lh4.googleusercontent.com/BwLei4kILFynlSL-V4ivRy_OeswgUijuLkPhFq1XeEVQk83XIgLq1MqVWolT4fLqAgIxz3j3TBys45yTmZSiVga-9D_PJSxgYtOsgyQMNf40Yxja90kr50ViVpHzUXjYXmq96Nzv)
+![image](https://user-images.githubusercontent.com/71629248/187250848-8dfcdfb8-5de7-4439-85f3-0c4502d894c8.png)
+
 ### The basic pseudo-code for the problem will be given as:
-![](https://lh5.googleusercontent.com/UK4N8ZsaDe1E50UvVoW5QMGpHztH6dHArb8pAQ-prDBSz5ZYAYCYgavuAZXny9WbD1eZOtGNf5_tYo3rmM3TcB5RKKTeWeZ1is1mrSkwr1UbiXfP830F8Y-mkN0Zo5WyyClpTUOe)
+![image](https://user-images.githubusercontent.com/71629248/187250901-c39c1bf6-49a1-4cf1-9807-2e7aa724bf9c.png)
+
 ### If we draw the recursive tree for n=5, it will be:
-![](https://lh6.googleusercontent.com/1yzhsKxugdFd9BWYVLv_SmvKuisHhq51jRo8VYRlJIinu4nWoP6aGlsIP3BWbE0Rb9SUQSuNPs7ZuxdLQIfMKwTMbIvu6o4divTyrjZ60VfXY1S60dpxgXstOSCsWuccy3Ajhkiw)
+![image](https://user-images.githubusercontent.com/71629248/187250991-302c2bae-9bfa-402a-9652-2b8bf1b6ba6c.png)
+
 ### If there are two recursive calls inside a function, the program will run the first call, finish its execution and then run the second call. Due to this reason, each and every call in the recursive tree will be executed. This gives the recursive code its exponential time complexity.
 ## Can we improve on this? The answer is Yes!
-![](https://lh3.googleusercontent.com/TYx2Wy_b2i3p7jTkfzML-JjR4zeiptdrE57y3b-vpUaRn0ybU_m9TXqGs-RdObLwy90CB88q4oh_k9TRFLXaovZgsu7EMr5Wa11rq9ryYiz5Z7-ycsjLej3fgMM2tnsPEM3YmVv8)
+![image](https://user-images.githubusercontent.com/71629248/187251037-53201dab-0569-491a-8183-d7fd80339b1f.png)
 ### We want to compute f(2) as the second call from f(4), but in the recursive tree we had already computed f(2) once (in the first recursive call of f(3) ) Similar is the case with f(3), therefore if we somehow store these values, the first time we calculated it then we can simply find its value in constant time whenever we need it. This technique is called Memoization. Here the cases marked in yellow are called overlapping sub-problems and we need to solve them only once during the code execution.
 
 ```java
