@@ -1,4 +1,6 @@
 # 1. [70. Climbing Stairs](https://leetcode.com/problems/climbing-stairs/)
+![image](https://user-images.githubusercontent.com/71629248/187269865-cf0ddb0a-79c9-4b40-914d-159e4bb30fbf.png)
+
 ```java
 class Solution {
     
