@@ -56,6 +56,9 @@ class Solution {
 [Reference](https://takeuforward.org/data-structure/dynamic-programming-climbing-stairs/)
 
 # 2. [Frog Jump](https://www.codingninjas.com/codestudio/problems/frog-jump_3621012?leftPanelTab=0)
+![image](https://user-images.githubusercontent.com/71629248/187431703-fee3f63e-2905-43fe-b622-9bcf8317369e.png)
+![image](https://user-images.githubusercontent.com/71629248/187431763-254e2b92-2fe4-4a5f-b640-6d41f1c6b50d.png)
+
 
 ## Memonization
 
