@@ -126,3 +126,55 @@ public class Solution {
 }
 ```
 [Reference](https://takeuforward.org/data-structure/dynamic-programming-frog-jump-dp-3/)
+
+# 3. Frog Jump with K distance
+
+## Memonization
+```java
+import java.util.*;
+public class Solution {
+    public static int frogJump(int n, int h[], int k) {
+            int dp[]=new int[n+1];
+            Arrays.fill(dp,-1);
+            
+        return fj(n,h,dp,k);
+    }
+    public static int fj(int n, int h[], int dp[], int k){
+        if(n<=2) return Math.abs(h[0]-h[n-1]);
+        
+        if(dp[n]!=-1) return dp[n];
+
+		int ans = Integer.MAX_VALUE;
+		for(int j=1; j<=k; j++){
+			ans = Math.min(ans, fj(n-j,h,dp,k)+Math.abs(h[n-1]-h[n-j+1]) )
+		}
+        
+        return dp[n] = ans;
+    }
+
+}
+```
+
+## Tabulation
+
+```java
+public class Solution {
+    public static int frogJump(int n, int h[]) {
+
+        // Write your code here..
+        int dp[]=new int[n+1];
+        dp[0]=dp[1]=0;
+        dp[2] = Math.abs(h[1]-h[0]);
+        for(int i=3; i<=n; i++){
+			int ans = Integer.MAX_VALUE;
+			for(int j=1; j<=k; j++){
+				ans = Math.min(ans, dp[i-j]+Math.abs(h[i-1]-h[i-j+1])); 
+			}
+            dp[i] = ans;
+        }
+        return dp[n];
+    }
+
+}
+```
+[Reference](https://takeuforward.org/data-structure/dynamic-programming-frog-jump-with-k-distances-dp-4/)
