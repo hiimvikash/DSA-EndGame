@@ -178,3 +178,49 @@ public class Solution {
 }
 ```
 [Reference](https://takeuforward.org/data-structure/dynamic-programming-frog-jump-with-k-distances-dp-4/)
+
+# [4. Maximum sum of non-adjacent elements](https://www.codingninjas.com/codestudio/problems/maximum-sum-of-non-adjacent-elements_843261)
+
+## Reccursive
+```java
+import java.util.*;
+public class Solution {
+	public static int maximumNonAdjacentSum(ArrayList<Integer> nums) {
+		// Write your code here.
+        return mnas(nums,nums.size());
+	}
+    public static int mnas(ArrayList<Integer> arr, int n){
+        if(n==1) return arr.get(0);
+        if(n==0) return 0;
+        
+        int p = arr.get(n-1) + mnas(arr,n-2);
+        int np = mnas(arr,n-1);
+        
+        return Math.max(p,np);
+    }
+}
+```
+
+## Memonization
+```java
+import java.util.*;
+public class Solution {
+	public static int maximumNonAdjacentSum(ArrayList<Integer> nums) {
+		// Write your code here.
+        int n = nums.size();
+        int dp[]=new int[n+1]; Arrays.fill(dp,-1);
+        
+        return mnas(nums,n,dp);
+	}
+    public static int mnas(ArrayList<Integer> arr, int n, int dp[]){
+        if(n==1) return arr.get(0);
+        if(n==0) return 0;
+        if(dp[n]!=-1) return dp[n];
+        
+        int p = arr.get(n-1) + mnas(arr,n-2,dp);
+        int np = mnas(arr,n-1,dp);
+        
+        return dp[n] = Math.max(p,np);
+    }
+}
+```
