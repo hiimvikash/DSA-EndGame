@@ -224,3 +224,49 @@ public class Solution {
     }
 }
 ```
+
+## Tabulation
+```java
+import java.util.*;
+public class Solution {
+	public static int maximumNonAdjacentSum(ArrayList<Integer> arr) {
+		// Write your code here.
+        int n = arr.size();
+        int dp[]=new int[n+1];
+        dp[0] = 0;
+        dp[1] = arr.get(0);
+        
+        for(int i = 2; i<=n; i++){
+            dp[i] = Math.max(arr.get(i-1) + dp[i-2], dp[i-1]);
+        }
+        return dp[n];
+	}
+}
+```
+
+## Space optimized
+```java
+import java.util.*;
+public class Solution {
+	public static int maximumNonAdjacentSum(ArrayList<Integer> arr) {
+		// Write your code here.
+        int n = arr.size();
+        
+        int prev2 = 0;
+        int prev = arr.get(0);
+        if(n==1) return prev;
+        if(n==0) return 0;
+        
+        int c=0;
+        
+        for(int i = 2; i<=n; i++){
+           c = Math.max(arr.get(i-1) + prev2, prev);
+            prev2 = prev;
+            prev = c;
+        }
+        return c;
+	}
+}
+```
+
+[reference](https://takeuforward.org/data-structure/maximum-sum-of-non-adjacent-elements-dp-5/)
