@@ -180,6 +180,7 @@ public class Solution {
 [Reference](https://takeuforward.org/data-structure/dynamic-programming-frog-jump-with-k-distances-dp-4/)
 
 # [4. Maximum sum of non-adjacent elements](https://www.codingninjas.com/codestudio/problems/maximum-sum-of-non-adjacent-elements_843261)
+# [198. House Robber - I](https://leetcode.com/problems/house-robber/)
 
 ## Reccursive
 ```java
@@ -268,5 +269,48 @@ public class Solution {
 	}
 }
 ```
-
 [reference](https://takeuforward.org/data-structure/maximum-sum-of-non-adjacent-elements-dp-5/)
+
+# [213. House Robber II](https://leetcode.com/problems/house-robber-ii/)
+
+## Space Optimized
+```java
+class Solution {
+    public int rob(int[] arr) {
+        int n = arr.length;
+        if(n==1) return arr[0];
+        
+        ArrayList<Integer> arr1=new ArrayList<>();
+        ArrayList<Integer> arr2=new ArrayList<>();
+        
+        for(int i=0; i<n; i++){
+            if(i!=0) arr1.add(arr[i]);
+            if(i!=n-1) arr2.add(arr[i]);
+        }
+        
+        return Math.max(maximumNonAdjacentSum(arr1), maximumNonAdjacentSum(arr2));
+    }
+    
+    public int maximumNonAdjacentSum(ArrayList<Integer> arr) {
+		// Write your code here.
+        int n = arr.size();
+        
+        
+        if(n==1) return arr.get(0);
+        if(n==0) return 0;
+        
+        int prev2 = 0;
+        int prev = arr.get(0);
+        
+        int c=0;
+        
+        for(int i = 2; i<=n; i++){
+           c = Math.max(arr.get(i-1) + prev2, prev);
+            prev2 = prev;
+            prev = c;
+        }
+        return c;
+	}
+}
+```
+[reference](https://takeuforward.org/data-structure/dynamic-programming-house-robber-dp-6/)
