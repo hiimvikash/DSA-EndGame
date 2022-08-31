@@ -272,6 +272,14 @@ public class Solution {
 [reference](https://takeuforward.org/data-structure/maximum-sum-of-non-adjacent-elements-dp-5/)
 
 # [213. House Robber II](https://leetcode.com/problems/house-robber-ii/)
+![image](https://user-images.githubusercontent.com/71629248/187686826-6d0e16cf-a950-4580-b8d2-72cc79a3f576.png)
+![image](https://user-images.githubusercontent.com/71629248/187687050-83a4e8bc-410a-4fa9-b0de-42e09f7978df.png)
+![image](https://user-images.githubusercontent.com/71629248/187687096-81131aa2-fc74-4a14-9486-78797a6f3c93.png)
+## The approach to solving this problem can be summarized as:
+
+- Make two reduced arrays – arr1(arr-last element) and arr2(arr-first element).
+- Find the maximum of non-adjacent elements as mentioned in article DP5 on arr1 and arr2 separately. Let’s call the answers we got as ans1 and ans2 respectively.
+- Return max(ans1, ans2) as our final answer.
 
 ## Space Optimized
 ```java
