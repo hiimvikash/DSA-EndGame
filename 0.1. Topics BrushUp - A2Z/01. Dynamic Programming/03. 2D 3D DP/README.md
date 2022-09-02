@@ -186,3 +186,30 @@ class Solution {
     }
 }
 ```
+
+## Space optimization
+### As we see in tabulation the relation ```dp[i][j] = dp[i+1][j] + dp[i][j+1] ``` for filling a particular box we only need SIDE BOX and DOWN BOX : that means we only require DownRow and SideColumn and our answer will lie in SC[0]
+```java
+class Solution {
+    public int uniquePaths(int n, int m) { // n-rows, m-column
+        if(n==1 || m==1) return 1;
+        
+        int dr[]=new int[m]; // down row - temp
+        
+        for(int j=0; j<m; j++) dr[j] = 1;
+        
+        int sc[]=new int[m]; // side colum - operation
+        for(int i=n-2; i>=0; i--){
+            
+            for(int j=m-1; j>=0; j--){
+                int r=0;
+                if(j<m-1) r = sc[j+1];
+                sc[j] = dr[j] + r;
+            }
+            dr=sc;
+        }
+        return sc[0];
+    }
+}
+```
+[Reference](https://takeuforward.org/data-structure/grid-unique-paths-dp-on-grids-dp8/)
