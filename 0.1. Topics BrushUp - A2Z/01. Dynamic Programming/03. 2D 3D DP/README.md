@@ -213,3 +213,88 @@ class Solution {
 }
 ```
 [Reference](https://takeuforward.org/data-structure/grid-unique-paths-dp-on-grids-dp8/)
+
+# [3. 63. Unique Paths II](https://leetcode.com/problems/unique-paths-ii/)
+
+## memonization
+```java
+class Solution {
+    public int uniquePathsWithObstacles(int[][] arr) {
+        int n = arr.length; int m = arr[0].length;
+        int dp[][]=new int[n+1][m+1];
+        for(int d[]: dp) Arrays.fill(d,-1);
+        
+        return fun(arr,0,0,n,m,dp);
+    }
+    int fun(int arr[][], int i,int j, int n, int m, int dp[][]){
+        
+        if(i >= n || j >= m) return 0;
+        if(arr[i][j]==1) return 0;
+        if(i == n-1 && j == m-1) return 1;
+        
+        if(dp[i][j]!=-1) return dp[i][j];
+        
+        return dp[i][j] = fun(arr,i+1,j,n,m,dp) + fun(arr,i,j+1,n,m,dp);
+    }
+}
+```
+
+## Tabulation 
+```java
+class Solution {
+    public int uniquePathsWithObstacles(int[][] arr) {
+        int n = arr.length; int m = arr[0].length;
+        if(arr[n-1][m-1]==1 || arr[0][0]==1) return 0;
+        
+        if(n==1 || m==1) return 1;
+        int dp[][]=new int[n][m];
+        
+        for(int j=m-1; j>=0; j--) if(arr[n-1][j]!=1) dp[n-1][j] = 1; else break;
+        
+        for(int i=n-2; i>=0; i--){
+            for(int j=m-1; j>=0; j--){
+                if(arr[i][j]!=1){
+                    int r=0,d=0;
+                    if(j<m-1 && arr[i][j+1]!=1) r = dp[i][j+1];
+                    if(arr[i+1][j]!=1) d = dp[i+1][j];
+
+                    dp[i][j] = d + r;
+                }
+            }
+        }
+        return dp[0][0];
+    }
+}
+```
+## Space Optimized
+```java
+class Solution {
+    public int uniquePathsWithObstacles(int[][] arr) {
+        int n = arr.length; int m = arr[0].length;
+        if(arr[n-1][m-1]==1 || arr[0][0]==1) return 0;
+        
+        if(n==1 || m==1) return 1;
+        
+        
+        int dr[]=new int[m]; // down row - temp
+        
+        for(int j=m-1; j>=0; j--){ if(arr[n-1][j]!=1) dr[j] = 1; else break; }
+        
+        int sc[]=new int[m]; // side colum - operation
+        for(int i=n-2; i>=0; i--){
+            
+            for(int j=m-1; j>=0; j--){
+                int r=0; int d=0;
+                if(j<m-1 && arr[i][j+1]!=1) r = sc[j+1];
+                if(arr[i+1][j]!=1) d=dr[j];
+                
+                if(arr[i][j]!=1) sc[j] = d + r;
+            }
+            dr=sc;
+        }
+        return sc[0];
+    }
+    
+}
+```
+[Reference](https://takeuforward.org/data-structure/grid-unique-paths-2-dp-9/)
