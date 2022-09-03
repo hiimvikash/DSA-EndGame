@@ -298,3 +298,84 @@ class Solution {
 }
 ```
 [Reference](https://takeuforward.org/data-structure/grid-unique-paths-2-dp-9/)
+
+# [4. 64. Minimum Path Sum](https://leetcode.com/problems/minimum-path-sum/)
+## memonization
+```java
+class Solution {
+    public int minPathSum(int[][] grid) {
+        int n = grid.length; int m = grid[0].length;
+        int dp[][]=new int[n+1][m+1];
+        for(int d[]: dp) Arrays.fill(d,-1);
+        
+        return fun(grid,0,0,n,m,dp);
+    }
+    int fun(int arr[][], int i,int j, int n, int m, int dp[][]){
+        if(i == n-1 && j == m-1) return arr[i][j];
+        if(i >= n || j >= m) return Integer.MAX_VALUE-200;
+        
+        if(dp[i][j]!=-1) return dp[i][j];
+        int d = arr[i][j] + fun(arr,i+1,j,n,m,dp);
+        int r = arr[i][j] + fun(arr,i,j+1,n,m,dp);
+        
+        return dp[i][j] = Math.min(d,r);
+    }
+    
+}
+```
+## Tabulation
+```java
+class Solution {
+    public int minPathSum(int[][] arr) {
+        int n = arr.length; int m = arr[0].length;
+        int dp[][]=new int[n][m];
+        
+        dp[n-1][m-1] = arr[n-1][m-1];
+        for(int j=m-2; j>=0; j--) dp[n-1][j] = arr[n-1][j] + dp[n-1][j+1];
+        
+        for(int i=n-2; i>=0; i--){
+            for(int j=m-1; j>=0; j--){
+                int r = Integer.MAX_VALUE - 200;
+                if(j<m-1) r = dp[i][j+1];
+                dp[i][j] = Math.min(dp[i+1][j] + arr[i][j], r + arr[i][j]);
+            }
+        }
+        return dp[0][0];
+    }
+    
+}
+```
+## space optimization
+```java
+class Solution {
+    public int minPathSum(int[][] arr) {
+        int n = arr.length; int m = arr[0].length;
+        if(n==1 && m==1) return arr[0][0];
+        int sum =0;
+        if(m==1){
+            for(int i=0; i<n; i++) sum+=arr[i][0];
+            return sum;
+        }
+        
+        int dr[]=new int[m]; // down row - temp
+        
+        dr[m-1] = arr[n-1][m-1];
+        for(int j=m-2; j>=0; j--) dr[j] = arr[n-1][j] + dr[j+1];
+        
+        if(n==1) return dr[0];
+        
+        int sc[]=new int[m]; // side colum - operation
+        for(int i=n-2; i>=0; i--){
+            
+            for(int j=m-1; j>=0; j--){
+                int r = Integer.MAX_VALUE-200;
+                if(j<m-1) r = sc[j+1];
+                sc[j] = Math.min(dr[j] + arr[i][j], r + arr[i][j]);
+            }
+            dr=sc;
+        }
+        return sc[0];
+    }
+    
+}
+```
