@@ -351,11 +351,7 @@ class Solution {
     public int minPathSum(int[][] arr) {
         int n = arr.length; int m = arr[0].length;
         if(n==1 && m==1) return arr[0][0];
-        int sum =0;
-        if(m==1){
-            for(int i=0; i<n; i++) sum+=arr[i][0];
-            return sum;
-        }
+       
         
         int dr[]=new int[m]; // down row - temp
         
