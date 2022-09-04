@@ -375,3 +375,50 @@ class Solution {
     
 }
 ```
+
+# [5. Minimum path sum in Triangular Grid](https://www.codingninjas.com/codestudio/problems/triangle_1229398?)
+## recurrsive 
+```java
+public class Solution {
+    public static int minimumPathSum(int[][] arr, int n) {
+        // Write your code here.
+        return fun(arr,0,0,n,1);
+        
+    }
+    static int fun(int arr[][], int i, int j, int n, int m){
+        if(i==n-1) return arr[i][j];
+        if(i>=n || j>=m) return (int)Math.pow(10,9);
+        
+        int b = arr[i][j] + fun(arr,i+1,j,n,i+2);
+        int br = arr[i][j] + fun(arr,i+1,j+1,n,i+2);
+        
+        return Math.min(b,br);
+    }
+}
+```
+ ## memonization
+ ```java
+ import java.util.*;
+public class Solution {
+    public static int minimumPathSum(int[][] arr, int n) {
+        // Write your code here.
+        int dp[][]=new int[n][n];
+        for(int d[] : dp) Arrays.fill(d,-1);
+        
+        return fun(arr,0,0,n,1,dp);
+        
+    }
+    static int fun(int arr[][], int i, int j, int n, int m, int dp[][]){
+        if(i==n-1) return arr[i][j];
+        if(i>=n || j>=m) return (int)Math.pow(10,9);
+        
+        if(dp[i][j]!=-1) return dp[i][j];
+        
+        int b = arr[i][j] + fun(arr, i+1, j, n, i+2, dp);
+        int br = arr[i][j] + fun(arr, i+1, j+1, n, i+2, dp);
+        
+        return dp[i][j] = Math.min(b,br);
+    }
+}
+ ```
+ 
