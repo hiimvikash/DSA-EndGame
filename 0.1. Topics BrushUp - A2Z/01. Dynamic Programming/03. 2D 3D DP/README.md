@@ -421,4 +421,44 @@ public class Solution {
     }
 }
  ```
- 
+## Tabulation
+```java
+import java.util.*;
+public class Solution {
+    public static int minimumPathSum(int[][] arr, int n) {
+        // Write your code here.
+        int dp[][]=new int[n][n];
+        for(int j=0; j<n; j++) dp[n-1][j] = arr[n-1][j];
+        
+        for(int i = n-2; i>=0; i--){
+            for(int j=i; j>=0; j--){
+                dp[i][j] = Math.min(arr[i][j] + dp[i+1][j], arr[i][j] + dp[i+1][j+1]);
+            }
+        }
+        
+        return dp[0][0];
+    }
+    
+}
+```
+## space optimization
+```java
+import java.util.*;
+public class Solution {
+    public static int minimumPathSum(int[][] arr, int n) {
+        // Write your code here.
+        int dr[]=new int[n];
+        for(int j=0; j<n; j++) dr[j] = arr[n-1][j];
+        
+        int cur[]=new int[n];
+        for(int i = n-2; i>=0; i--){
+            for(int j=i; j>=0; j--){
+                cur[j] = Math.min(arr[i][j] + dr[j], arr[i][j] + dr[j+1]);
+            }
+            dr=cur;
+        }
+        return dr[0];
+    }
+    
+}
+```
