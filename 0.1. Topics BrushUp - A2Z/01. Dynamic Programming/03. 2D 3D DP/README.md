@@ -271,18 +271,15 @@ class Solution {
 class Solution {
     public int uniquePathsWithObstacles(int[][] arr) {
         int n = arr.length; int m = arr[0].length;
-        if(arr[n-1][m-1]==1 || arr[0][0]==1) return 0;
-        
-        if(n==1 || m==1) return 1;
-        
+         
         
         int dr[]=new int[m]; // down row - temp
         
         for(int j=m-1; j>=0; j--){ if(arr[n-1][j]!=1) dr[j] = 1; else break; }
         
-        int sc[]=new int[m]; // side colum - operation
+        
         for(int i=n-2; i>=0; i--){
-            
+            int sc[]=new int[m]; // side colum - operation
             for(int j=m-1; j>=0; j--){
                 int r=0; int d=0;
                 if(j<m-1 && arr[i][j+1]!=1) r = sc[j+1];
@@ -292,7 +289,7 @@ class Solution {
             }
             dr=sc;
         }
-        return sc[0];
+        return dr[0];
     }
     
 }
@@ -350,19 +347,17 @@ class Solution {
 class Solution {
     public int minPathSum(int[][] arr) {
         int n = arr.length; int m = arr[0].length;
-        if(n==1 && m==1) return arr[0][0];
-       
+             
         
         int dr[]=new int[m]; // down row - temp
         
         dr[m-1] = arr[n-1][m-1];
         for(int j=m-2; j>=0; j--) dr[j] = arr[n-1][j] + dr[j+1];
         
-        if(n==1) return dr[0];
+          
         
-        int sc[]=new int[m]; // side colum - operation
         for(int i=n-2; i>=0; i--){
-            
+            int sc[]=new int[m]; // side colum - operation
             for(int j=m-1; j>=0; j--){
                 int r = Integer.MAX_VALUE-200;
                 if(j<m-1) r = sc[j+1];
@@ -370,7 +365,7 @@ class Solution {
             }
             dr=sc;
         }
-        return sc[0];
+        return dr[0];
     }
     
 }
