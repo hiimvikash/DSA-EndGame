@@ -462,3 +462,114 @@ public class Solution {
     
 }
 ```
+# [6. 931. Minimum Falling Path Sum](https://leetcode.com/problems/minimum-falling-path-sum/)
+## Recursive
+```java
+class Solution {
+    public int minFallingPathSum(int[][] matrix) {
+        int n = matrix.length; int m = matrix[0].length;
+        
+        int ans = Integer.MAX_VALUE;
+        for(int j=0; j<m; j++)
+        ans = Math.min(ans,fun(matrix,0,j,n,m));
+        
+        return ans;
+    }
+    int fun(int arr[][], int i, int j, int n, int m){
+        if(i==n-1) return arr[i][j];
+        if(i>=n || j>=m) return (int)Math.pow(10,9);
+        
+        int d = arr[i][j] + fun(arr,i+1,j,n,m);
+        int dr = Integer.MAX_VALUE, dl = Integer.MAX_VALUE;
+        if(j<m-1)  dr = arr[i][j] + fun(arr,i+1,j+1,n,m);
+        if(j>0)  dl = arr[i][j] + fun(arr,i+1,j-1,n,m);
+        
+        return Math.min(d,Math.min(dr,dl));
+    }
+}
+```
+## Memonization
+```java
+class Solution {
+    public int minFallingPathSum(int[][] matrix) {
+        int n = matrix.length; int m = matrix[0].length;
+        int dp[][]=new int[n][n];
+        int ans = Integer.MAX_VALUE;
+        
+        for(int j=0; j<m; j++){
+            for(int d[] : dp) Arrays.fill(d,-1);
+            ans = Math.min(ans,fun(matrix,0,j,n,m,dp));
+        }
+        return ans;
+    }
+    int fun(int arr[][], int i, int j, int n, int m, int dp[][]){
+        if(i==n-1) return arr[i][j];
+        if(i>=n || j>=m) return (int)Math.pow(10,9);
+        if(dp[i][j]!=-1) return dp[i][j];
+        
+        int d = arr[i][j] + fun(arr,i+1,j,n,m,dp);
+        int dr = Integer.MAX_VALUE, dl = Integer.MAX_VALUE;
+        if(j<m-1)  dr = arr[i][j] + fun(arr,i+1,j+1,n,m,dp);
+        if(j>0)  dl = arr[i][j] + fun(arr,i+1,j-1,n,m,dp);
+        
+        return dp[i][j] = Math.min(d,Math.min(dr,dl));
+    }
+}
+```
+## Tabulation
+```java
+class Solution {
+    public int minFallingPathSum(int[][] arr) {
+        int n = arr.length; int m = arr[0].length;
+        int dp[][]=new int[n][m];
+        for(int j=0; j<m; j++) dp[n-1][j] = arr[n-1][j];
+        
+        for(int i = n-2; i>=0; i--){
+            for(int j = m-1; j>=0; j--){
+                int d = arr[i][j] + dp[i+1][j];
+                int dr = Integer.MAX_VALUE, dl = Integer.MAX_VALUE;
+                if(j<m-1)  dr = arr[i][j] + dp[i+1][j+1];
+                if(j>0)  dl = arr[i][j] + dp[i+1][j-1];
+                
+                dp[i][j] = Math.min(d,Math.min(dr,dl));
+            }
+        }
+        
+        int ans = Integer.MAX_VALUE;
+        for(int j=0; j<m; j++) ans = Math.min(ans,dp[0][j]);
+            
+        return ans;
+    }
+    
+}
+```
+## Space Optimized
+```java
+class Solution {
+    public int minFallingPathSum(int[][] arr) {
+        int n = arr.length; int m = arr[0].length;
+        int dwn[]=new int[m];
+        for(int j=0; j<m; j++) dwn[j] = arr[n-1][j];
+
+        
+        for(int i = n-2; i>=0; i--){
+            int curr[]=new int[m];
+            for(int j = m-1; j>=0; j--){
+                int d = arr[i][j] + dwn[j];
+                int dr = Integer.MAX_VALUE, dl = Integer.MAX_VALUE;
+                if(j<m-1)  dr = arr[i][j] + dwn[j+1];
+                if(j>0)  dl = arr[i][j] + dwn[j-1];
+                
+                curr[j] = Math.min(d,Math.min(dr,dl));
+            }
+            dwn = curr;
+        }
+        
+        int ans = Integer.MAX_VALUE;
+        for(int j=0; j<m; j++) ans = Math.min(ans,dwn[j]);
+            
+        return ans;
+    }
+    
+}
+```
