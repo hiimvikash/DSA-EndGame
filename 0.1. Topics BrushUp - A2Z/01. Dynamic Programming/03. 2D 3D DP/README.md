@@ -568,3 +568,66 @@ class Solution {
     
 }
 ```
+# [7. Chocolate Pickup](https://www.codingninjas.com/codestudio/problems/ninja-and-his-friends_3125885?)
+
+## Recursion
+```java
+public class Solution {
+	public static int maximumChocolates(int r, int c, int[][] grid) {
+		// Write your code here.
+        return fun(grid, 0, 0, c-1, r, c);
+	}
+    static int fun(int arr[][], int i, int j1, int j2, int n, int m){
+        if(j1>=m || j1<0 || j2>=m || j2<0) return (int)Math.pow(-10,9);
+        
+        if(i==n-1){
+            if(j1==j2) return arr[i][j1];
+            return arr[i][j1] + arr[i][j2];
+        }
+        int maxi = 0;
+        for(int dj1 = -1; dj1<2; dj1++){
+            for(int dj2 = -1; dj2<2; dj2++){
+                if(j1==j2) maxi = Math.max(maxi, arr[i][j1] + fun(arr, i+1, j1+dj1, j2+dj2, n, m));
+                else maxi = Math.max(maxi, arr[i][j1] + arr[i][j2] + fun(arr, i+1, j1+dj1, j2+dj2, n, m));
+            }
+        }
+        return maxi;
+    }
+}
+```
+
+## Memonization
+```java
+import java.util.*;
+public class Solution {
+	public static int maximumChocolates(int r, int c, int[][] grid) {
+		// Write your code here.
+        int dp[][][] = new int[r+1][c+1][c+1];
+        
+        for(int d2[][] : dp){
+            for(int d[] : d2){
+                Arrays.fill(d,-1);
+            }
+        } 
+        return fun(grid, 0, 0, c-1, r, c, dp);
+	}
+    static int fun(int arr[][], int i, int j1, int j2, int n, int m, int dp[][][]){
+        if(j1>=m || j1<0 || j2>=m || j2<0) return (int)Math.pow(-10,9);
+        
+        if(i==n-1){
+            if(j1==j2) return arr[i][j1];
+            return arr[i][j1] + arr[i][j2];
+        }
+        
+        if(dp[i][j1][j2]!=-1) return dp[i][j1][j2];
+        int maxi = 0;
+        for(int dj1 = -1; dj1<2; dj1++){
+            for(int dj2 = -1; dj2<2; dj2++){
+                if(j1==j2) maxi = Math.max(maxi, arr[i][j1] + fun(arr, i+1, j1+dj1, j2+dj2, n, m, dp));
+                else maxi = Math.max(maxi, arr[i][j1] + arr[i][j2] + fun(arr, i+1, j1+dj1, j2+dj2, n, m, dp));
+            }
+        }
+        return dp[i][j1][j2] =  maxi;
+    }
+}
+```
