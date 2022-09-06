@@ -569,6 +569,8 @@ class Solution {
 }
 ```
 # [7. Chocolate Pickup GQ](https://www.codingninjas.com/codestudio/problems/ninja-and-his-friends_3125885?)
+![image](https://user-images.githubusercontent.com/71629248/188597011-2797761a-151f-4e15-afc5-cb3325a43551.png)
+## Hence we have a total of 9 different options at every f(i,j1,j2) to move Alice and Bob. Now we can manually write these 9 options or we can observe a pattern in them, first Alice moves to one side and Bob tries all three choices, then again Alice moves, then Bob, and so on. This pattern can be easily captured by using two nested loops that change the column numbers(j1 and j2).
 
 ## Recursion
 ```java
