@@ -678,4 +678,48 @@ public class Solution {
     }
 }
 ```
+
+## Space Optimization
+```java
+import java.util.*;
+public class Solution {
+	public static int maximumChocolates(int n, int m, int[][] arr) {
+		// Write your code here.
+        
+        int dr[][] = new int[m][m];
+        
+        for(int j1 = 0; j1<m; j1++){
+            for(int j2 = 0; j2<m; j2++){
+                if(j1==j2) dr[j1][j2] = arr[n-1][j1];
+                else dr[j1][j2] = arr[n-1][j1] + arr[n-1][j2];
+            }
+        }
+        
+         int ans = 0;
+        for(int i = n-2; i>=0; i--){
+            int curr[][] = new int[m][m];
+            for(int j1 = 0; j1<m; j1++){
+                for(int j2 = 0; j2<m; j2++){
+                    
+                      int maxi = Integer.MIN_VALUE;
+                        
+                    for(int dj1 = -1; dj1<2; dj1++){
+                        for(int dj2 = -1; dj2<2; dj2++){
+                                    if(j1==j2) ans = arr[i][j1];
+                                    else ans = arr[i][j1] + arr[i][j2];
+                                if((j1+dj1<m && j1+dj1>=0) && (j2+dj2<m && j2+dj2>=0)) ans += dr[j1+dj1][j2+dj2];
+                                else ans += (int)Math.pow(-10,9);
+                            
+                                maxi = Math.max(maxi,ans);
+                         }
+                    }
+                curr[j1][j2] = maxi;
+           } // j2
+        } // j1
+            dr = curr;
+      } // i
+        return dr[0][m-1];
+    }
+}
+```
 [Reference](https://takeuforward.org/data-structure/3-d-dp-ninja-and-his-friends-dp-13/)
