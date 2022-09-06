@@ -570,7 +570,7 @@ class Solution {
 ```
 # [7. Chocolate Pickup GQ](https://www.codingninjas.com/codestudio/problems/ninja-and-his-friends_3125885?)
 ![image](https://user-images.githubusercontent.com/71629248/188597011-2797761a-151f-4e15-afc5-cb3325a43551.png)
-## Hence we have a total of 9 different options at every f(i,j1,j2) to move Alice and Bob. Now we can manually write these 9 options or we can observe a pattern in them, first Alice moves to one side and Bob tries all three choices, then again Alice moves, then Bob, and so on. This pattern can be easily captured by using two nested loops that change the column numbers(j1 and j2).
+### Hence we have a total of 9 different options at every f(i,j1,j2) to move Alice and Bob. Now we can manually write these 9 options or we can observe a pattern in them, first Alice moves to one side and Bob tries all three choices, then again Alice moves, then Bob, and so on. This pattern can be easily captured by using two nested loops that change the column numbers(j1 and j2).
 
 ## Recursion
 ```java
@@ -630,6 +630,49 @@ public class Solution {
             }
         }
         return dp[i][j1][j2] =  maxi;
+    }
+}
+```
+## Tabulation
+### For the tabulation approach, it is better to understand what a cell in the 3D DP array means. As we had done in memoization, we will initialize a dp[] array of size [N][M][M]. So now, when we say dp[2][0][3], what does it mean? It means that we are getting the value of maximum chocolates collected by Alice and Bob, when Alice is at (2,0) and Bob is at (2,3).
+
+### The below figure gives us a bit more clarity.
+```java
+import java.util.*;
+public class Solution {
+	public static int maximumChocolates(int n, int m, int[][] arr) {
+		// Write your code here.
+        
+        int dp[][][] = new int[n+1][m+1][m+1];
+        
+        for(int j1 = 0; j1<m; j1++){
+            for(int j2 = 0; j2<m; j2++){
+                if(j1==j2) dp[n-1][j1][j2] = arr[n-1][j1];
+                else dp[n-1][j1][j2] = arr[n-1][j1] + arr[n-1][j2];
+            }
+        }
+        
+         int ans = 0;
+        for(int i = n-2; i>=0; i--){
+            for(int j1 = 0; j1<m; j1++){
+                for(int j2 = 0; j2<m; j2++){
+                    
+                      int maxi = Integer.MIN_VALUE;
+                    for(int dj1 = -1; dj1<2; dj1++){
+                        for(int dj2 = -1; dj2<2; dj2++){
+                                    if(j1==j2) ans = arr[i][j1];
+                                    else ans = arr[i][j1] + arr[i][j2];
+                                if((j1+dj1<m && j1+dj1>=0) && (j2+dj2<m && j2+dj2>=0)) ans += dp[i+1][j1+dj1][j2+dj2];
+                                else ans += (int)Math.pow(-10,9);
+                            
+                                maxi = Math.max(maxi,ans);
+                         }
+                    }
+                dp[i][j1][j2] = maxi;
+           } // j2
+        } // j1
+      } // i
+        return dp[0][0][m-1];
     }
 }
 ```
