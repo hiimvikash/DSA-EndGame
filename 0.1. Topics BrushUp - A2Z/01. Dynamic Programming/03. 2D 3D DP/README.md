@@ -568,7 +568,7 @@ class Solution {
     
 }
 ```
-# [7. Chocolate Pickup](https://www.codingninjas.com/codestudio/problems/ninja-and-his-friends_3125885?)
+# [7. Chocolate Pickup GQ](https://www.codingninjas.com/codestudio/problems/ninja-and-his-friends_3125885?)
 
 ## Recursion
 ```java
