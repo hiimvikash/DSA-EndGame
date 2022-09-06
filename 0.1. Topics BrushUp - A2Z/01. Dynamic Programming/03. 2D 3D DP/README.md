@@ -637,6 +637,8 @@ public class Solution {
 ### For the tabulation approach, it is better to understand what a cell in the 3D DP array means. As we had done in memoization, we will initialize a dp[] array of size [N][M][M]. So now, when we say dp[2][0][3], what does it mean? It means that we are getting the value of maximum chocolates collected by Alice and Bob, when Alice is at (2,0) and Bob is at (2,3).
 
 ### The below figure gives us a bit more clarity.
+![image](https://user-images.githubusercontent.com/71629248/188681184-6b424b56-6ee8-4e90-8366-624f269509b6.png)
+
 ```java
 import java.util.*;
 public class Solution {
@@ -676,3 +678,4 @@ public class Solution {
     }
 }
 ```
+[Reference](https://takeuforward.org/data-structure/3-d-dp-ninja-and-his-friends-dp-13/)
