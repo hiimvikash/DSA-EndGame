@@ -1,0 +1,703 @@
+# 1. [Subset Sum Equal To K](https://www.codingninjas.com/codestudio/problems/subset-sum-equal-to-k_1550954?leftPanelTab=0)
+
+## Reccursive
+```java
+public class Solution {
+    public static boolean subsetSumToK(int n, int k, int arr[]){
+        // Write your code here.
+        return ss2k(arr,n,k);
+    }
+    public static boolean ss2k(int arr[], int n, int k){
+        if(n==0){
+            if(k==0) return true;
+            return false;
+        }
+        if(arr[n-1]<=k){
+            if(ss2k(arr,n-1,k-arr[n-1])) return true;
+        }
+        if(ss2k(arr,n-1,k)) return true;
+        
+        return false;
+    }
+}
+
+```
+
+## Memonization
+
+```java
+import java.util.*;
+public class Solution {
+    public static boolean subsetSumToK(int n, int k, int arr[]){
+        // Write your code here.
+        int dp[][] = new int[n+1][k+1];
+        for(int d[]: dp) Arrays.fill(d,-1);
+        
+        return ss2k(arr, n, k, dp)==1? true :false;
+    }
+    public static int ss2k(int arr[], int n, int k, int dp[][]){
+        if(n==0){
+            if(k==0) return 1;
+            return 0;
+        }
+        if(dp[n][k]!=-1) return dp[n][k];
+        
+        if(arr[n-1]<=k){
+            if(ss2k(arr, n-1, k-arr[n-1], dp)==1) return dp[n][k] = 1;
+        }
+        if(ss2k(arr, n-1, k, dp)==1) return dp[n][k] = 1;
+        
+        return dp[n][k] = 0;
+    }
+}
+```
+
+## Tabulation
+```java
+import java.util.*;
+public class Solution {
+    public static boolean subsetSumToK(int n, int k, int arr[]){
+        // Write your code here.
+        int dp[][] = new int[n+1][k+1];
+        // initialization k==0 return 1
+        for(int i=0; i<=n; i++) dp[i][0] = 1;
+        
+        for(int i = 1; i<=n; i++){
+            for(int j = 1; j<=k; j++){
+                if(arr[i-1]<=j){
+                    if(dp[i-1][j-arr[i-1]]==1) dp[i][j] = 1;
+                    else if(dp[i-1][j]==1) dp[i][j] = 1;
+                }
+                else if(dp[i-1][j]==1) dp[i][j] = 1;
+                else dp[i][j] = 0;
+            }
+        }
+        
+        return dp[n][k]==1? true :false;
+    }
+}
+```
+
+
+
+## Space Optimized
+
+```java
+import java.util.*;
+public class Solution {
+    public static boolean subsetSumToK(int n, int k, int arr[]){
+        // Write your code here.
+        int ur[]=new int[k+1]; ur[0] = 1;
+        
+        for(int i = 1; i<=n; i++){
+            int curr[]=new int[k+1];
+            curr[0]=1;
+            for(int j = 1; j<=k; j++){
+                if(arr[i-1]<=j){
+                    if(ur[j-arr[i-1]]==1) curr[j] = 1;
+                    else if(ur[j]==1) curr[j] = 1;
+                }
+                else if(ur[j]==1) curr[j] = 1;
+                else curr[j] = 0;
+            }
+            ur=curr;
+        }
+        
+        return ur[k]==1? true :false;
+    }
+}
+```
+[Reference](https://takeuforward.org/data-structure/subset-sum-equal-to-target-dp-14/)
+
+# [2. 62. Unique Paths](https://leetcode.com/problems/unique-paths/)
+
+## Recursive
+```java
+class Solution {
+    public int uniquePaths(int n, int m) { // n-rows, m-column
+        return fun(0,0,n,m);
+    }
+    int fun(int i,int j, int n, int m){
+        if(i == n-1 && j == m-1) return 1;
+        if(i >= n || j >= m) return 0;
+        
+        return fun(i+1,j,n,m) + fun(i,j+1,n,m);
+    }
+}
+```
+
+## memonization
+```java
+class Solution {
+    public int uniquePaths(int n, int m) { // n-rows, m-column
+        int dp[][]=new int[n+1][m+1];
+        for(int d[]: dp) Arrays.fill(d,-1);
+        
+        return fun(0,0,n,m,dp);
+    }
+    int fun(int i,int j, int n, int m, int dp[][]){
+        if(i == n-1 && j == m-1) return 1;
+        if(i >= n || j >= m) return 0;
+        
+        if(dp[i][j]!=-1) return dp[i][j];
+        
+        return dp[i][j] = fun(i+1,j,n,m,dp) + fun(i,j+1,n,m,dp);
+    }
+}
+```
+## Tabulation
+```java
+class Solution {
+    public int uniquePaths(int n, int m) { // n-rows, m-column
+        int dp[][]=new int[n][m];
+        
+        for(int j=0; j<m; j++) dp[n-1][j] = 1;
+        
+        for(int i=n-2; i>=0; i--){
+            for(int j=m-1; j>=0; j--){
+                int r=0;
+                if(j<m-1) r = dp[i][j+1];
+                dp[i][j] = dp[i+1][j] + r;
+            }
+        }
+        return dp[0][0];
+    }
+}
+```
+
+## Space optimization
+### As we see in tabulation the relation ```dp[i][j] = dp[i+1][j] + dp[i][j+1] ``` for filling a particular box we only need SIDE BOX and DOWN BOX : that means we only require DownRow and SideColumn and our answer will lie in SC[0]
+```java
+class Solution {
+    public int uniquePaths(int n, int m) { // n-rows, m-column
+        if(n==1 || m==1) return 1;
+        
+        int dr[]=new int[m]; // down row - temp
+        
+        for(int j=0; j<m; j++) dr[j] = 1;
+        
+        int sc[]=new int[m]; // side colum - operation
+        for(int i=n-2; i>=0; i--){
+            
+            for(int j=m-1; j>=0; j--){
+                int r=0;
+                if(j<m-1) r = sc[j+1];
+                sc[j] = dr[j] + r;
+            }
+            dr=sc;
+        }
+        return sc[0];
+    }
+}
+```
+[Reference](https://takeuforward.org/data-structure/grid-unique-paths-dp-on-grids-dp8/)
+
+# [3. 63. Unique Paths II](https://leetcode.com/problems/unique-paths-ii/)
+
+## memonization
+```java
+class Solution {
+    public int uniquePathsWithObstacles(int[][] arr) {
+        int n = arr.length; int m = arr[0].length;
+        int dp[][]=new int[n+1][m+1];
+        for(int d[]: dp) Arrays.fill(d,-1);
+        
+        return fun(arr,0,0,n,m,dp);
+    }
+    int fun(int arr[][], int i,int j, int n, int m, int dp[][]){
+        
+        if(i >= n || j >= m) return 0;
+        if(arr[i][j]==1) return 0;
+        if(i == n-1 && j == m-1) return 1;
+        
+        if(dp[i][j]!=-1) return dp[i][j];
+        
+        return dp[i][j] = fun(arr,i+1,j,n,m,dp) + fun(arr,i,j+1,n,m,dp);
+    }
+}
+```
+
+## Tabulation 
+```java
+class Solution {
+    public int uniquePathsWithObstacles(int[][] arr) {
+        int n = arr.length; int m = arr[0].length;
+        if(arr[n-1][m-1]==1 || arr[0][0]==1) return 0;
+        
+        if(n==1 || m==1) return 1;
+        int dp[][]=new int[n][m];
+        
+        for(int j=m-1; j>=0; j--) if(arr[n-1][j]!=1) dp[n-1][j] = 1; else break;
+        
+        for(int i=n-2; i>=0; i--){
+            for(int j=m-1; j>=0; j--){
+                if(arr[i][j]!=1){
+                    int r=0,d=0;
+                    if(j<m-1 && arr[i][j+1]!=1) r = dp[i][j+1];
+                    if(arr[i+1][j]!=1) d = dp[i+1][j];
+
+                    dp[i][j] = d + r;
+                }
+            }
+        }
+        return dp[0][0];
+    }
+}
+```
+## Space Optimized
+```java
+class Solution {
+    public int uniquePathsWithObstacles(int[][] arr) {
+        int n = arr.length; int m = arr[0].length;
+         
+        
+        int dr[]=new int[m]; // down row - temp
+        
+        for(int j=m-1; j>=0; j--){ if(arr[n-1][j]!=1) dr[j] = 1; else break; }
+        
+        
+        for(int i=n-2; i>=0; i--){
+            int sc[]=new int[m]; // side colum - operation
+            for(int j=m-1; j>=0; j--){
+                int r=0; int d=0;
+                if(j<m-1 && arr[i][j+1]!=1) r = sc[j+1];
+                if(arr[i+1][j]!=1) d=dr[j];
+                
+                if(arr[i][j]!=1) sc[j] = d + r;
+            }
+            dr=sc;
+        }
+        return dr[0];
+    }
+    
+}
+```
+[Reference](https://takeuforward.org/data-structure/grid-unique-paths-2-dp-9/)
+
+# [4. 64. Minimum Path Sum](https://leetcode.com/problems/minimum-path-sum/)
+## memonization
+```java
+class Solution {
+    public int minPathSum(int[][] grid) {
+        int n = grid.length; int m = grid[0].length;
+        int dp[][]=new int[n+1][m+1];
+        for(int d[]: dp) Arrays.fill(d,-1);
+        
+        return fun(grid,0,0,n,m,dp);
+    }
+    int fun(int arr[][], int i,int j, int n, int m, int dp[][]){
+        if(i == n-1 && j == m-1) return arr[i][j];
+        if(i >= n || j >= m) return Integer.MAX_VALUE-200;
+        
+        if(dp[i][j]!=-1) return dp[i][j];
+        int d = arr[i][j] + fun(arr,i+1,j,n,m,dp);
+        int r = arr[i][j] + fun(arr,i,j+1,n,m,dp);
+        
+        return dp[i][j] = Math.min(d,r);
+    }
+    
+}
+```
+## Tabulation
+```java
+class Solution {
+    public int minPathSum(int[][] arr) {
+        int n = arr.length; int m = arr[0].length;
+        int dp[][]=new int[n][m];
+        
+        dp[n-1][m-1] = arr[n-1][m-1];
+        for(int j=m-2; j>=0; j--) dp[n-1][j] = arr[n-1][j] + dp[n-1][j+1];
+        
+        for(int i=n-2; i>=0; i--){
+            for(int j=m-1; j>=0; j--){
+                int r = Integer.MAX_VALUE - 200;
+                if(j<m-1) r = dp[i][j+1];
+                dp[i][j] = Math.min(dp[i+1][j] + arr[i][j], r + arr[i][j]);
+            }
+        }
+        return dp[0][0];
+    }
+    
+}
+```
+## space optimization
+```java
+class Solution {
+    public int minPathSum(int[][] arr) {
+        int n = arr.length; int m = arr[0].length;
+             
+        
+        int dr[]=new int[m]; // down row - temp
+        
+        dr[m-1] = arr[n-1][m-1];
+        for(int j=m-2; j>=0; j--) dr[j] = arr[n-1][j] + dr[j+1];
+        
+          
+        
+        for(int i=n-2; i>=0; i--){
+            int sc[]=new int[m]; // side colum - operation
+            for(int j=m-1; j>=0; j--){
+                int r = Integer.MAX_VALUE-200;
+                if(j<m-1) r = sc[j+1];
+                sc[j] = Math.min(dr[j] + arr[i][j], r + arr[i][j]);
+            }
+            dr=sc;
+        }
+        return dr[0];
+    }
+    
+}
+```
+
+# [5. Minimum path sum in Triangular Grid](https://www.codingninjas.com/codestudio/problems/triangle_1229398?)
+## recurrsive 
+```java
+public class Solution {
+    public static int minimumPathSum(int[][] arr, int n) {
+        // Write your code here.
+        return fun(arr,0,0,n,1);
+        
+    }
+    static int fun(int arr[][], int i, int j, int n, int m){
+        if(i==n-1) return arr[i][j];
+        if(i>=n || j>=m) return (int)Math.pow(10,9);
+        
+        int b = arr[i][j] + fun(arr,i+1,j,n,i+2);
+        int br = arr[i][j] + fun(arr,i+1,j+1,n,i+2);
+        
+        return Math.min(b,br);
+    }
+}
+```
+ ## memonization
+ ```java
+ import java.util.*;
+public class Solution {
+    public static int minimumPathSum(int[][] arr, int n) {
+        // Write your code here.
+        int dp[][]=new int[n][n];
+        for(int d[] : dp) Arrays.fill(d,-1);
+        
+        return fun(arr,0,0,n,1,dp);
+        
+    }
+    static int fun(int arr[][], int i, int j, int n, int m, int dp[][]){
+        if(i==n-1) return arr[i][j];
+        if(i>=n || j>=m) return (int)Math.pow(10,9);
+        
+        if(dp[i][j]!=-1) return dp[i][j];
+        
+        int b = arr[i][j] + fun(arr, i+1, j, n, i+2, dp);
+        int br = arr[i][j] + fun(arr, i+1, j+1, n, i+2, dp);
+        
+        return dp[i][j] = Math.min(b,br);
+    }
+}
+ ```
+## Tabulation
+```java
+import java.util.*;
+public class Solution {
+    public static int minimumPathSum(int[][] arr, int n) {
+        // Write your code here.
+        int dp[][]=new int[n][n];
+        for(int j=0; j<n; j++) dp[n-1][j] = arr[n-1][j];
+        
+        for(int i = n-2; i>=0; i--){
+            for(int j=i; j>=0; j--){
+                dp[i][j] = Math.min(arr[i][j] + dp[i+1][j], arr[i][j] + dp[i+1][j+1]);
+            }
+        }
+        
+        return dp[0][0];
+    }
+    
+}
+```
+## space optimization
+```java
+import java.util.*;
+public class Solution {
+    public static int minimumPathSum(int[][] arr, int n) {
+        // Write your code here.
+        int dr[]=new int[n];
+        for(int j=0; j<n; j++) dr[j] = arr[n-1][j];
+        
+        int cur[]=new int[n];
+        for(int i = n-2; i>=0; i--){
+            for(int j=i; j>=0; j--){
+                cur[j] = Math.min(arr[i][j] + dr[j], arr[i][j] + dr[j+1]);
+            }
+            dr=cur;
+        }
+        return dr[0];
+    }
+    
+}
+```
+# [6. 931. Minimum Falling Path Sum](https://leetcode.com/problems/minimum-falling-path-sum/)
+## Recursive
+```java
+class Solution {
+    public int minFallingPathSum(int[][] matrix) {
+        int n = matrix.length; int m = matrix[0].length;
+        
+        int ans = Integer.MAX_VALUE;
+        for(int j=0; j<m; j++)
+        ans = Math.min(ans,fun(matrix,0,j,n,m));
+        
+        return ans;
+    }
+    int fun(int arr[][], int i, int j, int n, int m){
+        if(i==n-1) return arr[i][j];
+        if(i>=n || j>=m) return (int)Math.pow(10,9);
+        
+        int d = arr[i][j] + fun(arr,i+1,j,n,m);
+        int dr = Integer.MAX_VALUE, dl = Integer.MAX_VALUE;
+        if(j<m-1)  dr = arr[i][j] + fun(arr,i+1,j+1,n,m);
+        if(j>0)  dl = arr[i][j] + fun(arr,i+1,j-1,n,m);
+        
+        return Math.min(d,Math.min(dr,dl));
+    }
+}
+```
+## Memonization
+```java
+class Solution {
+    public int minFallingPathSum(int[][] matrix) {
+        int n = matrix.length; int m = matrix[0].length;
+        int dp[][]=new int[n][n];
+        int ans = Integer.MAX_VALUE;
+        
+        for(int j=0; j<m; j++){
+            for(int d[] : dp) Arrays.fill(d,-1);
+            ans = Math.min(ans,fun(matrix,0,j,n,m,dp));
+        }
+        return ans;
+    }
+    int fun(int arr[][], int i, int j, int n, int m, int dp[][]){
+        if(i==n-1) return arr[i][j];
+        if(i>=n || j>=m) return (int)Math.pow(10,9);
+        if(dp[i][j]!=-1) return dp[i][j];
+        
+        int d = arr[i][j] + fun(arr,i+1,j,n,m,dp);
+        int dr = Integer.MAX_VALUE, dl = Integer.MAX_VALUE;
+        if(j<m-1)  dr = arr[i][j] + fun(arr,i+1,j+1,n,m,dp);
+        if(j>0)  dl = arr[i][j] + fun(arr,i+1,j-1,n,m,dp);
+        
+        return dp[i][j] = Math.min(d,Math.min(dr,dl));
+    }
+}
+```
+## Tabulation
+```java
+class Solution {
+    public int minFallingPathSum(int[][] arr) {
+        int n = arr.length; int m = arr[0].length;
+        int dp[][]=new int[n][m];
+        for(int j=0; j<m; j++) dp[n-1][j] = arr[n-1][j];
+        
+        for(int i = n-2; i>=0; i--){
+            for(int j = m-1; j>=0; j--){
+                int d = arr[i][j] + dp[i+1][j];
+                int dr = Integer.MAX_VALUE, dl = Integer.MAX_VALUE;
+                if(j<m-1)  dr = arr[i][j] + dp[i+1][j+1];
+                if(j>0)  dl = arr[i][j] + dp[i+1][j-1];
+                
+                dp[i][j] = Math.min(d,Math.min(dr,dl));
+            }
+        }
+        
+        int ans = Integer.MAX_VALUE;
+        for(int j=0; j<m; j++) ans = Math.min(ans,dp[0][j]);
+            
+        return ans;
+    }
+    
+}
+```
+## Space Optimized
+```java
+class Solution {
+    public int minFallingPathSum(int[][] arr) {
+        int n = arr.length; int m = arr[0].length;
+        int dwn[]=new int[m];
+        for(int j=0; j<m; j++) dwn[j] = arr[n-1][j];
+
+        
+        for(int i = n-2; i>=0; i--){
+            int curr[]=new int[m];
+            for(int j = m-1; j>=0; j--){
+                int d = arr[i][j] + dwn[j];
+                int dr = Integer.MAX_VALUE, dl = Integer.MAX_VALUE;
+                if(j<m-1)  dr = arr[i][j] + dwn[j+1];
+                if(j>0)  dl = arr[i][j] + dwn[j-1];
+                
+                curr[j] = Math.min(d,Math.min(dr,dl));
+            }
+            dwn = curr;
+        }
+        
+        int ans = Integer.MAX_VALUE;
+        for(int j=0; j<m; j++) ans = Math.min(ans,dwn[j]);
+            
+        return ans;
+    }
+    
+}
+```
+# [7. Chocolate Pickup GQ](https://www.codingninjas.com/codestudio/problems/ninja-and-his-friends_3125885?)
+![image](https://user-images.githubusercontent.com/71629248/188597011-2797761a-151f-4e15-afc5-cb3325a43551.png)
+### Hence we have a total of 9 different options at every f(i,j1,j2) to move Alice and Bob. Now we can manually write these 9 options or we can observe a pattern in them, first Alice moves to one side and Bob tries all three choices, then again Alice moves, then Bob, and so on. This pattern can be easily captured by using two nested loops that change the column numbers(j1 and j2).
+
+## Recursion
+```java
+public class Solution {
+	public static int maximumChocolates(int r, int c, int[][] grid) {
+		// Write your code here.
+        return fun(grid, 0, 0, c-1, r, c);
+	}
+    static int fun(int arr[][], int i, int j1, int j2, int n, int m){
+        if(j1>=m || j1<0 || j2>=m || j2<0) return (int)Math.pow(-10,9);
+        
+        if(i==n-1){
+            if(j1==j2) return arr[i][j1];
+            return arr[i][j1] + arr[i][j2];
+        }
+        int maxi = 0;
+        for(int dj1 = -1; dj1<2; dj1++){
+            for(int dj2 = -1; dj2<2; dj2++){
+                if(j1==j2) maxi = Math.max(maxi, arr[i][j1] + fun(arr, i+1, j1+dj1, j2+dj2, n, m));
+                else maxi = Math.max(maxi, arr[i][j1] + arr[i][j2] + fun(arr, i+1, j1+dj1, j2+dj2, n, m));
+            }
+        }
+        return maxi;
+    }
+}
+```
+
+## Memonization
+```java
+import java.util.*;
+public class Solution {
+	public static int maximumChocolates(int r, int c, int[][] grid) {
+		// Write your code here.
+        int dp[][][] = new int[r+1][c+1][c+1];
+        
+        for(int d2[][] : dp){
+            for(int d[] : d2){
+                Arrays.fill(d,-1);
+            }
+        } 
+        return fun(grid, 0, 0, c-1, r, c, dp);
+	}
+    static int fun(int arr[][], int i, int j1, int j2, int n, int m, int dp[][][]){
+        if(j1>=m || j1<0 || j2>=m || j2<0) return (int)Math.pow(-10,9);
+        
+        if(i==n-1){
+            if(j1==j2) return arr[i][j1];
+            return arr[i][j1] + arr[i][j2];
+        }
+        
+        if(dp[i][j1][j2]!=-1) return dp[i][j1][j2];
+        int maxi = 0;
+        for(int dj1 = -1; dj1<2; dj1++){
+            for(int dj2 = -1; dj2<2; dj2++){
+                if(j1==j2) maxi = Math.max(maxi, arr[i][j1] + fun(arr, i+1, j1+dj1, j2+dj2, n, m, dp));
+                else maxi = Math.max(maxi, arr[i][j1] + arr[i][j2] + fun(arr, i+1, j1+dj1, j2+dj2, n, m, dp));
+            }
+        }
+        return dp[i][j1][j2] =  maxi;
+    }
+}
+```
+## Tabulation
+### For the tabulation approach, it is better to understand what a cell in the 3D DP array means. As we had done in memoization, we will initialize a dp[] array of size [N][M][M]. So now, when we say dp[2][0][3], what does it mean? It means that we are getting the value of maximum chocolates collected by Alice and Bob, when Alice is at (2,0) and Bob is at (2,3).
+
+### The below figure gives us a bit more clarity.
+![image](https://user-images.githubusercontent.com/71629248/188681184-6b424b56-6ee8-4e90-8366-624f269509b6.png)
+
+```java
+import java.util.*;
+public class Solution {
+	public static int maximumChocolates(int n, int m, int[][] arr) {
+		// Write your code here.
+        
+        int dp[][][] = new int[n+1][m+1][m+1];
+        
+        for(int j1 = 0; j1<m; j1++){
+            for(int j2 = 0; j2<m; j2++){
+                if(j1==j2) dp[n-1][j1][j2] = arr[n-1][j1];
+                else dp[n-1][j1][j2] = arr[n-1][j1] + arr[n-1][j2];
+            }
+        }
+        
+         int ans = 0;
+        for(int i = n-2; i>=0; i--){
+            for(int j1 = 0; j1<m; j1++){
+                for(int j2 = 0; j2<m; j2++){
+                    
+                      int maxi = Integer.MIN_VALUE;
+                    for(int dj1 = -1; dj1<2; dj1++){
+                        for(int dj2 = -1; dj2<2; dj2++){
+                                    if(j1==j2) ans = arr[i][j1];
+                                    else ans = arr[i][j1] + arr[i][j2];
+                                if((j1+dj1<m && j1+dj1>=0) && (j2+dj2<m && j2+dj2>=0)) ans += dp[i+1][j1+dj1][j2+dj2];
+                                else ans += (int)Math.pow(-10,9);
+                            
+                                maxi = Math.max(maxi,ans);
+                         }
+                    }
+                dp[i][j1][j2] = maxi;
+           } // j2
+        } // j1
+      } // i
+        return dp[0][0][m-1];
+    }
+}
+```
+
+## Space Optimization
+```java
+import java.util.*;
+public class Solution {
+	public static int maximumChocolates(int n, int m, int[][] arr) {
+		// Write your code here.
+        
+        int dr[][] = new int[m][m];
+        
+        for(int j1 = 0; j1<m; j1++){
+            for(int j2 = 0; j2<m; j2++){
+                if(j1==j2) dr[j1][j2] = arr[n-1][j1];
+                else dr[j1][j2] = arr[n-1][j1] + arr[n-1][j2];
+            }
+        }
+        
+         int ans = 0;
+        for(int i = n-2; i>=0; i--){
+            int curr[][] = new int[m][m];
+            for(int j1 = 0; j1<m; j1++){
+                for(int j2 = 0; j2<m; j2++){
+                    
+                      int maxi = Integer.MIN_VALUE;
+                        
+                    for(int dj1 = -1; dj1<2; dj1++){
+                        for(int dj2 = -1; dj2<2; dj2++){
+                                    if(j1==j2) ans = arr[i][j1];
+                                    else ans = arr[i][j1] + arr[i][j2];
+                                if((j1+dj1<m && j1+dj1>=0) && (j2+dj2<m && j2+dj2>=0)) ans += dr[j1+dj1][j2+dj2];
+                                else ans += (int)Math.pow(-10,9);
+                            
+                                maxi = Math.max(maxi,ans);
+                         }
+                    }
+                curr[j1][j2] = maxi;
+           } // j2
+        } // j1
+            dr = curr;
+      } // i
+        return dr[0][m-1];
+    }
+}
+```
+[Reference](https://takeuforward.org/data-structure/3-d-dp-ninja-and-his-friends-dp-13/)
