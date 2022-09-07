@@ -109,88 +109,53 @@ public class Solution {
 ```
 [Reference](https://takeuforward.org/data-structure/subset-sum-equal-to-target-dp-14/)
 
-# [2. 62. Unique Paths](https://leetcode.com/problems/unique-paths/)
+# [2. 416. Partition Equal Subset Sum](https://leetcode.com/problems/partition-equal-subset-sum/)
 
-## Recursive
-```java
-class Solution {
-    public int uniquePaths(int n, int m) { // n-rows, m-column
-        return fun(0,0,n,m);
-    }
-    int fun(int i,int j, int n, int m){
-        if(i == n-1 && j == m-1) return 1;
-        if(i >= n || j >= m) return 0;
-        
-        return fun(i+1,j,n,m) + fun(i,j+1,n,m);
-    }
-}
-```
+## Space optimization**
+## **Solution :-**
+### This question is a slight modification of the problem discussed in Subset-sum equal to target. We need to partition the array(say S) into two subsets(say S1 and S2). According to the question:
 
-## memonization
+- ### Sum of elements of S1 + sum of elements of S2 = sum of elements of S.
+- ### Sum of elements of S1 = sum of elements of S2.
+- ### These two conditions imply that S1 = S2 = (S/2). 
+
+### Now, 
+
+### - If S (sum of elements of the input array) is odd , there is no way we can divide it into two equal halves, so we can simply return false.
+### - If S is even, then we need to find a subsequence in the input array whose sum is equal to S/2 because if we find one subsequence with sum S/2, the remaining elements sum will be automatically S/2. So, we can partition the given array. Hence we return true.
 ```java
 class Solution {
-    public int uniquePaths(int n, int m) { // n-rows, m-column
-        int dp[][]=new int[n+1][m+1];
-        for(int d[]: dp) Arrays.fill(d,-1);
+    public boolean canPartition(int[] arr) {
+        int n = arr.length;
+        int sum = 0;
+        for(int e : arr) sum+=e;
         
-        return fun(0,0,n,m,dp);
+        if(sum%2!=0) return false;
+        return subsetSumToK(n,sum/2,arr);
     }
-    int fun(int i,int j, int n, int m, int dp[][]){
-        if(i == n-1 && j == m-1) return 1;
-        if(i >= n || j >= m) return 0;
+    public boolean subsetSumToK(int n, int k, int arr[]){
+        // Write your code here.
+        int ur[]=new int[k+1]; ur[0] = 1;
         
-        if(dp[i][j]!=-1) return dp[i][j];
-        
-        return dp[i][j] = fun(i+1,j,n,m,dp) + fun(i,j+1,n,m,dp);
-    }
-}
-```
-## Tabulation
-```java
-class Solution {
-    public int uniquePaths(int n, int m) { // n-rows, m-column
-        int dp[][]=new int[n][m];
-        
-        for(int j=0; j<m; j++) dp[n-1][j] = 1;
-        
-        for(int i=n-2; i>=0; i--){
-            for(int j=m-1; j>=0; j--){
-                int r=0;
-                if(j<m-1) r = dp[i][j+1];
-                dp[i][j] = dp[i+1][j] + r;
+        for(int i = 1; i<=n; i++){
+            int curr[]=new int[k+1];
+            curr[0]=1;
+            for(int j = 1; j<=k; j++){
+                if(arr[i-1]<=j){
+                    if(ur[j-arr[i-1]]==1) curr[j] = 1;
+                    else if(ur[j]==1) curr[j] = 1;
+                }
+                else if(ur[j]==1) curr[j] = 1;
+                else curr[j] = 0;
             }
+            ur=curr;
         }
-        return dp[0][0];
+        
+        return ur[k]==1? true :false;
     }
 }
 ```
-
-## Space optimization
-### As we see in tabulation the relation ```dp[i][j] = dp[i+1][j] + dp[i][j+1] ``` for filling a particular box we only need SIDE BOX and DOWN BOX : that means we only require DownRow and SideColumn and our answer will lie in SC[0]
-```java
-class Solution {
-    public int uniquePaths(int n, int m) { // n-rows, m-column
-        if(n==1 || m==1) return 1;
-        
-        int dr[]=new int[m]; // down row - temp
-        
-        for(int j=0; j<m; j++) dr[j] = 1;
-        
-        int sc[]=new int[m]; // side colum - operation
-        for(int i=n-2; i>=0; i--){
-            
-            for(int j=m-1; j>=0; j--){
-                int r=0;
-                if(j<m-1) r = sc[j+1];
-                sc[j] = dr[j] + r;
-            }
-            dr=sc;
-        }
-        return sc[0];
-    }
-}
-```
-[Reference](https://takeuforward.org/data-structure/grid-unique-paths-dp-on-grids-dp8/)
+[Reference](https://takeuforward.org/data-structure/partition-equal-subset-sum-dp-15/)
 
 # [3. 63. Unique Paths II](https://leetcode.com/problems/unique-paths-ii/)
 
