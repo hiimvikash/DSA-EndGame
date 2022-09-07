@@ -157,87 +157,57 @@ class Solution {
 ```
 [Reference](https://takeuforward.org/data-structure/partition-equal-subset-sum-dp-15/)
 
-# [3. 63. Unique Paths II](https://leetcode.com/problems/unique-paths-ii/)
+# [3. Partition Set Into 2 Subsets With Min Absolute Sum Diff](https://www.codingninjas.com/codestudio/problems/partition-a-set-into-two-subsets-such-that-the-difference-of-subset-sums-is-minimum_842494?)
 
-## memonization
-```java
-class Solution {
-    public int uniquePathsWithObstacles(int[][] arr) {
-        int n = arr.length; int m = arr[0].length;
-        int dp[][]=new int[n+1][m+1];
-        for(int d[]: dp) Arrays.fill(d,-1);
-        
-        return fun(arr,0,0,n,m,dp);
-    }
-    int fun(int arr[][], int i,int j, int n, int m, int dp[][]){
-        
-        if(i >= n || j >= m) return 0;
-        if(arr[i][j]==1) return 0;
-        if(i == n-1 && j == m-1) return 1;
-        
-        if(dp[i][j]!=-1) return dp[i][j];
-        
-        return dp[i][j] = fun(arr,i+1,j,n,m,dp) + fun(arr,i,j+1,n,m,dp);
-    }
-}
-```
+### The Intuition is : 
+- The value of S1 & S2 will lie btw :-
+0------------------------------------------ArraySum
+- the minimum answer will be generated when S1 & S2 lies
+close to each other in above line.
+- we only need to find valid S1.
+- S2 can be calculated as ArraySum-S1
 
-## Tabulation 
-```java
-class Solution {
-    public int uniquePathsWithObstacles(int[][] arr) {
-        int n = arr.length; int m = arr[0].length;
-        if(arr[n-1][m-1]==1 || arr[0][0]==1) return 0;
-        
-        if(n==1 || m==1) return 1;
-        int dp[][]=new int[n][m];
-        
-        for(int j=m-1; j>=0; j--) if(arr[n-1][j]!=1) dp[n-1][j] = 1; else break;
-        
-        for(int i=n-2; i>=0; i--){
-            for(int j=m-1; j>=0; j--){
-                if(arr[i][j]!=1){
-                    int r=0,d=0;
-                    if(j<m-1 && arr[i][j+1]!=1) r = dp[i][j+1];
-                    if(arr[i+1][j]!=1) d = dp[i+1][j];
-
-                    dp[i][j] = d + r;
-                }
-            }
-        }
-        return dp[0][0];
-    }
-}
-```
+## Now, try figuring out the meaning of Tabulation in Q1(Subset Sum Equal To K)
+- if Array of size 5 and k = 12
+- what does dp[4][10] means ?
+- boolean value in dp[4][10] signifies whether target sum 10 is possible or not if Array Size is till 4.
+- simillarly last row dp[n-1][0....k] will say whether particular sum from 0 to ArraySum is possible or not. 
 ## Space Optimized
 ```java
-class Solution {
-    public int uniquePathsWithObstacles(int[][] arr) {
-        int n = arr.length; int m = arr[0].length;
-         
+public class Solution {
+	public static int minSubsetSumDifference(int[] arr, int n) {
+		// Write your code here.
+        int k = 0; for(int e : arr) k+=e;
+        // Q1 sol :-
+        int ur[]=new int[k+1]; ur[0] = 1;
         
-        int dr[]=new int[m]; // down row - temp
-        
-        for(int j=m-1; j>=0; j--){ if(arr[n-1][j]!=1) dr[j] = 1; else break; }
-        
-        
-        for(int i=n-2; i>=0; i--){
-            int sc[]=new int[m]; // side colum - operation
-            for(int j=m-1; j>=0; j--){
-                int r=0; int d=0;
-                if(j<m-1 && arr[i][j+1]!=1) r = sc[j+1];
-                if(arr[i+1][j]!=1) d=dr[j];
-                
-                if(arr[i][j]!=1) sc[j] = d + r;
+        for(int i = 1; i<=n; i++){
+            int curr[]=new int[k+1];
+            curr[0]=1;
+            for(int j = 1; j<=k; j++){
+                if(arr[i-1]<=j){
+                    if(ur[j-arr[i-1]]==1) curr[j] = 1;
+                    else if(ur[j]==1) curr[j] = 1;
+                }
+                else if(ur[j]==1) curr[j] = 1;
+                else curr[j] = 0;
             }
-            dr=sc;
+            ur=curr;
         }
-        return dr[0];
-    }
-    
+        // Q1 sol
+        
+        int min = Integer.MAX_VALUE;
+        for(int s1=0; s1<=k; s1++){
+            if(ur[s1]==1){
+                min = Math.min(min, Math.abs(s1 - (k-s1)));
+            }
+        }
+        
+        return min;
+	}
 }
 ```
-[Reference](https://takeuforward.org/data-structure/grid-unique-paths-2-dp-9/)
+[Reference](https://takeuforward.org/data-structure/partition-set-into-2-subsets-with-min-absolute-sum-diff-dp-16/)
 
 # [4. 64. Minimum Path Sum](https://leetcode.com/problems/minimum-path-sum/)
 ## memonization
