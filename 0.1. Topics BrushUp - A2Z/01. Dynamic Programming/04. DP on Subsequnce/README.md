@@ -295,92 +295,50 @@ public class Solution {
 }
 ```
 
-# [5. Minimum path sum in Triangular Grid](https://www.codingninjas.com/codestudio/problems/triangle_1229398?)
-## recurrsive 
-```java
-public class Solution {
-    public static int minimumPathSum(int[][] arr, int n) {
-        // Write your code here.
-        return fun(arr,0,0,n,1);
-        
-    }
-    static int fun(int arr[][], int i, int j, int n, int m){
-        if(i==n-1) return arr[i][j];
-        if(i>=n || j>=m) return (int)Math.pow(10,9);
-        
-        int b = arr[i][j] + fun(arr,i+1,j,n,i+2);
-        int br = arr[i][j] + fun(arr,i+1,j+1,n,i+2);
-        
-        return Math.min(b,br);
-    }
-}
-```
+# [5. Partitions With Given Difference](https://www.codingninjas.com/codestudio/problems/partitions-with-given-difference_3751628?)
+
  ## memonization
  ```java
- import java.util.*;
+import java.util.*;
 public class Solution {
-    public static int minimumPathSum(int[][] arr, int n) {
-        // Write your code here.
-        int dp[][]=new int[n][n];
-        for(int d[] : dp) Arrays.fill(d,-1);
+    static int mod =(int)(Math.pow(10,9)+7);
+	public static int countPartitions(int n, int d, int[] nums) {
+		// Write your code here.
+        int sum=0;
+        for(int ele:nums) sum+=ele;
+        if((sum+d)%2!=0) return 0; // case 2 [5,2,2,7,3,7,9,0,2,3] 9, ANS is 0
+        int reqSum=(sum+d)/2;
+        int dp[][]=new int[n+1][reqSum+1];
+        for(int row[]:dp) {
+            Arrays.fill(row, -1);
+        }
+        return fun(nums,n,reqSum,dp);
         
-        return fun(arr,0,0,n,1,dp);
+	}
+    public static int fun(int arr[], int n, int k, int dp[][]){
+        if(n==0){
+            if(k==0) return 1;
+            return 0;
+        }
+
+        if(dp[n][k]!=-1) return dp[n][k];
+        int p = 0, np=0;
+        if(arr[n-1]<=k){
+             p = fun(arr,n-1,k-arr[n-1],dp);
+        }
+        np = fun(arr,n-1,k,dp) ;
         
-    }
-    static int fun(int arr[][], int i, int j, int n, int m, int dp[][]){
-        if(i==n-1) return arr[i][j];
-        if(i>=n || j>=m) return (int)Math.pow(10,9);
-        
-        if(dp[i][j]!=-1) return dp[i][j];
-        
-        int b = arr[i][j] + fun(arr, i+1, j, n, i+2, dp);
-        int br = arr[i][j] + fun(arr, i+1, j+1, n, i+2, dp);
-        
-        return dp[i][j] = Math.min(b,br);
+        return dp[n][k] = (p+np)%mod;
     }
 }
  ```
-## Tabulation
-```java
-import java.util.*;
-public class Solution {
-    public static int minimumPathSum(int[][] arr, int n) {
-        // Write your code here.
-        int dp[][]=new int[n][n];
-        for(int j=0; j<n; j++) dp[n-1][j] = arr[n-1][j];
-        
-        for(int i = n-2; i>=0; i--){
-            for(int j=i; j>=0; j--){
-                dp[i][j] = Math.min(arr[i][j] + dp[i+1][j], arr[i][j] + dp[i+1][j+1]);
-            }
-        }
-        
-        return dp[0][0];
-    }
-    
-}
-```
-## space optimization
-```java
-import java.util.*;
-public class Solution {
-    public static int minimumPathSum(int[][] arr, int n) {
-        // Write your code here.
-        int dr[]=new int[n];
-        for(int j=0; j<n; j++) dr[j] = arr[n-1][j];
-        
-        int cur[]=new int[n];
-        for(int i = n-2; i>=0; i--){
-            for(int j=i; j>=0; j--){
-                cur[j] = Math.min(arr[i][j] + dr[j], arr[i][j] + dr[j+1]);
-            }
-            dr=cur;
-        }
-        return dr[0];
-    }
-    
-}
-```
+
+
+
+
+
+
+
 # [6. 931. Minimum Falling Path Sum](https://leetcode.com/problems/minimum-falling-path-sum/)
 ## Recursive
 ```java
