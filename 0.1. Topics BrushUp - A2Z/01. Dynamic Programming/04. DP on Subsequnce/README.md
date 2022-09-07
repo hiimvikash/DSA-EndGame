@@ -209,78 +209,89 @@ public class Solution {
 ```
 [Reference](https://takeuforward.org/data-structure/partition-set-into-2-subsets-with-min-absolute-sum-diff-dp-16/)
 
-# [4. 64. Minimum Path Sum](https://leetcode.com/problems/minimum-path-sum/)
+# [4. Count subset with sum k](https://www.codingninjas.com/codestudio/problems/number-of-subsets_3952532?)
 ## memonization
 ```java
-class Solution {
-    public int minPathSum(int[][] grid) {
-        int n = grid.length; int m = grid[0].length;
-        int dp[][]=new int[n+1][m+1];
-        for(int d[]: dp) Arrays.fill(d,-1);
+import java.util.*;
+public class Solution {
+    public static int findWays(int num[], int k) {
+        // Write your code here..
+        int n = num.length;
+        int dp[][] = new int[n+1][k+1];
+        for(int d[] : dp) Arrays.fill(d,-1);
         
-        return fun(grid,0,0,n,m,dp);
+        return fun(num,n,k,dp);
     }
-    int fun(int arr[][], int i,int j, int n, int m, int dp[][]){
-        if(i == n-1 && j == m-1) return arr[i][j];
-        if(i >= n || j >= m) return Integer.MAX_VALUE-200;
+    public static int fun(int arr[], int n, int k, int dp[][]){
+        if(n==0){
+            if(k==0) return 1;
+            return 0;
+        }
+        if(dp[n][k]!=-1) return dp[n][k];
+        int p = 0, np=0;
+        if(arr[n-1]<=k){
+             p = fun(arr,n-1,k-arr[n-1],dp);
+        }
+        np = fun(arr,n-1,k,dp) ;
         
-        if(dp[i][j]!=-1) return dp[i][j];
-        int d = arr[i][j] + fun(arr,i+1,j,n,m,dp);
-        int r = arr[i][j] + fun(arr,i,j+1,n,m,dp);
-        
-        return dp[i][j] = Math.min(d,r);
+        return dp[n][k] = p+np;
     }
-    
 }
 ```
 ## Tabulation
 ```java
-class Solution {
-    public int minPathSum(int[][] arr) {
-        int n = arr.length; int m = arr[0].length;
-        int dp[][]=new int[n][m];
+import java.util.*;
+public class Solution {
+    public static int findWays(int arr[], int k) {
+        // Write your code here..
+        int n = arr.length;
+        int dp[][] = new int[n+1][k+1];
+        // initialization k==0 return 1
+        for(int i=0; i<=n; i++) dp[i][0] = 1;
         
-        dp[n-1][m-1] = arr[n-1][m-1];
-        for(int j=m-2; j>=0; j--) dp[n-1][j] = arr[n-1][j] + dp[n-1][j+1];
         
-        for(int i=n-2; i>=0; i--){
-            for(int j=m-1; j>=0; j--){
-                int r = Integer.MAX_VALUE - 200;
-                if(j<m-1) r = dp[i][j+1];
-                dp[i][j] = Math.min(dp[i+1][j] + arr[i][j], r + arr[i][j]);
+        for(int i = 1; i<=n; i++){
+            for(int j = 1; j<=k; j++){
+                int p = 0, np=0;
+                if(arr[i-1]<=j){
+                     p = dp[i-1][j-arr[i-1]];
+                }
+                np = dp[i-1][j];
+                
+                dp[i][j] = p+np;
             }
         }
-        return dp[0][0];
+        return dp[n][k];
     }
-    
 }
 ```
 ## space optimization
 ```java
-class Solution {
-    public int minPathSum(int[][] arr) {
-        int n = arr.length; int m = arr[0].length;
-             
+import java.util.*;
+public class Solution {
+    public static int findWays(int arr[], int k) {
+        // Write your code here..
+        int n = arr.length;
+        int ur[] = new int[k+1];
+        ur[0] = 1;
         
-        int dr[]=new int[m]; // down row - temp
         
-        dr[m-1] = arr[n-1][m-1];
-        for(int j=m-2; j>=0; j--) dr[j] = arr[n-1][j] + dr[j+1];
-        
-          
-        
-        for(int i=n-2; i>=0; i--){
-            int sc[]=new int[m]; // side colum - operation
-            for(int j=m-1; j>=0; j--){
-                int r = Integer.MAX_VALUE-200;
-                if(j<m-1) r = sc[j+1];
-                sc[j] = Math.min(dr[j] + arr[i][j], r + arr[i][j]);
+        for(int i = 1; i<=n; i++){
+            int curr[]=new int[k+1];
+            curr[0] = 1;
+            for(int j = 1; j<=k; j++){
+                int p = 0, np=0;
+                if(arr[i-1]<=j){
+                     p = ur[j-arr[i-1]];
+                }
+                np = ur[j];
+                
+                curr[j] = p+np;
             }
-            dr=sc;
+            ur = curr;
         }
-        return dr[0];
+        return ur[k];
     }
-    
 }
 ```
 
