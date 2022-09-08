@@ -418,71 +418,109 @@ public class Solution{
 
 
 
-# [7. Chocolate Pickup GQ](https://www.codingninjas.com/codestudio/problems/ninja-and-his-friends_3125885?)
-![image](https://user-images.githubusercontent.com/71629248/188597011-2797761a-151f-4e15-afc5-cb3325a43551.png)
-### Hence we have a total of 9 different options at every f(i,j1,j2) to move Alice and Bob. Now we can manually write these 9 options or we can observe a pattern in them, first Alice moves to one side and Bob tries all three choices, then again Alice moves, then Bob, and so on. This pattern can be easily captured by using two nested loops that change the column numbers(j1 and j2).
+# [7. Coin Change](https://www.codingninjas.com/codestudio/problems/ninja-and-his-friends_3125885?)
+
 
 ## Recursion
 ```java
 public class Solution {
-	public static int maximumChocolates(int r, int c, int[][] grid) {
-		// Write your code here.
-        return fun(grid, 0, 0, c-1, r, c);
-	}
-    static int fun(int arr[][], int i, int j1, int j2, int n, int m){
-        if(j1>=m || j1<0 || j2>=m || j2<0) return (int)Math.pow(-10,9);
-        
-        if(i==n-1){
-            if(j1==j2) return arr[i][j1];
-            return arr[i][j1] + arr[i][j2];
-        }
-        int maxi = 0;
-        for(int dj1 = -1; dj1<2; dj1++){
-            for(int dj2 = -1; dj2<2; dj2++){
-                if(j1==j2) maxi = Math.max(maxi, arr[i][j1] + fun(arr, i+1, j1+dj1, j2+dj2, n, m));
-                else maxi = Math.max(maxi, arr[i][j1] + arr[i][j2] + fun(arr, i+1, j1+dj1, j2+dj2, n, m));
-            }
-        }
-        return maxi;
+    public static int minimumElements(int num[], int x) {
+        // Write your code here..
+        int ans = fun(num,num.length,x);
+        return ans>=(int)Math.pow(10,9)? -1 : ans;
     }
+    static int fun(int arr[], int n, int t){
+        if(n==1){
+            if(t%arr[0]==0) return t/arr[0];
+            return (int)Math.pow(10,9);
+        }
+        int pp = Integer.MAX_VALUE, pnp = Integer.MAX_VALUE, np = Integer.MAX_VALUE;
+        if(arr[n-1]<=t){
+            pnp = 1 + fun(arr,n,t-arr[n-1]);
+            pp = 1 + fun(arr,n-1,t-arr[n-1]);
+        }
+        np = fun(arr,n-1,t);
+        
+        return Math.min(pnp, Math.min(pp,np));
+    }
+
 }
 ```
 
-## Memonization
+## Memonization - I
 ```java
 import java.util.*;
 public class Solution {
-	public static int maximumChocolates(int r, int c, int[][] grid) {
-		// Write your code here.
-        int dp[][][] = new int[r+1][c+1][c+1];
+    public static int minimumElements(int num[], int x) {
+        // Write your code here..
+        int n = num.length;
         
-        for(int d2[][] : dp){
-            for(int d[] : d2){
-                Arrays.fill(d,-1);
-            }
-        } 
-        return fun(grid, 0, 0, c-1, r, c, dp);
-	}
-    static int fun(int arr[][], int i, int j1, int j2, int n, int m, int dp[][][]){
-        if(j1>=m || j1<0 || j2>=m || j2<0) return (int)Math.pow(-10,9);
+        int dp[][]=new int[n+1][x+1];
+        for(int d[] :dp) Arrays.fill(d,-1);
         
-        if(i==n-1){
-            if(j1==j2) return arr[i][j1];
-            return arr[i][j1] + arr[i][j2];
-        }
-        
-        if(dp[i][j1][j2]!=-1) return dp[i][j1][j2];
-        int maxi = 0;
-        for(int dj1 = -1; dj1<2; dj1++){
-            for(int dj2 = -1; dj2<2; dj2++){
-                if(j1==j2) maxi = Math.max(maxi, arr[i][j1] + fun(arr, i+1, j1+dj1, j2+dj2, n, m, dp));
-                else maxi = Math.max(maxi, arr[i][j1] + arr[i][j2] + fun(arr, i+1, j1+dj1, j2+dj2, n, m, dp));
-            }
-        }
-        return dp[i][j1][j2] =  maxi;
+        int ans = fun(num,n,x,dp);
+        return ans>=(int)Math.pow(10,9)? -1 : ans;
     }
+    static int fun(int arr[], int n, int t, int dp[][]){
+        if(n==1){
+            if(t%arr[0]==0) return t/arr[0];
+            return (int)Math.pow(10,9);
+        }
+        if(dp[n][t]!=-1) return dp[n][t];
+        
+        int pp = Integer.MAX_VALUE, pnp = Integer.MAX_VALUE, np = Integer.MAX_VALUE;
+        if(arr[n-1]<=t){
+            pnp = 1 + fun(arr,n,t-arr[n-1],dp); // pick NOTPASS
+            pp = 1 + fun(arr,n-1,t-arr[n-1],dp); // pick PASS [12,1,4,2] t = 6
+        }
+        np = fun(arr,n-1,t,dp); // notPick
+        
+        return dp[n][t] = Math.min(pnp, Math.min(pp,np));
+    }
+
 }
 ```
+
+## Memonization - II
+```java
+import java.util.*;
+public class Solution {
+    public static int minimumElements(int num[], int x) {
+        // Write your code here..
+        int n = num.length;
+        
+        int dp[][]=new int[n+1][x+1];
+        for(int d[] :dp) Arrays.fill(d,-1);
+        
+        int ans = fun(num,n,x,dp);
+        return ans>=(int)Math.pow(10,9)? -1 : ans;
+    }
+    static int fun(int arr[], int n, int t, int dp[][]){
+        if(n==1){
+            if(t%arr[0]==0) return t/arr[0];
+            return (int)Math.pow(10,9);
+        }
+        if(dp[n][t]!=-1) return dp[n][t];
+        
+        int pnp = Integer.MAX_VALUE, np = Integer.MAX_VALUE;
+        np = fun(arr,n-1,t,dp); // notPick
+        if(arr[n-1]<=t){
+            pnp = 1 + fun(arr,n,t-arr[n-1],dp); // pick NOTPASS
+        }
+        return dp[n][t] = Math.min(pnp, np);
+    }
+
+}
+```
+
+
+
+
+
+
+
+
+
 ## Tabulation
 ### For the tabulation approach, it is better to understand what a cell in the 3D DP array means. As we had done in memoization, we will initialize a dp[] array of size [N][M][M]. So now, when we say dp[2][0][3], what does it mean? It means that we are getting the value of maximum chocolates collected by Alice and Bob, when Alice is at (2,0) and Bob is at (2,3).
 
