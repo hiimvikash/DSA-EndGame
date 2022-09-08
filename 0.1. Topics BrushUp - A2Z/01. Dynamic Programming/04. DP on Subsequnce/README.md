@@ -332,124 +332,92 @@ public class Solution {
     }
 }
  ```
+# [6. 0 1 Knapsack](https://www.codingninjas.com/codestudio/problems/0-1-knapsack_920542?)
 
-
-
-
-
-
-
-# [6. 931. Minimum Falling Path Sum](https://leetcode.com/problems/minimum-falling-path-sum/)
-## Recursive
-```java
-class Solution {
-    public int minFallingPathSum(int[][] matrix) {
-        int n = matrix.length; int m = matrix[0].length;
-        
-        int ans = Integer.MAX_VALUE;
-        for(int j=0; j<m; j++)
-        ans = Math.min(ans,fun(matrix,0,j,n,m));
-        
-        return ans;
-    }
-    int fun(int arr[][], int i, int j, int n, int m){
-        if(i==n-1) return arr[i][j];
-        if(i>=n || j>=m) return (int)Math.pow(10,9);
-        
-        int d = arr[i][j] + fun(arr,i+1,j,n,m);
-        int dr = Integer.MAX_VALUE, dl = Integer.MAX_VALUE;
-        if(j<m-1)  dr = arr[i][j] + fun(arr,i+1,j+1,n,m);
-        if(j>0)  dl = arr[i][j] + fun(arr,i+1,j-1,n,m);
-        
-        return Math.min(d,Math.min(dr,dl));
-    }
-}
-```
 ## Memonization
 ```java
-class Solution {
-    public int minFallingPathSum(int[][] matrix) {
-        int n = matrix.length; int m = matrix[0].length;
-        int dp[][]=new int[n][n];
-        int ans = Integer.MAX_VALUE;
+import java.util.*;
+public class Solution{
+    static int knapsack(int[] weight, int[] value, int n, int maxWeight) {
+         int dp[][]=new int [n+1][maxWeight+1];
+         for(int row[] : dp){
+             Arrays.fill(row,-1);
+         }
+            return fun(weight,value,n,maxWeight,dp);
+     }
+    static int fun(int wt[], int val[], int n, int w, int dp[][]){
+        if(n==0 || w==0) return 0;
         
-        for(int j=0; j<m; j++){
-            for(int d[] : dp) Arrays.fill(d,-1);
-            ans = Math.min(ans,fun(matrix,0,j,n,m,dp));
+        int p=0,np=0;
+        if(dp[n][w]!=-1) return dp[n][w];
+        if(wt[n-1]<=w){
+            p = val[n-1] + fun(wt,val,n-1,w-wt[n-1],dp);
         }
-        return ans;
-    }
-    int fun(int arr[][], int i, int j, int n, int m, int dp[][]){
-        if(i==n-1) return arr[i][j];
-        if(i>=n || j>=m) return (int)Math.pow(10,9);
-        if(dp[i][j]!=-1) return dp[i][j];
-        
-        int d = arr[i][j] + fun(arr,i+1,j,n,m,dp);
-        int dr = Integer.MAX_VALUE, dl = Integer.MAX_VALUE;
-        if(j<m-1)  dr = arr[i][j] + fun(arr,i+1,j+1,n,m,dp);
-        if(j>0)  dl = arr[i][j] + fun(arr,i+1,j-1,n,m,dp);
-        
-        return dp[i][j] = Math.min(d,Math.min(dr,dl));
+        np = fun(wt,val,n-1,w,dp);
+        return dp[n][w] = Math.max(p,np);
     }
 }
 ```
 ## Tabulation
 ```java
-class Solution {
-    public int minFallingPathSum(int[][] arr) {
-        int n = arr.length; int m = arr[0].length;
-        int dp[][]=new int[n][m];
-        for(int j=0; j<m; j++) dp[n-1][j] = arr[n-1][j];
-        
-        for(int i = n-2; i>=0; i--){
-            for(int j = m-1; j>=0; j--){
-                int d = arr[i][j] + dp[i+1][j];
-                int dr = Integer.MAX_VALUE, dl = Integer.MAX_VALUE;
-                if(j<m-1)  dr = arr[i][j] + dp[i+1][j+1];
-                if(j>0)  dl = arr[i][j] + dp[i+1][j-1];
-                
-                dp[i][j] = Math.min(d,Math.min(dr,dl));
-            }
-        }
-        
-        int ans = Integer.MAX_VALUE;
-        for(int j=0; j<m; j++) ans = Math.min(ans,dp[0][j]);
-            
-        return ans;
-    }
-    
+import java.util.*;
+public class Solution{
+    static int knapsack(int[] wt, int[] val, int n, int w) {
+         int dp[][]=new int [n+1][w+1];
+         for(int i = 1; i<=n; i++){
+             for(int j = 1; j<=w; j++){
+                 int p = 0, np=0;
+                 if(wt[i-1]<=j) p = val[i-1] + dp[i-1][j-wt[i-1]];
+                 np = dp[i-1][j];
+                 
+                 dp[i][j] = Math.max(p,np);
+             }
+         }
+            return dp[n][w];
+     }
 }
 ```
 ## Space Optimized
 ```java
-class Solution {
-    public int minFallingPathSum(int[][] arr) {
-        int n = arr.length; int m = arr[0].length;
-        int dwn[]=new int[m];
-        for(int j=0; j<m; j++) dwn[j] = arr[n-1][j];
-
-        
-        for(int i = n-2; i>=0; i--){
-            int curr[]=new int[m];
-            for(int j = m-1; j>=0; j--){
-                int d = arr[i][j] + dwn[j];
-                int dr = Integer.MAX_VALUE, dl = Integer.MAX_VALUE;
-                if(j<m-1)  dr = arr[i][j] + dwn[j+1];
-                if(j>0)  dl = arr[i][j] + dwn[j-1];
-                
-                curr[j] = Math.min(d,Math.min(dr,dl));
-            }
-            dwn = curr;
-        }
-        
-        int ans = Integer.MAX_VALUE;
-        for(int j=0; j<m; j++) ans = Math.min(ans,dwn[j]);
-            
-        return ans;
-    }
-    
+import java.util.*;
+public class Solution{
+    static int knapsack(int[] wt, int[] val, int n, int w) {
+         int ur[]=new int[w+1];
+         for(int i = 1; i<=n; i++){
+             int curr[]=new int[w+1];
+             for(int j = 1; j<=w; j++){
+                 int p = 0, np=0;
+                 if(wt[i-1]<=j) p = val[i-1] + ur[j-wt[i-1]];
+                 np = ur[j];
+                 
+                 curr[j] = Math.max(p,np);
+             }
+             ur = curr;
+         }
+            return ur[w];
+     }
 }
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # [7. Chocolate Pickup GQ](https://www.codingninjas.com/codestudio/problems/ninja-and-his-friends_3125885?)
 ![image](https://user-images.githubusercontent.com/71629248/188597011-2797761a-151f-4e15-afc5-cb3325a43551.png)
 ### Hence we have a total of 9 different options at every f(i,j1,j2) to move Alice and Bob. Now we can manually write these 9 options or we can observe a pattern in them, first Alice moves to one side and Bob tries all three choices, then again Alice moves, then Bob, and so on. This pattern can be easily captured by using two nested loops that change the column numbers(j1 and j2).
