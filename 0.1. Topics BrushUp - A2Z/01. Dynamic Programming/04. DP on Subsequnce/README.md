@@ -512,57 +512,33 @@ public class Solution {
 
 }
 ```
-
-
-
-
-
-
-
-
-
 ## Tabulation
-### For the tabulation approach, it is better to understand what a cell in the 3D DP array means. As we had done in memoization, we will initialize a dp[] array of size [N][M][M]. So now, when we say dp[2][0][3], what does it mean? It means that we are getting the value of maximum chocolates collected by Alice and Bob, when Alice is at (2,0) and Bob is at (2,3).
-
-### The below figure gives us a bit more clarity.
-![image](https://user-images.githubusercontent.com/71629248/188681184-6b424b56-6ee8-4e90-8366-624f269509b6.png)
-
 ```java
 import java.util.*;
 public class Solution {
-	public static int maximumChocolates(int n, int m, int[][] arr) {
-		// Write your code here.
+    public static int minimumElements(int arr[], int t) {
+        // Write your code here..
+        int n = arr.length;
         
-        int dp[][][] = new int[n+1][m+1][m+1];
-        
-        for(int j1 = 0; j1<m; j1++){
-            for(int j2 = 0; j2<m; j2++){
-                if(j1==j2) dp[n-1][j1][j2] = arr[n-1][j1];
-                else dp[n-1][j1][j2] = arr[n-1][j1] + arr[n-1][j2];
-            }
+        int dp[][]=new int[n+1][t+1];
+        for(int j = 0; j<=t; j++){
+            if(j%arr[0]==0) dp[1][j] = j/arr[0];
+            else dp[1][j] = (int)Math.pow(10,9); 
         }
         
-         int ans = 0;
-        for(int i = n-2; i>=0; i--){
-            for(int j1 = 0; j1<m; j1++){
-                for(int j2 = 0; j2<m; j2++){
-                    
-                      int maxi = Integer.MIN_VALUE;
-                    for(int dj1 = -1; dj1<2; dj1++){
-                        for(int dj2 = -1; dj2<2; dj2++){
-                                    if(j1==j2) ans = arr[i][j1];
-                                    else ans = arr[i][j1] + arr[i][j2];
-                                if((j1+dj1<m && j1+dj1>=0) && (j2+dj2<m && j2+dj2>=0)) ans += dp[i+1][j1+dj1][j2+dj2];
-                                else ans += (int)Math.pow(-10,9);
-                            
-                                maxi = Math.max(maxi,ans);
-                         }
-                    }
-                dp[i][j1][j2] = maxi;
-           } // j2
-        } // j1
-      } // i
-        return dp[0][0][m-1];
+        
+        for(int i=2; i<=n; i++){
+            for(int j=1; j<=t; j++){
+                int pnp = Integer.MAX_VALUE, np = Integer.MAX_VALUE;
+                np = dp[i-1][j]; // notPick
+                if(arr[i-1]<=j){
+                    pnp = 1 + dp[i][j-arr[i-1]]; // pick NOTPASS
+                }
+                
+                dp[i][j] = Math.min(np,pnp);
+            }
+        }
+        return dp[n][t]>=(int)Math.pow(10,9)? -1 : dp[n][t];
     }
 }
 ```
@@ -571,43 +547,32 @@ public class Solution {
 ```java
 import java.util.*;
 public class Solution {
-	public static int maximumChocolates(int n, int m, int[][] arr) {
-		// Write your code here.
+    public static int minimumElements(int arr[], int t) {
+        // Write your code here..
+        int n = arr.length;
         
-        int dr[][] = new int[m][m];
-        
-        for(int j1 = 0; j1<m; j1++){
-            for(int j2 = 0; j2<m; j2++){
-                if(j1==j2) dr[j1][j2] = arr[n-1][j1];
-                else dr[j1][j2] = arr[n-1][j1] + arr[n-1][j2];
-            }
+        int ur[]=new int[t+1];
+        for(int j = 0; j<=t; j++){
+            if(j%arr[0]==0) ur[j] = j/arr[0];
+            else ur[j] = (int)Math.pow(10,9); 
         }
         
-         int ans = 0;
-        for(int i = n-2; i>=0; i--){
-            int curr[][] = new int[m][m];
-            for(int j1 = 0; j1<m; j1++){
-                for(int j2 = 0; j2<m; j2++){
-                    
-                      int maxi = Integer.MIN_VALUE;
-                        
-                    for(int dj1 = -1; dj1<2; dj1++){
-                        for(int dj2 = -1; dj2<2; dj2++){
-                                    if(j1==j2) ans = arr[i][j1];
-                                    else ans = arr[i][j1] + arr[i][j2];
-                                if((j1+dj1<m && j1+dj1>=0) && (j2+dj2<m && j2+dj2>=0)) ans += dr[j1+dj1][j2+dj2];
-                                else ans += (int)Math.pow(-10,9);
-                            
-                                maxi = Math.max(maxi,ans);
-                         }
-                    }
-                curr[j1][j2] = maxi;
-           } // j2
-        } // j1
-            dr = curr;
-      } // i
-        return dr[0][m-1];
+        
+        for(int i=2; i<=n; i++){
+            int curr[]=new int[t+1];
+            for(int j=1; j<=t; j++){
+                int pnp = Integer.MAX_VALUE, np = Integer.MAX_VALUE;
+                np = ur[j]; // notPick
+                if(arr[i-1]<=j){
+                    pnp = 1 + curr[j-arr[i-1]]; // pick NOTPASS
+                }
+                
+                curr[j] = Math.min(np,pnp);
+            }
+            ur = curr;
+        }
+        return ur[t]>=(int)Math.pow(10,9)? -1 : ur[t];
     }
 }
 ```
-[Reference](https://takeuforward.org/data-structure/3-d-dp-ninja-and-his-friends-dp-13/)
+[Reference](https://takeuforward.org/data-structure/minimum-coins-dp-20/)
