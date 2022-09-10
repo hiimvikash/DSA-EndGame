@@ -607,3 +607,47 @@ public class Solution {
 }
 ```
 [Reference](https://takeuforward.org/data-structure/minimum-coins-dp-20/)
+
+
+# [8. Target Sum](https://www.codingninjas.com/codestudio/problems/target-sum_4127362?)
+## -  Same as ```5. Partition with given difference```
+```java
+public class Solution {
+    public static int targetSum(int n, int target, int[] arr) {
+    	// Write your code here.
+        int sum=0;
+        for(int ele:arr) sum+=ele;
+        if((sum+target)%2!=0) return 0; // case 2 [5,2,2,7,3,7,9,0,2,3] 9, ANS is 0
+        int reqSum=(sum+target)/2;
+        
+        
+        
+        int ur[]=new int[reqSum+1];
+        // initialisation
+        if(arr[0]==0) ur[0] = 2;
+        else ur[0] = 1;
+
+        if(arr[0]!=0  && arr[0]<=reqSum) ur[arr[0]] = 1;
+//         for(int j=1; j<=tar; j++){
+//             if(j==arr[0]) dp[1][j] =1;
+//         }
+        
+        
+        for(int i=2; i<=n; i++){
+            int curr[]=new int[reqSum+1];
+            for(int j = 0; j<=reqSum; j++){
+                int p=0, np=0;
+                if(arr[i-1]<=j){
+                    p  = ur[j-arr[i-1]];
+                }
+                np = ur[j];
+                
+                curr[j] = p+np;
+            }
+            ur=curr;
+        }
+        
+        return ur[reqSum];
+    }
+}
+```
