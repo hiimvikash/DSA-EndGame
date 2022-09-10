@@ -238,30 +238,65 @@ public class Solution {
     }
 }
 ```
+## Memonization - II
+```java
+import java.util.*;
+public class Solution {
+    public static int findWays(int arr[], int tar) {
+        // Write your code here..
+        int n = arr.length;
+        int dp[][]=new int[n+1][tar+1];
+        for(int d[]: dp) Arrays.fill(d,-1);
+        
+        return fun(arr,tar,n,dp);
+    }
+    static int fun(int arr[], int tar, int n, int dp[][]){
+        if(n==1){
+            if(tar==0 && arr[0]==0) return 2;
+            if(tar==0 || tar==arr[0]) return 1;
+            return 0;
+        }
+        if(dp[n][tar]!=-1) return dp[n][tar];
+        int p = 0, np = 0;
+        if(arr[n-1]<=tar){
+            p = fun(arr,tar-arr[n-1],n-1,dp);
+        }
+        np = fun(arr,tar,n-1,dp);
+        
+        return dp[n][tar] = p+np;
+    }
+}
+```
 ## Tabulation
 ```java
 import java.util.*;
 public class Solution {
-    public static int findWays(int arr[], int k) {
-        // Write your code here..
+    public static int findWays(int arr[], int tar) {
         int n = arr.length;
-        int dp[][] = new int[n+1][k+1];
-        // initialization k==0 return 1
-        for(int i=0; i<=n; i++) dp[i][0] = 1;
+        int dp[][]=new int[n+1][tar+1];
+        // initialisation
+        if(arr[0]==0) dp[1][0] = 2;
+        else dp[1][0] = 1;
+
+        if(arr[0]!=0  && arr[0]<=tar) dp[1][arr[0]] = 1;
+//         for(int j=1; j<=tar; j++){
+//             if(j==arr[0]) dp[1][j] =1;
+//         }
         
         
-        for(int i = 1; i<=n; i++){
-            for(int j = 1; j<=k; j++){
-                int p = 0, np=0;
+        for(int i=2; i<=n; i++){
+            for(int j = 0; j<=tar; j++){
+                int p=0, np=0;
                 if(arr[i-1]<=j){
-                     p = dp[i-1][j-arr[i-1]];
+                    p  = dp[i-1][j-arr[i-1]];
                 }
                 np = dp[i-1][j];
                 
                 dp[i][j] = p+np;
             }
         }
-        return dp[n][k];
+        
+        return dp[n][tar];
     }
 }
 ```
@@ -269,28 +304,34 @@ public class Solution {
 ```java
 import java.util.*;
 public class Solution {
-    public static int findWays(int arr[], int k) {
-        // Write your code here..
+    public static int findWays(int arr[], int tar) {
         int n = arr.length;
-        int ur[] = new int[k+1];
-        ur[0] = 1;
+        int ur[]=new int[tar+1];
+        // initialisation
+        if(arr[0]==0) ur[0] = 2;
+        else ur[0] = 1;
+
+        if(arr[0]!=0  && arr[0]<=tar) ur[arr[0]] = 1;
+//         for(int j=1; j<=tar; j++){
+//             if(j==arr[0]) dp[1][j] =1;
+//         }
         
         
-        for(int i = 1; i<=n; i++){
-            int curr[]=new int[k+1];
-            curr[0] = 1;
-            for(int j = 1; j<=k; j++){
-                int p = 0, np=0;
+        for(int i=2; i<=n; i++){
+            int curr[]=new int[tar+1];
+            for(int j = 0; j<=tar; j++){
+                int p=0, np=0;
                 if(arr[i-1]<=j){
-                     p = ur[j-arr[i-1]];
+                    p  = ur[j-arr[i-1]];
                 }
                 np = ur[j];
                 
                 curr[j] = p+np;
             }
-            ur = curr;
+            ur=curr;
         }
-        return ur[k];
+        
+        return ur[tar];
     }
 }
 ```
@@ -304,7 +345,7 @@ Therefore adding both eq we get :
 - 2s1= diff + sum of array
 - s1= (diff + sum of array)/2;
 Problem reduces to find no of subsets with given sum.
-so return countSubsetSum(n,arr,s1); from 10
+so return countSubsetSum(n,arr,s1);
  ## memonization
  ```java
 import java.util.*;
