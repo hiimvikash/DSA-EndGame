@@ -668,6 +668,10 @@ public class Solution {
         return fun(arr,n,tar,dp);
 	}
     static long fun(int arr[], int n, int t, long dp[][]){
+        if(n==1){
+            if(t%arr[0]==0) return 1;
+            return 0;
+        }
         if(n==0){
             if(t==0) return 1;
             return 0;
@@ -683,4 +687,68 @@ public class Solution {
 }
 ```
 
-##
+## Tabulation
+```java
+import java.util.*;
+public class Solution {
+
+	public static long countWaysToMakeChange(int arr[], int tar){
+        //write your code here
+        int n = arr.length;
+        long dp[][]=new long[n+1][tar+1];
+        for(int j=0; j<=tar; j++){
+            if(j%arr[0]==0) dp[1][j] = 1;
+            else dp[1][j] = 0;
+        }
+        
+        
+        for(int i = 2; i<=n; i++){
+            for(int j = 0; j<=tar; j++){
+                long np = dp[i-1][j];
+                long p=0;
+                if(arr[i-1]<=j){
+                    p = dp[i][j-arr[i-1]];
+                }
+                
+                dp[i][j] = p+np;
+            }
+        }
+        
+        return dp[n][tar];
+	}
+}
+```
+
+## Space optimized
+```java
+import java.util.*;
+public class Solution {
+
+	public static long countWaysToMakeChange(int arr[], int tar){
+        //write your code here
+        int n = arr.length;
+        long ur[]=new long[tar+1];
+        for(int j=0; j<=tar; j++){
+            if(j%arr[0]==0) ur[j] = 1;
+            else ur[j] = 0;
+        }
+        
+        
+        for(int i = 2; i<=n; i++){
+            long curr[]=new long[tar+1];
+            for(int j = 0; j<=tar; j++){
+                long np = ur[j];
+                long p=0;
+                if(arr[i-1]<=j){
+                    p = curr[j-arr[i-1]];
+                }
+                
+                curr[j] = p+np;
+            }
+            ur = curr;
+        }
+        
+        return ur[tar];
+	}
+}
+```
