@@ -752,3 +752,78 @@ public class Solution {
 	}
 }
 ```
+
+# [10. Unbounded Knapsack](https://www.codingninjas.com/codestudio/problems/unbounded-knapsack_1215029)
+## Memonization
+```java
+import java.util.*;
+public class Solution {
+        public static int unboundedKnapsack(int n, int w, int[] val, int[] wt) {
+        // Write your code here.
+          int dp[][]=new int[n+1][w+1];
+            for(int d[]: dp) Arrays.fill(d,-1);
+            
+         return fun(val,wt,n,w,dp);
+    }
+    static int fun(int val[], int wt[], int n, int w, int dp[][]){
+        if(n==0 || w==0) return 0;
+        
+        if(dp[n][w]!=-1) return dp[n][w];
+        int p=0,np=0;
+        if(wt[n-1]<=w){
+            p = val[n-1] + fun(val,wt,n,w-wt[n-1],dp);
+        }
+        np = fun(val,wt,n-1,w,dp);
+        
+        return dp[n][w] = Math.max(p,np);
+    }
+}
+```
+## tabulation
+```java
+import java.util.*;
+public class Solution {
+        public static int unboundedKnapsack(int n, int w, int[] val, int[] wt) {
+        // Write your code here.
+          int dp[][]=new int[n+1][w+1];
+           for(int i = 1; i<=n; i++){
+               for(int j = 1; j<=w; j++){
+                   int p=0,np=0;
+                    if(wt[i-1]<=j){
+                        p = val[i-1] + dp[i][j-wt[i-1]];
+                    }
+                    np = dp[i-1][j];
+                   
+                   dp[i][j] = Math.max(p,np);
+               }
+           }
+            
+         return dp[n][w];
+    }
+}
+```
+## Space optimization
+```java
+import java.util.*;
+public class Solution {
+        public static int unboundedKnapsack(int n, int w, int[] val, int[] wt) {
+        // Write your code here.
+          int ur[]=new int[w+1];
+           for(int i = 1; i<=n; i++){
+               int curr[]=new int[w+1];
+               for(int j = 1; j<=w; j++){
+                   int p=0,np=0;
+                    if(wt[i-1]<=j){
+                        p = val[i-1] + curr[j-wt[i-1]];
+                    }
+                    np = ur[j];
+                   
+                   curr[j] = Math.max(p,np);
+               }
+               ur=curr;
+           }
+            
+         return ur[w];
+    }
+}
+```
