@@ -651,3 +651,36 @@ public class Solution {
     }
 }
 ```
+
+# [9.  Coin Change - II](https://www.codingninjas.com/codestudio/problems/ways-to-make-coin-change_630471)
+
+## Memonization
+```java
+import java.util.*;
+public class Solution {
+
+	public static long countWaysToMakeChange(int arr[], int tar){
+        //write your code here
+        int n = arr.length;
+        long dp[][]=new long[n+1][tar+1];
+         for(long d[]:dp) Arrays.fill(d,-1);
+        
+        return fun(arr,n,tar,dp);
+	}
+    static long fun(int arr[], int n, int t, long dp[][]){
+        if(n==0){
+            if(t==0) return 1;
+            return 0;
+        }
+        if(dp[n][t]!=-1) return dp[n][t];
+        long np = fun(arr,n-1, t, dp);
+        long p=0;
+        if(arr[n-1]<=t){
+            p = fun(arr,n,t-arr[n-1], dp);
+        }
+        return dp[n][t] = p + np;
+    }
+}
+```
+
+##
