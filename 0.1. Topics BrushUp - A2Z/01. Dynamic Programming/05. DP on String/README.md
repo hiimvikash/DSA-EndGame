@@ -235,170 +235,48 @@ public class Solution {
 
 
 
-
-
-
-
-
-
-# [7. Coin Change](https://www.codingninjas.com/codestudio/problems/ninja-and-his-friends_3125885?)
-
-
-## Recursion
-```java
-public class Solution {
-    public static int minimumElements(int num[], int x) {
-        // Write your code here..
-        int ans = fun(num,num.length,x);
-        return ans>=(int)Math.pow(10,9)? -1 : ans;
-    }
-    static int fun(int arr[], int n, int t){
-        if(n==1){
-            if(t%arr[0]==0) return t/arr[0];
-            return (int)Math.pow(10,9);
-        }
-        int pp = Integer.MAX_VALUE, pnp = Integer.MAX_VALUE, np = Integer.MAX_VALUE;
-        if(arr[n-1]<=t){
-            pnp = 1 + fun(arr,n,t-arr[n-1]);
-            pp = 1 + fun(arr,n-1,t-arr[n-1]);
-        }
-        np = fun(arr,n-1,t);
-        
-        return Math.min(pnp, Math.min(pp,np));
-    }
-
-}
-```
-
-## Memonization - I
-```java
-import java.util.*;
-public class Solution {
-    public static int minimumElements(int num[], int x) {
-        // Write your code here..
-        int n = num.length;
-        
-        int dp[][]=new int[n+1][x+1];
-        for(int d[] :dp) Arrays.fill(d,-1);
-        
-        int ans = fun(num,n,x,dp);
-        return ans>=(int)Math.pow(10,9)? -1 : ans;
-    }
-    static int fun(int arr[], int n, int t, int dp[][]){
-        if(n==1){
-            if(t%arr[0]==0) return t/arr[0];
-            return (int)Math.pow(10,9);
-        }
-        if(dp[n][t]!=-1) return dp[n][t];
-        
-        int pp = Integer.MAX_VALUE, pnp = Integer.MAX_VALUE, np = Integer.MAX_VALUE;
-        if(arr[n-1]<=t){
-            pnp = 1 + fun(arr,n,t-arr[n-1],dp); // pick NOTPASS
-            pp = 1 + fun(arr,n-1,t-arr[n-1],dp); // pick PASS [12,1,4,2] t = 6
-        }
-        np = fun(arr,n-1,t,dp); // notPick
-        
-        return dp[n][t] = Math.min(pnp, Math.min(pp,np));
-    }
-
-}
-```
-
-## Memonization - II
-```java
-import java.util.*;
-public class Solution {
-    public static int minimumElements(int num[], int x) {
-        // Write your code here..
-        int n = num.length;
-        
-        int dp[][]=new int[n+1][x+1];
-        for(int d[] :dp) Arrays.fill(d,-1);
-        
-        int ans = fun(num,n,x,dp);
-        return ans>=(int)Math.pow(10,9)? -1 : ans;
-    }
-    static int fun(int arr[], int n, int t, int dp[][]){
-        if(n==1){
-            if(t%arr[0]==0) return t/arr[0];
-            return (int)Math.pow(10,9);
-        }
-        if(dp[n][t]!=-1) return dp[n][t];
-        
-        int pnp = Integer.MAX_VALUE, np = Integer.MAX_VALUE;
-        np = fun(arr,n-1,t,dp); // notPick
-        if(arr[n-1]<=t){
-            pnp = 1 + fun(arr,n,t-arr[n-1],dp); // pick NOTPASS
-        }
-        return dp[n][t] = Math.min(pnp, np);
-    }
-
-}
-```
-## Tabulation
-```java
-import java.util.*;
-public class Solution {
-    public static int minimumElements(int arr[], int t) {
-        // Write your code here..
-        int n = arr.length;
-        
-        int dp[][]=new int[n+1][t+1];
-        for(int j = 0; j<=t; j++){
-            if(j%arr[0]==0) dp[1][j] = j/arr[0];
-            else dp[1][j] = (int)Math.pow(10,9); 
-        }
-        
-        
-        for(int i=2; i<=n; i++){
-            for(int j=1; j<=t; j++){
-                int pnp = Integer.MAX_VALUE, np = Integer.MAX_VALUE;
-                np = dp[i-1][j]; // notPick
-                if(arr[i-1]<=j){
-                    pnp = 1 + dp[i][j-arr[i-1]]; // pick NOTPASS
-                }
-                
-                dp[i][j] = Math.min(np,pnp);
-            }
-        }
-        return dp[n][t]>=(int)Math.pow(10,9)? -1 : dp[n][t];
-    }
-}
-```
+# [6. Minimum Number of Deletions and Insertions to convert String A to String B](https://www.codingninjas.com/codestudio/problems/can-you-make_4244510)
+- Find LCS
+- Insertion : str2.length()-lcs
+- Deletion : str1.length()-lcs
 
 ## Space Optimization
 ```java
-import java.util.*;
 public class Solution {
-    public static int minimumElements(int arr[], int t) {
-        // Write your code here..
-        int n = arr.length;
-        
-        int ur[]=new int[t+1];
-        for(int j = 0; j<=t; j++){
-            if(j%arr[0]==0) ur[j] = j/arr[0];
-            else ur[j] = (int)Math.pow(10,9); 
-        }
-        
-        
-        for(int i=2; i<=n; i++){
-            int curr[]=new int[t+1];
-            for(int j=1; j<=t; j++){
-                int pnp = Integer.MAX_VALUE, np = Integer.MAX_VALUE;
-                np = ur[j]; // notPick
-                if(arr[i-1]<=j){
-                    pnp = 1 + curr[j-arr[i-1]]; // pick NOTPASS
-                }
-                
-                curr[j] = Math.min(np,pnp);
-            }
-            ur = curr;
-        }
-        return ur[t]>=(int)Math.pow(10,9)? -1 : ur[t];
+    public static int canYouMake(String s1, String s2) {
+        // Write your code here.
+        int lcs = lcs(s1,s2);
+        return (s1.length()-lcs)+(s2.length()-lcs);
     }
+    
+    public static int lcs(String s1, String s2) {
+        //Your code goes here
+        int n1 = s1.length(); int n2 = s2.length();
+        
+        int ur[]=new int[n2+1];
+        for(int i = 1; i<=n1; i++){
+            int curr[]=new int[n2+1];
+            for(int j=1; j<=n2; j++){
+                if(s1.charAt(i-1)==s2.charAt(j-1)) curr[j] = 1 + ur[j-1];
+                else curr[j] = Math.max(ur[j], curr[j-1]);
+            }
+            ur=curr;
+        }
+        
+        return ur[n2];
+    }
+
 }
 ```
-[Reference](https://takeuforward.org/data-structure/minimum-coins-dp-20/)
+
+
+
+
+
+
+
+
+
 
 
 # [8. Target Sum](https://www.codingninjas.com/codestudio/problems/target-sum_4127362?)
