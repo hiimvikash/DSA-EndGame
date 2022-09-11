@@ -158,6 +158,7 @@ public class Solution {
 [Reference](https://takeuforward.org/data-structure/longest-common-substring-dp-27/)
 
 # [4. LPS](https://www.codingninjas.com/codestudio/problems/longest-palindromic-subsequence_842787?)
+### - return LCS(s1,reverse(s1))
 
 ## space optimization
 ```java
@@ -190,125 +191,54 @@ public class Solution {
 ```
 
 
-
-
-
-
-
-
-
-
-# [5. Partitions With Given Difference](https://www.codingninjas.com/codestudio/problems/partitions-with-given-difference_3751628?)
+# [5. Minimum insertions to make a string palindrome](https://www.codingninjas.com/codestudio/problems/minimum-insertions-to-make-palindrome_985293?)
 # Intution
-- Let sum of subset 1 be s1 and subset 2 with s2
-- s1 - s2 = diff (given)
-- s1 + s2=sum of array (logical)
-Therefore adding both eq we get :
-- 2s1= diff + sum of array
-- s1= (diff + sum of array)/2;
-Problem reduces to find no of subsets with given sum.
-so return countSubsetSum(n,arr,s1);
- ## memonization
- ```java
-import java.util.*;
-public class Solution {
-    static int mod =(int)(Math.pow(10,9)+7);
-	public static int countPartitions(int n, int d, int[] nums) {
-		// Write your code here.
-        int sum=0;
-        for(int ele:nums) sum+=ele;
-        if((sum+d)%2!=0) return 0; // case 2 [5,2,2,7,3,7,9,0,2,3] 9, ANS is 0
-        int reqSum=(sum+d)/2;
-        int dp[][]=new int[n+1][reqSum+1];
-        for(int row[]:dp) {
-            Arrays.fill(row, -1);
-        }
-        return fun(nums,n,reqSum,dp);
-        
-	}
-    public static int fun(int arr[], int n, int k, int dp[][]){
-        if(n==0){
-            if(k==0) return 1;
-            return 0;
-        }
+- NOTE : Minimum # of deletion=Minimum # of Insertion. this is bcz in deletion we remove single occuring element and in Insertion we try to make that single element into couple by introducing new element.
 
-        if(dp[n][k]!=-1) return dp[n][k];
-        int p = 0, np=0;
-        if(arr[n-1]<=k){
-             p = fun(arr,n-1,k-arr[n-1],dp);
-        }
-        np = fun(arr,n-1,k,dp) ;
-        
-        return dp[n][k] = (p+np)%mod;
-    }
-}
- ```
-# [6. 0 1 Knapsack](https://www.codingninjas.com/codestudio/problems/0-1-knapsack_920542?)
-
-## Memonization
-```java
-import java.util.*;
-public class Solution{
-    static int knapsack(int[] weight, int[] value, int n, int maxWeight) {
-         int dp[][]=new int [n+1][maxWeight+1];
-         for(int row[] : dp){
-             Arrays.fill(row,-1);
-         }
-            return fun(weight,value,n,maxWeight,dp);
-     }
-    static int fun(int wt[], int val[], int n, int w, int dp[][]){
-        if(n==0 || w==0) return 0;
-        
-        int p=0,np=0;
-        if(dp[n][w]!=-1) return dp[n][w];
-        if(wt[n-1]<=w){
-            p = val[n-1] + fun(wt,val,n-1,w-wt[n-1],dp);
-        }
-        np = fun(wt,val,n-1,w,dp);
-        return dp[n][w] = Math.max(p,np);
-    }
-}
-```
-## Tabulation
-```java
-import java.util.*;
-public class Solution{
-    static int knapsack(int[] wt, int[] val, int n, int w) {
-         int dp[][]=new int [n+1][w+1];
-         for(int i = 1; i<=n; i++){
-             for(int j = 1; j<=w; j++){
-                 int p = 0, np=0;
-                 if(wt[i-1]<=j) p = val[i-1] + dp[i-1][j-wt[i-1]];
-                 np = dp[i-1][j];
-                 
-                 dp[i][j] = Math.max(p,np);
-             }
-         }
-            return dp[n][w];
-     }
-}
-```
+- Find LPS
+- return n-LPS
+- because no. of deletion is inversely propotional to lengthOfPS.
+ 
 ## Space Optimized
 ```java
-import java.util.*;
-public class Solution{
-    static int knapsack(int[] wt, int[] val, int n, int w) {
-         int ur[]=new int[w+1];
-         for(int i = 1; i<=n; i++){
-             int curr[]=new int[w+1];
-             for(int j = 1; j<=w; j++){
-                 int p = 0, np=0;
-                 if(wt[i-1]<=j) p = val[i-1] + ur[j-wt[i-1]];
-                 np = ur[j];
-                 
-                 curr[j] = Math.max(p,np);
-             }
-             ur = curr;
-         }
-            return ur[w];
-     }
+public class Solution {
+    public static int minInsertion(String str) {
+    	// Write your code here.
+        return str.length()-lps(str);
+    }
+    public static int lps(String s) {
+        // Write your code here.
+        return lcs(s,reverse(s));
+    }
+    public static int lcs(String s1, String s2) {
+        //Your code goes here
+        int n1 = s1.length(); int n2 = s2.length();
+        
+        int ur[]=new int[n2+1];
+        for(int i = 1; i<=n1; i++){
+            int curr[]=new int[n2+1];
+            for(int j=1; j<=n2; j++){
+                if(s1.charAt(i-1)==s2.charAt(j-1)) curr[j] = 1 + ur[j-1];
+                else curr[j] = Math.max(ur[j], curr[j-1]);
+            }
+            ur=curr;
+        }
+        
+        return ur[n2];
+    }
+    static String reverse(String s){
+        StringBuilder str=new StringBuilder(s);
+        return str.reverse().toString();
+    }
 }
 ```
+
+
+
+
+
+
+
 
 
 # [7. Coin Change](https://www.codingninjas.com/codestudio/problems/ninja-and-his-friends_3125885?)
