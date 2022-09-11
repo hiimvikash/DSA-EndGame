@@ -94,9 +94,9 @@ static int fun(String s1, String s2, int n1, int n2){
         
         int i = n1, int j = n2;
         String ans = "";
-        while(i>=0 && j>=0){
-            if(s1.charAt(i)==s2.charAt(j)){
-                ans = s1.charAt(i) + ans; 
+        while(i>0 && j>0){
+            if(s1.charAt(i-1)==s2.charAt(j-1)){
+                ans = s1.charAt(i-1) + ans; 
                 i--; j--;
             }
             else{
@@ -269,91 +269,103 @@ public class Solution {
 }
 ```
 
+# [7. Shortest Common Supersequence](https://www.codingninjas.com/codestudio/problems/shortest-supersequence_4244493)
 
+### Length of SCS :-
+- Find LCS
+- Minus it with totalStringLength. If you do so you are making sure that common elements occur one's. ```return (n1+n2)-dp[n1][n2];```
 
-
-
-
-
-
-
-
-
-# [8. Target Sum](https://www.codingninjas.com/codestudio/problems/target-sum_4127362?)
-## -  Same as ```5. Partition with given difference```
 ```java
 public class Solution {
-    public static int targetSum(int n, int target, int[] arr) {
-    	// Write your code here.
-        int sum=0;
-        for(int ele:arr) sum+=ele;
-        if((sum+target)%2!=0) return 0; // case 2 [5,2,2,7,3,7,9,0,2,3] 9, ANS is 0
-        int reqSum=(sum+target)/2;
+    public static String shortestSupersequence(String s1, String s2) {
+        // Write your code here..
+        int n1 = s1.length(), n2 = s2.length();
+        int dp[][]=new int[n1+1][n2+1];
         
-        
-        
-        int ur[]=new int[reqSum+1];
-        // initialisation
-        if(arr[0]==0) ur[0] = 2;
-        else ur[0] = 1;
-
-        if(arr[0]!=0  && arr[0]<=reqSum) ur[arr[0]] = 1;
-//         for(int j=1; j<=tar; j++){
-//             if(j==arr[0]) dp[1][j] =1;
-//         }
-        
-        
-        for(int i=2; i<=n; i++){
-            int curr[]=new int[reqSum+1];
-            for(int j = 0; j<=reqSum; j++){
-                int p=0, np=0;
-                if(arr[i-1]<=j){
-                    p  = ur[j-arr[i-1]];
-                }
-                np = ur[j];
-                
-                curr[j] = p+np;
+        for(int i = 1; i<=n1; i++){
+            for(int j=1; j<=n2; j++){
+                if(s1.charAt(i-1)==s2.charAt(j-1)) dp[i][j] = 1 + dp[i-1][j-1];
+                else dp[i][j] = Math.max(dp[i-1][j], dp[i][j-1]);
             }
-            ur=curr;
         }
         
-        return ur[reqSum];
+        String ans = "";
+        int i = n1, j = n2;
+        
+        while(i>0 && j>0){
+            if(s1.charAt(i-1) == s2.charAt(j-1)){
+                ans = s1.charAt(i-1) + ans; i--; j--;
+            }
+            else{
+                if(dp[i-1][j] >= dp[i][j-1]){
+                    ans = s1.charAt(i-1) + ans; i--;
+                }
+                else{
+                    ans = s2.charAt(j-1) + ans; j--;
+                }
+            }
+        }
+        
+        while(j>0){
+            ans = s2.charAt(j-1) + ans; j--;
+        }
+        while(i>0){
+            ans = s1.charAt(i-1) + ans; i--;
+        }
+        
+        return ans;
+    
     }
+
 }
 ```
+[**Video reference**](https://youtu.be/xElxAuBcvsU)
 
-# [9.  Coin Change - II](https://www.codingninjas.com/codestudio/problems/ways-to-make-coin-change_630471)
+
+# [8. Subsequence Counting GQ](https://www.codingninjas.com/codestudio/problems/subsequence-counting_3755256)
+
+## Recurrsion
+```java
+public class Solution {
+    public static int subsequenceCounting(String txt, String s, int lt, int ls) {
+        // Write your code here..
+        return fun(txt,s,lt,ls);
+    }
+    static int fun(String txt, String s, int lt, int ls){
+        if(ls==0) return 1;
+        if(lt==0) return 0;
+        
+        int c2 = fun(txt,s,lt-1,ls);
+        if(s.charAt(ls-1)==txt.charAt(lt-1)) return fun(txt,s,lt-1,ls-1) + c2;
+        else return c2;
+    }
+
+}
+```
 
 ## Memonization
 ```java
 import java.util.*;
 public class Solution {
-
-	public static long countWaysToMakeChange(int arr[], int tar){
-        //write your code here
-        int n = arr.length;
-        long dp[][]=new long[n+1][tar+1];
-         for(long d[]:dp) Arrays.fill(d,-1);
+    static int mod = (int)(Math.pow(10,9)+7);
+    public static int subsequenceCounting(String txt, String s, int lt, int ls) {
+        // Write your code here..
+        int dp[][]=new int[ls+1][lt+1];
+        for(int d[] : dp) Arrays.fill(d,-1);
         
-        return fun(arr,n,tar,dp);
-	}
-    static long fun(int arr[], int n, int t, long dp[][]){
-        if(n==1){
-            if(t%arr[0]==0) return 1;
-            return 0;
-        }
-        if(n==0){
-            if(t==0) return 1;
-            return 0;
-        }
-        if(dp[n][t]!=-1) return dp[n][t];
-        long np = fun(arr,n-1, t, dp);
-        long p=0;
-        if(arr[n-1]<=t){
-            p = fun(arr,n,t-arr[n-1], dp);
-        }
-        return dp[n][t] = p + np;
+        return fun(txt,s,lt,ls,dp);
     }
+    static int fun(String txt, String s, int lt, int ls, int dp[][]){
+        if(ls==0) return 1;
+        if(lt==0) return 0;
+        
+        if(dp[ls][lt] !=-1) return dp[ls][lt];
+        
+        int c2 = fun(txt,s,lt-1,ls,dp);
+        if(s.charAt(ls-1)==txt.charAt(lt-1)) return dp[ls][lt] = (fun(txt,s,lt-1,ls-1,dp) + c2)%mod;
+        else return dp[ls][lt] = c2%mod;
+    }
+
 }
 ```
 
@@ -361,31 +373,21 @@ public class Solution {
 ```java
 import java.util.*;
 public class Solution {
-
-	public static long countWaysToMakeChange(int arr[], int tar){
-        //write your code here
-        int n = arr.length;
-        long dp[][]=new long[n+1][tar+1];
-        for(int j=0; j<=tar; j++){
-            if(j%arr[0]==0) dp[1][j] = 1;
-            else dp[1][j] = 0;
-        }
+    static int mod = (int)(Math.pow(10,9)+7);
+    public static int subsequenceCounting(String txt, String s, int lt, int ls) {
+        // Write your code here..
+        int dp[][]=new int[ls+1][lt+1];
+        for(int j=0; j<=lt; j++) dp[0][j] = 1;
         
-        
-        for(int i = 2; i<=n; i++){
-            for(int j = 0; j<=tar; j++){
-                long np = dp[i-1][j];
-                long p=0;
-                if(arr[i-1]<=j){
-                    p = dp[i][j-arr[i-1]];
-                }
-                
-                dp[i][j] = p+np;
+        for(int i=1; i<=ls; i++){
+            for(int j=1; j<=lt; j++){
+                if(s.charAt(i-1)==txt.charAt(j-1)) dp[i][j] = (dp[i-1][j-1] + dp[i][j-1])%mod;
+                else dp[i][j] = dp[i][j-1]%mod;
             }
         }
         
-        return dp[n][tar];
-	}
+        return dp[ls][lt];
+    }
 }
 ```
 
@@ -393,35 +395,35 @@ public class Solution {
 ```java
 import java.util.*;
 public class Solution {
-
-	public static long countWaysToMakeChange(int arr[], int tar){
-        //write your code here
-        int n = arr.length;
-        long ur[]=new long[tar+1];
-        for(int j=0; j<=tar; j++){
-            if(j%arr[0]==0) ur[j] = 1;
-            else ur[j] = 0;
-        }
+    static int mod = (int)(Math.pow(10,9)+7);
+    public static int subsequenceCounting(String txt, String s, int lt, int ls) {
+        // Write your code here..
+        int ur[]=new int[lt+1];
+        for(int j=0; j<=lt; j++) ur[j] = 1;
         
-        
-        for(int i = 2; i<=n; i++){
-            long curr[]=new long[tar+1];
-            for(int j = 0; j<=tar; j++){
-                long np = ur[j];
-                long p=0;
-                if(arr[i-1]<=j){
-                    p = curr[j-arr[i-1]];
-                }
-                
-                curr[j] = p+np;
+        for(int i=1; i<=ls; i++){
+            int curr[]=new int[lt+1];
+            for(int j=1; j<=lt; j++){
+                if(s.charAt(i-1)==txt.charAt(j-1)) curr[j] = (ur[j-1] + curr[j-1])%mod;
+                else curr[j] = curr[j-1]%mod;
             }
             ur = curr;
         }
         
-        return ur[tar];
-	}
+        return ur[lt];
+    }
 }
 ```
+
+
+
+
+
+
+
+
+
+
 
 # [10. Unbounded Knapsack](https://www.codingninjas.com/codestudio/problems/unbounded-knapsack_1215029)
 ## Memonization
