@@ -78,125 +78,101 @@ public class Solution {
 [Reference](https://takeuforward.org/data-structure/longest-common-subsequence-dp-25/)
 
 
+# [2. Print LCS](https://takeuforward.org/data-structure/print-longest-common-subsequence-dp-26/)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# [2. 416. Partition Equal Subset Sum](https://leetcode.com/problems/partition-equal-subset-sum/)
-
-## Space optimization**
-## **Solution :-**
-### This question is a slight modification of the problem discussed in Subset-sum equal to target. We need to partition the array(say S) into two subsets(say S1 and S2). According to the question:
-
-- ### Sum of elements of S1 + sum of elements of S2 = sum of elements of S.
-- ### Sum of elements of S1 = sum of elements of S2.
-- ### These two conditions imply that S1 = S2 = (S/2). 
-
-### Now, 
-
-### - If S (sum of elements of the input array) is odd , there is no way we can divide it into two equal halves, so we can simply return false.
-### - If S is even, then we need to find a subsequence in the input array whose sum is equal to S/2 because if we find one subsequence with sum S/2, the remaining elements sum will be automatically S/2. So, we can partition the given array. Hence we return true.
 ```java
-class Solution {
-    public boolean canPartition(int[] arr) {
-        int n = arr.length;
-        int sum = 0;
-        for(int e : arr) sum+=e;
-        
-        if(sum%2!=0) return false;
-        return subsetSumToK(n,sum/2,arr);
-    }
-    public boolean subsetSumToK(int n, int k, int arr[]){
-        // Write your code here.
-        int ur[]=new int[k+1]; ur[0] = 1;
-        
-        for(int i = 1; i<=n; i++){
-            int curr[]=new int[k+1];
-            curr[0]=1;
-            for(int j = 1; j<=k; j++){
-                if(arr[i-1]<=j){
-                    if(ur[j-arr[i-1]]==1) curr[j] = 1;
-                    else if(ur[j]==1) curr[j] = 1;
-                }
-                else if(ur[j]==1) curr[j] = 1;
-                else curr[j] = 0;
+static int fun(String s1, String s2, int n1, int n2){
+	    int dp[][]=new int[n1+1][n2+1];
+	    
+	    for(int i = 1; i<=n1; i++){
+            for(int j=1; j<=n2; j++){
+                if(s1.charAt(i-1)==s2.charAt(j-1)) dp[i][j] = 1 + dp[i-1][j-1];
+                else dp[i][j] = Math.max(dp[i-1][j], dp[i][j-1]);
             }
-            ur=curr;
         }
         
-        return ur[k]==1? true :false;
-    }
-}
+        int i = n1, int j = n2;
+        String ans = "";
+        while(i>=0 && j>=0){
+            if(s1.charAt(i)==s2.charAt(j)){
+                ans = s1.charAt(i) + ans; 
+                i--; j--;
+            }
+            else{
+                if(dp[i-1][j] > dp[i][j-1]) i--;
+                else j--;
+            }
+        }
+        return ans;
+	}
 ```
-[Reference](https://takeuforward.org/data-structure/partition-equal-subset-sum-dp-15/)
 
-# [3. Partition Set Into 2 Subsets With Min Absolute Sum Diff](https://www.codingninjas.com/codestudio/problems/partition-a-set-into-two-subsets-such-that-the-difference-of-subset-sums-is-minimum_842494?)
-
-### The Intuition is : 
-- The value of S1 & S2 will lie btw :-
-0------------------------------------------ArraySum
-- the minimum answer will be generated when S1 & S2 lies
-close to each other in above line.
-- we only need to find valid S1.
-- S2 can be calculated as ArraySum-S1
-
-## Now, try figuring out the meaning of Tabulation in Q1(Subset Sum Equal To K)
-- if Array of size 5 and k = 12
-- what does dp[4][10] means ?
-- boolean value in dp[4][10] signifies whether target sum 10 is possible or not if Array Size is till 4.
-- simillarly last row dp[n-1][0....k] will say whether particular sum from 0 to ArraySum is possible or not. 
-## Space Optimized
+# [3. LCSubstring](https://www.codingninjas.com/codestudio/problems/longest-common-substring_1235207?)
+## Tabulation
 ```java
 public class Solution {
-	public static int minSubsetSumDifference(int[] arr, int n) {
+	public static int lcs(String s1, String s2) {
+        int n1 = s1.length();
+        int n2 = s2.length();
 		// Write your code here.
-        int k = 0; for(int e : arr) k+=e;
-        // Q1 sol :-
-        int ur[]=new int[k+1]; ur[0] = 1;
-        
-        for(int i = 1; i<=n; i++){
-            int curr[]=new int[k+1];
-            curr[0]=1;
-            for(int j = 1; j<=k; j++){
-                if(arr[i-1]<=j){
-                    if(ur[j-arr[i-1]]==1) curr[j] = 1;
-                    else if(ur[j]==1) curr[j] = 1;
+        int dp[][]=new int[n1+1][n2+1];
+        int ans=0;
+        for(int i=1;i<=n1;i++){
+            for(int j=1;j<=n2;j++){
+                if(s1.charAt(i-1)==s2.charAt(j-1)){
+                    dp[i][j]=dp[i-1][j-1]+1;
+                    ans=Math.max(ans,dp[i][j]);
                 }
-                else if(ur[j]==1) curr[j] = 1;
-                else curr[j] = 0;
-            }
-            ur=curr;
-        }
-        // Q1 sol
-        
-        int min = Integer.MAX_VALUE;
-        for(int s1=0; s1<=k; s1++){
-            if(ur[s1]==1){
-                min = Math.min(min, Math.abs(s1 - (k-s1)));
+                else dp[i][j]=0;
             }
         }
-        
-        return min;
+        return ans;
 	}
 }
 ```
-[Reference](https://takeuforward.org/data-structure/partition-set-into-2-subsets-with-min-absolute-sum-diff-dp-16/)
+## Space Optimized
+```java
+public class Solution {
+	public static int lcs(String s1, String s2) {
+        int n1 = s1.length();
+        int n2 = s2.length();
+		// Write your code here.
+        int ur[]=new int[n2+1];
+        int ans=0;
+        for(int i=1;i<=n1;i++){
+            int curr[]=new int[n2+1];
+            for(int j=1;j<=n2;j++){
+                if(s1.charAt(i-1)==s2.charAt(j-1)){
+                    curr[j]=ur[j-1]+1;
+                    ans=Math.max(ans,curr[j]);
+                }
+                else curr[j]=0;
+            }
+            ur = curr;
+        }
+        return ans;
+	}
+}
+```
+[Reference](https://takeuforward.org/data-structure/longest-common-substring-dp-27/)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # [4. Count subset with sum k](https://www.codingninjas.com/codestudio/problems/number-of-subsets_3952532?)
 ## memonization
