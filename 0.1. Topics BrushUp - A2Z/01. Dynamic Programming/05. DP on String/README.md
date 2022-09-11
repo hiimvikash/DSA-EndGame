@@ -157,149 +157,46 @@ public class Solution {
 ```
 [Reference](https://takeuforward.org/data-structure/longest-common-substring-dp-27/)
 
+# [4. LPS](https://www.codingninjas.com/codestudio/problems/longest-palindromic-subsequence_842787?)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# [4. Count subset with sum k](https://www.codingninjas.com/codestudio/problems/number-of-subsets_3952532?)
-## memonization
-```java
-import java.util.*;
-public class Solution {
-    public static int findWays(int num[], int k) {
-        // Write your code here..
-        int n = num.length;
-        int dp[][] = new int[n+1][k+1];
-        for(int d[] : dp) Arrays.fill(d,-1);
-        
-        return fun(num,n,k,dp);
-    }
-    public static int fun(int arr[], int n, int k, int dp[][]){
-        if(n==0){
-            if(k==0) return 1;
-            return 0;
-        }
-        if(dp[n][k]!=-1) return dp[n][k];
-        int p = 0, np=0;
-        if(arr[n-1]<=k){
-             p = fun(arr,n-1,k-arr[n-1],dp);
-        }
-        np = fun(arr,n-1,k,dp) ;
-        
-        return dp[n][k] = p+np;
-    }
-}
-```
-## Memonization - II
-```java
-import java.util.*;
-public class Solution {
-    public static int findWays(int arr[], int tar) {
-        // Write your code here..
-        int n = arr.length;
-        int dp[][]=new int[n+1][tar+1];
-        for(int d[]: dp) Arrays.fill(d,-1);
-        
-        return fun(arr,tar,n,dp);
-    }
-    static int fun(int arr[], int tar, int n, int dp[][]){
-        if(n==1){
-            if(tar==0 && arr[0]==0) return 2;
-            if(tar==0 || tar==arr[0]) return 1;
-            return 0;
-        }
-        if(dp[n][tar]!=-1) return dp[n][tar];
-        int p = 0, np = 0;
-        if(arr[n-1]<=tar){
-            p = fun(arr,tar-arr[n-1],n-1,dp);
-        }
-        np = fun(arr,tar,n-1,dp);
-        
-        return dp[n][tar] = p+np;
-    }
-}
-```
-## Tabulation
-```java
-import java.util.*;
-public class Solution {
-    public static int findWays(int arr[], int tar) {
-        int n = arr.length;
-        int dp[][]=new int[n+1][tar+1];
-        // initialisation
-        if(arr[0]==0) dp[1][0] = 2;
-        else dp[1][0] = 1;
-
-        if(arr[0]!=0  && arr[0]<=tar) dp[1][arr[0]] = 1;
-//         for(int j=1; j<=tar; j++){
-//             if(j==arr[0]) dp[1][j] =1;
-//         }
-        
-        
-        for(int i=2; i<=n; i++){
-            for(int j = 0; j<=tar; j++){
-                int p=0, np=0;
-                if(arr[i-1]<=j){
-                    p  = dp[i-1][j-arr[i-1]];
-                }
-                np = dp[i-1][j];
-                
-                dp[i][j] = p+np;
-            }
-        }
-        
-        return dp[n][tar];
-    }
-}
-```
 ## space optimization
 ```java
-import java.util.*;
 public class Solution {
-    public static int findWays(int arr[], int tar) {
-        int n = arr.length;
-        int ur[]=new int[tar+1];
-        // initialisation
-        if(arr[0]==0) ur[0] = 2;
-        else ur[0] = 1;
-
-        if(arr[0]!=0  && arr[0]<=tar) ur[arr[0]] = 1;
-//         for(int j=1; j<=tar; j++){
-//             if(j==arr[0]) dp[1][j] =1;
-//         }
+	public static int longestPalindromeSubsequence(String s) {
+		// Write your code here.
+        return lcs(s,reverse(s));
+	}
+    public static int lcs(String s1, String s2) {
+        //Your code goes here
+        int n1 = s1.length(); int n2 = s2.length();
         
-        
-        for(int i=2; i<=n; i++){
-            int curr[]=new int[tar+1];
-            for(int j = 0; j<=tar; j++){
-                int p=0, np=0;
-                if(arr[i-1]<=j){
-                    p  = ur[j-arr[i-1]];
-                }
-                np = ur[j];
-                
-                curr[j] = p+np;
+        int ur[]=new int[n2+1];
+        for(int i = 1; i<=n1; i++){
+            int curr[]=new int[n2+1];
+            for(int j=1; j<=n2; j++){
+                if(s1.charAt(i-1)==s2.charAt(j-1)) curr[j] = 1 + ur[j-1];
+                else curr[j] = Math.max(ur[j], curr[j-1]);
             }
             ur=curr;
         }
         
-        return ur[tar];
+        return ur[n2];
+    }
+    static String reverse(String s){
+        StringBuilder str=new StringBuilder(s);
+        return str.reverse().toString();
     }
 }
 ```
+
+
+
+
+
+
+
+
+
 
 # [5. Partitions With Given Difference](https://www.codingninjas.com/codestudio/problems/partitions-with-given-difference_3751628?)
 # Intution
