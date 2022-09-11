@@ -10,5 +10,6 @@
 5. Sliding windows
 6. Strings
 7. Tries
+8. Bit Manipulation
 
 <img src="https://media.giphy.com/media/3o7btODWzGtsdI1LDW/giphy.gif" width="90">
