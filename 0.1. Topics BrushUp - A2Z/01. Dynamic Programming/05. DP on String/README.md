@@ -1,54 +1,29 @@
-# 1. [Subset Sum Equal To K](https://www.codingninjas.com/codestudio/problems/subset-sum-equal-to-k_1550954?leftPanelTab=0)
-
-## Reccursive
-```java
-public class Solution {
-    public static boolean subsetSumToK(int n, int k, int arr[]){
-        // Write your code here.
-        return ss2k(arr,n,k);
-    }
-    public static boolean ss2k(int arr[], int n, int k){
-        if(n==0){
-            if(k==0) return true;
-            return false;
-        }
-        if(arr[n-1]<=k){
-            if(ss2k(arr,n-1,k-arr[n-1])) return true;
-        }
-        if(ss2k(arr,n-1,k)) return true;
-        
-        return false;
-    }
-}
-
-```
+# 1. [Longest Common Subsequence](https://www.codingninjas.com/codestudio/problems/longest-common-subsequence_624879)
 
 ## Memonization
 
 ```java
 import java.util.*;
 public class Solution {
-    public static boolean subsetSumToK(int n, int k, int arr[]){
-        // Write your code here.
-        int dp[][] = new int[n+1][k+1];
+
+	public static int lcs(String s1, String s2) {
+		//Your code goes here
+        int n1 = s1.length(); int n2 = s2.length();
+        
+        int dp[][]=new int[n1+1][n2+1];
         for(int d[]: dp) Arrays.fill(d,-1);
         
-        return ss2k(arr, n, k, dp)==1? true :false;
+        return fun(s1,s2,n1,n2,dp);
     }
-    public static int ss2k(int arr[], int n, int k, int dp[][]){
-        if(n==0){
-            if(k==0) return 1;
-            return 0;
-        }
-        if(dp[n][k]!=-1) return dp[n][k];
+    static int fun(String s1, String s2, int n1, int n2, int dp[][]){
+        if(n1<=0 || n2<=0) return 0;
         
-        if(arr[n-1]<=k){
-            if(ss2k(arr, n-1, k-arr[n-1], dp)==1) return dp[n][k] = 1;
-        }
-        if(ss2k(arr, n-1, k, dp)==1) return dp[n][k] = 1;
-        
-        return dp[n][k] = 0;
+        if(dp[n1][n2]!=-1) return dp[n1][n2];
+            
+        if(s1.charAt(n1-1)==s2.charAt(n2-1)) return dp[n1][n2] = 1 + fun(s1,s2,n1-1,n2-1,dp);
+        else return dp[n1][n2] = Math.max(fun(s1,s2,n1-1,n2,dp), fun(s1,s2,n1,n2-1,dp));
     }
+
 }
 ```
 
@@ -56,24 +31,20 @@ public class Solution {
 ```java
 import java.util.*;
 public class Solution {
-    public static boolean subsetSumToK(int n, int k, int arr[]){
-        // Write your code here.
-        int dp[][] = new int[n+1][k+1];
-        // initialization k==0 return 1
-        for(int i=0; i<=n; i++) dp[i][0] = 1;
+
+	public static int lcs(String s1, String s2) {
+		//Your code goes here
+        int n1 = s1.length(); int n2 = s2.length();
         
-        for(int i = 1; i<=n; i++){
-            for(int j = 1; j<=k; j++){
-                if(arr[i-1]<=j){
-                    if(dp[i-1][j-arr[i-1]]==1) dp[i][j] = 1;
-                    else if(dp[i-1][j]==1) dp[i][j] = 1;
-                }
-                else if(dp[i-1][j]==1) dp[i][j] = 1;
-                else dp[i][j] = 0;
+        int dp[][]=new int[n1+1][n2+1];
+        for(int i = 1; i<=n1; i++){
+            for(int j=1; j<=n2; j++){
+                if(s1.charAt(i-1)==s2.charAt(j-1)) dp[i][j] = 1 + dp[i-1][j-1];
+                else dp[i][j] = Math.max(dp[i-1][j], dp[i][j-1]);
             }
         }
         
-        return dp[n][k]==1? true :false;
+        return dp[n1][n2];
     }
 }
 ```
@@ -85,29 +56,47 @@ public class Solution {
 ```java
 import java.util.*;
 public class Solution {
-    public static boolean subsetSumToK(int n, int k, int arr[]){
-        // Write your code here.
-        int ur[]=new int[k+1]; ur[0] = 1;
+
+	public static int lcs(String s1, String s2) {
+		//Your code goes here
+        int n1 = s1.length(); int n2 = s2.length();
         
-        for(int i = 1; i<=n; i++){
-            int curr[]=new int[k+1];
-            curr[0]=1;
-            for(int j = 1; j<=k; j++){
-                if(arr[i-1]<=j){
-                    if(ur[j-arr[i-1]]==1) curr[j] = 1;
-                    else if(ur[j]==1) curr[j] = 1;
-                }
-                else if(ur[j]==1) curr[j] = 1;
-                else curr[j] = 0;
+        int ur[]=new int[n2+1];
+        for(int i = 1; i<=n1; i++){
+            int curr[]=new int[n2+1];
+            for(int j=1; j<=n2; j++){
+                if(s1.charAt(i-1)==s2.charAt(j-1)) curr[j] = 1 + ur[j-1];
+                else curr[j] = Math.max(ur[j], curr[j-1]);
             }
             ur=curr;
         }
         
-        return ur[k]==1? true :false;
+        return ur[n2];
     }
 }
 ```
-[Reference](https://takeuforward.org/data-structure/subset-sum-equal-to-target-dp-14/)
+[Reference](https://takeuforward.org/data-structure/longest-common-subsequence-dp-25/)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # [2. 416. Partition Equal Subset Sum](https://leetcode.com/problems/partition-equal-subset-sum/)
 
