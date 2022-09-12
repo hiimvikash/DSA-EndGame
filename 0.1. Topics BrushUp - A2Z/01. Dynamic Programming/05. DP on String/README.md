@@ -415,7 +415,7 @@ public class Solution {
 }
 ```
 
-# [9. Edit Distance](https://leetcode.com/problems/edit-distance/)
+# [9. Edit Distance GQ](https://leetcode.com/problems/edit-distance/)
 ## Memonization
 ```java
 class Solution {
