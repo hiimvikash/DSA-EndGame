@@ -415,16 +415,6 @@ public class Solution {
 }
 ```
 
-
-
-
-
-
-
-
-
-
-
 # [9. Edit Distance](https://leetcode.com/problems/edit-distance/)
 ## Memonization
 ```java
@@ -523,93 +513,142 @@ class Solution {
 
 
 
-# [11. Rod Cutting](https://www.codingninjas.com/codestudio/problems/rod-cutting-problem_800284)
-### This Problem is same as Unbounded Knapsack.
-Here's are the Matchings :-
-- W ---> l ---> N
-- val[] ---> price[]
-- wt[] ---> length[] is 1 to N arranged here termed as lt variable which decreaseBy1 always when recursion decrease.
-- N ---> N
-## Memonization
+# [10. Wildcard pattern matching](https://www.codingninjas.com/codestudio/problems/wildcard-pattern-matching_701650)
+
+## reccursion
 ```java
-import java.util.*;
 public class Solution {
-	public static int cutRod(int price[], int n) {
+	public static boolean wildcardMatching(String pattern, String text) {
 		// Write your code here.
-        int dp[][]=new int[n+1][n+1];
-        for(int d[] : dp) Arrays.fill(d,-1);
-        
-        return fun(price,n,n,n,dp);
+        int pl = pattern.length(), tl = text.length();
+        return fun(pattern,text,pl,tl);
 	}
-    static int fun(int val[], int lt, int l, int n, int dp[][]){
-        if(l==0 || n==0) return 0;
-        if(dp[n][l]!=-1) return dp[n][l];
-        int p = 0, np = 0;
-        if(lt<=l) p = val[n-1] + fun(val,lt,l-lt,n,dp);
-        np = fun(val,lt-1,l,n-1,dp);
+    
+    static boolean fun(String ptrn, String txt, int pl, int tl){
+        if(pl==0 && tl==0) return true;
+        if(pl==0 && tl>0) return false;
+        if(pl>0 && tl==0) return isAllStars(ptrn,pl);
         
-        return dp[n][l] = Math.max(p,np);
-    }
-
-
-    /**
-    static int fun(int val[], int l, int n, int dp[][]){
-        if(l==0 || n==0) return 0;
-        if(dp[n][l]!=-1) return dp[n][l];
-        int p = 0, np = 0;
-        if(n<=l) p = val[n-1] + fun(val,l-n,n,dp);
-        np = fun(val,l,n-1,dp);
+        if(ptrn.charAt(pl-1)==txt.charAt(tl-1) || ptrn.charAt(pl-1)=='?') return fun(ptrn,txt,pl-1,tl-1);
+        if(ptrn.charAt(pl-1)=='*') return fun(ptrn,txt,pl-1,tl) || fun(ptrn,txt,pl,tl-1);
         
-        return dp[n][l] = Math.max(p,np);
+        return false;
     }
-    **/
+    
+    static boolean isAllStars(String s, int l){
+        boolean f = true;
+        for(int i=0; i<l; i++) if(s.charAt(i)!='*') f=false;
+        
+        return f;
+    }
 }
 ```
 
-## tabulation
+## memonization
 ```java
 import java.util.*;
 public class Solution {
-	public static int cutRod(int val[], int n) {
+	public static boolean wildcardMatching(String pattern, String text) {
 		// Write your code here.
-        int dp[][]=new int[n+1][n+1];
-        int l = n;
-        for(int i = 1; i<=n; i++){
-            for(int j = 1; j<=l; j++){
-                int p = 0, np = 0;
-                if(i<=j) p = val[i-1] + dp[i][j-i];
-                np = dp[i-1][j];
-                
-                dp[i][j] = Math.max(p,np);
-            }
-        }
+        int pl = pattern.length(), tl = text.length();
+        int dp[][]=new int[pl+1][tl+1];
+        for(int d[]: dp) Arrays.fill(d,-1);
         
-        return dp[n][l];
+        
+        return fun(pattern,text,pl,tl,dp)==1? true : false;
 	}
+    
+    static int fun(String ptrn, String txt, int pl, int tl, int dp[][]){
+        if(pl==0 && tl==0) return 1;
+        if(pl==0 && tl>0) return 0;
+        if(pl>0 && tl==0) return isAllStars(ptrn,pl);
+        
+        if(dp[pl][tl]!=-1) return dp[pl][tl];
+        
+        if(ptrn.charAt(pl-1)==txt.charAt(tl-1) || ptrn.charAt(pl-1)=='?') return dp[pl][tl] = fun(ptrn,txt,pl-1,tl-1,dp);
+        if(ptrn.charAt(pl-1)=='*') return dp[pl][tl] = (fun(ptrn,txt,pl-1,tl,dp)==1 || fun(ptrn,txt,pl,tl-1,dp)==1) ? 1 : 0;
+        
+        return dp[pl][tl] = 0;
+    }
+    
+    static int isAllStars(String s, int l){
+        int f = 1;
+        for(int i=0; i<l; i++) if(s.charAt(i)!='*') f=0;
+        
+        return f;
+    }
 }
 ```
 
-## Space Optimised
+## Tabulation
 ```java
 import java.util.*;
 public class Solution {
-	public static int cutRod(int val[], int n) {
+	public static boolean wildcardMatching(String ptrn, String txt) {
 		// Write your code here.
-        int ur[]=new int[n+1];
-        int l = n;
-        for(int i = 1; i<=n; i++){
-            int curr[]=new int[n+1];
-            for(int j = 1; j<=l; j++){
-                int p = 0, np = 0;
-                if(i<=j) p = val[i-1] + curr[j-i];
-                np = ur[j];
-                
-                curr[j] = Math.max(p,np);
+        int pl = ptrn.length(), tl = txt.length();
+        boolean dp[][]=new boolean[pl+1][tl+1];
+        
+        dp[0][0] = true; // if(pl==0 && tl==0) return 1;
+        for(int j=1; j<=tl; j++) dp[0][j] = false; // if(pl==0 && tl>0) return 0;
+        for(int i=1; i<=pl; i++) dp[i][0] = isAllStars(ptrn,i); // if(pl>0 && tl==0) return isAllStars(ptrn,pl);
+        
+        
+        
+        for(int i = 1; i<=pl; i++){
+            for(int j = 1; j<=tl; j++){
+                if(ptrn.charAt(i-1)==txt.charAt(j-1) || ptrn.charAt(i-1)=='?') dp[i][j] = dp[i-1][j-1];
+                else if(ptrn.charAt(i-1)=='*') dp[i][j] = dp[i-1][j] || dp[i][j-1];
+        
+                else dp[i][j] = false;
             }
-            ur=curr;
         }
         
-        return ur[l];
+        
+        
+        return dp[pl][tl];
 	}
+    
+        
+    static boolean isAllStars(String s, int l){
+        boolean f = true;
+        for(int i=0; i<l; i++) if(s.charAt(i)!='*') f=false;
+        
+        return f;
+    }
+}
+```
+## Space optimized
+```java
+import java.util.*;
+public class Solution {
+	public static boolean wildcardMatching(String ptrn, String txt) {
+		// Write your code here.
+        int pl = ptrn.length(), tl = txt.length();
+        boolean ur[]=new boolean[tl+1];
+        
+        ur[0] = true; // if(pl==0 && tl==0) return 1;
+        for(int j=1; j<=tl; j++) ur[j] = false; // if(pl==0 && tl>0) return 0;
+
+        for(int i = 1; i<=pl; i++){
+            boolean curr[]=new boolean[tl+1];
+            curr[0] = isAllStars(ptrn,i); // if(pl>0 && tl==0) return isAllStars(ptrn,pl);
+            for(int j = 1; j<=tl; j++){
+                if(ptrn.charAt(i-1)==txt.charAt(j-1) || ptrn.charAt(i-1)=='?') curr[j] = ur[j-1];
+                else if(ptrn.charAt(i-1)=='*') curr[j] = ur[j] || curr[j-1];
+        
+                else curr[j] = false;
+            }
+            ur = curr;
+        }
+        return ur[tl];
+	}
+    
+    static boolean isAllStars(String s, int l){
+        boolean f = true;
+        for(int i=0; i<l; i++) if(s.charAt(i)!='*') f=false;
+        
+        return f;
+    }
 }
 ```
