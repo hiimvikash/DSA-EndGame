@@ -425,80 +425,103 @@ public class Solution {
 
 
 
-# [10. Unbounded Knapsack](https://www.codingninjas.com/codestudio/problems/unbounded-knapsack_1215029)
+# [9. Edit Distance](https://leetcode.com/problems/edit-distance/)
 ## Memonization
 ```java
-import java.util.*;
-public class Solution {
-        public static int unboundedKnapsack(int n, int w, int[] val, int[] wt) {
-        // Write your code here.
-          int dp[][]=new int[n+1][w+1];
-            for(int d[]: dp) Arrays.fill(d,-1);
-            
-         return fun(val,wt,n,w,dp);
+class Solution {
+    public int minDistance(String s1, String s2) {
+         //Your code goes here
+        int n1 = s1.length(), n2 = s2.length();
+        int dp[][]=new int[n1+1][n2+1];
+        for(int d[]:dp) Arrays.fill(d,-1);
+        
+        return ed(s1,s2,n1,n2, dp);
     }
-    static int fun(int val[], int wt[], int n, int w, int dp[][]){
-        if(n==0 || w==0) return 0;
+     int ed(String s1, String s2, int n1, int n2, int dp[][]){
+        if(n1==0) return n2;
+        if(n2==0) return n1;
         
-        if(dp[n][w]!=-1) return dp[n][w];
-        int p=0,np=0;
-        if(wt[n-1]<=w){
-            p = val[n-1] + fun(val,wt,n,w-wt[n-1],dp);
-        }
-        np = fun(val,wt,n-1,w,dp);
+        if(dp[n1][n2]!=-1) return dp[n1][n2];
         
-        return dp[n][w] = Math.max(p,np);
+        if(s1.charAt(n1-1) == s2.charAt(n2-1)) return dp[n1][n2] = ed(s1,s2,n1-1,n2-1,dp);
+        int i = 1 + ed(s1,s2,n1,n2-1,dp);
+        int d = 1 + ed(s1,s2,n1-1,n2,dp);
+        int r = 1 + ed(s1,s2,n1-1,n2-1,dp);
+        
+        return dp[n1][n2] = Math.min(i, Math.min(d,r));
     }
 }
 ```
 ## tabulation
 ```java
-import java.util.*;
-public class Solution {
-        public static int unboundedKnapsack(int n, int w, int[] val, int[] wt) {
-        // Write your code here.
-          int dp[][]=new int[n+1][w+1];
-           for(int i = 1; i<=n; i++){
-               for(int j = 1; j<=w; j++){
-                   int p=0,np=0;
-                    if(wt[i-1]<=j){
-                        p = val[i-1] + dp[i][j-wt[i-1]];
-                    }
-                    np = dp[i-1][j];
-                   
-                   dp[i][j] = Math.max(p,np);
-               }
-           }
-            
-         return dp[n][w];
+class Solution {
+    public int minDistance(String s1, String s2) {
+         //Your code goes here
+        int n1 = s1.length(), n2 = s2.length();
+        int dp[][]=new int[n1+1][n2+1];
+        
+        for(int j=0; j<=n2; j++) dp[0][j]=j; // if(n1==0) return n2;
+        for(int i=0; i<=n1; i++) dp[i][0]=i; // if(n2==0) return n1;
+        
+        
+        for(int i=1; i<=n1; i++){
+            for(int j=1; j<=n2; j++){
+                if(s1.charAt(i-1) == s2.charAt(j-1)) dp[i][j] = dp[i-1][j-1];
+                else{
+                    int in = 1 + dp[i][j-1];
+                    int d = 1 + dp[i-1][j];
+                    int r = 1 + dp[i-1][j-1];
+
+                    dp[i][j] = Math.min(in, Math.min(d,r));
+                }
+            }
+        }
+        
+        return dp[n1][n2];
     }
+     
 }
 ```
 ## Space optimization
 ```java
-import java.util.*;
-public class Solution {
-        public static int unboundedKnapsack(int n, int w, int[] val, int[] wt) {
-        // Write your code here.
-          int ur[]=new int[w+1];
-           for(int i = 1; i<=n; i++){
-               int curr[]=new int[w+1];
-               for(int j = 1; j<=w; j++){
-                   int p=0,np=0;
-                    if(wt[i-1]<=j){
-                        p = val[i-1] + curr[j-wt[i-1]];
-                    }
-                    np = ur[j];
-                   
-                   curr[j] = Math.max(p,np);
-               }
-               ur=curr;
-           }
-            
-         return ur[w];
+class Solution {
+    public int minDistance(String s1, String s2) {
+         //Your code goes here
+        int n1 = s1.length(), n2 = s2.length();
+        int ur[]=new int[n2+1];
+        
+        for(int j=0; j<=n2; j++) ur[j]=j; // if(n1==0) return n2;
+        
+        
+        
+        for(int i=1; i<=n1; i++){
+            int curr[]=new int[n2+1];
+            curr[0] = i;
+            for(int j=1; j<=n2; j++){
+                if(s1.charAt(i-1) == s2.charAt(j-1)) curr[j] = ur[j-1];
+                else{
+                    int in = 1 + curr[j-1];
+                    int d = 1 + ur[j];
+                    int r = 1 + ur[j-1];
+
+                    curr[j] = Math.min(in, Math.min(d,r));
+                }
+            }
+            ur = curr;
+        }
+        
+        return ur[n2];
     }
+     
 }
 ```
+
+
+
+
+
+
+
 
 # [11. Rod Cutting](https://www.codingninjas.com/codestudio/problems/rod-cutting-problem_800284)
 ### This Problem is same as Unbounded Knapsack.
