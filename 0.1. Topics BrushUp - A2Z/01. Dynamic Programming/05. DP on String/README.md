@@ -506,14 +506,7 @@ class Solution {
 }
 ```
 
-
-
-
-
-
-
-
-# [10. Wildcard pattern matching](https://www.codingninjas.com/codestudio/problems/wildcard-pattern-matching_701650)
+# [10. Wildcard pattern matching GQ](https://www.codingninjas.com/codestudio/problems/wildcard-pattern-matching_701650)
 
 ## reccursion
 ```java
