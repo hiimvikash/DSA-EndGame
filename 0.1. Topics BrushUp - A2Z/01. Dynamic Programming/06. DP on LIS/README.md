@@ -49,6 +49,7 @@ public class Solution {
 ```
 
 ## Tabulation
+## find lis till ith, from 0 to i
 ```java
 public class Solution {
 
