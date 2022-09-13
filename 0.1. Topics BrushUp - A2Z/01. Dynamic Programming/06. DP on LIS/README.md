@@ -49,7 +49,7 @@ public class Solution {
 ```
 
 ## Tabulation
-## find lis till ith, from 0 to i
+## dp[i] = signifies the LIS till ith that ends with arr[i]
 ```java
 public class Solution {
 
