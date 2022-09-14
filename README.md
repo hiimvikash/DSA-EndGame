@@ -200,7 +200,8 @@ public class Hi {
     	System.out.println(a%INF); // 5
     	System.out.println(a/INF); //4
     ```
-17. **Comparator** : ```Collections.sort(al,(a,b)-> scores[b]-scores[a]);```	
+17. **Comparator** : - ```Collections.sort(al,(a,b)-> scores[b]-scores[a]);```	
+- ```Arrays.sort(arr,(a,b)-> a.length()-b.length());```
 <hr>
 <hr>
 
