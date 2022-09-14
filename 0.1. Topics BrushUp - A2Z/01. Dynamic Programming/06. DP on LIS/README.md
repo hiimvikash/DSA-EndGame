@@ -300,6 +300,7 @@ public class Solution {
 
 
 # [7. Count Number of LIS](https://www.codingninjas.com/codestudio/problems/number-of-longest-increasing-subsequence_3751627)
+![image](https://user-images.githubusercontent.com/71629248/190205995-27fb0160-c7b1-4678-82dd-71579fd61565.png)
 
 ## SOL
 ```java
