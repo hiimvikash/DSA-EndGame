@@ -250,47 +250,52 @@ public class Solution {
 
 
 
-# [5. Minimum insertions to make a string palindrome](https://www.codingninjas.com/codestudio/problems/minimum-insertions-to-make-palindrome_985293?)
-# Intution
-- NOTE : Minimum # of deletion=Minimum # of Insertion. this is bcz in deletion we remove single occuring element and in Insertion we try to make that single element into couple by introducing new element.
-
-- Find LPS
-- return n-LPS
-- because no. of deletion is inversely propotional to lengthOfPS.
- 
-## Space Optimized
+# [6. Longest Bitonic Subsequence](https://www.codingninjas.com/codestudio/problems/longest-bitonic-sequence_1062688)
+## Tabulation
 ```java
 public class Solution {
-    public static int minInsertion(String str) {
-    	// Write your code here.
-        return str.length()-lps(str);
-    }
-    public static int lps(String s) {
+    public static int longestBitonicSequence(int[] arr, int n) {
         // Write your code here.
-        return lcs(s,reverse(s));
-    }
-    public static int lcs(String s1, String s2) {
-        //Your code goes here
-        int n1 = s1.length(); int n2 = s2.length();
-        
-        int ur[]=new int[n2+1];
-        for(int i = 1; i<=n1; i++){
-            int curr[]=new int[n2+1];
-            for(int j=1; j<=n2; j++){
-                if(s1.charAt(i-1)==s2.charAt(j-1)) curr[j] = 1 + ur[j-1];
-                else curr[j] = Math.max(ur[j], curr[j-1]);
-            }
-            ur=curr;
-        }
-        
-        return ur[n2];
-    }
-    static String reverse(String s){
-        StringBuilder str=new StringBuilder(s);
-        return str.reverse().toString();
+        // Step 1 : Make LIS[] from LtoR where each LIS[i] denotes length of LIS which should ends with arr[i]
+       
+       int lis[]=new int[n];
+       lis[0]=1;
+       
+       for(int i=1; i<n; i++){
+           int max=0;
+           for(int j=i-1; j>=0; j--){
+               if(arr[i]>arr[j]) max=Math.max(lis[j],max);
+           }
+           lis[i]=max+1;
+       }
+       
+       // Step 2 : Make LDS[] from RtoL where each LDS[i] denotes length of LDS which should starts with arr[i]
+       
+       int lds[]=new int[n];
+       lds[n-1]=1;
+       
+       for(int i=n-2; i>=0; i--){
+           int max=0;
+           for(int j=i+1; j<n; j++){
+               if(arr[i]>arr[j]) max=Math.max(lds[j],max);
+           }
+           lds[i]=max+1;
+       }
+       
+       int ans=1;
+       
+       for(int i=0; i<n; i++){
+           ans=Math.max(ans,lds[i]+lis[i]-1);
+       }
+       return ans;
     }
 }
 ```
+
+
+
+
+
 
 
 
