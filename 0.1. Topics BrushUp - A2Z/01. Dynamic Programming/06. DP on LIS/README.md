@@ -73,45 +73,47 @@ public class Solution {
 ```
 
 
-
-## Space Optimized
-
+# [2. Print LIS](https://takeuforward.org/data-structure/printing-longest-increasing-subsequence-dp-42/)
 ```java
 import java.util.*;
 public class Solution {
 
-	public static int lcs(String s1, String s2) {
-		//Your code goes here
-        int n1 = s1.length(); int n2 = s2.length();
-        
-        int ur[]=new int[n2+1];
-        for(int i = 1; i<=n1; i++){
-            int curr[]=new int[n2+1];
-            for(int j=1; j<=n2; j++){
-                if(s1.charAt(i-1)==s2.charAt(j-1)) curr[j] = 1 + ur[j-1];
-                else curr[j] = Math.max(ur[j], curr[j-1]);
+    public static int longestIncreasingSubsequence(int arr[]) {
+        //Your code goes here
+        int n = arr.length;
+        int dp[]=new int[n];
+        int hm[]=new int[n];
+        int bsi = 0; // backtrack start index
+        int ans=dp[0]=1;
+        for(int i=1;i<n;i++){
+            int max=0;
+            hm[i] = i;
+            for(int j=i-1; j>=0; j--){
+                if(arr[j]<arr[i]){ 
+                    if(dp[j]>max){
+                        max = dp[j];
+                        hm[i] = j;
+                    }
+                }
             }
-            ur=curr;
+            dp[i]=max+1;
+            if(dp[i]>ans){
+                ans = dp[i];
+                bsi = i;
+            }
+            
         }
-        
-        return ur[n2];
+        Stack<Integer> st=new Stack<>();
+        while(hm[bsi]!=bsi){
+            st.push(arr[bsi]);
+            bsi = hm[bsi];
+        }
+        st.push(arr[bsi]);
+        print(st);
+        return ans;   
     }
 }
 ```
-[Reference](https://takeuforward.org/data-structure/longest-increasing-subsequence-dp-41/)
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 # [2. Print LCS](https://takeuforward.org/data-structure/print-longest-common-subsequence-dp-26/)
@@ -143,6 +145,55 @@ static int fun(String s1, String s2, int n1, int n2){
         return ans;
 	}
 ```
+# [3. LIS using BS working](https://www.codingninjas.com/codestudio/problems/longest-increasing-subsequence_630459)
+```java
+import java.util.*;
+public class Solution {
+
+	public static int longestIncreasingSubsequence(int arr[]) {
+		//Your code goes here
+        ArrayList<Integer> temp=new ArrayList<>();
+        temp.add(arr[0]);
+        int len = 1;
+        for(int i = 1; i<arr.length; i++){
+            if(arr[i] > temp.get(temp.size()-1)){ 
+                temp.add(arr[i]); 
+                len++;
+            }
+            else {
+                int ind = lowerB(temp,arr[i]); // index which is just greater than arr[i]; 
+                temp.set(ind,arr[i]);
+            }
+        }
+        return len;
+	}
+    static int lowerB(ArrayList<Integer> al, int x){
+        int s = 0; int e = al.size()-1;
+        
+        while(s<=e){
+            int mid  = s +(e-s)/2;
+            
+            if(x>al.get(mid)) s = mid+1;
+            else if(x<al.get(mid)) e = mid-1;
+            else return mid;
+        }
+        return s;
+    }
+
+}
+```
+[Reference](https://takeuforward.org/data-structure/longest-increasing-subsequence-binary-search-dp-43/)
+
+
+
+
+
+
+
+
+
+
+
 
 # [3. LCSubstring](https://www.codingninjas.com/codestudio/problems/longest-common-substring_1235207?)
 ## Tabulation
