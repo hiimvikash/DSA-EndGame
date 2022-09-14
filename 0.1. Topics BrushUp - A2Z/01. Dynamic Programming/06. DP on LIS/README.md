@@ -103,49 +103,21 @@ public class Solution {
             }
             
         }
-        Stack<Integer> st=new Stack<>();
+        ArrayList<Integer> ansl=new ArrayList<>();
         while(hm[bsi]!=bsi){
-            st.push(arr[bsi]);
+            ansl.add(arr[bsi]);
             bsi = hm[bsi];
         }
-        st.push(arr[bsi]);
-        print(st);
-        return ans;   
+        ansl.add(arr[bsi]);
+        
+        Collections.reverse(ansl);
+        return ansl; 
     }
 }
 ```
 
 
-# [2. Print LCS](https://takeuforward.org/data-structure/print-longest-common-subsequence-dp-26/)
-
-
-```java
-static int fun(String s1, String s2, int n1, int n2){
-	    int dp[][]=new int[n1+1][n2+1];
-	    
-	    for(int i = 1; i<=n1; i++){
-            for(int j=1; j<=n2; j++){
-                if(s1.charAt(i-1)==s2.charAt(j-1)) dp[i][j] = 1 + dp[i-1][j-1];
-                else dp[i][j] = Math.max(dp[i-1][j], dp[i][j-1]);
-            }
-        }
-        
-        int i = n1, int j = n2;
-        String ans = "";
-        while(i>0 && j>0){
-            if(s1.charAt(i-1)==s2.charAt(j-1)){
-                ans = s1.charAt(i-1) + ans; 
-                i--; j--;
-            }
-            else{
-                if(dp[i-1][j] > dp[i][j-1]) i--;
-                else j--;
-            }
-        }
-        return ans;
-	}
-```
-# [3. LIS using BS working](https://www.codingninjas.com/codestudio/problems/longest-increasing-subsequence_630459)
+# [3. LIS using BS working GQQQ](https://www.codingninjas.com/codestudio/problems/longest-increasing-subsequence_630459)
 ```java
 import java.util.*;
 public class Solution {
@@ -184,98 +156,98 @@ public class Solution {
 ```
 [Reference](https://takeuforward.org/data-structure/longest-increasing-subsequence-binary-search-dp-43/)
 
-
-
-
-
-
-
-
-
-
-
-
-# [3. LCSubstring](https://www.codingninjas.com/codestudio/problems/longest-common-substring_1235207?)
+# [4. Print Longest Divisible Subset GQ](https://www.codingninjas.com/codestudio/problems/divisible-set_3754960)
 ## Tabulation
 ```java
+import java.util.*;
 public class Solution {
-	public static int lcs(String s1, String s2) {
-        int n1 = s1.length();
-        int n2 = s2.length();
-		// Write your code here.
-        int dp[][]=new int[n1+1][n2+1];
-        int ans=0;
-        for(int i=1;i<=n1;i++){
-            for(int j=1;j<=n2;j++){
-                if(s1.charAt(i-1)==s2.charAt(j-1)){
-                    dp[i][j]=dp[i-1][j-1]+1;
-                    ans=Math.max(ans,dp[i][j]);
+    public static ArrayList<Integer> divisibleSet(int arr[]) {
+        // Write your code here..
+        Arrays.sort(arr);
+        int n = arr.length;
+        int dp[]=new int[n];
+        int hm[]=new int[n];
+        int bsi = 0; // backtrack start index
+        int ans=dp[0]=1;
+        for(int i=1;i<n;i++){
+            int max=0;
+            hm[i] = i;
+            for(int j=i-1; j>=0; j--){
+                if(arr[i]%arr[j]==0){ // 
+                    if(dp[j]>max){ // longest
+                        max = dp[j];
+                        hm[i] = j;
+                    }
                 }
-                else dp[i][j]=0;
             }
+            dp[i]=max+1;
+            if(dp[i]>ans){
+                ans = dp[i];
+                bsi = i;
+            }
+            
+        }
+        ArrayList<Integer> ansl=new ArrayList<>();
+        while(hm[bsi]!=bsi){
+            ansl.add(arr[bsi]);
+            bsi = hm[bsi];
+        }
+        ansl.add(arr[bsi]);
+        
+        Collections.reverse(ansl);
+        return ansl;
+        
+    }
+
+}
+```
+[Reference](https://takeuforward.org/data-structure/longest-divisible-subset-dp-44/)
+
+
+# [5. LStringChain](https://www.codingninjas.com/codestudio/problems/longest-string-chain_3752111)
+
+```java
+import java.util.*;
+public class Solution {
+	public static int longestStrChain(int n, String[] arr) {
+		// Write your code here.
+        Arrays.sort(arr,(a,b)-> a.length()-b.length());
+        int dp[]=new int[n];
+        dp[0]=1;
+        
+        int ans = 1;
+        for(int i =1; i<n; i++){
+            int max = 0;
+            for(int j = i-1; j>=0; j--){
+                if(isOneLess(arr[i],arr[j])){
+                    max = Math.max(dp[j],max);
+                }
+            }
+            dp[i] = max+1;
+            ans = Math.max(dp[i],ans);
         }
         return ans;
 	}
-}
-```
-## Space Optimized
-```java
-public class Solution {
-	public static int lcs(String s1, String s2) {
-        int n1 = s1.length();
-        int n2 = s2.length();
-		// Write your code here.
-        int ur[]=new int[n2+1];
-        int ans=0;
-        for(int i=1;i<=n1;i++){
-            int curr[]=new int[n2+1];
-            for(int j=1;j<=n2;j++){
-                if(s1.charAt(i-1)==s2.charAt(j-1)){
-                    curr[j]=ur[j-1]+1;
-                    ans=Math.max(ans,curr[j]);
-                }
-                else curr[j]=0;
-            }
-            ur = curr;
-        }
-        return ans;
-	}
-}
-```
-[Reference](https://takeuforward.org/data-structure/longest-common-substring-dp-27/)
-
-# [4. LPS](https://www.codingninjas.com/codestudio/problems/longest-palindromic-subsequence_842787?)
-### - return LCS(s1,reverse(s1))
-
-## space optimization
-```java
-public class Solution {
-	public static int longestPalindromeSubsequence(String s) {
-		// Write your code here.
-        return lcs(s,reverse(s));
-	}
-    public static int lcs(String s1, String s2) {
-        //Your code goes here
-        int n1 = s1.length(); int n2 = s2.length();
+    
+    static boolean isOneLess(String b, String s){
+        int bl = b.length(), sl = s.length();
+        if(sl+1!=bl) return false;
+        int i = 0, j=0;
         
-        int ur[]=new int[n2+1];
-        for(int i = 1; i<=n1; i++){
-            int curr[]=new int[n2+1];
-            for(int j=1; j<=n2; j++){
-                if(s1.charAt(i-1)==s2.charAt(j-1)) curr[j] = 1 + ur[j-1];
-                else curr[j] = Math.max(ur[j], curr[j-1]);
-            }
-            ur=curr;
+        while(i<bl){
+            if(j<sl && b.charAt(i)==s.charAt(j)){i++; j++;}
+            else i++;
         }
-        
-        return ur[n2];
-    }
-    static String reverse(String s){
-        StringBuilder str=new StringBuilder(s);
-        return str.reverse().toString();
+        return i==bl && j==sl;
     }
 }
 ```
+[Reference](https://www.codingninjas.com/codestudio/problems/longest-string-chain_3752111)
+
+
+
+
+
 
 
 # [5. Minimum insertions to make a string palindrome](https://www.codingninjas.com/codestudio/problems/minimum-insertions-to-make-palindrome_985293?)
