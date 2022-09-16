@@ -1,5 +1,5 @@
 # [733. Flood Fill](https://leetcode.com/problems/flood-fill/)
-## Itterative
+## BFS
 ```java
 class Solution {
     public int[][] floodFill(int[][] image, int sr, int sc, int color) {
@@ -33,3 +33,29 @@ class Pair{
 }
 ```
 [Video Reference](https://youtu.be/C-2_uSRli8o)
+
+## DFS
+```java
+class Solution {
+    public int[][] floodFill(int[][] image, int sr, int sc, int color) {
+        int dr[] = {-1, 0, +1, 0};
+        int dc[] = {0, +1, 0, -1};
+        int ans[][] = image.clone();
+        dfs(ans,image, image.length, image[0].length, image[sr][sc], color, dr, dc,  sr, sc);
+        return ans;
+    }
+    
+    
+    public void dfs(int arr[][], int img[][], int n, int m, int initial, int color, int dr[], int dc[], int i, int j){
+            arr[i][j] = color;
+        
+            for(int k=0; k<4; k++){
+                int nr = i+dr[k];
+                int nc = j+dc[k];
+                
+                if(nr>=0 && nr<n && nc>=0 && nc<m && img[nr][nc]==initial && arr[nr][nc]!=color) dfs(arr,img,n,m,initial,color,dr,dc, nr,nc);
+            }
+        
+    }
+}
+```
