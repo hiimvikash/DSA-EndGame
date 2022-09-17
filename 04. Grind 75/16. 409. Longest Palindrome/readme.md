@@ -3,8 +3,8 @@
 - int ans = 0;
 - Add all the even frequencies in ANS.
 - Now for odd frequencies
-    - ADD a maximum of all odd'sFREQs in ANS
-    - and ADD (remainingodd's freq)-1 in ANS
+    - ADD a ```maximum of all odd'sFREQs``` in ANS
+    - and ADD ```(remainingOdd's freqs - 1)``` for each character in ANS
 ```java
 class Solution {
     public int longestPalindrome(String s) {
