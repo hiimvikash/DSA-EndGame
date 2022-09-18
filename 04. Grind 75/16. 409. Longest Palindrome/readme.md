@@ -5,6 +5,13 @@
 - Now for odd frequencies
     - ADD a ```maximum of all odd'sFREQs``` in ANS
     - and ADD ```(remainingOdd's freqs - 1)``` for each character in ANS
+- example :
+    - A - 3
+    - b - 3
+    - c - 2
+    - d - 1
+    - e - 1
+    - f - 7
 ```java
 class Solution {
     public int longestPalindrome(String s) {
