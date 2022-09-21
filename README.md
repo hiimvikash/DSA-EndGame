@@ -202,6 +202,7 @@ public class Hi {
     ```
 17. **Comparator** : - ```Collections.sort(al,(a,b)-> scores[b]-scores[a]);```	
 - ```Arrays.sort(arr,(a,b)-> a.length()-b.length());```
+- [Priority Queue](https://devwithus.com/java-priority-queue/#:~:text=What%20is%20Priority%20Queue%20in,represented%20by%20the%20PriorityQueue%20class.)
 <hr>
 <hr>
 
