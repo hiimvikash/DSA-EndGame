@@ -207,6 +207,11 @@ public class Hi {
 // this is a PQ of ARRAY of size 2
 Comparator<int[]> ShortDisFromOrigin = (int p1[], int p2[]) -> ((p1[0]*p1[0]) + (p1[1]*p1[1])) - ((p2[0]*p2[0]) + (p2[1]*p2[1]));
 PriorityQueue<int[]> pq=new PriorityQueue<>(ShortDisFromOrigin);
+
+// OR
+
+
+PriorityQueue<int[]> pq=new PriorityQueue<>((int p1[], int p2[]) -> ((p1[0]*p1[0]) + (p1[1]*p1[1])) - ((p2[0]*p2[0]) + (p2[1]*p2[1])));
 ```
 
 <hr>
