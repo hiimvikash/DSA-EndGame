@@ -28,6 +28,29 @@ class Solution{
     }
 }
 ```
+```java
+class Solution{
+    static long maximumSumSubarray(int k, ArrayList<Integer> arr,int n){
+        // code here
+        int s = 0, e = 0;
+        
+        long sum = 0, max = 0;
+        while(e<n){
+            if(e<k){
+                sum+=arr.get(e);
+                e++;
+            }
+            else {
+                max = Math.max(sum, max);
+                sum = sum - arr.get(s) + arr.get(e);
+                s++; e++;
+            }
+        }
+        max = Math.max(sum,max);
+        return max;
+    }
+}
+```
 ## Note : Total Number of possible windows of size K in an Array os size N is **N-K+1**
 # **[3. First negative integer in every window of size k .](https://practice.geeksforgeeks.org/problems/first-negative-integer-in-every-window-of-size-k3345/1#)**
 ## **[Video Reference](https://youtu.be/uUXXEgK2Jh8)**
