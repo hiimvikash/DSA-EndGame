@@ -243,12 +243,12 @@ class Solution{
         //Complete the function
         HashMap<Integer,Integer> hm=new HashMap<>();
         int sum=0,max=0;
-        hm.put(0,0);
+        hm.put(0,-1);
         for(int i=0;i<n;i++){
             sum+=arr[i];
             if(!hm.containsKey(sum)) hm.put(sum,i+1); // we may get the sum which is already present in HM so to always get the longest subarray we are not modifying 
             if(hm.containsKey(sum-k)){
-                max=Math.max(max,i-hm.get(sum-k)+1);
+                max=Math.max(max,i-hm.get(sum-k));
             }
         }
         return max;
