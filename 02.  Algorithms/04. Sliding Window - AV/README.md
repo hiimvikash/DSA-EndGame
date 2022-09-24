@@ -288,6 +288,35 @@ class Solution {
     }
 }
 ```
+or
+```java
+class Solution {
+    public int longestkSubstr(String str, int k) {
+        // code here
+        int s = 0, e = 0, n = str.length();
+        int ans = -1, l=0; // length of substring
+        int uc = 0; // unique character
+        HashMap<Character, Integer> hm=new HashMap<>();
+        while(e<n){
+            char c = str.charAt(e);
+            hm.put(c, hm.getOrDefault(c,0)+1);
+            uc = hm.size(); l++;
+            
+            if(uc > k){
+                char sc = str.charAt(s);
+                hm.put(sc, hm.get(sc)-1); l--;
+                if(hm.get(sc)==0) hm.remove(sc);
+                s++;
+            }
+            else if(uc==k){
+                ans = Math.max(ans,l);
+            }
+            e++;
+        }
+        return ans;
+    }
+}
+```
 # **[9. Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/)**
 ## Can also be called **Longest substring with all unique character** i.e., WS==UC
 ## **[Video Reference](https://youtu.be/L6cffskouPQ)**
