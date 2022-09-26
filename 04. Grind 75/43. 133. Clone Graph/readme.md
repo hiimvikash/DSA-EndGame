@@ -53,3 +53,56 @@ class Solution {
 }
 ```
 [Video Reference](https://youtu.be/-mtFEpNYQvo)
+
+## DFS
+```java
+/*
+// Definition for a Node.
+class Node {
+    public int val;
+    public List<Node> neighbors;
+    public Node() {
+        val = 0;
+        neighbors = new ArrayList<Node>();
+    }
+    public Node(int _val) {
+        val = _val;
+        neighbors = new ArrayList<Node>();
+    }
+    public Node(int _val, ArrayList<Node> _neighbors) {
+        val = _val;
+        neighbors = _neighbors;
+    }
+}
+*/
+
+class Solution {
+    public Node cloneGraph(Node node) {
+        if(node == null) return null;
+        
+        Node copy=new Node(node.val);
+        HashMap<Node,Node> hm=new HashMap<>();
+        
+        dfs(node, copy, hm);
+        return copy;
+    }
+    
+    void dfs(Node n,  Node copy, HashMap<Node, Node> hm){
+        hm.put(n,copy);
+        
+        for(Node adj : n.neighbors){
+            if(!hm.containsKey(adj)){
+                hm.put(adj, new Node(adj.val));
+                Node ac = hm.get(adj); // adjacent copy
+                
+                copy.neighbors.add(ac);
+                
+                dfs(adj, ac, hm);
+            }else{
+                Node ac = hm.get(adj);
+                copy.neighbors.add(ac);
+            }
+        }
+    }
+}
+```
