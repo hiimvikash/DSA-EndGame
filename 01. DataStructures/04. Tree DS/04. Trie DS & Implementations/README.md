@@ -1,6 +1,5 @@
 # **Trie DS ?**
-
-![](https://i.ibb.co/GJfR5kt/1-rkan-FIU4-G-tmu-C939-txh-A.jpg)
+![image](https://user-images.githubusercontent.com/71629248/192536555-5ac9ae2a-f273-410a-8bab-ddb95679d1fa.png)
 
 ### A trie is a tree-like data structure whose nodes **(it can have N no. of nodes)** store the letters of an alphabet. By structuring the nodes in a particular way, words and strings can be retrieved from the structure by traversing down a branch path of the tree.
 
