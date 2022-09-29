@@ -1,6 +1,5 @@
 # [98. Validate Binary Search Tree](https://leetcode.com/problems/validate-binary-search-tree/)
 
-
 ```java
 /**
  * Definition for a binary tree node.
