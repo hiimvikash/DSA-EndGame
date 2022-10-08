@@ -138,10 +138,10 @@ public class Hi {
 }
 ```
 
-10. [**Strings are immutable.**](https://youtu.be/4cEsJtuW4YY)
-11. [**String Builder**](https://www.simplilearn.com/tutorials/java-tutorial/stringbuilder-in-java)
-11. [**== & .equals in String.**](https://youtu.be/i7vYjvJOIiw)
-12. [**Wrapper class in java.**](https://youtu.be/nYE_P9FG1g0)
+11. [**Strings are immutable.**](https://youtu.be/4cEsJtuW4YY)
+12. [**String Builder**](https://www.simplilearn.com/tutorials/java-tutorial/stringbuilder-in-java)
+13. [**== & .equals in String.**](https://youtu.be/i7vYjvJOIiw)
+14. [**Wrapper class in java.**](https://youtu.be/nYE_P9FG1g0)
     - ### Object creation and memory allocation in Integer class.
 
 ```JAVA
@@ -181,15 +181,15 @@ public class Hi {
     }
 ```
 
-13. [**Generics in Java.**](https://youtu.be/XMvznsY02Mk)
-14. [**isequals and hashcode in java by codingSimplified.**](https://youtu.be/X2AjBFZfFCY)
+15. [**Generics in Java.**](https://youtu.be/XMvznsY02Mk)
+16. [**isequals and hashcode in java by codingSimplified.**](https://youtu.be/X2AjBFZfFCY)
     - [**isequals and hashcode in java by AnujBhaiya.**](https://youtu.be/HRHMkQ9fWsM)
-15. **% operator in JAVA :** **dividend % divisor** - Here two statement is needed to be taken care :-
+17. **% operator in JAVA :** **dividend % divisor** - Here two statement is needed to be taken care :-
 
     - ## **When Divedend < Divisor then answer is dividend.**
     - ## **When Divedend > Divisor then answer lie in between [0 to divisor-1].**
 
-16. **Store 2 numbers in a number. (true only in +ve scenerio)**
+18. **Store 2 numbers in a number. (true only in +ve scenerio)**
     - To Inject B in A we ADD(+) **B\*INF** in A and store it in A, where INF is any number greater than A and B.
     - to extract old number i.e., A from modified A we do (A % INF).
     - to extract new number(Injected number) i.e., B from modified A we do (A / INF).
@@ -201,7 +201,7 @@ public class Hi {
     	System.out.println(a%INF); // 5
     	System.out.println(a/INF); //4
     ```
-17. **Comparator** : - ```Collections.sort(al,(a,b)-> scores[b]-scores[a]);```	
+19. **Comparator** : - ```Collections.sort(al,(a,b)-> scores[b]-scores[a]);```	
 - ```Arrays.sort(arr,(a,b)-> a.length()-b.length());```
 - [Priority Queue](https://devwithus.com/java-priority-queue/#:~:text=What%20is%20Priority%20Queue%20in,represented%20by%20the%20PriorityQueue%20class.)
 ```java
