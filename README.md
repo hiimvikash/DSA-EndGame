@@ -139,6 +139,7 @@ public class Hi {
 ```
 
 10. [**Strings are immutable.**](https://youtu.be/4cEsJtuW4YY)
+11. [**String Builder**](https://www.simplilearn.com/tutorials/java-tutorial/stringbuilder-in-java)
 11. [**== & .equals in String.**](https://youtu.be/i7vYjvJOIiw)
 12. [**Wrapper class in java.**](https://youtu.be/nYE_P9FG1g0)
     - ### Object creation and memory allocation in Integer class.
