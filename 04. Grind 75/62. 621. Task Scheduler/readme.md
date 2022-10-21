@@ -1,4 +1,5 @@
 # [621. Task Scheduler](https://leetcode.com/problems/task-scheduler)
+```
 The key is to find out how many idles do we need.
 Let's first look at how to arrange them. it's not hard to figure out that we can do a "greedy arrangement": always arrange task with most frequency first.
 E.g. we have following tasks : 3 A, 2 B, 1 C. and we have n = 2. According to what we have above, we should first arrange A, and then B and C. Imagine there are "slots" and we need to arrange tasks by putting them into "slots". Then A should be put into slot 0, 3, 6 since we need to have at least n = 2 other tasks between two A. After A put into slots, it looks like this:
@@ -44,6 +45,7 @@ emptySlots < 0 means you have already got enough tasks to fill in each part to m
 
 To get count(A) and count of tasks with most frequency, we need to go through inputs and calculate counts for each distinct char. This is O(n) time and O(26) space since we only handle upper case letters.
 All other operations are O(1) time O(1) space which give us total time complexity of O(n) and space O(1)
+```
 
 ```java
 class Solution {
