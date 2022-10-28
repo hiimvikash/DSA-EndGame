@@ -1,7 +1,7 @@
 # **[31. Next Permutation](https://leetcode.com/problems/next-permutation/)**
 **TC = O(N) SC = O(1)**
 # Algorithm 
--  From back find index of that element whose adjacent is greater than it. Let's store that index in breakPoint.
+-  From back find index such that ```arr[index] < arr[index+1]```. Let's store that index in breakPoint.
 -   from back find that element who is greater than arr[breakPoint] and swap them.
 - reverse(arr, breakPoint+1, n-1).
 ```java
