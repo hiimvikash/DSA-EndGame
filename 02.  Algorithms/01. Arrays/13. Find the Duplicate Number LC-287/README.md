@@ -58,6 +58,7 @@ class Solution {
 ```
 
 # **Approach 3 :** Tortoise Method - TC= O(N) SC = O(1)
+![image](https://user-images.githubusercontent.com/71629248/199252239-e4f51d8d-cb48-4b41-aa3b-ade626866b0c.png)
 
 ```java
 class Solution {
