@@ -1,5 +1,6 @@
 # [211. Design Add and Search Words Data Structure](https://leetcode.com/problems/design-add-and-search-words-data-structure/)
 
+
 ```java
 class WordDictionary {
     Node root;
@@ -58,3 +59,5 @@ class WordDictionary {
  * boolean param_2 = obj.search(word);
  */
 ```
+
+[LC - Explanation](https://leetcode.com/problems/design-add-and-search-words-data-structure/discuss/1725207/Java-Simulation-%2B-Complete-Explanation-or-Brute-Force-Optimised-Solution)
