@@ -26,7 +26,7 @@ class Solution {
         
         while(!q.isEmpty()){
             int n = q.remove();
-            cnt++;
+            cnt++; // course we completed
             
             for(int adj : graph[n]){
                 indeg[adj]--;
