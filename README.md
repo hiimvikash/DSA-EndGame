@@ -224,7 +224,7 @@ PriorityQueue<int[]> pq=new PriorityQueue<>((int p1[], int p2[]) -> ((p1[0]*p1[0
 // adding entries in list for sorting
     List<Map.Entry<String, Integer>> l=new ArrayList<>();
     for(Map.Entry<String, Integer> e : hm.entrySet()) l.add(e); // if u want key then write e.getKey() || e.getValue();
-    Collections.sort(l, (e1,e2)->e2.getValue() - e1.getValue());
+    Collections.sort(l, (e1,e2)-> (e2.getValue()!=e1.getValue())?e2.getValue()-e1.getValue(): e1.getKey().compareTo(e2.getKey())); // conditional sorting
 //
 
 // itterating over keys
