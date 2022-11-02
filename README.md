@@ -220,7 +220,7 @@ PriorityQueue<int[]> pq=new PriorityQueue<>((int p1[], int p2[]) -> ((p1[0]*p1[0
 ```java
 // freq of words
     HashMap<String, Integer> hm=new HashMap<>();
-    for(String word : words) hm.put(word, tm.getOrDefault(word,0)+1);
+    for(String word : words) hm.put(word, hm.getOrDefault(word,0)+1);
 // adding entries in list for sorting
     List<Map.Entry<String, Integer>> l=new ArrayList<>();
     for(Map.Entry<String, Integer> e : hm.entrySet()) l.add(e); // if u want key then write e.getKey() || e.getValue();
