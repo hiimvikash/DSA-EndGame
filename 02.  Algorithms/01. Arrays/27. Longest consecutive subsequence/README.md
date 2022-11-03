@@ -1,4 +1,4 @@
-# **[Longest consecutive subsequence](https://practice.geeksforgeeks.org/problems/longest-consecutive-subsequence2449/1)**
+# **[128. Longest Consecutive Sequence](https://leetcode.com/problems/longest-consecutive-sequence/)**
 
 ## My Intution : - TC - O(N Log N) SC - O(N)
 
@@ -42,25 +42,22 @@ class Solution
   ![](https://media.geeksforgeeks.org/wp-content/cdn-uploads/20190702121807/LongestConsecutiveSubsequence.png)
 
 ```java
-class Solution
-{
-    //Function to return length of longest subsequence of consecutive integers.
-
-	static int findLongestConseqSubseq(int arr[], int n)
-	{
-	    int count=0, ans=0,sVal=0;
-	   // add your code here
-	   Set<Integer> st=new HashSet<>();
-	   for(int val:arr) st.add(val);
-	   for(int i=0;i<n;i++){
-	       if(!st.contains(arr[i]-1)){
-	           count = 0;
-	           sVal=arr[i];
-	           while(st.contains(sVal++)) count++;
-	       }
-	       ans=Math.max(ans,count);
-	   }
-	   return ans;
-	}
+class Solution {
+    public int longestConsecutive(int[] arr) { int n = arr.length;
+        Set<Integer> st=new HashSet<>();
+        
+        for(int e : arr) st.add(e);
+        
+        int count = 0, sVal = 0, ans = 0;                                       
+        for(int i = 0; i<n; i++){
+            if(!st.contains(arr[i]-1)){
+                count = 0;
+                sVal = arr[i];
+                while(st.contains(sVal++)) count++;
+            }
+            ans = Math.max(ans,count);
+        }
+        return ans;
+    }
 }
 ```
