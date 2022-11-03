@@ -19,7 +19,7 @@ class Solution {
         ListNode dne=new ListNode(); ListNode ce = dne; // dummy node Eve & currEve
         
         co = dno.next = head; ce = dne.next = head.next;
-        while(co.next!=null && ce.next!=null){
+        while(co.next!=null && ce.next!=null){ // co.next = null means odd size of LL, ce.next = null means eve size of LL
             co.next = co.next.next;
             co = co.next;
             if(co.next==null) break;
