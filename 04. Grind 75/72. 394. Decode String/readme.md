@@ -38,3 +38,36 @@ class Solution {
     }
 }
 ```
+
+# reccursion
+```java
+class Solution {
+    public String decodeString(String s) {
+        Queue<Character> q=new LinkedList<>();
+        for(char c : s.toCharArray()) q.add(c);
+        
+        return helper(q);
+    }
+    
+    String helper(Queue<Character> q){
+        
+        int num = 0;
+        StringBuilder sb=new StringBuilder();
+        
+        while(!q.isEmpty()){
+            char c = q.remove();
+            if(Character.isDigit(c)){
+                num = num*10 + c-'0';
+            }
+            else if(c == '['){
+                String sub = helper(q);
+                for(int i = 0; i<num; i++) sb.append(sub);
+                num = 0;
+            }
+            else if(c == ']') break;
+            else sb.append(c);
+        }
+        return sb.toString();
+    }
+}
+```
