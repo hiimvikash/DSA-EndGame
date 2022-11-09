@@ -1,4 +1,6 @@
 # **[48. Rotate Image](https://leetcode.com/problems/rotate-image/)**
+![image](https://user-images.githubusercontent.com/71629248/200793562-459d9c21-ed36-4d67-afe5-23a890e834c6.png)
+
 ```java
 class Solution {
     public void rotate(int[][] matrix) {
