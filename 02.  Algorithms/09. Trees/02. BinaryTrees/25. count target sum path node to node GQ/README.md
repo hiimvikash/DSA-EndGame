@@ -26,7 +26,7 @@ class Solution {
         if(root==null) return;
         
         subans.add(root.val);
-        int sum=0;
+        long sum=0;
         for(int i=subans.size()-1; i>=0; i--){
             sum+=subans.get(i);
             if(sum==ts) count[0]++;
