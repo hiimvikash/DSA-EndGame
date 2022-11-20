@@ -1,4 +1,5 @@
 # [91. Decode Ways](https://leetcode.com/problems/decode-ways/)
+![image](https://user-images.githubusercontent.com/71629248/202902601-4d86b52b-6b1d-4937-a54e-cecad4c0fbc2.png)
 
 ```java
 class Solution {
