@@ -108,7 +108,7 @@ class Solution {
     }
 }
 ```
-<h1 style = text-align: center> DP</h1>
+<h1 align="center"> DP</h1>
 
 <hr>
 <hr>
