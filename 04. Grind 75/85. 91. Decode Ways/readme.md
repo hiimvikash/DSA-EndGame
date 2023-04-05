@@ -1,4 +1,44 @@
 # [91. Decode Ways](https://leetcode.com/problems/decode-ways/)
+
+
+# Recursion 
+```java
+class Solution {
+    int ans = 0;
+    public int numDecodings(String s) {
+        if(s.length()==1){
+            if(s.charAt(0)=='0') return 0;
+            return 1;
+        }
+        
+        helper(s.toCharArray(),1,false);
+        return ans;
+    }
+
+    void helper(char c[], int i, boolean isPairUp){
+        
+        if(i==c.length){
+            ans++;
+            return;
+        }
+        if(c[0]=='0') return;
+
+
+
+        if(c[i]!='0') helper(c,i+1, false); // if currChar is not0 then only it can proceed ALONE
+        if(c[i-1]!='0' && (Integer.parseInt((String.valueOf(c[i-1])+String.valueOf(c[i]))) < 27) && !isPairUp ){
+             helper(c,i+1,true);
+        } // if prevChar is not0 + prevChar is notPaired up with it's prev + pairing leads to < 27 Then only Proceed PAIRING
+         
+        
+
+    }
+}
+```
+
+<hr>
+<hr>
+
 ![image](https://user-images.githubusercontent.com/71629248/202902601-4d86b52b-6b1d-4937-a54e-cecad4c0fbc2.png)
 
 ```java
