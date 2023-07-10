@@ -242,7 +242,7 @@ int BinarySearchModi(int arr[], int fromIndex, int toIndex, int key){
 }
 ```
 
-# Input :- [2,4,7,9,10,13,18,23] x = 12 floor = index 4 & ceil = index 5
+# Input :- [2,4,7,9,10,13,18,23] x = 12 floor = index 4(10) & ceil = index 5(13)
 Intutive approach
 ```JAVA
 class Solution{
