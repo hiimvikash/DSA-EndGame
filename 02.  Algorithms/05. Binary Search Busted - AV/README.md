@@ -243,6 +243,33 @@ int BinarySearchModi(int arr[], int fromIndex, int toIndex, int key){
 ```
 
 # Input :- [2,4,7,9,10,13,18,23] x = 12 floor = index 4 & ceil = index 5
+Intutive approach
+```JAVA
+class Solution{
+    
+    // Function to find floor of x
+    // arr: input array
+    // n is the size of array
+    static int findFloor(long arr[], int n, long x)
+    {
+        int s = 0;
+        int e = n-1;
+        int ans = -1;
+        while(s<=e){
+            int mid = s + (e-s)/2;
+            
+            if(arr[mid] < x){
+                ans = Math.max(ans,mid);
+                s=mid+1;
+            }
+            else if(arr[mid] > x) e = mid-1;
+            else return mid;
+        }
+        return ans;
+    }
+    
+}
+```
 # [**9. Floor in a sorted array**](https://practice.geeksforgeeks.org/problems/floor-in-a-sorted-array-1587115620/1#) - INDEX OF MAX(No.s which are less than X) - index of GREATEST ELEMENT SMALLER THAN X
 ## [**Video Reference**](https://youtu.be/5cx0xerA8XY)
 ## Approach 1 :-
