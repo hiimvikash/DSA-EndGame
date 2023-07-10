@@ -273,7 +273,7 @@ static int findFloor(long arr[], int n, long x)
     }
 }
 ```
-## Approach 2 :- **When Key is not found Start will point to Ceil and End will point floor in general** and start is also known as insertion point.
+## Approach 2 :- **When Key is not found, Start ---> ceil and End ---> floor in general** and ceil(start) is also known as insertion point.
 ```java
 static int findFloor(long arr[], int n, long x)
     {
