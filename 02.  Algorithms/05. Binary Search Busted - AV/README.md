@@ -327,7 +327,29 @@ static int findFloor(long arr[], int n, long x)
     
 }
 ```
-# [**10.Ceil in a sorted array**](https://youtu.be/uiz0IxPCUeU) - INDEX OF MIN(No.s which are greater than X)
+# [**10.Ceil in a sorted array or Lower Bound**](https://www.codingninjas.com/studio/problems/lower-bound_8165382?leftPanelTab=1) - INDEX OF MIN(No.s which are greater than X)
+
+```java
+public class Solution {
+    public static int lowerBound(int []arr, int n, int x) {
+        // Write your code here
+        int s = 0;
+        int e = n-1;
+        int ans = n;
+        while(s<=e){
+            int mid = s+(e-s)/2;
+
+            if(arr[mid] > x){
+                ans = Math.min(ans,mid);
+                e = mid-1;
+            }
+            else if(arr[mid] < x) s = mid+1;
+            else return mid;
+        }
+        return ans;
+    }
+}
+```
 ```java
 static int findCeil(long arr[], int n, long x)
     {
@@ -353,6 +375,7 @@ static int findCeil(long arr[], int n, long x)
     }
 }
 ```
+
 # [**11. Next Alphabetical Element**](https://leetcode.com/problems/find-smallest-letter-greater-than-target/)
 ## [**Video Reference**](https://youtu.be/X45c37QMdX0)
 ```java
