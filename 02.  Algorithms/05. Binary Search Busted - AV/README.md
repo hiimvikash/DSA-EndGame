@@ -241,7 +241,7 @@ int BinarySearchModi(int arr[], int fromIndex, int toIndex, int key){
     return -1;
 }
 ```
-# [**9. Floor in a sorted array**](https://practice.geeksforgeeks.org/problems/floor-in-a-sorted-array-1587115620/1#)
+# [**9. Floor in a sorted array**](https://practice.geeksforgeeks.org/problems/floor-in-a-sorted-array-1587115620/1#) - INDEX OF MAX(No.s which are less than X)
 ## [**Video Reference**](https://youtu.be/5cx0xerA8XY)
 ## Approach 1 :-
 ```java
