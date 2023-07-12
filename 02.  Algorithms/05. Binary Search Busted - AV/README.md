@@ -485,7 +485,7 @@ class Solution {
             int mid = start + (end - start)/2;
             if(arr[mid+1]>arr[mid]){
                 // we are in ascending part so there may be more bigE further
-                start=start+1;
+                start=mid+1;
             }
             else if(arr[mid]>arr[mid+1]){
                 // we are in descending part so our ans can be where we r standing only when there is no bigE further from behind
