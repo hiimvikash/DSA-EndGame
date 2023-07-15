@@ -501,16 +501,16 @@ break;
 	//14.-| All paths from root to leaf nodes STARTS
 		//print path from root to leafnodes just modifying Inorder and using stacks.
 		static Stack<Integer> st=new Stack();
-		public static void rootToleaf(Node r) {
-			if(r==null)return;
-
-			st.push(r.data);
-			rootToleaf(r.left);
-			if(r.left==null && r.right==null)
-				System.out.println(st);
-			rootToleaf(r.right);
-			st.pop();
-		}
+		public static void root2leaf(Node root){
+		        if(root == null) return;
+		        
+		        st.push(root.val);
+		        root2leaf(root.left);
+		        root2leaf(root.right);
+		        if(root.left==null && root.right==null)
+		            System.out.println(st);
+		        st.pop();
+    		}
 	//14.-| All paths from root to leaf nodes ENDS
 ```
 
