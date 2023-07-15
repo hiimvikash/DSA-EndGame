@@ -397,6 +397,24 @@ BST bt=new BST(); //BST is a class containing all the above functions
 		}
 	//9.--| Print level order(BFS) ENDS
 
+				public static void printLevelOrder(Node root){
+				        if(root == null) return;
+				        Queue<Node> q=new LinkedList<Node>();
+				        q.add(root);
+				        
+				        while(!q.isEmpty()){
+				            int size = q.size();
+				            while(size!=0){
+				                Node n = q.remove();
+				                System.out.print(n.val+" ");
+				                
+				                if(n.left!=null) q.add(n.left);
+				                if(n.right!=null) q.add(n.right);
+				            }
+				            System.out.println();
+				        }
+				    }
+
 
 	//10.-| Sum at level K STARTS
 		int s=0;
