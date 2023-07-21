@@ -12,100 +12,76 @@
     - one's with same parent are considerd to be in one group and their parentINDEX is their groupID
     
 ```java
-class UnionFind{
-    int parent[]; int rank[];
-    int groupCount; // here vertices refers to AccountsIndx
-    
-    public UnionFind(int v){
-        groupCount = v;
-        parent=new int[v]; rank=new int[v];
-        for(int i = 0; i<v; i++) parent[i] = i;
-    }
-    
-    public int getAbsoluteParent(int node){
-        if(parent[node] == node) return node;
-        return parent[node] = getAbsoluteParent(parent[node]);
-    }
-    
-    public void unify(int x, int y){
-        groupCount--;
-        int px = getAbsoluteParent(x);
-        int py = getAbsoluteParent(y);
-        
-        if(rank[px] < rank[py]) parent[px] = py;
-        else if(rank[py] < rank[px]) parent[py] = px;
-        else{
-            parent[px] = py; rank[py]++;
-        }
-    }
-    
-    public boolean sameComponents(int x, int y){
-        return (getAbsoluteParent(x)==getAbsoluteParent(y));
-    }
-}
-
-
-
-
-
-
 class Solution {
     public List<List<String>> accountsMerge(List<List<String>> accounts) {
         int n = accounts.size();
-        
-        UnionFind uf=new UnionFind(n);
-        HashMap<String, Integer> emailToAccIdx=new HashMap<>();
-        
-        
-        for(int i = 0; i<n; i++){ // i represent AccIdx
+        DisjointSet dj=new DisjointSet(n);
+        HashMap<String, Integer> emailToAccidx = new HashMap<>();
+
+        for(int i = 0; i<n; i++){
             List<String> acc = accounts.get(i);
-            String name = acc.get(0);
-            List<String> emails = acc.subList(1, acc.size());
-            
+            List<String> emails = acc.subList(1,acc.size());
+
             for(String e : emails){
-                
-                if(!emailToAccIdx.containsKey(e)) emailToAccIdx.put(e, i);
+                if(!emailToAccidx.containsKey(e)) emailToAccidx.put(e,i);
                 else{
-                    int parAccIdx = emailToAccIdx.get(e);
-                    uf.unify(i,parAccIdx);
+                    int accidx = emailToAccidx.get(e);
+                    dj.union(i,accidx);
                 }
             }
-        }// itteration in ACCOUNT
-        
-        
-        
-        // ANSWER MAKING
-        List<List<String>> mergedAns=new ArrayList<>();
-        
-        HashMap<Integer, Integer> grpId2Oidx = new HashMap<>();
-        int nextIdx = 0;
-        for(String e : emailToAccIdx.keySet()){
-            int gid = uf.getAbsoluteParent(emailToAccIdx.get(e));
-            
-            if(!grpId2Oidx.containsKey(gid)){
-                grpId2Oidx.put(gid,nextIdx);
-                String name = accounts.get(emailToAccIdx.get(e)).get(0);
-                mergedAns.add(new ArrayList<>());
-                mergedAns.get(nextIdx).add(name);
-                mergedAns.get(nextIdx).add(e);
-                nextIdx++;
-            }
-            else{
-                int oidx = grpId2Oidx.get(gid);
-                mergedAns.get(oidx).add(e);
-            }
         }
-        
-        // sorting
-        for(List<String> lst : mergedAns){
-            Collections.sort(lst.subList(1, lst.size()));
+
+        List<String> mergedMail[] = new ArrayList[n];
+        for(int i = 0; i<n; i++) mergedMail[i] = new ArrayList<>();
+        for(String e: emailToAccidx.keySet()){
+            int idx = dj.findPar(emailToAccidx.get(e));
+
+            mergedMail[idx].add(e);
         }
-        
-        
-        return mergedAns;
+
+        // now prepare answer
+        List<List<String>> ans = new ArrayList<>();
+        for(int i = 0; i<n; i++){
+            if(mergedMail[i].size() == 0) continue;
+            List<String> subans = new ArrayList<>();
+            subans.add(accounts.get(i).get(0));
+
+            Collections.sort(mergedMail[i]);
+            for(String em : mergedMail[i]) subans.add(em);
+
+            ans.add(subans);
+        }
+        return ans;
+    }
+}
+
+class DisjointSet{
+    int n;
+    int parent[];
+    int rank[];
+    
+    public DisjointSet(int n){
+        rank = new int[n];
+        parent = new int[n];
+        for(int i = 0; i<n; i++) parent[i] = i;
     }
     
+    public int findPar(int n){
+        if(parent[n] == n) return n;
+        return parent[n] = findPar(parent[n]);
+    }
+    
+    public void union(int u, int v){
+        int pu = findPar(u);
+        int pv = findPar(v);
+        
+        if(rank[pu] < rank[pv]) parent[pu] = pv;
+        else if(rank[pu] > rank[pv]) parent[pv] = pu;
+        else{
+            parent[pu] = pv; rank[pu]++;
+        }
+    }
 }
 ```
 
-[**Video reference**](https://youtu.be/QHniHFvxAl8)
+[**Video reference**](https://youtu.be/FMwpt_aQOGw)
