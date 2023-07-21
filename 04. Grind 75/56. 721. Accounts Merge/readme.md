@@ -1,4 +1,5 @@
 # [721. Accounts Merge](https://leetcode.com/problems/accounts-merge/)
+![image](https://github.com/hiimvikash/DSA-EndGame/assets/71629248/29eaaacf-ed8f-4e4c-a5b7-6f1718481b0a)
 
 ## Intution : - 
 - merge the AccountIndex which are having any emails in common
