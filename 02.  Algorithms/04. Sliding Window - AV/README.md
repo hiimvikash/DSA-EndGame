@@ -9,22 +9,27 @@
 ## **[Video Reference](https://youtu.be/KtpqeN0Goro)**
 ```java
 class Solution{
-    static int maximumSumSubarray(int k, ArrayList<Integer> arr,int n){
+    static long maximumSumSubarray(int k, ArrayList<Integer> arr,int n){
         // code here
-        int sum=0;
-        int s=0,e=k-1;
-        for(int i=s;i<=e;i++)
-            sum+=arr.get(i);
-        int max=sum;
-        s++;
-        e++;
+        int s = 0;
+        int e = 0;
+        long sum = 0;
+        long ans = -1;
+        
         while(e<n){
-            sum=sum-arr.get(s-1)+arr.get(e);
-            max=Math.max(sum,max);
-            s++;
-            e++;
+            if(e < k){
+                sum+=arr.get(e);
+                e++;
+            }
+            else if(e>=k){
+                ans = Math.max(ans,sum);
+                sum += arr.get(e) - arr.get(s);
+                s++;
+                e++;
+            }
         }
-        return max;
+        ans = Math.max(ans,sum);
+        return ans;
     }
 }
 ```
@@ -89,31 +94,32 @@ class Compute {
     
     public long[] printFirstNegativeInteger(long arr[], int n, int k)
     {
-        long ans[]=new long[n-k+1]; // size of ans[] = number of possible windows
         Queue<Long> q=new LinkedList<>();
         
-        int s=0,e=k-1;
-        int j=0;
-        for(int i=s;i<=e;i++){
-            if(arr[i]<0) q.add(arr[i]);
-        }
-        if(!q.isEmpty()){
-            ans[j++]=q.peek();
-            if(arr[s]==q.peek()) q.poll();
-        }
-        else ans[j++]=0;
-        
-        s++; e++;
+        int s = 0; 
+        int e = 0;
+        long[] ans = new long[n-k+1]; int idx = 0;
         while(e<n){
-            if(arr[e]<0) q.add(arr[e]);
-            if(!q.isEmpty()){
-                ans[j++]=q.peek();
-                if(arr[s]==q.peek()) q.poll();
+            if(e<k){
+                if(arr[e] < 0) q.add(arr[e]); 
+                e++;
             }
-            else ans[j++]=0;
-            s++; e++;
+            else if(e>=k){
+                if(!q.isEmpty()) ans[idx] = q.peek();
+                idx++;
+                
+                if(!q.isEmpty() && arr[s] == q.peek()){
+                    q.remove();
+                }
+                s++;
+                
+                if(arr[e] < 0) q.add(arr[e]); 
+                e++;
+            }
         }
-        q.clear();
+        
+        if(!q.isEmpty()) ans[idx] = q.peek();
+        
         return ans;
     }
 }
