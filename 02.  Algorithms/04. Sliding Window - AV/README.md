@@ -127,7 +127,7 @@ class Compute {
 # **[4. Count Occurences of Anagrams GQ .](https://practice.geeksforgeeks.org/problems/count-occurences-of-anagrams5839/1)**
 ## **[Video Reference](https://youtu.be/MW4lJ8Y0xXk)**
 # Intution
-- HM which u make from pat think it as a AvailabilityList for window. i.e., in a window How Many distictcharacter can accomodate.
+- HM which u make from pat think it as a AvailabilityList for window. i.e., in a window How Many distictcharacter can accomodate. say like in a window 3a's 1b can live.
 - count denotes no.OfDistinct Character which can accomodate i.e available beds for each character
 - so whenever u add a charcter in window then u do - from that characterRow in availabilityList and IF any charcterRow become 0 then count-- which denotes a charcter is DONE
 - whenever u r going to remove a charcter from window then u do + from that characterRow in availabilityList. if u r going to + to that characterRow which is already 0 that means onebed will be available for that character as soon as u remove that charcter.
