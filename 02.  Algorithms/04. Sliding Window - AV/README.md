@@ -195,27 +195,39 @@ class Solution {
 TCs - [13, 7, 12, 6, 5, 3, 6, 7]
 ```java
 class Solution {
-    public int[] maxSlidingWindow(int[] arr, int k) {
-        int n=arr.length;
-        int ans[]=new int[n-k+1]; int i=0;
+    public int[] maxSlidingWindow(int[] nums, int k) {
+        int n = nums.length;
+        int ans[] = new int[n-k+1]; int idx = 0;
+
         Deque<Integer> dq=new LinkedList<>();
-        int s=0,e=0;
-        
+
+        int s = 0;
+        int e = 0;
+
         while(e<n){
-            if(dq.isEmpty()) dq.add(arr[e]);
-            else{
-                while(!dq.isEmpty() && arr[e]>dq.peekLast()) dq.removeLast();
-                dq.add(arr[e]);
+            if(e<k){
+                if(dq.isEmpty()) dq.add(nums[e]);
+                else {
+                    while(!dq.isEmpty() && nums[e] > dq.peekLast()) dq.removeLast();
+                    dq.add(nums[e]);
+                }
+                e++;
             }
-            
-            if(e-s+1 < k) e++;
-            else if(e-s+1 == k){
-                ans[i++]=dq.peek();
-                s++; e++;
-                // restoring
-                if(!dq.isEmpty() && dq.peek()==arr[s-1]) dq.poll();
+            else{
+                ans[idx++] = dq.peek();
+
+                // start slide
+                if(!dq.isEmpty() && dq.peek() == nums[s]) dq.removeFirst();
+                s++;
+
+                // end slide
+                while(!dq.isEmpty() && nums[e] > dq.peekLast()) dq.removeLast();
+                dq.add(nums[e]);
+
+                e++;
             }
         }
+        ans[idx] = dq.peek();
         return ans;
     }
 }
