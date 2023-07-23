@@ -127,10 +127,13 @@ class Compute {
 # **[4. Count Occurences of Anagrams GQ .](https://practice.geeksforgeeks.org/problems/count-occurences-of-anagrams5839/1)**
 ## **[Video Reference](https://youtu.be/MW4lJ8Y0xXk)**
 # Intution
-- HM which u make from pat think it as a AvailabilityList for window. i.e., in a window How Many distictcharacter can accomodate. say like in a window 3a's 1b can live.
-- count denotes no.OfDistinct Character which can accomodate i.e available beds for each character
-- so whenever u add a charcter in window then u do - from that characterRow in availabilityList and IF any charcterRow become 0 then count-- which denotes a charcter is DONE
-- whenever u r going to remove a charcter from window then u do + from that characterRow in availabilityList. if u r going to + to that characterRow which is already 0 that means onebed will be available for that character as soon as u remove that charcter.
+- HM which u make from pat think it as a AvailabilityList for window. i.e., in a window How Many distictcharacter can accomodate.
+- say like in a window 3a's 1b can live. or else say in a window a has 3bed b has 1bed
+- count denotes no.OfDistinct Character which can accomodate i.e count of Distinctcharacter who can stay in window
+- so whenever u add a charcter in window then u occupy 1bed of that character if available so u do -1 from that character's beds.
+- if beds of that character turnsout to be 0 after -1 then count--;
+- let's say u r going to remove one character from that window that means bed of that character will increase by +1.
+- if bed of that character is already 0 then u do count++
 ```java
 class Solution {
 
