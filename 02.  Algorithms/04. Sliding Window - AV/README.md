@@ -126,62 +126,65 @@ class Compute {
 ```
 # **[4. Count Occurences of Anagrams GQ .](https://practice.geeksforgeeks.org/problems/count-occurences-of-anagrams5839/1)**
 ## **[Video Reference](https://youtu.be/MW4lJ8Y0xXk)**
+# Intution
+- HM which u make from pat think it as a AvailabilityList for window. i.e., in a window How Many distictcharacter can accomodate.
+- count denotes no.OfDistinct Character which can accomodate i.e available beds for each character
+- so whenever u add a charcter in window then u do - from that characterRow in availabilityList and IF any charcterRow become 0 then count-- which denotes a charcter is DONE
+- whenever u r going to remove a charcter from window then u do + from that characterRow in availabilityList. if u r going to + to that characterRow which is already 0 that means onebed will be available for that character as soon as u remove that charcter.
 ```java
 class Solution {
 
-    int search(String pat, String str) {
+    int search(String pat, String txt) {
         // code here
-        int k=pat.length(); // window size
-        int s=0,e=k-1;
-        int ans=0;
-        // making HM for pat
-            HashMap<Character,Integer> hm=new HashMap<>();
-            for(int i=0;i<k;i++){
-                char ch=pat.charAt(i);
-                if(hm.containsKey(ch)){
-                    hm.put(ch,hm.get(ch)+1);
-                }
-                else hm.put(ch,1);
+        HashMap<Character, Integer> hm=new HashMap<>();
+        for(char c: pat.toCharArray()){
+            if(!hm.containsKey(c)){
+                hm.put(c,1);
             }
-            int count = hm.size();
-        // making HM for pat ENDS
+            else {
+                hm.put(c, hm.get(c)+1);
+            }
+        }
+        int count = hm.size();
+        // HM made - here if -ve value says extra & +ve value says deficient 
         
-        // Initial ANS Making Starts
-            for(int i=s;i<=e;i++){
-                char ch=str.charAt(i);
-                if(hm.containsKey(ch)){
-                    hm.put(ch,hm.get(ch)-1);
-                    if(hm.get(ch)==0)count--;
+        // if u look HM with txt then value says "Window k pass # ki kami hai orelse meh = hoejata"
+        
+        char ch[] = txt.toCharArray();
+        
+        int s = 0;
+        int e = 0;
+        int k = pat.length();
+        int ans = 0;
+        int n = ch.length;
+        while(e<n){
+            if(e<k){
+                if(hm.containsKey(ch[e])){
+                    hm.put(ch[e], hm.get(ch[e])-1);
+                    if(hm.get(ch[e]) == 0) count--;
                 }
+                e++;
             }
-            if(count==0) ans++;
-        // restoring Starts
-            char ch=str.charAt(s);
-            if(hm.containsKey(ch)){
-                if(hm.get(ch)==0)count++;
-                hm.put(ch,hm.get(ch)+1);
-            }
-            
-            // sliding window start
-            s++;e++;
-            while(e<str.length()){
-                ch=str.charAt(e);
-                if(hm.containsKey(ch)){
-                    hm.put(ch,hm.get(ch)-1);
-                    if(hm.get(ch)==0)count--;
+            else {
+                if(count == 0) ans++;
+                
+                // start slide means if someone going then +1
+                if(hm.containsKey(ch[s])){
+                    if(hm.get(ch[s]) == 0) count++;
+                    hm.put(ch[s], hm.get(ch[s]) + 1);
                 }
-                if(count==0) ans++;
-                // restoring Starts
-                ch=str.charAt(s);
-                if(hm.containsKey(ch)){
-                    if(hm.get(ch)==0)count++;
-                    hm.put(ch,hm.get(ch)+1);
+                s++;
+                // end slide
+                if(hm.containsKey(ch[e])){
+                    hm.put(ch[e], hm.get(ch[e])-1);
+                    if(hm.get(ch[e]) == 0) count--;
                 }
-                s++; e++;
+                e++;
             }
-             return ans;   
+        }
+        if(count==0) ans++;
+        return ans;
     }
-    
 }
 ```
 # **[5. Sliding Window Maximum LC-239 .](https://leetcode.com/problems/sliding-window-maximum/)**
