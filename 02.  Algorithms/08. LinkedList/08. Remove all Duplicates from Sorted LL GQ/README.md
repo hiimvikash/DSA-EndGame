@@ -15,7 +15,7 @@
  */
 class Solution {
 
-    // 1-1-1-2-2-2-3-4-5-5-6-7-8-x
+    // 1-1-1-2-2-2-3-4-5-5-6-7-7-x
     public ListNode deleteDuplicates(ListNode head) {
         // initial configuration
         ListNode d=new ListNode(-1); d.next = head;
@@ -23,14 +23,17 @@ class Solution {
         ListNode curr = head;
 
         while(curr!=null){
-            while(curr.next!=null && curr.val == curr.next.val) curr = curr.next;
-            if(prev.next!=curr){// this means there must be some duplicates and curr is standing in last duplicate element
-                prev.next = curr.next; // here prev is expecting that diff node may not contain duplicate.
+            int flag  = 0;
+            while(curr.next!=null && curr.val == curr.next.val){ curr = curr.next; flag = 1; }
+            // when flag is 1 then curr points to last node of duplicate so we skip that node too
+            if(flag == 0){
+                prev.next = curr;
+                prev = curr;
             }
-            else prev = curr; // prev.next == curr means no duplicate so prev went & add that node in answer thread.
-
+            
             curr = curr.next;
         }
+        prev.next = null;
         return d.next;
     }
 }
