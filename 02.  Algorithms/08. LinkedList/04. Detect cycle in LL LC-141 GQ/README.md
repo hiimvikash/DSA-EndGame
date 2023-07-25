@@ -1,6 +1,6 @@
 # [**141. Linked List Cycle**](https://leetcode.com/problems/linked-list-cycle/)
 [**Video Reference**](https://youtu.be/354J83hX7RI)
-## Thought process 1 : Use HashMap
+## Thought process 1 : Use Set DS
 ```java
 /**
  * Definition for singly-linked list.
@@ -15,12 +15,14 @@
  */
 public class Solution {
     public boolean hasCycle(ListNode head) {
-       HashMap<ListNode,Boolean> hm=new HashMap<>();
-        ListNode curr=head;
+        Set<ListNode> s=new HashSet<>();
+        ListNode curr = head;
         while(curr!=null){
-            if(hm.containsKey(curr)) return true;
-            hm.put(curr,true);
-            curr=curr.next;
+            if(!s.contains(curr)){
+                s.add(curr);
+                curr = curr.next;
+            }
+            else return true;
         }
         return false;
     }
