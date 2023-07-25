@@ -1,6 +1,6 @@
 # [**142. Linked List Cycle II**](https://leetcode.com/problems/linked-list-cycle-ii/)
 
-## Thought process 1 : **distance from meetingPoint to CyclebeginPoint == distance from startingPoint to CyclebeginPoint**
+## Thought process 1 : **distance from meetingPoint(s&f meet) to CyclebeginPoint == distance from startingPoint to CyclebeginPoint**
 ```java
 /**
  * Definition for singly-linked list.
