@@ -12,14 +12,21 @@
  * }
  */
 class Solution {
+    
     public ListNode deleteDuplicates(ListNode head) {
-        if(head==null || head.next==null) return head;
-        ListNode curr=head;
-        while(curr.next!=null){
-            if(curr.val!=curr.next.val) curr=curr.next;
-            else curr.next=curr.next.next;
+        ListNode d=new ListNode(-1); d.next = head;
+        ListNode prev = d;
+        ListNode curr = head;
+        
+        while(curr!=null){
+            while(curr.next!=null && curr.val == curr.next.val) curr = curr.next;
+
+            prev.next = curr;
+            prev = curr;
+
+            curr=curr.next;
         }
-        return head;
+        return d.next;
     }
 }
 ```
