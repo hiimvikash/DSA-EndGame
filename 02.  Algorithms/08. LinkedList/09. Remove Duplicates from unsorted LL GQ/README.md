@@ -1,33 +1,32 @@
 # [**Remove duplicates from an unsorted linked list**](https://practice.geeksforgeeks.org/problems/remove-duplicates-from-an-unsorted-linked-list/1#)
 ## Thought Process :- Use HashSet
 ```java
-/* The structure of linked list is the following
-class Node
-{
-    int data;
-    Node next;
-    Node(int d) {
-        data = d; 
-        next = null;
-    }
-}
-*/
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    
+    public ListNode deleteDuplicates(ListNode head) {
+        ListNode d=new ListNode(-1); d.next = head;
+        ListNode prev = d;
+        ListNode curr = head;
+        
+        while(curr!=null){
+            while(curr.next!=null && curr.val == curr.next.val) curr = curr.next;
 
-class Solution
-{
-    //Function to remove duplicates from unsorted linked list.
-    public Node removeDuplicates(Node head) 
-    {
-         // Your code here
-         HashSet<Integer> hs=new HashSet<>();
-         Node curr=head;
-         Node prev=null;
-         while(curr!=null){
-             if(!hs.contains(curr.data)){ hs.add(curr.data); prev=curr;}
-             else prev.next=curr.next;
-             curr=curr.next;
-         }
-         return head;
+            prev.next = curr;
+            prev = curr;
+
+            curr=curr.next;
+        }
+        return d.next;
     }
 }
 ```
