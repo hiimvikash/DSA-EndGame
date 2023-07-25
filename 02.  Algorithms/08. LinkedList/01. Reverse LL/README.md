@@ -17,10 +17,10 @@ class Solution {
         ListNode nex=null;
         ListNode curr=start;
         while(curr!=null){
-            nex=curr.next; // secure your next moment
-            curr.next=prev; // do the main operation
-            prev=curr; // secure your prev
-            curr=nex;
+            nex=curr.next; // secure your future
+            curr.next=prev; // do the work
+            prev=curr; // secure your work
+            curr=nex; // move to next work
         }
         return prev;
     }
