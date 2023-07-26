@@ -13,16 +13,18 @@
  */
 class Solution {
     public ListNode mergeKLists(ListNode[] lists) {
-        int n=lists.length;
-        if(n==0) return null;
-        return mergeKlist(lists,n,null);
+        int k = lists.length;
+        if(k == 0) return null;
+        if(k == 1) return lists[0];
+
+        for(int i = 0; i<k-1; i++){
+            lists[i+1] = mergeTwoLists(lists[i], lists[i+1]);
+        }
+        return lists[k-1];
     }
-    ListNode mergeKlist(ListNode[]arr,int k,ListNode head){
-        if(k==1) return mergeTwoLists(arr[0],head);
-        head=mergeTwoLists(arr[k-1],head);
-        return mergeKlist(arr,k-1,head);
-    }
+
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+      
         ListNode dummy=new ListNode(-1);
         ListNode temp=dummy;
         while(l1!=null && l2!=null){
@@ -47,6 +49,7 @@ class Solution {
         return dummy.next;
     }
 }
+
 ```
 # [2 : Divide and concure](https://youtu.be/wugaUVZ8PVw) TC- O(nk logK)
 ```java
