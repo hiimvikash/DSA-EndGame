@@ -232,6 +232,34 @@ for(String s : hm.keySet())
 	hm.get(s);
 ```
 
+21. - Character to Integer
+    ```java
+    char ch = '2';
+    int a = ch - '0'; // 2
+    ```
+    - Integer to Character
+    ```java
+    int a=65;  
+    char ch=(char)a; // A
+    ```
+    - String to Integer
+    ```java
+    int i=Integer.parseInt("0100"); // 100
+
+    String s="200";  
+    int i=Integer.valueOf(s);
+    ```
+    - Integer to String
+    ```java
+    String.valueOf(20);
+    ```
+    - If you want to acces array for each character then how to get Index ?
+      ```java
+      for(char c = 'a'; c<='z'; c++){
+	  arr[c-'a'];
+      }
+      ```
+
 <hr>
 <hr>
 
