@@ -1,19 +1,23 @@
 class Solution {
     public int[] nextGreaterElement(int[] nums1, int[] nums2) {
-        HashMap<Integer,Integer> map=new HashMap(); // hash map is use to store greatestRightSide element(as a value) for each element in nums2(as a key)
-        Stack<Integer> st=new Stack();
-        
-        for(int ele:nums2){
-            while(!st.isEmpty() && ele>st.peek()){
-                map.put(st.pop(),ele);
+        // find out all the nextGreaterElement for nums2 and store in map
+
+        Stack<Integer> st=new Stack<>();
+        HashMap<Integer, Integer> hm=new HashMap<>();
+        int n = nums2.length;
+        for(int i = n-1; i>=0; i--){
+            while(!st.isEmpty() && nums2[i] > st.peek()) st.pop();
+            if(!st.isEmpty()){
+                hm.put(nums2[i], st.peek());
             }
-            st.push(ele);
+            st.push(nums2[i]);
         }
-        
-        for(int i=0;i<nums1.length;i++){
-            nums1[i]=map.getOrDefault(nums1[i],-1);
+
+        int ans[]=new int[nums1.length];
+        for(int i = 0; i<nums1.length; i++){
+            ans[i] = hm.getOrDefault(nums1[i],-1);
         }
-        
-        return nums1;
+
+        return ans;
     }
 }
