@@ -254,11 +254,11 @@ for(String s : hm.keySet())
     String.valueOf(20);
     ```
     - If you want to acces array for each character then how to get Index ?
-      ```java
-      for(char c = 'a'; c<='z'; c++){
-	  arr[c-'a'];
-      }
-      ```
+    ```java
+    for(char c = 'a'; c<='z'; c++){
+	arr[c-'a'];
+    }
+    ```
 
 <hr>
 <hr>
