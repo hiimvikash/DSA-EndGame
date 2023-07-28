@@ -5,11 +5,11 @@
 	static Stack<Character> st = new Stack<>();
 	static void insert_at_bottom(char x)
 	{
-      	if(st.isEmpty())
+      		if(st.isEmpty())
 			st.push(x);
 		else
 		{
-          	char a = st.pop();
+          		char a = st.pop();
 			insert_at_bottom(x);
 			st.push(a);
 		}
@@ -19,7 +19,7 @@
 	{
 		if(st.size() > 1)
 		{
-          	char x = st.pop();
+          		char x = st.pop();
 			reverse();
 			insert_at_bottom(x);
 		}
