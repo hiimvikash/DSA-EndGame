@@ -1,50 +1,51 @@
 # [**Implement two stacks in an array**](https://practice.geeksforgeeks.org/problems/implement-two-stacks-in-an-array/1#)
 - [**Video Reference**](https://youtu.be/cJgVdvWz4iU)
 ```java
-/* Structure of the class is
-class TwoStack
+class twoStacks
 {
-
-	int size;
-	int top1,top2;
-	int arr[] = new int[100];
-
-	TwoStack()
-	{
-		size = 100;
-		top1 = -1;
-		top2 = size;
-	}
-}*/
-
-class Stacks
-{
+    int arr[];
+    int size;
+    int top1, top2;
+    twoStacks()
+    {
+        size = 100; 
+        arr = new int[100]; 
+        top1 = -1; 
+        top2 = size;
+    }
     //Function to push an integer into the stack1.
-    void push1(int x, TwoStack sq)
+    void push1(int x)
     {
-        if(sq.top1 >= sq.size/2-1) return;
-        sq.arr[++sq.top1]=x;
+         if(!isStack1Full()){        
+             top1++;
+             arr[top1] = x;
+         }
     }
-
     //Function to push an integer into the stack2.
-    void push2(int x, TwoStack sq)
+    void push2(int x)
     {
-        if(sq.top2 <= sq.size/2) return;
-        sq.arr[--sq.top2]=x;
+       if(!isStack2Full()){        
+             top2--;
+             arr[top2] = x;
+        }
     }
-
     //Function to remove an element from top of the stack1.
-    int pop1(TwoStack sq)
+    int pop1()
     {
-        if(sq.top1 !=-1) return sq.arr[sq.top1--];
-        return -1;
+      if(top1==-1) return -1;
+      else return arr[top1--];
     }
-
     //Function to remove an element from top of the stack2.
-    int pop2(TwoStack sq)
+    int pop2()
     {
-        if(sq.top2 < sq.size) return sq.arr[sq.top2++];
-        return -1;
+        if(top2 == size) return -1;
+        else return arr[top2++];   
+    }
+    boolean isStack1Full(){
+        return top1 + 1 == top2;
+    }
+    boolean isStack2Full(){
+        return top2 - 1 == top1;
     }
 }
 ```
