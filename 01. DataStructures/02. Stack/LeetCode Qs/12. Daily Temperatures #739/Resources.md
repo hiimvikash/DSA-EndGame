@@ -11,24 +11,19 @@ class Solution {
     public int[] dailyTemperatures(int[] temperatures) {
         Stack<Integer> st=new Stack<>();
         int n = temperatures.length;
+        int ans[]=new int[n];
         // to store index - nextGelementIndex in HM for all temperatures
-        HashMap<Integer, Integer> hm=new HashMap<>();
         for(int i = n-1; i>=0; i--){
             while(!st.isEmpty() && temperatures[i] >= temperatures[st.peek()]) st.pop();
-            if(st.isEmpty()) st.push(i);
-            else{
-                hm.put(i, st.peek());
-                st.push(i);
+            if(st.isEmpty()){
+                 ans[i] = 0;
             }
+            else{
+                ans[i] = st.peek() - i;
+            }
+            st.push(i);
         }
-
-        int ans[]=new int[n];
-        for(int i = 0; i<n; i++){
-            ans[i] = hm.getOrDefault(i,i) - i;
-        }
-
         return ans;
     }
 }
-
 ```
