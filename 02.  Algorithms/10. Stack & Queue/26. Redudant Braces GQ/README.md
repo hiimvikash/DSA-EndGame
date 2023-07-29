@@ -9,7 +9,8 @@ public class Solution {
                 if(st.peek()=='(') return 1;
 
                 char t=st.pop();
-                if(st.peek()=='(') return 1;
+                if(t!='+' && t!='-' && t!='*' && t!='/') // --> ((a+b) - (a-b)) ans - false
+                    if(st.peek()=='(') return 1; // --> (a) ans - true
                 st.push(t);
                 
                 while(!st.isEmpty() && st.peek()!='(') st.pop();
@@ -22,5 +23,6 @@ public class Solution {
         return 0;
     }
 }
+
 ```
 ## **[Video Reference](https://youtu.be/aMPXhEdpXFA)**
