@@ -3,24 +3,26 @@
 ```java
 class Solution {
     public int longestValidParentheses(String s) {
-        Stack<Character> cs=new Stack<>();
-        Stack<Integer> is=new Stack<>();
-        is.push(-1);
-        int len=0;
-        int n=s.length();
-        for(int i=0; i<n; i++){
-            char ch=s.charAt(i);
-            if(ch=='('){
-                cs.push('(');
-                is.push(i);
-            }
-            else if(ch==')' && !cs.isEmpty()){
-                cs.pop();
-                is.pop();
-                len=Math.max(len,i-is.peek());
-            }
-            else{
-                is.push(i);
+        // see length of continuousValidParentheses lies from closingBracketIndex - problemIndex
+        Stack<Character> st=new Stack<>();
+        Stack<Integer> pi=new Stack<>();
+        pi.push(-1);
+        int len = 0;
+        for(int i = 0; i<s.length(); i++){
+            char ch = s.charAt(i);
+            if(ch == '('){
+                // assume it as a problem index
+                pi.push(i);
+                st.push(ch);
+            }else{
+                if(!st.isEmpty()){
+                    if(st.peek() == '('){
+                        st.pop();
+                        pi.pop();
+
+                        len = Math.max(len, i-pi.peek());
+                    }
+                }else pi.push(i);
             }
         }
         return len;
