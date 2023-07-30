@@ -19,6 +19,7 @@ class Solution {
                 score = 0;
             }
             else{
+                // whenever u get ) then value of score(score inside M.max) at that moment defines score inside that )
                 // whenever u get ) then score till that ) can be :
                 score  = st.pop() + Math.max(score*2, 1);
                 // st.pop() is previous score
