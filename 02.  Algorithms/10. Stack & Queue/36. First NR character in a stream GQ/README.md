@@ -6,22 +6,24 @@ class Solution
     public String FirstNonRepeating(String s)
     {
         // code here
-        int n=s.length();
-        int freq[]=new int[26];
+        int n = s.length();
+        int freq[] = new int[26];
         char ans[]=new char[n];
-        int i=0;
+        int idx = 0;
         Queue<Character> q=new LinkedList<>();
-        for(char ch: s.toCharArray()){
+        
+        for(char ch : s.toCharArray()){
             freq[ch-'a']++;
-            if(freq[ch-'a']==1) q.add(ch);
+            q.add(ch); // or if(freq[ch-'a'] == 1) q.add(ch);
             
-            while(!q.isEmpty() && freq[q.peek()-'a']>1) q.poll();
-            
-            if(!q.isEmpty()) ans[i++]=q.peek();
-            else ans[i++]='#';
+            // I am expecting from my front of queue to be NR
+            while(!q.isEmpty() && freq[q.peek() - 'a'] > 1) q.remove();
+            if(!q.isEmpty()) ans[idx++] = q.peek();
+            else ans[idx++] = '#';
         }
-        return String.valueOf(ans);
+        return new String(ans);
     }
 }
+//String.valueOf(ans);
 ```
 
