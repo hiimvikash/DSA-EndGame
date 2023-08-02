@@ -259,11 +259,17 @@ for(String s : hm.keySet())
 	arr[c-'a'];
     }
     ```
-    StringBuilder to String
+	- StringBuilder to String
     ```java
     return sb.toString();
     return sb.substring(0, sb.length() - 1); // except last
     ```
+	- ```Char[] to String```
+	```java
+	return new String(ch);
+	return String.valueOf(ch);
+	```
+
 
 <hr>
 <hr>
