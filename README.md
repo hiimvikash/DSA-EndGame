@@ -219,6 +219,8 @@ PriorityQueue<int[]> pq=new PriorityQueue<>((int p1[], int p2[]) -> ((p1[0]*p1[0
 Arrays.sort(arr,(x,y)-> (x.c < y.c) ? 1 : -1); // 1 signifies swap -1 says no swap so this DEScending order
 ```
 ## whenever u want to swap then pass 1 else -1 according to ur logic.
+
+[See this Q](hiimvikash/DSA-EndGame/02.  Algorithms/11. greedy algo/09. Fractional Knapsack/readme.md)
  
 ```java
 Arrays.sort(arr, new Comparator<Iteminfo>() {
