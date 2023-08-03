@@ -58,6 +58,8 @@
 	1. ### **Trie(6 Questions)**
 	1. ### **Graphs(40+ Questions)**
 	1. ### [**Dyanamic Programming(50+ Questions)**](02.%20%20Algorithms/06.%20DP/02.%20Qs)
+	1. ### [**Greedy Algorithm**](02.%20%20Algorithms/11.%20greedy%20algo)
+
 	
 # **Some Common FAQs : <img src="https://media.giphy.com/media/l4FGwKLqbXxRtBzMc/giphy.gif?cid=ecf05e47zd17l7kzf15vqwyd0buahv05nz098szt4rh4tc75&rid=giphy.gif&ct=s" width="50">**
 # 1. **How to make maximum Output from DSA-EndGame🔥?**
@@ -220,7 +222,7 @@ Arrays.sort(arr,(x,y)-> (x.c < y.c) ? 1 : -1); // 1 signifies swap -1 says no sw
 ```
 ## whenever u want to swap then pass 1 else -1 according to ur logic.
 
-[See this Q](hiimvikash/DSA-EndGame/02.  Algorithms/11. greedy algo/09. Fractional Knapsack/readme.md)
+[See this Q](02.%20%20Algorithms/11.%20greedy%20algo/09.%20Fractional%20Knapsack)
  
 ```java
 Arrays.sort(arr, new Comparator<Iteminfo>() {
