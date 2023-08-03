@@ -215,6 +215,23 @@ PriorityQueue<int[]> pq=new PriorityQueue<>(ShortDisFromOrigin);
 PriorityQueue<int[]> pq=new PriorityQueue<>((int p1[], int p2[]) -> ((p1[0]*p1[0]) + (p1[1]*p1[1])) - ((p2[0]*p2[0]) + (p2[1]*p2[1])));
 ```
 
+```java
+Arrays.sort(arr,(x,y)-> (x.c < y.c) ? 1 : -1); // 1 signifies swap -1 says no swap so this DEScending order
+```
+## whenever u want to swap then pass 1 else -1 according to ur logic.
+ 
+```java
+Arrays.sort(arr, new Comparator<Iteminfo>() {
+            
+    public int compare(Iteminfo o1, Iteminfo o2)
+    {
+            if(o2.c > o1.c) return 1; // that's why we write o2.c - o1.c if descending order
+            return -1;
+    }
+});
+```
+
+
 20. **HashMap Itterations**
 
 ```java
