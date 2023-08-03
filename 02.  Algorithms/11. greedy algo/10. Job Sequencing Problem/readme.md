@@ -31,6 +31,7 @@ class Solution
         int totalProfit = 0;
         
         for(Job jb: arr){
+            // we r doing from last coz if in future a job come with less deadline then the slot will be available
             for(int i = jb.deadline-1; i>=0; i--){
                 if(slot[i] == null){
                     jobDone++;
