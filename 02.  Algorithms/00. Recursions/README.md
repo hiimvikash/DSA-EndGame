@@ -238,7 +238,7 @@ static int fun(int arr[],int ind,int target, int n){
 	        }
 	        
 	        // pick
-	        if(arr[ind]>=sum){
+	        if(arr[ind] <= sum){
 	           sum-=arr[ind];
 	           ans.add(arr[ind]);
 	           fun(arr,ind,sum,ans); // here we don't move to next Index instead "we pick it, till we make it."
