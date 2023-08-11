@@ -8,9 +8,6 @@ Example : -
 - So to increase the sum[l,r] we need to decrease prefix[l] so we store that ele whose prefixSum is least.
   ![image](https://github.com/hiimvikash/DSA-EndGame/assets/71629248/0229b239-360b-4501-9874-fe72dd4ee03c)
 
-
-
-
 ```java
 private static int maximumSum(int arr[], int n){
         HashMap<Integer, Integer> hm = new HashMap<>();
