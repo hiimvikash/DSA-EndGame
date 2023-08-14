@@ -1,4 +1,7 @@
 You are given a event where person p[i] is either entering the hall('+') or leaving the hall ('-'), you need to find maximum person in the hall that were present in any point of time.
+
+<hr>
+
 ![WhatsApp Image 2023-08-11 at 13 17 10](https://github.com/hiimvikash/DSA-EndGame/assets/71629248/cb571fd3-df87-46ff-a184-4139607277a5)
 ![WhatsApp Image 2023-08-11 at 13 17 11](https://github.com/hiimvikash/DSA-EndGame/assets/71629248/24f83967-800e-4da6-9b71-267f64769d04)
 
