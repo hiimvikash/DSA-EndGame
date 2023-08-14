@@ -1,7 +1,7 @@
 You are given array of length N, u need to replace ```arr[i] with arr[i] + x``` **one time only** where x lies btw [-k, k] such that resulting arrays gives **maximum length subsequence having equal element.**
 - Example : 
     - [4, 7, 3, 8] k = 2 
-    - output = 3
+    - output = **3** because after performing operation - {+2, -1, +0, -2} array would look like : {6, 6, 3, 6}
     - Explanation :- 
         - 4 can be converted to {2, 3, 4, 5, **6**}
         - 7 can be converted to {5, **6**, 7, 8, 9}
