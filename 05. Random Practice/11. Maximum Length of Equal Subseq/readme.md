@@ -8,7 +8,7 @@ You are given array of length N, u need to replace ```arr[i] with arr[i] + x``` 
         - 3 can be converted to {1, 2, 3, 4, 5}
         - 8 can be converted to {**6**, 7, 8, 9, 10}
 
-
+- [**actual Q**](https://www.desiqna.in/13650/google-girl-hackathon-coding-questions-solutions-2023-kumar)
 ```java
 public static void main(String[] args) {
         int arr[] = {4, 7, 3, 8};
