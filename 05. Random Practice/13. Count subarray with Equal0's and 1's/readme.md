@@ -1,5 +1,6 @@
 ## You're given binary subarray, count subarrays with = 0s and 1s
 - Input : {1,0,1,0,1}  Output : 6
+![image](https://github.com/hiimvikash/DSA-EndGame/assets/71629248/88fc1082-4c43-401e-9e41-e2f5a5409b7e)
 
 ```java
 private static int countSubArrayWithEquals01(int arr[], int n){
