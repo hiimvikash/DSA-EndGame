@@ -7,6 +7,7 @@
         - Here ```num1mod = num2mod = 2``` so ```num2 - num1 = 38 - 14 = 24``` and ```24 % 6 = 0```
 ## The Approach
 - ### Now if we r able to find two SubArray whose PrefixSum mod are same then there difference will be divisible by k.
+![image](https://github.com/hiimvikash/DSA-EndGame/assets/71629248/396da9b1-7fd5-4aa7-9fad-5628845dff14)
 
 
 ```java
