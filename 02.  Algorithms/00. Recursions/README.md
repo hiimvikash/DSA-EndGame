@@ -427,6 +427,8 @@ boolean fun(int ind, int arr[], int sum, ArrayList<Integer> al){
 	if(fun(ind+1,arr,sum,al)) return true;
 }
 ```
+![image](https://github.com/hiimvikash/DSA-EndGame/assets/71629248/a0f0977f-7704-4615-9525-58c782178713)
+
 ## N Queens This will print only one valid Nqueen **1st basic Approach**
 ```java
 boolean isSafe(int row, int col, int mat[][]){
