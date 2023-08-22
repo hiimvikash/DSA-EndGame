@@ -483,11 +483,7 @@ class Solution {
         if(col==n){
             List<String> subans = new ArrayList<>();
             for(int i=0;i<n;i++){
-                String s="";
-                for(int j=0;j<n;j++){
-                     s=s+mat[i][j];
-                }
-                subans.add(s);
+                subans.add(String.valueOf(mat[i]));
             }
             ans.add(subans);
             return;
