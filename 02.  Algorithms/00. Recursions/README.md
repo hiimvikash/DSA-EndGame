@@ -339,34 +339,39 @@ class Solution {
 ## **Little Optimized**
 ```java
 class Solution {
-    public static ArrayList<String> findPath(int[][] arr, int n) {
+    public static ArrayList<String> findPath(int[][] m, int n) {
         // Your code here
-        ArrayList<String> ans=new ArrayList<>();
-        boolean vis[][]=new boolean[n][n];
+        ArrayList<String> ans = new ArrayList<>();
+        if(m[0][0] == 0) return ans;
         
-        Character dir[]={'D','L','R','U'};
-        int di[]={1,0,0,-1};
-        int dj[]={0,-1,1,0};
-        fun(arr,0,0,vis,"",ans,n,dir,di,dj);
+        // 0-U, 1-R, 2-D, 3-L
+        int di[] = {-1, 0, 1, 0}, dj[] = {0, 1, 0, -1}; char dir[] = {'U', 'R', 'D', 'L'};
+        boolean vis[][] = new boolean[n][n];
+        vis[0][0] = true;
+        helper(m, 0, 0, n, new StringBuilder(), ans, di, dj, dir, vis);
         return ans;
     }
-    static void fun(int arr[][],int i, int j, boolean vis[][], String s, ArrayList<String> ans,int n, Character dir[], int di[], int dj[]){
-        if(i<0 || i>=n || j<0 || j>=n ||arr[i][j]==0||vis[i][j]) return;
-        if(i==n-1 && j==n-1){
-            ans.add(s);
+    private static void helper(int arr[][], int i, int j, int n, StringBuilder sb, ArrayList<String> ans, int di[], int dj[], char dir[], boolean vis[][]){
+        if(i == n-1 && j == n-1){
+            ans.add(sb.toString());
             return;
         }
         
-        vis[i][j]=true;
-        
-        for(int k=0;k<4;k++){
-            s=s+dir[k];
-            fun(arr,i+di[k],j+dj[k],vis,s,ans,n,dir,di,dj);
-            s=s.substring(0,s.length()-1);
+        vis[i][j] = true;
+        for(int k = 0; k<4; k++){
+            int nr = i + di[k];
+            int nc = j + dj[k];
+            
+            if(nr >= 0 && nr < n && nc >= 0 && nc < n && arr[nr][nc]!=0 && !vis[nr][nc]){
+                sb.append(dir[k]); 
+                
+                helper(arr, nr, nc, n, sb, ans, di, dj, dir, vis);
+                
+                sb.deleteCharAt(sb.length() - 1);
+            }
         }
+        vis[i][j] = false;
         
-        
-        vis[i][j]=false;
     }
 }
 ```
