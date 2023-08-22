@@ -473,9 +473,7 @@ class Solution {
         
         // Initializing char with '.'
         char mat[][]=new char[n][n];
-        for(int i=0;i<n;i++)
-            for(int j=0;j<n;j++)
-                mat[i][j]='.';
+        for(char m[] : mat) Arrays.fill(m,'.');
         nQueens(0,mat,ans,n);
         return ans;    
     }
@@ -483,17 +481,15 @@ class Solution {
     public int ind=-1;
     void nQueens(int col, char mat[][], List<List<String>> ans,int n){
         if(col==n){
-            ind=ind+1;
-            ans.add(new ArrayList<String>());
-            
+            List<String> subans = new ArrayList<>();
             for(int i=0;i<n;i++){
                 String s="";
                 for(int j=0;j<n;j++){
                      s=s+mat[i][j];
                 }
-                ans.get(ind).add(s);
-                
+                subans.add(s);
             }
+            ans.add(subans);
             return;
         }
 
