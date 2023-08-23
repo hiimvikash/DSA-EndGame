@@ -213,39 +213,7 @@ class Solution{
     }
 }
 ```
-## Current :
-```java
-class Solution{
-    static Boolean isSubsetSum(int n, int arr[], int sum){
-        // code here
-        int dp[][]=new int[n+1][sum+1];
-        for(int d[]:dp) Arrays.fill(d,-1);
-        
-        return isSS(n,arr,sum,dp)==1? true : false;
-    }
-    static int isSS(int n, int arr[], int sum, int dp[][]){
-        if(n==0){
-            if(sum==0){
-                return 1;
-            }
-            return 0;
-        }
-        
-        if(dp[n][sum]!=-1) return dp[n][sum];
-        // pick
-        if(arr[n-1]<=sum){
-            sum-=arr[n-1];
-            if(isSS(n-1,arr,sum,dp)==1) return 1;
-            dp[n][sum]=0;
-            sum+=arr[n-1]; //  not pick
-        }
-        if(isSS(n-1,arr,sum,dp)==1) return 1;
-        dp[n][sum] = 0;
-        return 0;
-        
-    }
-}
-```
+
 ## DP Tabulation :-
 ```java
 class Solution{
