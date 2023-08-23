@@ -105,25 +105,26 @@ class Solution{
 class Solution 
 { 
     //Function to return max value that can be put in knapsack of capacity W.
-    static int knapSack(int w, int wt[], int val[], int n) 
+    static int knapSack(int W, int wt[], int val[], int n) 
     { 
          // your code here 
-         int dp[][]=new int [n+1][w+1];
-         for(int row[] : dp){
-             Arrays.fill(row,-1);
-         }
-         return knapsack(w,wt,val,n,dp);
+         int dp[][] = new int[n+1][W+1];
+         for(int d[] : dp) Arrays.fill(d, -1);
+         
+         return helper(wt, val, W, n, dp);
     }
-    static int knapsack(int w, int wt[], int val[], int n, int dp[][]) 
-    { 
-         // your code here 
-         if(w==0 || n==0) return 0;
-         else if(dp[n][w]!=-1) return dp[n][w];
-         else if(wt[n-1]<=w){
-             return dp[n][w] = Math.max(val[n-1]+knapsack(w-wt[n-1], wt, val, n-1,dp),knapsack(w, wt, val, n-1,dp));
-         }
-         else
-            return dp[n][w] = knapsack(w, wt, val, n-1,dp);
+    
+    static int helper(int wt[], int val[], int W, int n, int dp[][]){
+        if(n == 0 || W == 0) return 0;
+        
+        
+        if(dp[n][W] != -1) return dp[n][W];
+        int np = helper(wt, val, W, n-1, dp);
+        if(wt[n-1] <= W){
+            return dp[n][W] = Math.max(val[n-1] + helper(wt, val, W - wt[n-1], n-1, dp), np);
+        }else{
+            return dp[n][W] = np;
+        }
     }
 }
 ```
@@ -186,35 +187,29 @@ class Solution{
 ## **[Problem Link](https://practice.geeksforgeeks.org/problems/subset-sum-problem-1611555638/1/#)**
 ```java
 class Solution{
-    static Boolean isSubsetSum(int n, int arr[], int sum){
+
+
+    static Boolean isSubsetSum(int N, int arr[], int sum){
         // code here
-        int dp[][]=new int[n+1][sum+1];
-        for(int row[] : dp){
-             Arrays.fill(row,-1);
-         }
-         if(isSubsetSums(n,arr,sum, dp)==1)
-            return true;
-        else return false;    
+        int dp[][] = new int[N+1][sum+1];
+        for(int d[] : dp) Arrays.fill(d, -1);
+        int call = helper(arr, sum, N, dp);
+        return  (call == 1)? true : false;
     }
-    static int isSubsetSums(int n, int arr[], int sum,int dp[][]){
-        // code here
-        if(n==0){
-            if(sum==0)
-                return 1;
-            return 0;    
+    
+    static int helper(int arr[], int sum, int n, int dp[][]){
+        if(n == 0){
+            if(sum == 0) return 1;
+            return 0;
         }
-        if(dp[n][sum]!=-1) return dp[n][sum];
-        if(arr[n-1]<=sum){
-            dp[n][sum]=isSubsetSums(n-1,arr,sum-arr[n-1],dp); // pick
-            if(dp[n][sum]==1) return 1;
-            dp[n][sum]=isSubsetSums(n-1,arr,sum,dp); // notPick 
-            if(dp[n][sum]==1) return 1; 
+        
+        
+        if(dp[n][sum] != -1) return dp[n][sum];
+        if(arr[n-1] <= sum){
+            if(helper(arr, sum - arr[n-1], n-1, dp) == 1) return dp[n][sum] = 1;
         }
-        else{
-            dp[n][sum]=isSubsetSums(n-1,arr,sum,dp); // notPick 
-            if(dp[n][sum]==1) return 1; 
-        }
-        return 0;    
+        if(helper(arr, sum, n-1, dp) == 1) return dp[n][sum] = 1;
+        return dp[n][sum] = 0;
     }
 }
 ```
