@@ -430,6 +430,40 @@ public static int countSubstring(String str, int k){
 }
 ```
 **[just see dry run](https://youtu.be/shsYUyF7pEs?si=MENj48arzBA8my9C)**
+
+# Count number of substrings having at least K distinct characters
+- str = "bbaacdedf" k = 2 output = 34
+```
+Hint : As soon as your window hit the condition i.e., uniqueCharacter == k then addition of any character will just increase it length only and will give rise to new substring only which are valid.
+```
+```java
+public static int countSubstring(String str, int k){
+        int n = str.length();
+        int s = 0; 
+        int e = 0;
+        HashMap<Character, Integer> hm=new HashMap<>();
+        int uc = 0;
+        int ans = 0;
+        while(e<n){
+            char ch = str.charAt(e);
+            hm.put(ch, hm.getOrDefault(ch, 0) + 1);
+            uc = hm.size();
+            
+            while(uc == k){
+                ans+=n-e;
+                
+                char rc = str.charAt(s);
+                hm.put(rc, hm.get(rc) - 1);
+                if(hm.get(rc) == 0) hm.remove(rc);
+                
+                uc = hm.size();
+                s++;
+            }
+            e++;
+        }
+        return ans;
+}
+```
 # **[10. Pick Toys](https://www.lintcode.com/problem/longest-substring-with-at-most-two-distinct-characters/description)**
 
 ## **[Video Reference](https://youtu.be/seOKHXB_w74)**
