@@ -434,7 +434,7 @@ public static int countSubstring(String str, int k){
 # Count number of substrings having at least K distinct characters
 - str = "bbaacdedf" k = 2 output = 34
 ```
-Hint : As soon as your window hit the condition i.e., uniqueCharacter == k then addition of any character will just increase it length only and will give rise to new substring only which are valid.
+Hint : As soon as your window hit the condition i.e., uniqueCharacter == k then addition of any character will just increase it length only and will give rise to new substring only which will be valid bcz uniqueCharacter will increase only.
 ```
 ```java
 public static int countSubstring(String str, int k){
