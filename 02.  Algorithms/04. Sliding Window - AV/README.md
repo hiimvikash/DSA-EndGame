@@ -399,6 +399,36 @@ class Solution {
     }
 }
 ```
+# Count substring with atmost K unique character.
+## TCs : s = "aabcbcdbca" k = 2 Output = 23({a}, {a, aa}, {b, ab, aab}....)
+
+```java
+public static int countSubstring(String str, int k){
+	    HashMap<Character> hm = new HashMap<>();
+	    int s = 0; 
+	    int e = 0;
+	    
+	    int ans = 0;
+	    while(e<n){
+	        char ch = str.charAt(e);
+	        hm.put(ch, hm.getOrDefault(ch,0)+1);
+	        int uc = hm.size();
+	        
+	        while(uc > k){
+	            char rc = str.charAt(s);
+	            hm.put(rc, hm.get(rc) - 1);
+	            if(hm.get(rc) == 0) hm.remove(rc);
+	            
+	            uc = hm.size();
+	            s++;
+	        }
+	        ans+= e-s+1;
+	        e++;
+	    }
+	    return ans;
+}
+```
+**[just see dry run](https://youtu.be/shsYUyF7pEs?si=MENj48arzBA8my9C)**
 # **[10. Pick Toys](https://www.lintcode.com/problem/longest-substring-with-at-most-two-distinct-characters/description)**
 
 ## **[Video Reference](https://youtu.be/seOKHXB_w74)**
