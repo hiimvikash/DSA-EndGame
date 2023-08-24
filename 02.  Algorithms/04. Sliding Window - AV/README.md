@@ -436,6 +436,8 @@ public static int countSubstring(String str, int k){
 ```
 Hint : As soon as your window hit the condition i.e., uniqueCharacter == k then addition of any character will just increase it length only and will give rise to new substring only which will be valid bcz uniqueCharacter will increase only.
 ```
+![image](https://github.com/hiimvikash/DSA-EndGame/assets/71629248/35e3540e-f212-4461-adc2-62a92738a991)
+
 ```java
 public static int countSubstring(String str, int k){
         int n = str.length();
