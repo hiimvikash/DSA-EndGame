@@ -401,6 +401,7 @@ class Solution {
 ```
 # Count substring with atmost K unique character.
 ## TCs : s = "aabcbcdbca" k = 2 Output = 23({a}, {a, aa}, {b, ab, aab}....)
+![image](https://github.com/hiimvikash/DSA-EndGame/assets/71629248/a4d99b09-2f84-4c58-a6e1-955a71416dd0)
 
 ```java
 public static int countSubstring(String str, int k){
