@@ -466,6 +466,42 @@ public static int countSubstring(String str, int k){
         return ans;
 }
 ```
+# [Count Number of substring with exactly K distinct character](https://leetcode.com/problems/subarrays-with-k-different-integers/description/)
+
+
+```java
+class Solution {
+    public int subarraysWithKDistinct(int[] nums, int k) {
+        return atmostK(nums,k) - atmostK(nums,k-1);
+    }
+
+    private int atmostK(int arr[], int k){
+        int n = arr.length;
+        HashMap<Integer, Integer> hm=new HashMap<>();
+        int s = 0; 
+        int e = 0;
+        int uc = 0;
+        int ans = 0;
+        while(e < n){
+            int ele = arr[e];
+            hm.put(ele, hm.getOrDefault(ele, 0) + 1);
+            uc = hm.size();
+
+            while(uc > k){
+                int rc = arr[s];
+                hm.put(rc, hm.get(rc) - 1);
+                if(hm.get(rc) == 0) hm.remove(rc);
+                
+                uc = hm.size();
+                s++;
+            }
+            ans+=e-s+1;
+            e++;
+        }
+        return ans;
+    }
+}
+```
 # **[10. Pick Toys](https://www.lintcode.com/problem/longest-substring-with-at-most-two-distinct-characters/description)**
 
 ## **[Video Reference](https://youtu.be/seOKHXB_w74)**
