@@ -467,7 +467,7 @@ public static int countSubstring(String str, int k){
 }
 ```
 # [Count Number of substring with exactly K distinct character](https://leetcode.com/problems/subarrays-with-k-different-integers/description/)
-
+![image](https://github.com/hiimvikash/DSA-EndGame/assets/71629248/5f72dc92-cb19-4347-a8b2-e51d8c338d29)
 
 ```java
 class Solution {
