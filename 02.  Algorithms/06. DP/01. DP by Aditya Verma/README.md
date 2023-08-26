@@ -327,47 +327,56 @@ class Solution {
 }
 ```
 # **[9. Count Subset Sums.](https://youtu.be/F7wqWbqYn9g)**
-## Recursive Solution:-
+## Recursive Solution:- (This solution will work when ur array ele are +ve only)
+```
+This solution will work for +ve ele in array only
+1. Recursion discussion :-
+	1. as u r picking and not picking from end of array
+	2. so if ur arr[] = {-, -, -, -2, -, -, 10} k = 8 then below code will not consider ans{10, -2} bcz ur code will not be able to pick 10
+	3. Now when arr[] = {-, -, -, 10, -, -, -2} k = 8 then below code will consider ans{10, -2}
+2. Memonization Discussion :-
+	ur code will give IndexOutOfBoundExcaption bcz when u encounter -ve element then it will increase ur target and ur dp is initialised as dp[n+1][tar+1] so error
+```
+
 ```java
-static int countSubsetSum(int n, int arr[], int sum){
-        // code here
-        if(n==0){
-            if(sum==0)
+public static int helper(int arr[], int n, int k){
+        if(n == 0){
+            if(k == 0){
                 return 1;
-            return 0;    
+            }
+            return 0;
         }
-        if(arr[n-1]<=sum){
-            return countSubsetSum(n-1,arr,sum-arr[n-1])+countSubsetSum(n-1,arr,sum);
-        }
-        else
-            return countSubsetSum(n-1,arr,sum); // notPick
-    }
+        
+        int p = 0;
+        if(arr[n-1] <= k) p = helper(arr, n-1, k - arr[n-1]);
+        int np = helper(arr, n-1, k);
+
+        return p+np;
+}
 ```
 ## DP Memonization :-
 ```java
-public static void main(String[] args) {
-		int arr[]={1,1,1,1,1};
-		int sum=2;
-		int n=arr.length;
-		int dp[][]=new int[n+1][sum+1];
-		for(int row[]:dp) {
-			Arrays.fill(row, -1);
-		}
-		System.out.println(countSubsetSum(n,arr,sum,dp));
-	}
-static int countSubsetSum(int n, int arr[], int sum,int dp[][]){
-        // code here
-        if(n==0){
-            if(sum==0)
+public static int findWays(int nums[], int tar) {
+        // Write your code here..
+        int n = nums.length;
+        int dp[][] = new int[n+1][tar+1];
+        for(int d[] : dp) Arrays.fill(d, -1);
+
+        return helper(nums, n, tar, dp);
+    }
+    public static int helper(int arr[], int n, int k, int dp[][]){
+        if(n == 0){
+            if(k == 0){
                 return 1;
-            return 0;    
+            }
+            return 0;
         }
-        if(dp[n][sum]!=-1) return dp[n][sum];
-        if(arr[n-1]<=sum){
-            return dp[n][sum]= countSubsetSum(n-1,arr,sum-arr[n-1],dp)+ countSubsetSum(n-1,arr,sum,dp);
-        }
-        else
-            return dp[n][sum]= countSubsetSum(n-1,arr,sum,dp); // notPick
+        if(dp[n][k] != -1) return dp[n][k];
+        int p = 0;
+        if(arr[n-1] <= k) p = helper(arr, n-1, k - arr[n-1], dp);
+        int np = helper(arr, n-1, k, dp);
+
+        return dp[n][k] = p+np;
 }
 ```
 ## DP Tabulation :-
