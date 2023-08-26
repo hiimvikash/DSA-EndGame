@@ -335,7 +335,7 @@ This solution will work for +ve ele in array only
 	2. so if ur arr[] = {-, -, -, -2, -, -, 10} k = 8 then below code will not consider ans{10, -2} bcz ur code will not be able to pick 10
 	3. Now when arr[] = {-, -, -, 10, -, -, -2} k = 8 then below code will consider ans{10, -2}
 2. Memonization Discussion :-
-	ur code will give IndexOutOfBoundExcaption bcz when u encounter -ve element then it will increase ur target and ur dp is initialised as dp[n+1][tar+1] so error
+	ur code will give IndexOutOfBoundExcaption bcz when u encounter -ve element then it will increase/decrease ur target and ur dp is initialised as dp[n+1][tar+1] so error
 ```
 
 ```java
