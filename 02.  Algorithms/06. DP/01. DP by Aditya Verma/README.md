@@ -517,7 +517,11 @@ class Solution
 }
 ```
 # **[11. Count no of subsets with given difference](https://youtu.be/ot_XBHyqpFc)**
-### The Problem Statement :- you're given array[] and diff, you need to find two subset sum s1 and s2 such that difference btw s1 and s2 is diff.
+### The Problem Statement :- you're given array[] and diff, partition array into two subsetSum s1 and s2 such that difference btw s1 and s2 is diff. you need to return the count of different ways u can partition array such that for all partions this is valid ```s1-s2 = diff.```
+#### Example
+- arr[] = {1, 1, 2, 3} diff = 1
+- output  = 3
+- coz : {1,1,2} {3}  & {1, 2} {1,3} & {1,2} {1,3}
 ## **Intution**
 - Let sum of subset 1 be s1 and subset 2 with s2
 - s1 - s2 = diff (given)
