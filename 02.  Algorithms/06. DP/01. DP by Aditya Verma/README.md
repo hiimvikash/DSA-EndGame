@@ -920,6 +920,32 @@ class Solution {
     }
 }
 ```
+or
+```java
+class Solution {
+    public int coinChange(int[] coins, int amount) {
+        int n = coins.length;
+        int dp[][] = new int[n+1][amount+1];
+        for(int r[] :dp) Arrays.fill(r, -1);
+
+        int ans = helper(coins, n, amount, dp);
+        return ans == Integer.MAX_VALUE-1 ? -1 : ans;
+    }
+
+    int helper(int coins[], int n, int sum, int dp[][]){
+        if(sum == 0) return 0;
+        if(n == 0) return Integer.MAX_VALUE-1;
+
+        if(dp[n][sum] != -1) return dp[n][sum];
+        
+        int p = Integer.MAX_VALUE-1;
+        if(coins[n-1] <= sum) p = 1 + helper(coins, n, sum - coins[n-1], dp);
+        int np = helper(coins, n-1, sum, dp);
+
+        return dp[n][sum] = Math.min(p,np);
+    }
+}
+```
 ## DP Tabulation :-
 ```java
 class Solution {
