@@ -542,6 +542,8 @@ class Solution {
         for(int ele:nums) sum+=ele;
         if((sum+target)%2!=0) return 0; // case 2 [5,2,2,7,3,7,9,0,2,3] 9, ANS is 0
         int reqSum=(sum+target)/2;
+        // reqSum will come -ve if Math.abs(-target) > sum and as arr[i] is +ve so impossible to make -ve reqSum
+        if(reqSum < 0) return 0;
         int dp[][]=new int[nums.length+1][reqSum+1];
 		for(int row[]:dp) {
 			Arrays.fill(row, -1);
