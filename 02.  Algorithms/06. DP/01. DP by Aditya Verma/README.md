@@ -636,6 +636,33 @@ class Solution{
     
 }
 ```
+or
+
+```java
+class Solution{
+    static int knapSack(int N, int W, int val[], int wt[])
+    {
+        // code here
+        int dp[][] = new int[N+1][W+1];
+        for(int d[] : dp) Arrays.fill(d, -1);
+        
+        return helper(val, wt, W, N, dp);
+    }
+    
+    static int helper(int val[], int wt[], int W, int N, int dp[][]){
+        if(N == 0 || W == 0) return 0;
+        
+        if(dp[N][W] != -1) return dp[N][W];
+        int p = 0;
+        if(wt[N-1] <= W){
+            p = val[N-1]+helper(val, wt, W - wt[N-1], N, dp);
+        }
+        int np = helper(val, wt, W, N-1, dp);
+        
+        return dp[N][W] = Math.max(p, np);
+    }
+}
+```
 ## DP Tabulation :-
 ```java
 class Solution{
