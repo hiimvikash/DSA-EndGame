@@ -550,7 +550,7 @@ class Solution {
 		}
         return countSubsetSum(nums.length,nums,reqSum,dp);
     }
-    static int countSubsetSum(int n, int arr[], int sum,int dp[][]){
+static int countSubsetSum(int n, int arr[], int sum,int dp[][]){
         // code here
         if(n==0){
             if(sum==0)
@@ -558,12 +558,12 @@ class Solution {
             return 0;    
         }
         if(dp[n][sum]!=-1) return dp[n][sum];
+        int np = countSubsetSum(n-1,arr,sum,dp);
+        int p = 0;
         if(arr[n-1]<=sum){
-            return dp[n][sum]= countSubsetSum(n-1,arr,sum-arr[n-1],dp)+ countSubsetSum(n-1,arr,sum,dp);
+            p = countSubsetSum(n-1,arr,sum-arr[n-1],dp);
         }
-        else
-            return dp[n][sum]= countSubsetSum(n-1,arr,sum,dp); // notPick
-    }
+	return dp[n][sum]= p+np; // notPick
 }
 ```
 <hr>
