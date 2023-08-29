@@ -566,6 +566,31 @@ static int countSubsetSum(int n, int arr[], int sum,int dp[][]){
 	return dp[n][sum]= p+np; // notPick
 }
 ```
+or
+
+```java
+class Solution {
+    public int findTargetSumWays(int[] nums, int target) {
+        HashMap<String, Integer> hm=new HashMap<>();
+        return helper(nums, nums.length, target, hm);
+    }
+
+    private int helper(int arr[], int n, int k, HashMap<String, Integer> hm){
+        if(n == 0){
+            if(k == 0) return 1;
+            return 0;
+        }
+        String key = n+" "+k;
+        if(hm.containsKey(key)) return hm.get(key);
+
+        int tp = helper(arr, n-1, k - arr[n-1], hm); // takePositive
+        int tn =  helper(arr, n-1, k - (-arr[n-1]), hm); // takeNegative
+
+        hm.put(key, tp+tn);
+        return tp+tn;
+    }
+}
+```
 <hr>
 <hr>
 
