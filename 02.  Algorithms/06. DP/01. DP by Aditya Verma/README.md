@@ -823,6 +823,33 @@ class Solution {
     }
 }
 ```
+or
+```java
+class Solution {
+    public int change(int amount, int[] coins) {
+        int n = coins.length;
+        int dp[][] = new int[n+1][amount+1];
+        for(int row[] :dp) Arrays.fill(row, -1);
+
+        return helper(coins, n, amount, dp);
+    }
+
+    int helper(int coins[], int n, int sum, int dp[][]){
+        if(n == 0){
+            if(sum == 0) return 1;
+            return 0;
+        }
+
+        if(dp[n][sum] != -1) return dp[n][sum];
+        int p = 0;
+        if(coins[n-1] <= sum)
+            p = helper(coins, n, sum - coins[n-1], dp);
+        int np = helper(coins, n-1, sum, dp);
+
+        return dp[n][sum] = p + np;
+    }
+}
+```
 ## DP Tabulation :-
 ```java
 class Solution {
@@ -840,6 +867,27 @@ class Solution {
         		else dp[i][j]=dp[i-1][j];
         	}
         return dp[n][sum];
+    }
+}
+```
+or
+```java
+class Solution {
+    public int change(int amount, int[] coins) {
+        int n = coins.length;
+        int dp[][] = new int[n+1][amount+1];
+        for(int row[] :dp) row[0] = 1;
+
+        for(int i = 1; i<n+1; i++){
+            for(int j = 1; j<amount+1; j++){
+                int p = 0;
+                if(coins[i-1] <= j) p = dp[i][j-coins[i-1]];
+                int np = dp[i-1][j];
+
+                dp[i][j] = p+np;
+            }
+        }
+        return dp[n][amount];
     }
 }
 ```
