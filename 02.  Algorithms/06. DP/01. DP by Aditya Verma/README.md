@@ -767,6 +767,31 @@ class Solution{
         return dp[n][l];   
     }
 }
+or
+
+```java
+class Solution{
+    public int cutRod(int price[], int N) {
+        //code here
+        
+        int dp[][] = new int[N+1][N+1];
+        
+        for(int i = 1; i<N+1; i++){
+            for(int j = 1; j<N+1; j++){
+                int p = 0;
+                if(i <= j)
+                    p = price[i-1] + dp[i][j - i];
+                int np = dp[i-1][j];
+                
+                dp[i][j] = Math.max(p, np);
+            }
+        }
+        
+        return dp[N][N];
+    }
+}
+```
+
 ```
 # **[15. Coin Change II](https://youtu.be/I4UR2T6Ro3w)**
 ## [**Problem Link**](https://leetcode.com/problems/coin-change-2)
