@@ -689,6 +689,29 @@ class Solution{
     }
 }
 ```
+or
+```java
+class Solution{
+    static int knapSack(int N, int W, int val[], int wt[])
+    {
+        // code here
+        int dp[][] = new int[N+1][W+1];
+        
+        for(int i = 1; i<N+1; i++){
+            for(int j = 1; j<W+1; j++){
+                int p = 0;
+                if(wt[i-1] <= j)
+                    p = val[i-1] + dp[i][j - wt[i-1]];
+                int np = dp[i-1][j];
+                
+                dp[i][j] = Math.max(p, np);
+            }
+        }
+        
+        return dp[N][W];
+    }
+}
+```
 # **[14. Rod Cutting](https://youtu.be/aycn9KO8_Ls)**
 ## [**Problem Link**](https://practice.geeksforgeeks.org/problems/rod-cutting0840/1#)
 ## This Problem is same as Unbounded Knapsack.
