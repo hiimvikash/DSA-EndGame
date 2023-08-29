@@ -966,6 +966,32 @@ class Solution {
     }
 }
 ```
+or
+```java
+class Solution {
+    public int coinChange(int[] coins, int amount) {
+        int n = coins.length;
+        int dp[][] = new int[n+1][amount+1];
+        
+        final int inf = Integer.MAX_VALUE-1;
+        for(int r[] : dp){
+            r[0] = 0;
+        }
+        for(int j = 1; j<amount+1; j++) dp[0][j] = inf;
+
+        for(int i = 1; i<n+1; i++){
+            for(int j = 1; j<amount+1; j++){
+                int p = inf;
+                if(coins[i-1] <= j) p = 1 + dp[i][j-coins[i-1]];
+                int np = dp[i-1][j];
+
+                dp[i][j] = Math.min(p,np);
+            }
+        }
+        return dp[n][amount] == Integer.MAX_VALUE-1 ? -1 : dp[n][amount];
+    }
+}
+```
 <hr>
 <hr>
 <hr>
