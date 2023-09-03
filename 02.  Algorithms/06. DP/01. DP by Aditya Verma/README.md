@@ -1303,6 +1303,17 @@ class Solution{
 ```
 #  [**25. Longest Repeating Subsequence (LCS with different index)**](https://youtu.be/hbTaCmQGqLg)
 ## [**Problem Link**](https://practice.geeksforgeeks.org/problems/longest-repeating-subsequence2004/1)
+```
+AABABCD
+AXXXY.  etc.
+Here is the explanation:
+Read this: Given a string, print the longest repeating subsequence such that the two subsequences don’t have same string character at same position
+
+The same Position is the twist here: A X X X Y ==> You can take X X [index0 and index1] and XX [index 1 and index2]
+
+X of index1 is used in both but its position in both substrings is different. In the first subsequence, it comes at 1st index whereas in 
+the second subsequence comes at the 0th index.
+```
 ## Intution :-
 - We make a copy of same string and return **LCS(s,s) with different Index** because if same subsequence will be present then it will obviously occur in different index.
 ```java
