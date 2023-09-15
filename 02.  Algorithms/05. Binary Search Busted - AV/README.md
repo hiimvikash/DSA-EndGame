@@ -123,6 +123,13 @@ class Solution {
     }
 }
 ```
+
+# 6. Floor in a sorted array
+## - Floor of X is a GE from Es which are <= X
+## - [2, 4, 7, 9, 10, 13, 18, 23] x = 12, Floor of X = 10(index 4)
+
+## Approach 1 :-
+**Whenever you find valid candidates, store it index as answer and search for greater valid index.**
 # [**6. Number of Times a Sorted array is Rotated**](https://practice.geeksforgeeks.org/problems/rotation4723/1#)
 ![BSRC](https://user-images.githubusercontent.com/71629248/131263220-94ca2379-b795-4450-be19-d35af48e42c2.png)
 
