@@ -196,7 +196,8 @@ int ub(int arr[], int x){
 ```
 
 # [**6. Number of Times a Sorted array is Rotated**](https://practice.geeksforgeeks.org/problems/rotation4723/1#)
-![BSRC](https://user-images.githubusercontent.com/71629248/131263220-94ca2379-b795-4450-be19-d35af48e42c2.png)
+![image](https://github.com/hiimvikash/DSA-EndGame/assets/71629248/3a7ee443-c089-43e5-920b-7cb1976abe5b)
+
 
 ```java
 class Solution {
