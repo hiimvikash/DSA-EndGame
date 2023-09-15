@@ -3,7 +3,8 @@
 ![BS2 TC](https://user-images.githubusercontent.com/71629248/131242067-5813edab-bb16-4794-bb13-ce4e663c138e.png)
 
 # [**1. Binary Search Basic**](https://youtu.be/QNGL_t_o_QA)
-![BS1](https://user-images.githubusercontent.com/71629248/131240871-ce657d2c-4880-4504-93ed-e577916ae295.png)
+![image](https://github.com/hiimvikash/DSA-EndGame/assets/71629248/0b8657f4-3d74-4f05-9b9c-e175f17b6f8a)
+
 ##  **2. BS on Ascending Order sorted array :-**
 ```java
 private static int binarySearch(int[] a, int fromIndex, int toIndex, int key) {
