@@ -7,152 +7,120 @@
 
 ##  **2. BS on Ascending Order sorted array :-**
 ```java
-private static int binarySearch(int[] a, int fromIndex, int toIndex, int key) {
-        int start = fromIndex;
-        int end = toIndex - 1;
+private static int binarySearch(int[] arr, int key) {
+        int s = 0;
+        int end = arr.length - 1;
 
-        while (start <= end) {
-            int mid = start + (end-start)/2;
-            int midVal = a[mid];
+        while (s <= e) {
+            int mid = s + (e-s)/2;
 
-            if (key > midVal)
-                start = mid + 1;
-            else if (key < midVal)
-                end = mid - 1;
+            if (key > arr[mid])
+                s = mid + 1;
+            else if (key < arr[mid])
+                e = mid - 1;
             else
                 return mid; // key found
         }
-        return -(start + 1);  // if key not found then -(thisVal+1) will give insertion point.
+        return -1;
 }
 ```
 ## **2. BS on Descending Order sorted array :-**
 ```java
-private static int binarySearch(int[] a, int fromIndex, int toIndex, int key) {
-        int start = fromIndex;
-        int end = toIndex - 1;
+private static int binarySearch(int[] arr, int key) {
+        int s = 0;
+        int e = arr.length - 1;
 
         while (start <= end) {
-            int mid = start + (end-start)/2;
-            int midVal = a[mid];
+            int mid = s + (e-s)/2;
 
-            if (key < midVal)
-                start = mid + 1;
-            else if (key > midVal)
-                end = mid - 1;
+            if (key < arr[mid])
+                s = mid + 1;
+            else if (key > arr[mid])
+                e = mid - 1;
             else
                 return mid; // key found
         }
-        return -(start + 1);  // if key not found then -(thisVal+1) will give insertion point.
+        return -1;
 }
 ```
 ## **3. Order Agnostic Binary Search (when you don't know in which order the array is sorted):**
 ```java
-private static int AgnosticbinarySearch(int[] a, int fromIndex, int toIndex, int key) {
-        int start = fromIndex;
-        int end = toIndex - 1;
-        boolean isAsc= a[start] < a[end]
-        while (start <= end) {
-            int mid = start + (end-start)/2;
-            int midVal = a[mid];
+private static int AgnosticbinarySearch(int[] arr, int key) {
+        int s = 0;
+        int e = arr.length - 1;
+        boolean isAsc= arr[s] < a[e];
+        while (s <= e) {
+            int mid = s + (e-s)/2;
 
-            if (key > midVal)
-                if(isAsc) start = mid + 1; else end = mid - 1;
-            else if (key < midVal)
-                if(isAsc) end = mid - 1; else start = mid + 1;
+            if (key > arr[mid])
+                if(isAsc) s = mid + 1; else e = mid - 1;
+            else if (key < arr[mid])
+                if(isAsc) e = mid - 1; else s = mid + 1;
             else
-                return mid; // key found
+                return mid;
         }
-        return -(start + 1);  // if key not found then -(thisVal+1) will give insertion point.
+        return -1;
 }
 ```
-# [**4. First and last occurrences of x**](https://practice.geeksforgeeks.org/problems/first-and-last-occurrences-of-x3116/1)
+# [**4. First and last occurrences of x**](https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/description/)
 ## [**Video Reference**](https://youtu.be/zr_AoTxzn0Y)
 ```java
-class GFG
-{
-    ArrayList<Long> find(long arr[], int n, int x)
-    {
-        // code here
-        ArrayList<Long> ans=new ArrayList<>();
-        ans.add(binarySearchFL(arr,0,n,x,true));
-        ans.add(binarySearchFL(arr,0,n,x,false));
-        return ans;
-        
+class Solution {
+    public int[] searchRange(int[] nums, int target) {
+        return new int[]{fnl(nums,target, true), fnl(nums, target, false)};
     }
-    private static long binarySearchFL(long[] a, int fromIndex, int toIndex, int key, boolean isF) {
-        int start = fromIndex;
-        int end = toIndex - 1;
-        int ansF=-1; // this will store 1stOcurrence
-        int ansL=-1; // this will store LastOcurrence
-        
-        while (start <= end) {
-            int mid = start + (end-start)/2;
-            long midVal = a[mid];
 
-            if ((long)key > midVal)
-                start = mid + 1;
-            else if ((long)key < midVal)
-                end = mid - 1;
-            else{
-                if(isF){
-                ansF=mid;
-                end = mid - 1;// key found
-                }
-                else{
-                    ansL=mid;
-                    start = mid + 1;// key found
-                }
+    private int fnl(int arr[], int x, boolean isF){
+        int s = 0;
+        int e = arr.length-1;
+
+        int ans = -1;
+        while(s<=e){
+            int mid = s+(e-s)/2;
+
+            if(arr[mid] == x){
+                ans = mid;
+                if(isF) e = mid - 1;
+                else s = mid + 1;
             }
+            else if(x > arr[mid]) s = mid+1;
+            else e = mid - 1;
         }
-        if(ansF!=-1 && isF) return (long)ansF;
-        if(ansL!=-1 && !isF) return (long)ansL;
-        return -1;  // if key not found 
+        return ans;
     }
-    
 }
 ```
 # [**5. COUNT NUMBER OF OCURRENCES(or frequency) of X IN A SORTED ARRAY:**](https://practice.geeksforgeeks.org/problems/number-of-occurrence2259/1)
 ## [**Video Reference**](https://youtu.be/Ru_HhBFV3Xo)
+## Intution :-
+- lastOccurence - FirstOccurence + 1;
 ```java
 class Solution {
     int count(int[] arr, int n, int x) {
         // code here
-        int fo=binarySearchFL(arr,0,n,x,true);
-        int lo=binarySearchFL(arr,0,n,x,false);
-        if(fo==-1 || lo==-1) return 0;
-        if(fo==lo) return 1;
-        return lo-fo+1;
-    }
-    private static int binarySearchFL(int[] a, int fromIndex, int toIndex, int key, boolean isF) {
-        int start = fromIndex;
-        int end = toIndex - 1;
-        int ansF=-1; // this will store 1stOcurrence
-        int ansL=-1; // this will store LastOcurrence
+        int lo = fnl(arr, x, false);
+        if(lo == -1) return 0;
+        return lo - fnl(arr, x, true) + 1;
         
-        while (start <= end) {
-            int mid = start + (end-start)/2;
-            long midVal = a[mid];
-
-            if ((long)key > midVal)
-                start = mid + 1;
-            else if ((long)key < midVal)
-                end = mid - 1;
-            else{
-                if(isF){
-                ansF=mid;
-                end = mid - 1;// key found
-                }
-                else{
-                    ansL=mid;
-                    start = mid + 1;// key found
-                }
-            }
-        }
-        if(ansF!=-1 && isF) return ansF;
-        if(ansL!=-1 && !isF) return ansL;
-        return -1;  // if key not found 
     }
+    private int fnl(int arr[], int x, boolean isF){
+        int s = 0;
+        int e = arr.length-1;
 
+        int ans = -1;
+        while(s<=e){
+            int mid = s+(e-s)/2;
+
+            if(arr[mid] == x){
+                ans = mid;
+                if(isF) e = mid - 1;
+                else s = mid + 1;
+            }
+            else if(x > arr[mid]) s = mid+1;
+            else e = mid - 1;
+        }
+        return ans;
+    }
 }
 ```
 # [**6. Number of Times a Sorted array is Rotated**](https://practice.geeksforgeeks.org/problems/rotation4723/1#)
