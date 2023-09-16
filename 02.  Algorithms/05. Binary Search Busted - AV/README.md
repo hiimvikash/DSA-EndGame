@@ -223,48 +223,32 @@ int findKRotation(int arr[], int n) {
     }
 ```
 # [**7. Search in Rotated Sorted Array LC-33**](https://leetcode.com/problems/search-in-rotated-sorted-array/)
-## Intution :-
-- Find Pivot.
-- Now **0 to pivot** & **pivot+1 to n-1** is sorted.
-- then check the range where your target lies and perform BS in that range. 
+## Intution :- Whenever mid stand it will give : either leftPartSorted or RightPartSorted so we check for the existence of target in sorted part, if not found then we again move to unsorted part.
 ```java
 class Solution {
-    public int search(int[] arr, int target) {
-        int n=arr.length;
-        int pi=findPivot(arr,0,n); // pivot index
-        if(target>=arr[0] && target<= arr[pi]) return binarySearch(arr,0,pi+1,target);
-        return binarySearch(arr,pi+1,n,target);
-    }
-    private static int binarySearch(int[] a, int fromIndex, int toIndex, int key) {
-        int start = fromIndex;
-        int end = toIndex - 1;
+    public int search(int[] nums, int x) {
+        int n = nums.length;
+        int s = 0;
+        int e = n-1;
 
-        while (start <= end) {
-            int mid = start + (end-start)/2;
-            int midVal = a[mid];
-
-            if (key > midVal)
-                start = mid + 1;
-            else if (key < midVal)
-                end = mid - 1;
-            else
-                return mid; // key found
+        while(s<=e){
+            int mid = s+(e-s)/2;
+            
+            if(nums[mid] == x) return mid;
+            // identify the sorted part
+            // if LPS
+            if(nums[s] <= nums[mid]){
+                // check if x lies in LSP
+                if(x >= nums[s] && x < nums[mid]) e = mid-1;
+                else s = mid+1;
+            }
+            // if RPS
+            else if(nums[mid] <= nums[e]){
+                if(x > nums[mid] && x <= nums[e]) s = mid+1;
+                else e = mid-1; 
+            }
         }
-        return -1;  
-    }
-    private int findPivot(int arr[],int fromIndex,int toIndex){
-        int start=fromIndex;
-        int end=toIndex-1;
-        if(arr[start]<=arr[end]) return 0;
-        while(start<=end){
-            int mid= start + (end-start)/2;
-            if(mid < end && arr[mid]>arr[mid+1]) return mid;
-            if(mid > start && arr[mid]<arr[mid-1]) return mid-1;
-            // as we are looking for pivot that's why we r getting attracted toward unsorted part.
-            else if(arr[start]>arr[mid]) end=mid-1;
-            else if(arr[mid]>arr[end]) start=mid+1;
-        }
-        return 6778;
+        return -1;
     }
 }
 ```
