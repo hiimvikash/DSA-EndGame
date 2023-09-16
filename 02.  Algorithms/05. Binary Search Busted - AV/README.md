@@ -175,7 +175,7 @@ int ceil(int arr[], int x){
 
 <hr>
 
-# 8. Upper Bound :- Ceil of X is a SE from Es which are > X
+# 8. Upper Bound :- UB of X is a SE from Es which are > X
 ## - [2, 4, 7, 9, 10, 13, 18, 23] x = 13, Floor of X = 18(index 6)
 ## Approach 1 :- Whenever you find valid candidates, store it index as answer and search for smaller valid index.
 ```java
@@ -195,32 +195,31 @@ int ub(int arr[], int x){
 }
 ```
 
+
+
 # [**6. Number of Times a Sorted array is Rotated**](https://practice.geeksforgeeks.org/problems/rotation4723/1#)
 ![image](https://github.com/hiimvikash/DSA-EndGame/assets/71629248/3a7ee443-c089-43e5-920b-7cb1976abe5b)
 
 
 ```java
-class Solution {
-    int findKRotation(int arr[], int n) {
+int findKRotation(int arr[], int n) {
         // code here
-        return findPivot(arr,0,n)+1;
-    }
-    // this will return pivot
-    int findPivot(int arr[],int fromIndex,int toIndex){
-        int start=fromIndex;
-        int end=toIndex-1;
-        if(arr[start]<=arr[end]) return -1;
-        while(start<=end){
-            int mid= start + (end-start)/2;
-            if(mid < end && arr[mid]>arr[mid+1]) return mid;
-            if(mid > start && arr[mid]<arr[mid-1]) return mid-1;
-            // as we are looking for pivot that's why we r getting attracted toward unsorted part.
-            else if(arr[start]>arr[mid]) end=mid-1;
-            else if(arr[mid]>arr[end]) start=mid+1;
+        int s = 0;
+        int e = n-1;
+        if(arr[s] <= arr[e]) return 0;
+        while(s<=e){
+            int mid = s+(e-s)/2;
+            
+            // answer returning situation
+            if(arr[mid+1] < arr[mid]) return mid+1;
+            if(arr[mid] < arr[mid-1]) return mid;
+            
+            // move to unsorted part
+            else if(arr[s] > arr[mid]) e = mid-1;
+            else if(arr[mid] > arr[e]) s = mid+1;
         }
-        return 6778;
+        return 87456;
     }
-}
 ```
 # [**7. Search in Rotated Sorted Array LC-33**](https://leetcode.com/problems/search-in-rotated-sorted-array/)
 ## Intution :-
