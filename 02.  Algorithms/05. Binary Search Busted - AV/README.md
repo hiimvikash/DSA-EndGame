@@ -378,7 +378,56 @@ static int getminAbsDiff(int arr[], int x){
 }
 ```
 
-<hr>
+# 15. [Single Element in a Sorted Array](https://leetcode.com/problems/single-element-in-a-sorted-array/description/)
+## You are given a sorted array consisting of only integers where every element appears exactly twice, except for one element which appears exactly once. Return the single element that appears only once.
+
+```java
+class Solution {
+    public int singleNonDuplicate(int[] arr) {
+        int n = arr.length;
+        if(n==1) return arr[0];
+        if(arr[0]!=arr[1]) return  arr[0];
+        if(arr[n-1]!=arr[n-2]) return arr[n-1];
+        // here we are reducing our search space for preventing indexOutOfBound while updating start and end.
+        int s = 2;
+        int e = n-3;
+
+        while(s<=e){
+            int mid = s + (e-s)/2;
+
+            if(isSingle(arr,mid)) return arr[mid];
+
+            if(isRightOfSingle(arr,mid)){
+                if(arr[mid] == arr[mid-1]) e = mid-2;
+                else e = mid - 1;
+            }
+            else if(isLeftOfSingle(arr,mid)){
+                if(arr[mid] == arr[mid+1]) s = mid+2;
+                else s = mid + 1;
+            }
+        }
+        return 7798;
+    }
+
+    // order is (o,e)
+    private boolean isRightOfSingle(int arr[], int mid){
+        if(mid%2 != 0 && arr[mid]==arr[mid+1]) return true;
+        if(mid%2 == 0 && arr[mid]==arr[mid-1]) return true;
+        return false;
+    }
+
+    // order is (e,o)
+    private boolean isLeftOfSingle(int arr[], int mid){
+        if(mid%2 == 0 && arr[mid]==arr[mid+1]) return true;
+        if(mid%2 != 0 && arr[mid]==arr[mid-1]) return true;
+        return false;
+    }
+
+    private boolean isSingle(int arr[], int mid){
+        return arr[mid]!=arr[mid+1] && arr[mid]!=arr[mid-1];
+    }
+}
+```
 
 # [**8. Search in an almost sorted array**](https://youtu.be/W3-KgsCVH1U)
 ```java
