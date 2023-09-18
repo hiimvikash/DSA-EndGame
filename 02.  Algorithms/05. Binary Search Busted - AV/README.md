@@ -254,7 +254,9 @@ class Solution {
 ```
 
 # [11. Search in Rotated Sorted Array II](https://leetcode.com/problems/search-in-rotated-sorted-array-ii/description/)
-- Q is same as I but here it may have duplicate values.
+- Q is same as 10 but here it may have duplicate values.
+- ![image](https://github.com/hiimvikash/DSA-EndGame/assets/71629248/7dbb307d-3a37-4668-a71a-118c3cd94325)
+
 ```java
 class Solution {
     public boolean search(int[] arr, int target) {
