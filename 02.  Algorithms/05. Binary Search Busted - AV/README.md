@@ -331,7 +331,7 @@ class Solution {
 }
 ```
 
-# 13. Search in a infinite sorted array [3, 5, 6, 8, 9, 10, 12, 15...♾️] 
+# 13. Search in an infinite sorted array [3, 5, 6, 8, 9, 10, 12, 15...♾️] 
 ## Approach
 - ### Don't think about infinity, for performing BS you just need searchSpace i.e., range where your target can lie between start and end so just figure out start and end and perform normal BS in that range. We are Increasing our search space by 2 in each itteration.
 
