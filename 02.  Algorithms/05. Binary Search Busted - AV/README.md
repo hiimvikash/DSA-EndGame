@@ -222,8 +222,8 @@ int findKRotation(int arr[], int n) {
         return 87456;
     }
 ```
-# [**7. Search in Rotated Sorted Array LC-33**](https://leetcode.com/problems/search-in-rotated-sorted-array/)
-## Intution :- Whenever mid stand it will give : either leftPartSorted or RightPartSorted so we check for the existence of target in sorted part, if not found then we again move to unsorted part.
+# [**10. Search in Rotated Sorted Array LC-33**](https://leetcode.com/problems/search-in-rotated-sorted-array/)
+## Intution :- Whenever mid stand it will give : either leftPartSorted or RightPartSorted so we check for the existence of target in sorted part, if not found then we again continue our search in unsorted part.
 ```java
 class Solution {
     public int search(int[] nums, int x) {
