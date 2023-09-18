@@ -252,6 +252,48 @@ class Solution {
     }
 }
 ```
+
+# [11. Search in Rotated Sorted Array II](https://leetcode.com/problems/search-in-rotated-sorted-array-ii/description/)
+- Q is same as I but here it may have duplicate values.
+```java
+class Solution {
+    public boolean search(int[] arr, int target) {
+        int n = arr.length;
+        int s = 0;
+        int e = n-1;
+
+        while(s<=e){
+            int mid = s + (e-s)/2;
+
+            if(arr[mid] == target) return true;
+            // sorted part identification fails
+            if((arr[mid] == arr[s]) && (arr[mid] == arr[e])){
+                s++; e--; continue;
+            }
+
+            // if right part sorted
+            if(arr[mid] <= arr[e]){
+                if(target >= arr[mid] && target <= arr[e]){
+                    s = mid+1;
+                }
+                else{
+                    e = mid-1;
+                }
+            }
+            // if left part sorted
+            else if(arr[s] <= arr[mid]){
+                if(target >= arr[s] && target <= arr[mid]){
+                    e = mid-1;
+                }
+                else{
+                    s = mid+1;
+                }
+            }
+        }
+        return false;
+    }
+}
+```
 # [**8. Search in an almost sorted array**](https://youtu.be/W3-KgsCVH1U)
 ```java
 int BinarySearchModi(int arr[], int fromIndex, int toIndex, int key){
