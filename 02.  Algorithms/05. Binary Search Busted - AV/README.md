@@ -297,7 +297,7 @@ class Solution {
 }
 ```
 
-# [12 Find Peak Element](https://leetcode.com/problems/find-peak-element/description/)
+# [12. Find Peak Element](https://leetcode.com/problems/find-peak-element/description/)
 ![image](https://github.com/hiimvikash/DSA-EndGame/assets/71629248/6cceba46-8ba7-4e95-adea-11026d0fddf4)
 
 ```java
@@ -330,6 +330,56 @@ class Solution {
     }
 }
 ```
+
+# 13. Search in a infinite sorted array [3, 5, 6, 8, 9, 10, 12, 15...♾️] 
+## Approach
+- ### Don't think about infinity, for performing BS you just need searchSpace i.e., range where your target can lie between start and end so just figure out start and end and perform normal BS in that range. We are Increasing our search space by 2 in each itteration.
+
+```java
+int searchInfiniteSortedArray(int arr[], int x){
+    int s = 0;
+    int e = 1;
+    // find the range
+    while(x > arr[e]){
+        s = e+1;
+        e = e + (e-s+1)*2;
+    }
+    return bs(arr, s, e, x);
+}
+```
+# 14. You will be given a value X and a sorted array, you need to find minimum absolute difference you can get with X and eles in an array.
+## Approach :- Do a normal BS if found then return 0 else return MINIMUM(abs(x-ceil), abs(x-floor));
+## Edge cases to handle before hand:-
+- ### [2, 4, 6, 8] X = 1
+    - floor ❌ so end = -1
+    - ceil ✔️ so start = 0
+- ### [2, 4, 6, 8] X = 10
+    - floor ✔️ so end = 3
+    - ceil ❌ so start = 4
+
+```java
+static int getminAbsDiff(int arr[], int x){
+    int n = arr.length;
+    // handling edge cases
+    if(x < arr[0] || x > arr[n-1]){
+        return Math.min(Math.abs(x-arr[0]), Math.abs(x-arr[n-1]));
+    }
+
+    int s = 0;
+    int e = n-1;
+    while(s<=e){
+        int mid = s + (e-s)/2;
+
+        if(arr[mid] == x) return 0;
+        else if(x > arr[mid]) s = mid+1;
+        else e = mid-1;
+    }
+    return Math.min(Math.abs(x-arr[s]), Math.abs(x-arr[e]));
+}
+```
+
+<hr>
+
 # [**8. Search in an almost sorted array**](https://youtu.be/W3-KgsCVH1U)
 ```java
 int BinarySearchModi(int arr[], int fromIndex, int toIndex, int key){
@@ -347,139 +397,7 @@ int BinarySearchModi(int arr[], int fromIndex, int toIndex, int key){
 ```
 
 
-# [**9. Floor in a sorted array**](https://practice.geeksforgeeks.org/problems/floor-in-a-sorted-array-1587115620/1#) - INDEX OF MAX(No.s which are less than X) - index of GREATEST ELEMENT SMALLER THAN X
-## [**Video Reference**](https://youtu.be/5cx0xerA8XY)
-# Input :- [2,4,7,9,10,13,18,23] x = 12 floor = index 4(10) & ceil = index 5(13)
-Intutive approach
-```JAVA
-class Solution{
-    
-    // Function to find floor of x
-    // arr: input array
-    // n is the size of array
-    static int findFloor(long arr[], int n, long x)
-    {
-        int s = 0;
-        int e = n-1;
-        int ans = -1;
-        while(s<=e){
-            int mid = s + (e-s)/2;
-            
-            if(arr[mid] < x){
-                ans = Math.max(ans,mid);
-                s=mid+1;
-            }
-            else if(arr[mid] > x) e = mid-1;
-            else return mid;
-        }
-        return ans;
-    }
-    
-}
-```
-## Approach 1 :-
-```java
-static int findFloor(long arr[], int n, long x)
-    {
-        return binarySearch(arr,0,n,x);
-    }
-    private static int binarySearch(long[] a, int fromIndex, int toIndex, long key) {
-        int start = fromIndex;
-        int end = toIndex - 1;
-        int ans=-1;
-        while (start <= end) {
-            int mid = start + (end-start)/2;
-            long midVal = a[mid];
 
-            if (midVal<key){
-                ans=mid;
-                start = mid + 1;
-            }
-                
-            else if (midVal>key)
-                end = mid - 1;
-            else
-                return mid; // key found
-        }
-        return ans;  // if key not found then -(thisVal+1) will give insertion point.
-    }
-}
-```
-## Approach 2 :- **When Key is not found, Start ---> ceil and End ---> floor in general** and ceil(start) is also known as insertion point.
-```java
-static int findFloor(long arr[], int n, long x)
-    {
-        return binarySearch(arr,0,n,x);
-    }
-    private static int binarySearch(long[] a, int fromIndex, int toIndex, long key) {
-        int start = fromIndex;
-        int end = toIndex - 1;
-        while (start <= end) {
-            int mid = start + (end-start)/2;
-            long midVal = a[mid];
-
-            if (midVal<key){
-                start = mid + 1;
-            }
-                
-            else if (midVal>key)
-                end = mid - 1;
-            else
-                return mid; // key found
-        }
-        return end;  
-    }
-    
-}
-```
-# [**10.Ceil in a sorted array or Lower Bound**](https://www.codingninjas.com/studio/problems/lower-bound_8165382?leftPanelTab=1) - INDEX OF MIN(No.s which are greater than X)
-
-```java
-public class Solution {
-    public static int lowerBound(int []arr, int n, int x) {
-        // Write your code here
-        int s = 0;
-        int e = n-1;
-        int ans = n;
-        while(s<=e){
-            int mid = s+(e-s)/2;
-
-            if(arr[mid] > x){
-                ans = Math.min(ans,mid);
-                e = mid-1;
-            }
-            else if(arr[mid] < x) s = mid+1;
-            else return mid;
-        }
-        return ans;
-    }
-}
-```
-```java
-static int findCeil(long arr[], int n, long x)
-    {
-        return binarySearch(arr,0,n,x);
-    }
-    private static int binarySearch(long[] a, int fromIndex, int toIndex, long key) {
-        int start = fromIndex;
-        int end = toIndex - 1;
-        while (start <= end) {
-            int mid = start + (end-start)/2;
-            long midVal = a[mid];
-
-            if (midVal<key){
-                start = mid + 1;
-            }
-                
-            else if (midVal>key)
-                end = mid - 1;
-            else
-                return mid; // key found
-        }
-        return start;  
-    }
-}
-```
 
 # [**11. Next Alphabetical Element**](https://leetcode.com/problems/find-smallest-letter-greater-than-target/)
 ## [**Video Reference**](https://youtu.be/X45c37QMdX0)
