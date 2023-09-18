@@ -296,6 +296,38 @@ class Solution {
     }
 }
 ```
+
+# [162. Find Peak Element](https://leetcode.com/problems/find-peak-element/description/)
+```java
+class Solution {
+    public int findPeakElement(int[] arr) {
+        int n = arr.length;
+        if(n==1) return 0;
+        if(arr[0] > arr[1]) return 0; // descending sorted
+        if(arr[n-1] > arr[n-2]) return n-1; // ascending sorteed
+
+        // reducing our SearchSpace 
+        int s = 1;
+        int e = n-2;
+
+        while(s <= e){
+            int mid = (s + e)/2;
+
+            if(isPeak(arr,mid)) return mid;
+
+            // asc part ?
+            else if(arr[mid+1] > arr[mid]) s = mid+1;
+            // des part?
+            else if(arr[mid] > arr[mid+1]) e = mid-1;
+        }
+        return -1;
+    }
+
+    private boolean isPeak(int arr[], int mid){
+        return (arr[mid] > arr[mid+1] && arr[mid] > arr[mid-1]);
+    }
+}
+```
 # [**8. Search in an almost sorted array**](https://youtu.be/W3-KgsCVH1U)
 ```java
 int BinarySearchModi(int arr[], int fromIndex, int toIndex, int key){
