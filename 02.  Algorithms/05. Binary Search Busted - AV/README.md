@@ -381,6 +381,8 @@ static int getminAbsDiff(int arr[], int x){
 # 15. [Single Element in a Sorted Array](https://leetcode.com/problems/single-element-in-a-sorted-array/description/)
 ## You are given a sorted array consisting of only integers where every element appears exactly twice, except for one element which appears exactly once. Return the single element that appears only once.
 
+![image](https://github.com/hiimvikash/DSA-EndGame/assets/71629248/a72c3f83-3864-41ba-80b5-a84c47787ff4)
+
 ```java
 class Solution {
     public int singleNonDuplicate(int[] arr) {
