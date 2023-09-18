@@ -255,7 +255,7 @@ class Solution {
 
 # [11. Search in Rotated Sorted Array II](https://leetcode.com/problems/search-in-rotated-sorted-array-ii/description/)
 - Q is same as 10 but here it may have duplicate values.
-- ![image](https://github.com/hiimvikash/DSA-EndGame/assets/71629248/7dbb307d-3a37-4668-a71a-118c3cd94325)
+![image](https://github.com/hiimvikash/DSA-EndGame/assets/71629248/7dbb307d-3a37-4668-a71a-118c3cd94325)
 
 ```java
 class Solution {
@@ -298,6 +298,8 @@ class Solution {
 ```
 
 # [12 Find Peak Element](https://leetcode.com/problems/find-peak-element/description/)
+![image](https://github.com/hiimvikash/DSA-EndGame/assets/71629248/6cceba46-8ba7-4e95-adea-11026d0fddf4)
+
 ```java
 class Solution {
     public int findPeakElement(int[] arr) {
