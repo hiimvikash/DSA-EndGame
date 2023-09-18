@@ -297,7 +297,7 @@ class Solution {
 }
 ```
 
-# [162. Find Peak Element](https://leetcode.com/problems/find-peak-element/description/)
+# [12 Find Peak Element](https://leetcode.com/problems/find-peak-element/description/)
 ```java
 class Solution {
     public int findPeakElement(int[] arr) {
