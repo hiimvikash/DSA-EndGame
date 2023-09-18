@@ -5,7 +5,7 @@
 # [**1. Binary Search Basic**](https://youtu.be/QNGL_t_o_QA)
 ![image](https://github.com/hiimvikash/DSA-EndGame/assets/71629248/0b8657f4-3d74-4f05-9b9c-e175f17b6f8a)
 
-##  **2. BS on Ascending Order sorted array :-**
+#  **2. BS on Ascending Order sorted array :-**
 ```java
 private static int binarySearch(int[] arr, int key) {
         int s = 0;
@@ -24,7 +24,7 @@ private static int binarySearch(int[] arr, int key) {
         return -1;
 }
 ```
-## **2. BS on Descending Order sorted array :-**
+# **2. BS on Descending Order sorted array :-**
 ```java
 private static int binarySearch(int[] arr, int key) {
         int s = 0;
@@ -43,7 +43,7 @@ private static int binarySearch(int[] arr, int key) {
         return -1;
 }
 ```
-## **3. Order Agnostic Binary Search (when you don't know in which order the array is sorted):**
+# **3. Order Agnostic Binary Search (when you don't know in which order the array is sorted):**
 ```java
 private static int AgnosticbinarySearch(int[] arr, int key) {
         int s = 0;
