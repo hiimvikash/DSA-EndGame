@@ -18,7 +18,7 @@ public class Solution {
             int inc = updates[i][2];
 
             relH[lr]+=inc;
-            if(rr < length-1) relH[rr+1]-=inc;
+            if(rr+1 < length) relH[rr+1]-=inc;
         }
         for(int i = 1; i<length; i++){
             relH[i] = relH[i] + relH[i-1];
