@@ -1,6 +1,6 @@
 # [2865. Beautiful Towers I](https://leetcode.com/problems/beautiful-towers-i/description/)
 
-## The Q is : you have been given with the maxHeights of the towers which you can setup at the ith index. Now you have to setup towers at each ith index and make a ```heights[]```, such that the full configuration of towers looks beautiful.
+## The Q is : you have been given with the maxHeights of the towers which you can setup at the ith index. Now you have to setup towers at each ith index and make a ```heights[]```, such that the full configuration of towers looks like mountain.
 ![Alt text](image.png)
 ## TestCases :-
 ![Alt text](save-1.png)
