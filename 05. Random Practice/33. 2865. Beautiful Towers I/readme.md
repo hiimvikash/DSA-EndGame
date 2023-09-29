@@ -12,7 +12,7 @@
     - at index 2 maxtill value signifies that I can setup tower of ```height <= 9``` **to maintain the mountain configuration** but ```maxHeight[2]``` did'nt allow me
     - updated my ```maxtill = 3``` bcz when I will go to index 1 to setup my tower then maxtill value will signifies that I can setup tower of ```height <= 3``` **to maintain the mountain configuration**
     - so maxtill and maxHeight[] for every index is a type of restriction which they are giving to setup the tower that's why we are selecting minimum where they both agree.
-### As u saw in other tcs that there is no pattern to find peak element of the mountain array so we arr trying to make every index as peakElement and finding sum based on that peak ele.
+### As u saw in other tcs that there is no pattern to find peak element of the mountain array so we are trying to make every index as peakElement and finding sum based on that peak ele.
 
 ```java
 class Solution {
