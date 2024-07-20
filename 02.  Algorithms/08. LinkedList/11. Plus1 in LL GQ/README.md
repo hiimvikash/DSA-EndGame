@@ -53,3 +53,40 @@ class Solution
 }
 
 ```
+[video reference](https://youtu.be/aXQWhbvT3w0?si=-LbC8mb6mnxTGZcE)
+```java
+public static Node addOne(Node head) {
+		// Write your code here.
+		head = ReverseList(head);
+
+		int curry = 1;
+		Node curr = head;
+
+		while(curry!=0 && curr!=null){
+			int sum = curry + curr.data;
+			curr.data = sum%10;
+			curry = sum/10;
+
+			curr = curr.next;
+		}
+		head = ReverseList(head);
+		if(curry!=0){
+			Node nn = new Node(1);
+			nn.next = head;
+			head = nn;
+		}
+		return head;
+	}
+	private static Node ReverseList(Node head){
+		if(head == null || head.next==null) return head;
+		Node curr = head, prev=null, nex=null;
+		
+		while (curr!=null) {
+			nex = curr.next; // secure next
+			curr.next = prev;
+			prev = curr;
+			curr = nex;
+		}
+		return prev;
+	}
+```
