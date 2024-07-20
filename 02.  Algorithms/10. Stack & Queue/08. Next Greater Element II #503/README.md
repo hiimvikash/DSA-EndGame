@@ -1,22 +1,20 @@
 ## [**503. Next Greater Element II**](https://leetcode.com/problems/next-greater-element-ii/)
-
+[video ref](https://youtu.be/7PrncD7v9YQ?si=0gZfBD6PfWB25Kn8)
 ```java
 class Solution {
     public int[] nextGreaterElements(int[] nums) {
+        int n = nums.length;
         Stack<Integer> st=new Stack<>();
-        int n=nums.length;
-        
-        int res[]=new int[n];
-        Arrays.fill(res,-1);
-        
-        for(int i=0; i<n*2; i++){ 
-            int ele = nums[i%n];
-            while(!st.isEmpty() && ele > nums[st.peek()]){
-                res[st.pop()] = ele;
+        int nge[]=new int[n];
+
+        for(int i = (2*n)-1; i>=0; i--){
+            while(!st.isEmpty() && nums[i%n] >= st.peek()) st.pop();
+            if(i<n){
+                nge[i] = st.isEmpty() ? -1 : st.peek();
             }
-            st.push(i%n);
+            st.push(nums[i%n]);
         }
-        return res;
+        return nge;
     }
 }
 ```
