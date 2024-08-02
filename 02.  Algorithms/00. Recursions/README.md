@@ -51,6 +51,7 @@ static boolean bs(int arr[],int s,int e, int x) {
 ## 2.  **[fibonacci by CN](https://youtu.be/4092LBz_BHQ)**
 # **[Lecture 2 :](https://youtu.be/QbDAWmuOn5Y)**
 ## [Print all subsequence in string](https://www.pepcoding.com/resources/online-java-foundation/recursion-on-the-way-up/print-subsequence-official/ojquestion)
+- n length has 2<sup>n</sup> subsequences.
 ```java
 import java.io.*;
 import java.util.*;
