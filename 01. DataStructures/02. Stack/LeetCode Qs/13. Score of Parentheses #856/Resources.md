@@ -8,23 +8,19 @@
 ```java
 class Solution {
     public int scoreOfParentheses(String s) {
+        Stack<Integer> st=new Stack<>();
         int score = 0;
-        Stack<Integer> st=new Stack<>(); // this stack will score previous score whenever opening bracket is encountered
-
         for(char c : s.toCharArray()){
             if(c == '('){
-                // store the previous score
-                st.push(score);
-                // initialize score to 0
+                st.push(score); // this is the previous score till '(' which we are storing and reseting the ongoing-score
                 score = 0;
             }
-            else{
-                // whenever u get ) then value of score(score inside M.max) at that moment defines score inside that )
-                // whenever u get ) then score till that ) can be :
-                score  = st.pop() + Math.max(score*2, 1);
-                // st.pop() is previous score
-                // Math.max....
-                // this signifies whatif there is a score from inside
+            else {
+                if(score == 0){ // if ongoing-score = 0 and I encounter a closing bracket THAT means 
+                    score = st.pop() + 1; 
+                }else {
+                    score = st.pop() + 2 * score;
+                }
             }
         }
         return score;
